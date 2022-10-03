@@ -1,6 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4cp2m0cgfsog"]
-
-[ext_resource type="Script" path="res://ball.gd" id="1_a5ufp"]
+[gd_scene load_steps=5 format=3 uid="uid://b4cp2m0cgfsog"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hmq2j"]
 
@@ -9,12 +7,14 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6ptm"]
 metallic = 1.0
 emission_enabled = true
-emission = Color(1, 1, 1, 1)
+emission = Color(1, 0.764706, 0.666667, 1)
 emission_energy_multiplier = 20.0
 refraction_enabled = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_7qi5d"]
 material = SubResource("StandardMaterial3D_i6ptm")
+radial_segments = 20
+rings = 20
 
 [node name="Ball" type="RigidBody3D" groups=["Moveable"]]
 mass = 10.0
@@ -25,7 +25,6 @@ contact_monitor = true
 can_sleep = false
 angular_damp_mode = 1
 angular_damp = 1.568
-script = ExtResource("1_a5ufp")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -36,7 +35,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("SphereMesh_7qi5d")
 
 [node name="OmniLight3d" type="OmniLight3D" parent="."]
-light_color = Color(1, 0.639216, 0.443137, 1)
+light_color = Color(1, 0.45098, 0.219608, 1)
 light_energy = 5.0
 light_volumetric_fog_energy = 4.0
 light_specular = 2.0
