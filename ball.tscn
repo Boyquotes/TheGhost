@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4cp2m0cgfsog"]
+[gd_scene load_steps=7 format=3 uid="uid://b4cp2m0cgfsog"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hmq2j"]
 
@@ -15,6 +15,12 @@ refraction_enabled = true
 material = SubResource("StandardMaterial3D_i6ptm")
 radial_segments = 20
 rings = 20
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_ym75v"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_3nn2m"]
+albedo_color = Color(0, 0, 0, 1)
 
 [node name="Ball" type="RigidBody3D" groups=["Moveable"]]
 mass = 10.0
@@ -41,3 +47,26 @@ light_volumetric_fog_energy = 4.0
 light_specular = 2.0
 shadow_enabled = true
 omni_range = 5.5
+
+[node name="CsgTorus3d" type="CSGTorus3D" parent="."]
+inner_radius = 1.0
+outer_radius = 1.05
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_ym75v")
+
+[node name="CsgTorus3d2" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+inner_radius = 1.0
+outer_radius = 1.05
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_3nn2m")
+
+[node name="CsgTorus3d3" type="CSGTorus3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+inner_radius = 1.0
+outer_radius = 1.05
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_3nn2m")

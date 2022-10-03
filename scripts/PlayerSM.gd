@@ -2,16 +2,16 @@ extends "res://scripts/StateMachine.gd"
 
 
 const STATES = {
-	'idle'=1, 
-	'walking'=2
+	'idle'= 1, 
+	'walking'= 2
 }
 
 func _ready():
 	add_states(STATES)
-	call_deferred("set_state",STATES.idle)
+	set_state(STATES.idle)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta):
 	parent._apply_movement()
 
 

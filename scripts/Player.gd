@@ -7,8 +7,7 @@ signal motion_direction (direction : Vector3)
 
 func _apply_movement():
 	_handle_move_input()
-	velocity.x = motion.x * speed
-	velocity.z = motion.z * speed
+	velocity = Vector3(motion.x * speed, velocity.y, motion.z * speed)
 	move_and_slide()
 
 func _handle_move_input():
