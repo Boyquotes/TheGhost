@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://caeqskuyhl3ey"]
+[gd_scene load_steps=12 format=3 uid="uid://caeqskuyhl3ey"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_8g731"]
 [ext_resource type="Script" path="res://scripts/PlayerSM.gd" id="2_ycxjk"]
 [ext_resource type="Material" uid="uid://dnbl2s5onp1ww" path="res://player.tres" id="3_imoab"]
 [ext_resource type="Script" path="res://scripts/CameraNode.gd" id="3_qfr8t"]
 [ext_resource type="Environment" uid="uid://dr4atdwky80l5" path="res://env.tres" id="4_cb670"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8uttm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xqxvw"]
 margin = 0.02
@@ -23,27 +25,30 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_o7g8f"]
 material = SubResource("ORMMaterial3D_mj8k0")
 
-[node name="Player" type="CharacterBody3D"]
-script = ExtResource("1_8g731")
-
-[node name="SM" type="Node" parent="."]
-script = ExtResource("2_ycxjk")
-
-[node name="Disabled" type="CollisionShape3D" parent="."]
-visible = false
-shape = SubResource("CapsuleShape3D_xqxvw")
-disabled = true
+[node name="Node3d" type="Node3D"]
 
 [node name="CameraNode" type="Node3D" parent="."]
 script = ExtResource("3_qfr8t")
 
 [node name="Camera3d" type="Camera3D" parent="CameraNode"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 environment = ExtResource("4_cb670")
+attributes = SubResource("CameraAttributesPractical_8uttm")
 projection = 1
 size = 15.0
 
-[node name="PhysicalBody" type="RigidBody3D" parent="."]
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("1_8g731")
+
+[node name="SM" type="Node" parent="Player"]
+script = ExtResource("2_ycxjk")
+
+[node name="Disabled" type="CollisionShape3D" parent="Player"]
+visible = false
+shape = SubResource("CapsuleShape3D_xqxvw")
+disabled = true
+
+[node name="PhysicalBody" type="RigidBody3D" parent="Player"]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -53,46 +58,46 @@ max_contacts_reported = 289
 contact_monitor = true
 lock_rotation = true
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="PhysicalBody"]
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Player/PhysicalBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.627064, 0)
 shape = SubResource("CapsuleShape3D_ra0m0")
 
-[node name="MeshInstance3d" type="MeshInstance3D" parent="PhysicalBody"]
+[node name="Head" type="MeshInstance3D" parent="Player/PhysicalBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86171, 0)
 mesh = SubResource("SphereMesh_05a3w")
 skeleton = NodePath("")
 
-[node name="Eye" type="MeshInstance3D" parent="PhysicalBody/MeshInstance3d"]
+[node name="Eye" type="MeshInstance3D" parent="Player/PhysicalBody/Head"]
 transform = Transform3D(0.179969, 0, 0, 0, 0.337538, 0, 0, 0, 0.126313, -0.165814, 0.0230193, 0.433)
 mesh = SubResource("SphereMesh_o7g8f")
 skeleton = NodePath("")
 
-[node name="Eye2" type="MeshInstance3D" parent="PhysicalBody/MeshInstance3d"]
+[node name="Eye2" type="MeshInstance3D" parent="Player/PhysicalBody/Head"]
 transform = Transform3D(0.179969, 0, 0, 0, 0.337538, 0, 0, 0, 0.126313, 0.166, 0.022, 0.432)
 mesh = SubResource("SphereMesh_o7g8f")
 skeleton = NodePath("")
 
-[node name="Body" type="MeshInstance3D" parent="PhysicalBody"]
+[node name="Body" type="MeshInstance3D" parent="Player/PhysicalBody"]
 transform = Transform3D(0.884648, 0, 0, 0, 1.56141, 0, 0, 0, 0.547896, 0, 0.890703, 0)
 mesh = SubResource("SphereMesh_05a3w")
 skeleton = NodePath("")
 
-[node name="Arm2" type="MeshInstance3D" parent="PhysicalBody"]
+[node name="Arm2" type="MeshInstance3D" parent="Player/PhysicalBody"]
 transform = Transform3D(0.228279, -0.477097, 0, 0.117718, 0.925191, 0, 0, 0, 0.27058, 0.525125, 1.06699, 0)
 mesh = SubResource("SphereMesh_05a3w")
 skeleton = NodePath("")
 
-[node name="Arm3" type="MeshInstance3D" parent="PhysicalBody"]
+[node name="Arm3" type="MeshInstance3D" parent="Player/PhysicalBody"]
 transform = Transform3D(0.228849, 0.472587, 0, -0.116605, 0.927503, 0, 0, 0, 0.27058, -0.525, 1.06699, 0)
 mesh = SubResource("SphereMesh_05a3w")
 skeleton = NodePath("")
 
-[node name="Leg" type="MeshInstance3D" parent="PhysicalBody"]
+[node name="Leg" type="MeshInstance3D" parent="Player/PhysicalBody"]
 transform = Transform3D(0.370921, 0, 0, 0, 1.75549, 0, 0, 0, 0.369209, -0.235272, -0.117, 0)
 mesh = SubResource("SphereMesh_05a3w")
 skeleton = NodePath("")
 
-[node name="Leg2" type="MeshInstance3D" parent="PhysicalBody"]
+[node name="Leg2" type="MeshInstance3D" parent="Player/PhysicalBody"]
 transform = Transform3D(0.370921, 0, 0, 0, 1.75549, 0, 0, 0, 0.369209, 0.235272, -0.117, 0)
 mesh = SubResource("SphereMesh_05a3w")
 skeleton = NodePath("")

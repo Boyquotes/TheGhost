@@ -8,12 +8,13 @@
 [node name="Base Level" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_v4kr2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12053, 0)
 
 [node name="Ball2" parent="." instance=ExtResource("2_od1rw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.72214, 3.10564, 3.27355)
 
 [node name="wall" type="StaticBody3D" parent="."]
-transform = Transform3D(-6.16012e-08, 0, -1.05824, 0, 1.36482, 0, 1.40927, 0, -4.62572e-08, -2.97153, 1.78277, -3.19433)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.97153, 1.78277, -3.19433)
 
 [node name="CsgBox3d" type="CSGBox3D" parent="wall"]
 transform = Transform3D(7.79252, 0, 0, 0, 5.21432, 0, 0, 0, 1, 0, 0, 0)
@@ -27,7 +28,7 @@ shape = SubResource("BoxShape3D_oetyr")
 transform = Transform3D(0.617656, 12.5767, -5.62775e-09, 2.76673e-07, 7.7515e-14, 1.31937, 6.29934, -1.23315, -5.73962e-08, -1.01129, -0.535035, -0.100804)
 
 [node name="CsgBox3d" type="CSGBox3D" parent="floor"]
-transform = Transform3D(7.79252, 0, 0, 0, 5.21432, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 1, 0, 0, 0)
 use_collision = true
 
 [node name="CollisionShape3d2" type="CollisionShape3D" parent="floor"]

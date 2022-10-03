@@ -1,7 +1,17 @@
 extends Node3D
 
-@onready var player = get_node("../PhysicalBody")
+@onready var test = get_node("../Player")
+@onready var player = get_node("../Player/PhysicalBody")
+var CORRECTION_SPEED = 3
+var OFFSET = Vector3(0, 10, 10)
+var targetPosition
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	global_position = player.global_position + Vector3(0, 10, 10)
+func _physics_process(delta):
+	camera_corretion(delta)
+
+func camera_corretion(delta):
+	targetPosition = player.global_position + OFFSET
+	global_position = lerp(
+		global_position, 
+		targetPosition, 
+		CORRECTION_SPEED*delta)
