@@ -1,23 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7r35r3jw3cto"]
+[gd_scene load_steps=4 format=3 uid="uid://c7r35r3jw3cto"]
 
 [ext_resource type="PackedScene" uid="uid://caeqskuyhl3ey" path="res://player.tscn" id="1_v4kr2"]
 [ext_resource type="PackedScene" uid="uid://b4cp2m0cgfsog" path="res://ball.tscn" id="2_od1rw"]
 
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_ffesb"]
+albedo_color = Color(0.545098, 0.32549, 0.0745098, 1)
+
 [node name="Base Level" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_v4kr2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12053, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 57.2341, 0)
 
-[node name="Ball2" parent="." instance=ExtResource("2_od1rw")]
+[node name="Light2" parent="." instance=ExtResource("2_od1rw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.72214, 3.10564, 3.27355)
 
-[node name="Ball3" parent="." instance=ExtResource("2_od1rw")]
+[node name="Light" parent="." instance=ExtResource("2_od1rw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109611, 3.10564, -8.99271)
 
-[node name="CsgBox3d" type="CSGBox3D" parent="."]
+[node name="Box" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.898, 1.46286, -3.194)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = SubResource("ORMMaterial3D_ffesb")
+
+[node name="Wall" type="CSGBox3D" parent="."]
 transform = Transform3D(-3.40622e-07, 0, -1, 0, 5.21432, 0, 7.79252, 0, -4.37114e-08, -2.97153, 1.78277, -3.19433)
 use_collision = true
 
 [node name="CsgBox3d2" type="CSGBox3D" parent="."]
-transform = Transform3D(4.94125, 100.614, -5.62775e-09, 2.21338e-06, 6.2012e-13, 1.31937, 50.3947, -9.8652, -5.73962e-08, -1.01129, -0.535035, -0.100804)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
 use_collision = true
+size = Vector3(1000, 1000, 1)

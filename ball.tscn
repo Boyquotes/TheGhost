@@ -23,7 +23,7 @@ albedo_color = Color(0, 0, 0, 1)
 albedo_color = Color(0, 0, 0, 1)
 
 [node name="Ball" type="RigidBody3D" groups=["Moveable"]]
-mass = 10.0
+mass = 50.0
 physics_material_override = SubResource("PhysicsMaterial_hmq2j")
 continuous_cd = true
 max_contacts_reported = 10
@@ -41,14 +41,15 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("SphereMesh_7qi5d")
 
 [node name="OmniLight3d" type="OmniLight3D" parent="."]
-light_color = Color(1, 0.45098, 0.219608, 1)
+light_color = Color(1, 0.647059, 0.470588, 1)
 light_energy = 5.0
-light_volumetric_fog_energy = 4.0
-light_specular = 2.0
+light_volumetric_fog_energy = 2.0
+light_specular = 3.0
 shadow_enabled = true
-omni_range = 5.5
+omni_range = 6.0
 
 [node name="CsgTorus3d" type="CSGTorus3D" parent="."]
+cast_shadow = 0
 inner_radius = 1.0
 outer_radius = 1.05
 sides = 30
@@ -57,6 +58,7 @@ material = SubResource("ORMMaterial3D_ym75v")
 
 [node name="CsgTorus3d2" type="CSGTorus3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
 inner_radius = 1.0
 outer_radius = 1.05
 sides = 30
@@ -65,6 +67,7 @@ material = SubResource("ORMMaterial3D_3nn2m")
 
 [node name="CsgTorus3d3" type="CSGTorus3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+cast_shadow = 0
 inner_radius = 1.0
 outer_radius = 1.05
 sides = 30

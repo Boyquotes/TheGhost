@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="The "
+config/name="TheGhost"
 run/main_scene="res://base_level.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
