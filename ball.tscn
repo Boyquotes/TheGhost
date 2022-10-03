@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4cp2m0cgfsog"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3pmlm"]
+absorbent = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nimvk"]
+custom_solver_bias = 0.527
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6ptm"]
+metallic = 1.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 10.0
+refraction_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_7qi5d"]
+material = SubResource("StandardMaterial3D_i6ptm")
+
+[node name="Ball" type="RigidBody3D"]
+mass = 54.11
+physics_material_override = SubResource("PhysicsMaterial_3pmlm")
+continuous_cd = true
+max_contacts_reported = 10
+contact_monitor = true
+can_sleep = false
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("SphereShape3D_nimvk")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("SphereMesh_7qi5d")
+
+[node name="OmniLight3d" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.639216, 0.443137, 1)
+light_energy = 5.0
+light_volumetric_fog_energy = 4.0
+light_specular = 4.0
+shadow_enabled = true
+shadow_bias = 0.1
+shadow_normal_bias = 10.0
+shadow_blur = 0.0
+omni_range = 5.5
