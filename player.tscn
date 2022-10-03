@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://caeqskuyhl3ey"]
+[gd_scene load_steps=14 format=3 uid="uid://caeqskuyhl3ey"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_8g731"]
 [ext_resource type="Script" path="res://scripts/PlayerSM.gd" id="2_ycxjk"]
@@ -11,6 +11,28 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xqxvw"]
 margin = 0.02
 height = 3.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_55mml"]
+rough = true
+
+[sub_resource type="GDScript" id="GDScript_vguam"]
+script/source = "extends RigidBody3D
+
+signal player_body_pos (position, delta)
+
+func _physics_process(delta):
+	emit_signal(\"player_body_pos\", global_position, delta)
+
+func remove_not_moveable(obj : Node3D):
+	return obj.is_in_group(\"Moveable\")
+
+
+func _on_player_motion_direction(direction):
+	var moveable_objects : Array[RigidBody3D] = get_colliding_bodies().filter(remove_not_moveable)
+	if moveable_objects:
+		for object in moveable_objects:
+			object.apply_central_impulse(direction)
+"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ra0m0"]
 height = 3.2
@@ -52,11 +74,13 @@ disabled = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-mass = 100.0
+mass = 300.0
+physics_material_override = SubResource("PhysicsMaterial_55mml")
 continuous_cd = true
 max_contacts_reported = 289
 contact_monitor = true
 lock_rotation = true
+script = SubResource("GDScript_vguam")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="Player/PhysicalBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.627064, 0)
@@ -101,3 +125,6 @@ skeleton = NodePath("")
 transform = Transform3D(0.370921, 0, 0, 0, 1.75549, 0, 0, 0, 0.369209, 0.235272, -0.117, 0)
 mesh = SubResource("SphereMesh_05a3w")
 skeleton = NodePath("")
+
+[connection signal="motion_direction" from="Player" to="Player/PhysicalBody" method="_on_player_motion_direction"]
+[connection signal="player_body_pos" from="Player/PhysicalBody" to="CameraNode" method="_on_physical_body_player_body_pos"]

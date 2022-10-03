@@ -3,6 +3,8 @@ extends CharacterBody3D
 var speed = 5
 var motion = Vector3()
 
+signal motion_direction (direction : Vector3)
+
 func _apply_movement():
 	_handle_move_input()
 	velocity.x = motion.x * speed
@@ -22,3 +24,4 @@ func _handle_move_input():
 		motion.z += 1
 		
 	motion = motion.normalized()
+	emit_signal("motion_direction", motion)
