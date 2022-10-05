@@ -42,7 +42,7 @@ _surfaces = [{
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_rh02c"]
 emission_enabled = true
-emission = Color(0.435294, 1, 1, 1)
+emission = Color(0.278431, 1, 1, 1)
 emission_energy_multiplier = 3.0
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_8g7x4"]
@@ -57,12 +57,12 @@ height = 0.35
 
 [node name="CameraNode" type="Node3D" parent="."]
 script = ExtResource("3_qfr8t")
+offset_value = 10.0
 
 [node name="Camera3d" type="Camera3D" parent="CameraNode"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 environment = ExtResource("4_cb670")
 attributes = SubResource("CameraAttributesPractical_8uttm")
-projection = 1
 size = 15.0
 
 [node name="Player" type="CharacterBody3D" parent="."]

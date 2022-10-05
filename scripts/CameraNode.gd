@@ -1,8 +1,9 @@
 extends Node3D
 
 var CORRECTION_SPEED = 3
-var OFFSET = Vector3(0, 10, 10)
+@onready var OFFSET = Vector3(0, offset_value, offset_value)
 var targetPosition
+@export var offset_value:float =  10
 
 
 func _on_physical_body_player_body_pos(position, delta):

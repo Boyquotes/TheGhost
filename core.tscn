@@ -34,7 +34,7 @@ shape = SubResource("BoxShape3D_es8o5")
 mesh = SubResource("SphereMesh_guyl4")
 
 [node name="OmniLight3d" type="OmniLight3D" parent="."]
-light_color = Color(0.847059, 0.67451, 0.894118, 1)
+light_color = Color(1, 0.647059, 0.470588, 1)
 light_energy = 16.0
 light_volumetric_fog_energy = 2.0
 light_specular = 3.0
