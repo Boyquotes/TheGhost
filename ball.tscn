@@ -41,7 +41,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("SphereMesh_7qi5d")
 
 [node name="OmniLight3d" type="OmniLight3D" parent="."]
-light_color = Color(1, 0.647059, 0.470588, 1)
+light_color = Color(0.972549, 0.615686, 0.521569, 1)
 light_energy = 5.0
 light_volumetric_fog_energy = 2.0
 light_specular = 3.0

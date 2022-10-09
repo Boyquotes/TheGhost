@@ -7,12 +7,9 @@ var states = {}
 
 @onready var parent = get_parent()
 
-func _ready():
-	set_physics_process(true)
-
-
 func _physics_process(delta):
 	if state != null:
+
 		_refresh(delta)
 		var transition = _update_state(delta)
 		if transition != null:

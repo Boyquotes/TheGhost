@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxkdcwo5sapjw"]
+
+[ext_resource type="PackedScene" path="res://asdasd.gltf" id="1_tp3pv"]
+[ext_resource type="Material" uid="uid://dnbl2s5onp1ww" path="res://player.tres" id="2_ugtrv"]
+
+[node name="asdasd" instance=ExtResource("1_tp3pv")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/12/rotation = Quaternion(-0.00635833, -0.00359851, -0.999792, 0.0190225)
+bones/14/rotation = Quaternion(0.692311, -0.0260561, -0.0364696, 0.720206)
+bones/15/rotation = Quaternion(-0.00635836, 0.00359849, 0.999792, 0.0190225)
+bones/17/rotation = Quaternion(0.692311, 0.0260562, 0.0364695, 0.720206)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_ugtrv")
