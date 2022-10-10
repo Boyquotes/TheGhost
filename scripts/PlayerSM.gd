@@ -16,16 +16,15 @@ func _ready():
 func _refresh(delta):
 	parent._apply_movement(delta)
 
-func _update_state(_delta):
+func _update_state(delta):
+	parent._handle_move_input()
 	match state:
 		STATES.idle:
-			parent._handle_move_input()
 			if parent.motion.x != 0 || parent.motion.z != 0 :
 				return STATES.walking
 		STATES.walking:
-			parent._handle_move_input()
+			parent._handle_move_rotation(delta)
 			if parent.motion.x == 0 && parent.motion.z == 0 :
-				parent._handle_move_input()
 				return STATES.idle
 
 func _enter_state(new_state,_old_state):

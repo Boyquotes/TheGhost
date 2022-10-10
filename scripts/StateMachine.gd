@@ -1,7 +1,7 @@
 extends Node
 class_name StateMachine
 
-var state = null
+@export var state = null
 var previous_state = null
 var states = {}
 
@@ -9,7 +9,6 @@ var states = {}
 
 func _physics_process(delta):
 	if state != null:
-
 		_refresh(delta)
 		var transition = _update_state(delta)
 		if transition != null:

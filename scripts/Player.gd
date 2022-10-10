@@ -7,8 +7,7 @@ signal motion_direction (direction : Vector3)
 
 func _apply_movement(delta):
 	_handle_move_input()
-	velocity = Vector3(motion.x * speed, velocity.y, motion.z * speed)
-	$body/v1.rotation.y = lerp_angle($body/v1.rotation.y, atan2(-velocity.x, -velocity.z), delta * 10)
+	velocity = Vector3(motion.x * speed, 0, motion.z * speed)
 	move_and_slide()
 
 func _handle_move_input():
@@ -25,3 +24,6 @@ func _handle_move_input():
 	
 	motion = motion.normalized()
 	emit_signal("motion_direction", motion)
+	
+func _handle_move_rotation(delta):
+	$body/v1.rotation.y = lerp_angle($body/v1.rotation.y, atan2(-velocity.x, -velocity.z), delta * 10)
