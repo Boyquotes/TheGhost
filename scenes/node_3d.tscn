@@ -2,11 +2,11 @@
 
 [ext_resource type="Shader" path="res://materials/test.gdshader" id="1_8j6rg"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e2wyd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5b6da"]
 render_priority = 0
 shader = ExtResource("1_8j6rg")
 
 [node name="Node3d" type="Node3D"]
 
-[node name="CsgSphere3d" type="CSGSphere3D" parent="."]
-material = SubResource("ShaderMaterial_e2wyd")
+[node name="CsgBox3d" type="CSGBox3D" parent="."]
+material = SubResource("ShaderMaterial_5b6da")
