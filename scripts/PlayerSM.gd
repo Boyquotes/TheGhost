@@ -27,6 +27,7 @@ func _update_state(delta):
 			if parent.speed == 0 :
 				return STATES.idle
 
+
 func _enter_state(new_state,_old_state):
 	match new_state:
 		STATES.idle:
