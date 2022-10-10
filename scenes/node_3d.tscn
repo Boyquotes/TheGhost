@@ -2,11 +2,12 @@
 
 [ext_resource type="Shader" path="res://materials/test.gdshader" id="1_8j6rg"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5b6da"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x1l5w"]
 render_priority = 0
 shader = ExtResource("1_8j6rg")
 
 [node name="Node3d" type="Node3D"]
 
-[node name="CsgBox3d" type="CSGBox3D" parent="."]
-material = SubResource("ShaderMaterial_5b6da")
+[node name="CsgSphere3d" type="CSGSphere3D" parent="."]
+radial_segments = 20
+material = SubResource("ShaderMaterial_x1l5w")
