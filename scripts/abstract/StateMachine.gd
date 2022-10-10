@@ -34,6 +34,6 @@ func set_state(new_state):
 	if new_state != null :
 		_enter_state(new_state,previous_state)
 
-func add_states(states):
-	for state in states:
-		states[state] = states.size()
+func add_states(sList):
+	for s in sList:
+		states[s] = sList.size()

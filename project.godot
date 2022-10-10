@@ -12,7 +12,7 @@ _global_script_classes=[{
 "base": "Node",
 "class": &"StateMachine",
 "language": &"GDScript",
-"path": "res://scripts/StateMachine.gd"
+"path": "res://scripts/abstract/StateMachine.gd"
 }]
 _global_script_class_icons={
 "StateMachine": ""
@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="TheGhost"
-run/main_scene="res://base_level.tscn"
+run/main_scene="res://scenes/base_level.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
 

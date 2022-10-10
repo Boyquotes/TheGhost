@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://caeqskuyhl3ey"]
+[gd_scene load_steps=14 format=3 uid="uid://bl4yfu0ssxrnt"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_8g731"]
 [ext_resource type="Script" path="res://scripts/PlayerSM.gd" id="2_ycxjk"]
+[ext_resource type="Script" path="res://scripts/PlayerController.gd" id="3_htkub"]
 [ext_resource type="Script" path="res://scripts/CameraNode.gd" id="3_qfr8t"]
-[ext_resource type="Environment" uid="uid://dr4atdwky80l5" path="res://env.tres" id="4_cb670"]
+[ext_resource type="Environment" uid="uid://dr4atdwky80l5" path="res://materials/env.tres" id="4_cb670"]
 [ext_resource type="Script" path="res://scripts/PlayerBody.gd" id="5_nd5oj"]
-[ext_resource type="Script" path="res://scripts/ghost.gd" id="7_etsnl"]
-[ext_resource type="PackedScene" uid="uid://cnnxfdyoqej2n" path="res://v1.gltf" id="8_yvrb8"]
+[ext_resource type="Script" path="res://scripts/PlayerMesh.gd" id="7_goe5a"]
+[ext_resource type="Shader" path="res://materials/test.gdshader" id="8_w4eix"]
+[ext_resource type="PackedScene" uid="uid://cnnxfdyoqej2n" path="res://imports/v1.gltf" id="8_yvrb8"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8uttm"]
 
@@ -19,17 +20,14 @@ height = 3.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ra0m0"]
 height = 3.2
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_eemcu"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_6bav1"]
-material = SubResource("ORMMaterial3D_eemcu")
-radius = 0.1
-height = 0.3
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dm2yu"]
+render_priority = 0
+shader = ExtResource("8_w4eix")
 
 [node name="Player" type="Node3D"]
 
 [node name="CameraNode" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 10)
 script = ExtResource("3_qfr8t")
 offset_value = 10.0
 
@@ -40,7 +38,7 @@ attributes = SubResource("CameraAttributesPractical_8uttm")
 size = 15.0
 
 [node name="Controller" type="CharacterBody3D" parent="."]
-script = ExtResource("1_8g731")
+script = ExtResource("3_htkub")
 
 [node name="Disabled" type="CollisionShape3D" parent="Controller"]
 visible = false
@@ -65,16 +63,9 @@ script = ExtResource("5_nd5oj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56143, 0)
 shape = SubResource("CapsuleShape3D_ra0m0")
 
-[node name="MeshInstance3d" type="MeshInstance3D" parent="Controller/body"]
-transform = Transform3D(0.645122, 0, -1.74846e-07, 0, 0.753922, 0, 1.12797e-07, 0, 1, 0.0967683, 2.5995, -0.156489)
-mesh = SubResource("CapsuleMesh_6bav1")
-
-[node name="MeshInstance3d2" type="MeshInstance3D" parent="Controller/body"]
-transform = Transform3D(0.645122, 0, -1.74846e-07, 0, 0.753922, 0, 1.12797e-07, 0, 1, -0.0967683, 2.5995, -0.156489)
-mesh = SubResource("CapsuleMesh_6bav1")
-
 [node name="v1" parent="Controller/body" instance=ExtResource("8_yvrb8")]
-script = ExtResource("7_etsnl")
+script = ExtResource("7_goe5a")
+material = SubResource("ShaderMaterial_dm2yu")
 
 [connection signal="motion_direction" from="Controller" to="Controller/body" method="_on_player_motion_direction"]
 [connection signal="entered_state" from="Controller/SM" to="Controller/body/v1" method="_on_sm_entered_state"]

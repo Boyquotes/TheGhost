@@ -1,4 +1,4 @@
-extends "res://scripts/StateMachine.gd"
+extends "res://scripts/abstract/StateMachine.gd"
 
 const STATES = {
 	'idle'= 1, 
@@ -20,11 +20,11 @@ func _update_state(delta):
 	parent._handle_move_input()
 	match state:
 		STATES.idle:
-			if parent.motion.x != 0 || parent.motion.z != 0 :
+			if parent.speed != 0 :
 				return STATES.walking
 		STATES.walking:
 			parent._handle_move_rotation(delta)
-			if parent.motion.x == 0 && parent.motion.z == 0 :
+			if parent.speed == 0 :
 				return STATES.idle
 
 func _enter_state(new_state,_old_state):

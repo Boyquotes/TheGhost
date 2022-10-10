@@ -6,8 +6,8 @@ var targetPosition
 @export var offset_value:float =  10
 
 
-func _on_physical_body_player_body_pos(position, delta):
-	targetPosition = position + OFFSET
+func _on_physical_body_player_body_pos(pos, delta):
+	targetPosition = pos + OFFSET
 	global_position = lerp(
 		global_position, 
 		targetPosition, 

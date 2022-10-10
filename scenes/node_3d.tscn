@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhhkuagko84oa"]
+
+[ext_resource type="Shader" path="res://materials/test.gdshader" id="1_8j6rg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e2wyd"]
+render_priority = 0
+shader = ExtResource("1_8j6rg")
+
+[node name="Node3d" type="Node3D"]
+
+[node name="CsgSphere3d" type="CSGSphere3D" parent="."]
+material = SubResource("ShaderMaterial_e2wyd")

@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7r35r3jw3cto"]
+[gd_scene load_steps=5 format=3 uid="uid://bmrudat5nvd8m"]
 
-[ext_resource type="PackedScene" uid="uid://caeqskuyhl3ey" path="res://player.tscn" id="1_v4kr2"]
-[ext_resource type="PackedScene" uid="uid://b4cp2m0cgfsog" path="res://ball.tscn" id="2_od1rw"]
-[ext_resource type="PackedScene" uid="uid://nf1l2pajjiao" path="res://core.tscn" id="3_24p4y"]
+[ext_resource type="PackedScene" uid="uid://bl4yfu0ssxrnt" path="res://scenes/player.tscn" id="1_v4kr2"]
+[ext_resource type="PackedScene" uid="uid://b4cp2m0cgfsog" path="res://scenes/ball.tscn" id="2_od1rw"]
+[ext_resource type="PackedScene" uid="uid://nf1l2pajjiao" path="res://scenes/core.tscn" id="3_24p4y"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_ffesb"]
 albedo_color = Color(0.545098, 0.32549, 0.0745098, 1)
