@@ -6,8 +6,8 @@
 [ext_resource type="Environment" uid="uid://dr4atdwky80l5" path="res://materials/env.tres" id="4_cb670"]
 [ext_resource type="Script" path="res://scripts/PlayerBody.gd" id="5_nd5oj"]
 [ext_resource type="Script" path="res://scripts/PlayerMesh.gd" id="7_goe5a"]
-[ext_resource type="Shader" path="res://materials/test.gdshader" id="8_w4eix"]
-[ext_resource type="PackedScene" uid="uid://cnnxfdyoqej2n" path="res://imports/v1.gltf" id="8_yvrb8"]
+[ext_resource type="Shader" path="res://materials/test.gdshader" id="8_13hun"]
+[ext_resource type="PackedScene" uid="uid://dtcgi53skkio2" path="res://imports/v1.gltf" id="8_yvrb8"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8uttm"]
 
@@ -20,9 +20,9 @@ height = 3.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ra0m0"]
 height = 3.2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dm2yu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4b45r"]
 render_priority = 0
-shader = ExtResource("8_w4eix")
+shader = ExtResource("8_13hun")
 
 [node name="Player" type="Node3D"]
 
@@ -65,8 +65,8 @@ shape = SubResource("CapsuleShape3D_ra0m0")
 
 [node name="v1" parent="Controller/body" instance=ExtResource("8_yvrb8")]
 script = ExtResource("7_goe5a")
-material = SubResource("ShaderMaterial_dm2yu")
+material = SubResource("ShaderMaterial_4b45r")
 
-[connection signal="motion_direction" from="Controller" to="Controller/body" method="_on_player_motion_direction"]
+[connection signal="motion_direction" from="Controller" to="Controller/body" method="_on_controller_motion_direction"]
 [connection signal="entered_state" from="Controller/SM" to="Controller/body/v1" method="_on_sm_entered_state"]
 [connection signal="player_body_pos" from="Controller/body" to="CameraNode" method="_on_physical_body_player_body_pos"]
