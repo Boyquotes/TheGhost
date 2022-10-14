@@ -1,13 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://bl4yfu0ssxrnt"]
+[gd_scene load_steps=13 format=3 uid="uid://bl4yfu0ssxrnt"]
 
 [ext_resource type="Script" path="res://scripts/PlayerSM.gd" id="2_ycxjk"]
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="3_htkub"]
 [ext_resource type="Script" path="res://scripts/CameraNode.gd" id="3_qfr8t"]
 [ext_resource type="Environment" uid="uid://dr4atdwky80l5" path="res://materials/env.tres" id="4_cb670"]
 [ext_resource type="Script" path="res://scripts/PlayerBody.gd" id="5_nd5oj"]
-[ext_resource type="Script" path="res://scripts/PlayerMesh.gd" id="7_goe5a"]
-[ext_resource type="Shader" path="res://materials/test.gdshader" id="8_13hun"]
-[ext_resource type="PackedScene" uid="uid://dtcgi53skkio2" path="res://imports/v1.gltf" id="8_yvrb8"]
+[ext_resource type="Script" path="res://scripts/PlayerMesh.gd" id="7_qq858"]
+[ext_resource type="Material" uid="uid://dnbl2s5onp1ww" path="res://materials/player.tres" id="8_geh03"]
+[ext_resource type="PackedScene" uid="uid://cfc58em5wvare" path="res://imports/v1.gltf" id="8_yvrb8"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8uttm"]
 
@@ -19,10 +19,6 @@ height = 3.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ra0m0"]
 height = 3.2
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4b45r"]
-render_priority = 0
-shader = ExtResource("8_13hun")
 
 [node name="Player" type="Node3D"]
 
@@ -60,12 +56,12 @@ lock_rotation = true
 script = ExtResource("5_nd5oj")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="Controller/body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56143, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60741, 0)
 shape = SubResource("CapsuleShape3D_ra0m0")
 
 [node name="v1" parent="Controller/body" instance=ExtResource("8_yvrb8")]
-script = ExtResource("7_goe5a")
-material = SubResource("ShaderMaterial_4b45r")
+script = ExtResource("7_qq858")
+material = ExtResource("8_geh03")
 
 [connection signal="motion_direction" from="Controller" to="Controller/body" method="_on_controller_motion_direction"]
 [connection signal="entered_state" from="Controller/SM" to="Controller/body/v1" method="_on_sm_entered_state"]
