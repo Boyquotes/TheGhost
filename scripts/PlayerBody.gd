@@ -13,7 +13,7 @@ func remove_not_moveable(obj : Node3D):
 	return obj.is_in_group("Moveable")
 
 func _on_controller_motion_direction(direction):
-	var moveable_objects : Array[RigidBody3D] = get_colliding_bodies().filter(remove_not_moveable)
+	var moveable_objects = get_colliding_bodies().filter(remove_not_moveable)
 	if moveable_objects:
 		for object in moveable_objects:
 			#TODO input para grabar o objeto

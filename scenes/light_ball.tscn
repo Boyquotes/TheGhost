@@ -1,4 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4cp2m0cgfsog"]
+[gd_scene load_steps=8 format=3 uid="uid://b4cp2m0cgfsog"]
+
+[ext_resource type="Script" path="res://scripts/light_ball.gd" id="1_av81j"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hmq2j"]
 
@@ -22,7 +24,7 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_3nn2m"]
 albedo_color = Color(0, 0, 0, 1)
 
-[node name="Ball" type="RigidBody3D" groups=["Moveable"]]
+[node name="LightBall" type="RigidBody3D" groups=["Moveable"]]
 mass = 8.0
 physics_material_override = SubResource("PhysicsMaterial_hmq2j")
 continuous_cd = true
@@ -31,6 +33,7 @@ contact_monitor = true
 can_sleep = false
 angular_damp_mode = 1
 angular_damp = 1.568
+script = ExtResource("1_av81j")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
 transform = Transform3D(2.1, 0, 0, 0, 2.1, 0, 0, 0, 2.1, 0, 0, 0)

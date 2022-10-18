@@ -1,8 +1,11 @@
 extends "res://scripts/abstract/StateMachine.gd"
 
+var player_position
+
 const STATES = {
-	'idle'= 1, 
-	'walking'= 2
+	'chasing'= 1, 
+	'idle'= 2,
+	'running' = 3
 }
 
 signal entered_state (state : String)
@@ -10,23 +13,23 @@ signal entered_state (state : String)
 func _ready():
 	add_states(STATES)
 	set_physics_process(true)
-	call_deferred("set_state",STATES.idle)
-
-
-func _refresh(delta):
-	parent._apply_movement(delta)
+	call_deferred("set_state", STATES.idle)
 
 func _update_state(delta):
-	parent._handle_move_input()
 	match state:
 		STATES.idle:
-			if parent.speed != 0 :
-				return STATES.walking
-		STATES.walking:
-			parent._handle_move_rotation(delta)
-			if parent.speed == 0 :
+			if(player_position != null):
+				return STATES.chasing
+		STATES.chasing:
+			parent.move_to(player_position)
+			if(player_position == null):
 				return STATES.idle
+	pass
 
 
 func _enter_state(new_state,_old_state):
 	emit_signal("entered_state", STATES.find_key(new_state))
+
+
+func _on_range_area_is_player_on_range(position):
+	player_position = position

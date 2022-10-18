@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://b4mj0pr48m58d"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_5a5ua"]
+[ext_resource type="PackedScene" uid="uid://dh1ar37xccvhj" path="res://imports/creepy.gltf" id="1_oxprh"]
+[ext_resource type="Script" path="res://scenes/RigidBody3d.gd" id="3_eejmi"]
+[ext_resource type="Script" path="res://scripts/EnemySM.gd" id="3_no4wq"]
+[ext_resource type="Script" path="res://scripts/RangeArea.gd" id="4_43xnm"]
+[ext_resource type="Script" path="res://scripts/PlayerMesh.gd" id="5_63alh"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ib1lt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tlo8e"]
+size = Vector3(5.594, 6.213, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_beahm"]
+height = 5.0
+radius = 16.0
+
+[node name="Enemy" type="CharacterBody3D"]
+axis_lock_angular_y = true
+script = ExtResource("1_5a5ua")
+
+[node name="Disabled" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ib1lt")
+disabled = true
+
+[node name="SM" type="Node" parent="."]
+script = ExtResource("3_no4wq")
+
+[node name="RigidBody3d" type="RigidBody3D" parent="."]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 500.0
+max_contacts_reported = 55
+contact_monitor = true
+can_sleep = false
+script = ExtResource("3_eejmi")
+
+[node name="Body" type="CollisionShape3D" parent="RigidBody3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.11543, 0.0238745)
+shape = SubResource("BoxShape3D_tlo8e")
+
+[node name="creepy" parent="RigidBody3d" instance=ExtResource("1_oxprh")]
+script = ExtResource("5_63alh")
+
+[node name="RangeArea" type="Area3D" parent="RigidBody3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48449, -16.6958)
+script = ExtResource("4_43xnm")
+
+[node name="Range" type="CollisionShape3D" parent="RigidBody3d/RangeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.26449)
+shape = SubResource("CylinderShape3D_beahm")
+
+[connection signal="entered_state" from="SM" to="RigidBody3d/creepy" method="_on_sm_entered_state"]
+[connection signal="is_player_on_range" from="RigidBody3d/RangeArea" to="SM" method="_on_range_area_is_player_on_range"]
