@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://b4mj0pr48m58d"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_5a5ua"]
-[ext_resource type="PackedScene" uid="uid://dh1ar37xccvhj" path="res://imports/creepy.gltf" id="1_oxprh"]
+[ext_resource type="PackedScene" uid="uid://baxby86eivs50" path="res://imports/creepy.gltf" id="1_oxprh"]
 [ext_resource type="Script" path="res://scenes/RigidBody3d.gd" id="3_eejmi"]
 [ext_resource type="Script" path="res://scripts/EnemySM.gd" id="3_no4wq"]
 [ext_resource type="Script" path="res://scripts/RangeArea.gd" id="4_43xnm"]
