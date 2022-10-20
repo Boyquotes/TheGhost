@@ -1,13 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4mj0pr48m58d"]
+[gd_scene load_steps=8 format=3 uid="uid://buoxiewkj7l7v"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_5a5ua"]
+[ext_resource type="Script" path="res://scripts/enemy/EnemyController.gd" id="1_i31ap"]
 [ext_resource type="PackedScene" uid="uid://d3rw17i5jr6qf" path="res://imports/creepy.gltf" id="1_oxprh"]
-[ext_resource type="Script" path="res://scripts/EnemySM.gd" id="3_no4wq"]
-[ext_resource type="Script" path="res://scripts/RangeArea.gd" id="4_43xnm"]
-[ext_resource type="Script" path="res://scripts/creepy.gd" id="5_r3y6l"]
+[ext_resource type="Script" path="res://scripts/enemy/EnemySM.gd" id="2_gkpqm"]
+[ext_resource type="Script" path="res://scripts/enemy/EnemyVision.gd" id="3_oxosb"]
+[ext_resource type="Script" path="res://scripts/AnimateState.gd" id="5_r3y6l"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_464ay"]
-height = 3.266
+radius = 1.0
+height = 5.7
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_beahm"]
 height = 10.0
@@ -16,17 +17,17 @@ radius = 20.0
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 3
 axis_lock_angular_y = true
-script = ExtResource("1_5a5ua")
+script = ExtResource("1_i31ap")
 
 [node name="SM" type="Node" parent="."]
-script = ExtResource("3_no4wq")
+script = ExtResource("2_gkpqm")
 
 [node name="Body" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.72394, 0, 0, 0, 1, 0, 2.76387, 0.0540678)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.798, 0)
 shape = SubResource("CapsuleShape3D_464ay")
 
 [node name="RangeArea" type="Area3D" parent="."]
-script = ExtResource("4_43xnm")
+script = ExtResource("3_oxosb")
 
 [node name="Range" type="CollisionShape3D" parent="RangeArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00052, 0)
@@ -37,7 +38,7 @@ transform = Transform3D(1.501, 0, 0, 0, 1.501, 0, 0, 0, 1.501, 0, 0, 0)
 script = ExtResource("5_r3y6l")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-agent_height_offset = 0.4
+agent_height_offset = 1.0
 path_max_distance = 10.0
 avoidance_enabled = true
 radius = 2.0

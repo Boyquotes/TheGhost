@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bl4yfu0ssxrnt"]
+[gd_scene load_steps=12 format=3 uid="uid://n12lfihol1cx"]
 
+[ext_resource type="Script" path="res://scripts/player/PlayerCamera.gd" id="1_61f35"]
 [ext_resource type="Environment" uid="uid://dr4atdwky80l5" path="res://materials/env.tres" id="2_d1f43"]
-[ext_resource type="Script" path="res://scripts/PlayerSM.gd" id="2_ycxjk"]
-[ext_resource type="Script" path="res://scripts/PlayerController.gd" id="3_htkub"]
-[ext_resource type="Script" path="res://scripts/CameraNode.gd" id="3_qfr8t"]
-[ext_resource type="Script" path="res://scripts/PlayerBody.gd" id="5_nd5oj"]
-[ext_resource type="Script" path="res://scripts/PlayerMesh.gd" id="7_qq858"]
+[ext_resource type="Script" path="res://scripts/player/PlayerController.gd" id="3_scj0i"]
+[ext_resource type="Script" path="res://scripts/player/PlayerSM.gd" id="4_1eweg"]
+[ext_resource type="Script" path="res://scripts/player/PlayerBody.gd" id="5_fti6i"]
+[ext_resource type="Script" path="res://scripts/AnimateState.gd" id="7_48n3g"]
 [ext_resource type="PackedScene" uid="uid://dtcgi53skkio2" path="res://imports/v1.gltf" id="8_yvrb8"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8uttm"]
@@ -23,7 +23,7 @@ height = 3.2
 
 [node name="CameraNode" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 10)
-script = ExtResource("3_qfr8t")
+script = ExtResource("1_61f35")
 offset_value = 20.0
 
 [node name="Camera3d" type="Camera3D" parent="CameraNode"]
@@ -37,7 +37,7 @@ size = 25.0
 [node name="PlayerController" type="CharacterBody3D" parent="."]
 floor_stop_on_slope = false
 floor_block_on_wall = false
-script = ExtResource("3_htkub")
+script = ExtResource("3_scj0i")
 
 [node name="Disabled" type="CollisionShape3D" parent="PlayerController"]
 visible = false
@@ -45,7 +45,7 @@ shape = SubResource("CapsuleShape3D_xqxvw")
 disabled = true
 
 [node name="SM" type="Node" parent="PlayerController"]
-script = ExtResource("2_ycxjk")
+script = ExtResource("4_1eweg")
 
 [node name="PlayerBody" type="RigidBody3D" parent="PlayerController" groups=["Player"]]
 axis_lock_angular_x = true
@@ -57,14 +57,14 @@ max_contacts_reported = 10
 contact_monitor = true
 can_sleep = false
 freeze_mode = 1
-script = ExtResource("5_nd5oj")
+script = ExtResource("5_fti6i")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="PlayerController/PlayerBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60741, 0)
 shape = SubResource("CapsuleShape3D_ra0m0")
 
 [node name="Mesh" parent="PlayerController/PlayerBody" instance=ExtResource("8_yvrb8")]
-script = ExtResource("7_qq858")
+script = ExtResource("7_48n3g")
 
 [connection signal="motion_direction" from="PlayerController" to="PlayerController/PlayerBody" method="_on_controller_motion_direction"]
 [connection signal="entered_state" from="PlayerController/SM" to="PlayerController/PlayerBody/Mesh" method="_on_sm_entered_state"]

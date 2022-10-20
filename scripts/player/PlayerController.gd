@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
-@export var SPEED : int = 5
+@export var SPEED : int = 6
+@export var ROTATION_SPEED : int = 10
 var speed = SPEED
 var motion = Vector3()
 
@@ -26,4 +27,4 @@ func _handle_move_input():
 	emit_signal("motion_direction", motion)
 
 func _handle_move_rotation(delta):
-	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-motion.x, -motion.z), delta * 5)
+	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-motion.x, -motion.z), delta * ROTATION_SPEED)
