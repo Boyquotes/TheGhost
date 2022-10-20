@@ -1,10 +1,10 @@
 extends RigidBody3D
 
-signal player_body_pos (position, delta)
+signal player_body_pos (pos : Vector3, delta : float)
 
 @export var force: int = 5
 
-const DELTA = 0.01
+const DELTA : float = 0.01
 
 func _physics_process(delta):
 	emit_signal("player_body_pos", global_transform.origin, delta)

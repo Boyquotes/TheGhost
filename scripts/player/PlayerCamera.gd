@@ -5,8 +5,7 @@ var CORRECTION_SPEED = 3
 var targetPosition : Vector3 = Vector3.ZERO
 @export var offset_value:float =  10
 
-
-func _on_physical_body_player_body_pos(pos, delta):
+func _on_player_body_player_body_pos(pos, delta):
 	targetPosition = pos + OFFSET
 	global_position = lerp(
 		global_position, 

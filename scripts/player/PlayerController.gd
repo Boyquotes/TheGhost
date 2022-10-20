@@ -2,8 +2,8 @@ extends CharacterBody3D
 
 @export var SPEED : int = 6
 @export var ROTATION_SPEED : int = 10
-var speed = SPEED
-var motion = Vector3()
+var speed : float = SPEED
+var motion : Vector3 = Vector3()
 
 @onready var mesh = $PlayerBody/Mesh
 

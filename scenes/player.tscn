@@ -68,4 +68,4 @@ script = ExtResource("7_48n3g")
 
 [connection signal="motion_direction" from="PlayerController" to="PlayerController/PlayerBody" method="_on_controller_motion_direction"]
 [connection signal="entered_state" from="PlayerController/SM" to="PlayerController/PlayerBody/Mesh" method="_on_sm_entered_state"]
-[connection signal="player_body_pos" from="PlayerController/PlayerBody" to="CameraNode" method="_on_physical_body_player_body_pos"]
+[connection signal="player_body_pos" from="PlayerController/PlayerBody" to="CameraNode" method="_on_player_body_player_body_pos"]
