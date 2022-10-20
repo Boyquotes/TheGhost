@@ -6,9 +6,12 @@
 [ext_resource type="Script" path="res://scripts/CameraNode.gd" id="3_qfr8t"]
 [ext_resource type="Script" path="res://scripts/PlayerBody.gd" id="5_nd5oj"]
 [ext_resource type="Script" path="res://scripts/PlayerMesh.gd" id="7_qq858"]
-[ext_resource type="PackedScene" uid="uid://dtcgi53skkio2" path="res://imports/v1.gltf" id="8_yvrb8"]
+[ext_resource type="PackedScene" uid="uid://bqlwoau2qn67w" path="res://imports/v1.gltf" id="8_yvrb8"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8uttm"]
+dof_blur_far_distance = 40.0
+dof_blur_near_distance = 20.0
+dof_blur_near_transition = 18.27
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xqxvw"]
 margin = 0.02
