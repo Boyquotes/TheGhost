@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0nn3bmhbin50"]
+[gd_scene load_steps=7 format=3 uid="uid://b0nn3bmhbin50"]
 
 [ext_resource type="PackedScene" uid="uid://bl4yfu0ssxrnt" path="res://scenes/player.tscn" id="1_v4kr2"]
 [ext_resource type="PackedScene" uid="uid://b4cp2m0cgfsog" path="res://scenes/light_ball.tscn" id="2_od1rw"]
 [ext_resource type="PackedScene" uid="uid://nf1l2pajjiao" path="res://scenes/core.tscn" id="3_24p4y"]
 [ext_resource type="PackedScene" uid="uid://b4mj0pr48m58d" path="res://scenes/enemy.tscn" id="4_5fbx5"]
+[ext_resource type="PackedScene" uid="uid://ws66b1kj7h6q" path="res://imports/ramp .gltf" id="5_q53v4"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_ffesb"]
 albedo_color = Color(0.545098, 0.32549, 0.0745098, 1)
@@ -39,3 +40,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.70357, 3.72723, 0.915493)
 
 [node name="Enemy" parent="." instance=ExtResource("4_5fbx5")]
 transform = Transform3D(-0.999979, 0, 0.00645767, 0, 1, 0, -0.00645767, 0, -0.999979, 5.15525, 0.499997, -15.2694)
+
+[node name="ramp " parent="." instance=ExtResource("5_q53v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.343353, 0.500001, 26.5575)

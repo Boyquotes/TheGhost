@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://bl4yfu0ssxrnt"]
 
+[ext_resource type="Environment" uid="uid://dr4atdwky80l5" path="res://materials/env.tres" id="2_d1f43"]
 [ext_resource type="Script" path="res://scripts/PlayerSM.gd" id="2_ycxjk"]
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="3_htkub"]
 [ext_resource type="Script" path="res://scripts/CameraNode.gd" id="3_qfr8t"]
-[ext_resource type="Environment" uid="uid://dr4atdwky80l5" path="res://materials/env.tres" id="4_cb670"]
 [ext_resource type="Script" path="res://scripts/PlayerBody.gd" id="5_nd5oj"]
 [ext_resource type="Script" path="res://scripts/PlayerMesh.gd" id="7_qq858"]
 [ext_resource type="PackedScene" uid="uid://dtcgi53skkio2" path="res://imports/v1.gltf" id="8_yvrb8"]
@@ -28,8 +28,9 @@ offset_value = 20.0
 
 [node name="Camera3d" type="Camera3D" parent="CameraNode"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-environment = ExtResource("4_cb670")
+environment = ExtResource("2_d1f43")
 attributes = SubResource("CameraAttributesPractical_8uttm")
+projection = 1
 fov = 45.0
 size = 25.0
 
