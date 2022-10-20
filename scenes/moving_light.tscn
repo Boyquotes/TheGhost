@@ -1,28 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://vfumsttbqytt"]
+[gd_scene load_steps=9 format=3 uid="uid://vfumsttbqytt"]
 
 [ext_resource type="Material" uid="uid://bcwd6bngun202" path="res://materials/light.tres" id="1_sdavv"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a0eyt"]
-rough = true
-absorbent = true
-
-[sub_resource type="GDScript" id="GDScript_py2iv"]
-script/source = "extends StaticBody3D
-
-@onready var moving_part : RigidBody3D = get_node(\"../RigidBody3D\")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	global_transform.origin = moving_part.global_transform.origin
-"
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_tcicg"]
-radius = 8.0
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_spr7y"]
 rough = true
-bounce = 1.0
 absorbent = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ka1fq"]
@@ -39,17 +20,21 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_c7358"]
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="GDScript" id="GDScript_tsboh"]
+script/source = "extends RigidBody3D
+
+@onready var moving_part : RigidBody3D = get_node(\"../RigidBody3D\")
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(_delta):
+	global_transform.origin = moving_part.global_transform.origin
+"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o2n8n"]
+height = 8.0
+radius = 8.0
+
 [node name="MovingLight" type="Node3D"]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.799789, 8.8932)
-collision_layer = 2
-collision_mask = 2
-physics_material_override = SubResource("PhysicsMaterial_a0eyt")
-script = SubResource("GDScript_py2iv")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("SphereShape3D_tcicg")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Moveable"]]
 mass = 20.0
@@ -94,3 +79,16 @@ light_volumetric_fog_energy = 2.0
 light_specular = 3.0
 shadow_enabled = true
 omni_range = 8.0
+
+[node name="BlockRange" type="RigidBody3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+continuous_cd = true
+max_contacts_reported = 10
+contact_monitor = true
+can_sleep = false
+lock_rotation = true
+script = SubResource("GDScript_tsboh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlockRange"]
+shape = SubResource("CylinderShape3D_o2n8n")
