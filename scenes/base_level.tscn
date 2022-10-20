@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://n12lfihol1cx" path="res://scenes/player.tscn" id="1_v4kr2"]
 [ext_resource type="PackedScene" uid="uid://nf1l2pajjiao" path="res://scenes/core.tscn" id="3_24p4y"]
 [ext_resource type="PackedScene" uid="uid://b4cp2m0cgfsog" path="res://scenes/light_ball.tscn" id="3_pnn12"]
-[ext_resource type="PackedScene" uid="uid://buoxiewkj7l7v" path="res://scenes/enemy.tscn" id="4_5fbx5"]
+[ext_resource type="PackedScene" uid="uid://buoxiewkj7l7v" path="res://scenes/enemy.tscn" id="4_mvgwq"]
 [ext_resource type="PackedScene" uid="uid://dq7jipy74mbyp" path="res://imports/ramp .gltf" id="5_q53v4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_y6332"]
@@ -53,8 +53,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.14513, 3.21147, 23.7374)
 [node name="Player" parent="." instance=ExtResource("1_v4kr2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7, 3, 1)
 
-[node name="Enemy" parent="." instance=ExtResource("4_5fbx5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.14513, 0.788531, -23.7374)
+[node name="Enemy" parent="." instance=ExtResource("4_mvgwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.7292)
 
 [node name="LightBall" parent="." instance=ExtResource("3_pnn12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.14513, 2.99139, -14.8442)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.14513, 1.58832, -14.8442)

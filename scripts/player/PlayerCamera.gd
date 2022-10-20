@@ -2,7 +2,7 @@ extends Node3D
 
 var CORRECTION_SPEED = 3
 @onready var OFFSET = Vector3(0, offset_value, offset_value)
-var targetPosition
+var targetPosition : Vector3 = Vector3.ZERO
 @export var offset_value:float =  10
 
 

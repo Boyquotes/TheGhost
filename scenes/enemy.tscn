@@ -38,7 +38,7 @@ transform = Transform3D(1.501, 0, 0, 0, 1.501, 0, 0, 0, 1.501, 0, 0, 0)
 script = ExtResource("5_r3y6l")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-agent_height_offset = 1.0
+agent_height_offset = 1.1
 path_max_distance = 10.0
 avoidance_enabled = true
 radius = 2.0
@@ -46,4 +46,3 @@ ignore_y = false
 
 [connection signal="entered_state" from="SM" to="Mesh" method="_on_sm_entered_state"]
 [connection signal="player_location" from="RangeArea" to="." method="_on_range_area_player_location"]
-[connection signal="player_location" from="RangeArea" to="SM" method="_on_range_area_player_location"]
