@@ -1,15 +1,18 @@
 extends CharacterBody3D
 
-#var motion : Vector3
-
-func move_to(destination):
-	#if(destination):
-		#motion = destination - global_position
-		#velocity = (destination - global_position).normalized() * 5
-		#move_and_slide()
-		#if (fmod(rad_to_deg(atan2(-motion.x, -motion.z) - rotation.y), 360) < 10):
-		pass
+@onready var navAgent : NavigationAgent3D = $NavigationAgent3D
 
 func _physics_process(delta):
-	#rotation.y = lerp_angle(rotation.y, atan2(-motion.x, -motion.z), delta)
-	pass
+	var current_location = global_transform.origin
+	var next_location = navAgent.get_next_location()
+	var new_velocity = (next_location - current_location).normalized() * 5
+	rotation.y = lerp_angle(rotation.y, atan2(-new_velocity.x, -new_velocity.z), delta * 5)
+
+	
+	velocity = velocity.move_toward(new_velocity, .25)
+	move_and_slide()
+
+	
+func _on_range_area_player_location(target):
+	if(target != null):
+		navAgent.set_target_location(target) # Replace with function body.

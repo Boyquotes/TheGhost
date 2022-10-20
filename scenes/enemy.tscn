@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4mj0pr48m58d"]
+[gd_scene load_steps=8 format=3 uid="uid://b4mj0pr48m58d"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_5a5ua"]
 [ext_resource type="PackedScene" uid="uid://c1g8lul03jt2f" path="res://imports/creepy.gltf" id="1_oxprh"]
@@ -6,50 +6,43 @@
 [ext_resource type="Script" path="res://scripts/RangeArea.gd" id="4_43xnm"]
 [ext_resource type="Script" path="res://scripts/creepy.gd" id="5_r3y6l"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ib1lt"]
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_464ay"]
 height = 3.266
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_beahm"]
-height = 5.0
-radius = 16.0
+height = 10.0
+radius = 20.0
 
 [node name="Enemy" type="CharacterBody3D"]
+collision_layer = 3
 axis_lock_angular_y = true
 script = ExtResource("1_5a5ua")
-
-[node name="Disabled" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_ib1lt")
-disabled = true
 
 [node name="SM" type="Node" parent="."]
 script = ExtResource("3_no4wq")
 
-[node name="RigidBody3d" type="RigidBody3D" parent="."]
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-mass = 500.0
-max_contacts_reported = 55
-contact_monitor = true
-can_sleep = false
-
-[node name="Body" type="CollisionShape3D" parent="RigidBody3d"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64224, 0.0540678)
+[node name="Body" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.72394, 0, 0, 0, 1, 0, 2.76387, 0.0540678)
 shape = SubResource("CapsuleShape3D_464ay")
 
-[node name="RangeArea" type="Area3D" parent="RigidBody3d"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48449, -16.6958)
+[node name="RangeArea" type="Area3D" parent="."]
 script = ExtResource("4_43xnm")
 
-[node name="Range" type="CollisionShape3D" parent="RigidBody3d/RangeArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.26449)
+[node name="Range" type="CollisionShape3D" parent="RangeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00052, 0)
 shape = SubResource("CylinderShape3D_beahm")
 
-[node name="creepy" parent="RigidBody3d" instance=ExtResource("1_oxprh")]
+[node name="Mesh" parent="." instance=ExtResource("1_oxprh")]
 transform = Transform3D(1.501, 0, 0, 0, 1.501, 0, 0, 0, 1.501, 0, 0, 0)
 script = ExtResource("5_r3y6l")
 
-[connection signal="entered_state" from="SM" to="RigidBody3d/creepy" method="_on_sm_entered_state"]
-[connection signal="is_player_on_range" from="RigidBody3d/RangeArea" to="SM" method="_on_range_area_is_player_on_range"]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+agent_height_offset = 0.4
+path_max_distance = 10.0
+avoidance_enabled = true
+radius = 2.0
+ignore_y = false
+
+[connection signal="entered_state" from="SM" to="Mesh" method="_on_sm_entered_state"]
+[connection signal="player_location" from="RangeArea" to="." method="_on_range_area_player_location"]
+[connection signal="player_location" from="RangeArea" to="SM" method="_on_range_area_player_location"]

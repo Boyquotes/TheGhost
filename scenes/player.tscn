@@ -35,9 +35,12 @@ fov = 45.0
 size = 25.0
 
 [node name="PlayerController" type="CharacterBody3D" parent="."]
+floor_stop_on_slope = false
+floor_block_on_wall = false
 script = ExtResource("3_htkub")
 
 [node name="Disabled" type="CollisionShape3D" parent="PlayerController"]
+visible = false
 shape = SubResource("CapsuleShape3D_xqxvw")
 disabled = true
 
@@ -52,7 +55,8 @@ physics_material_override = SubResource("PhysicsMaterial_55mml")
 continuous_cd = true
 max_contacts_reported = 10
 contact_monitor = true
-lock_rotation = true
+can_sleep = false
+freeze_mode = 1
 script = ExtResource("5_nd5oj")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="PlayerController/PlayerBody"]

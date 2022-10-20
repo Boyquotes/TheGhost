@@ -41,15 +41,6 @@ shape = SubResource("SphereShape3D_nimvk")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("SphereMesh_7qi5d")
 
-[node name="OmniLight3d" type="OmniLight3D" parent="."]
-visible = false
-light_color = Color(0.972549, 0.615686, 0.521569, 1)
-light_energy = 5.0
-light_volumetric_fog_energy = 2.0
-light_specular = 3.0
-shadow_enabled = true
-omni_range = 6.0
-
 [node name="CsgTorus3d" type="CSGTorus3D" parent="."]
 cast_shadow = 0
 inner_radius = 1.0
@@ -76,9 +67,12 @@ sides = 30
 ring_sides = 10
 material = SubResource("ORMMaterial3D_3nn2m")
 
-[node name="OmniLight3d2" type="OmniLight3D" parent="."]
+[node name="OmniLight3d" type="OmniLight3D" parent="."]
 light_color = Color(0.972549, 0.615686, 0.521569, 1)
 light_energy = 8.0
-light_specular = 1.0
+light_volumetric_fog_energy = 2.0
+light_specular = 3.0
 shadow_enabled = true
 omni_range = 8.0
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]

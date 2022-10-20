@@ -1,6 +1,6 @@
 extends "res://scripts/abstract/StateMachine.gd"
 
-var player_position
+var player_on_range
 
 const STATES = {
 	'chasing'= 1, 
@@ -18,11 +18,10 @@ func _ready():
 func _update_state(delta):
 	match state:
 		STATES.idle:
-			if(player_position != null):
+			if(player_on_range):
 				return STATES.chasing
 		STATES.chasing:
-			parent.move_to(player_position)
-			if(player_position == null):
+			if(!player_on_range):
 				return STATES.idle
 	pass
 
@@ -30,6 +29,8 @@ func _update_state(delta):
 func _enter_state(new_state,_old_state):
 	emit_signal("entered_state", STATES.find_key(new_state))
 
-
-func _on_range_area_is_player_on_range(position):
-	player_position = position
+func _on_range_area_player_location(target):
+	if (target == null):
+		player_on_range = false
+	else:
+		player_on_range = true

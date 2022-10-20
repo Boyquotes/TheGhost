@@ -27,4 +27,3 @@ func _handle_move_input():
 
 func _handle_move_rotation(delta):
 	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-motion.x, -motion.z), delta * 5)
-
