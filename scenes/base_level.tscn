@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://n12lfihol1cx" path="res://scenes/player.tscn" id="1_v4kr2"]
 [ext_resource type="PackedScene" uid="uid://nf1l2pajjiao" path="res://scenes/core.tscn" id="3_24p4y"]
-[ext_resource type="PackedScene" uid="uid://b4cp2m0cgfsog" path="res://scenes/light_ball.tscn" id="3_pnn12"]
 [ext_resource type="PackedScene" uid="uid://buoxiewkj7l7v" path="res://scenes/enemy.tscn" id="4_mvgwq"]
+[ext_resource type="PackedScene" uid="uid://vfumsttbqytt" path="res://scenes/moving_light.tscn" id="5_b7yac"]
 [ext_resource type="PackedScene" uid="uid://dq7jipy74mbyp" path="res://imports/ramp .gltf" id="5_q53v4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_y6332"]
@@ -40,7 +40,8 @@ collision_layer = 5
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.14513, -0.788531, 23.7374)
 cast_shadow = 0
 use_collision = true
-collision_layer = 5
+collision_layer = 3
+collision_mask = 3
 size = Vector3(1000, 1000, 1)
 material = SubResource("StandardMaterial3D_04vi7")
 
@@ -54,7 +55,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.14513, 3.21147, 23.7374)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7, 3, 1)
 
 [node name="Enemy" parent="." instance=ExtResource("4_mvgwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.7292)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -36.379)
 
-[node name="LightBall" parent="." instance=ExtResource("3_pnn12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.14513, 1.58832, -14.8442)
+[node name="MovingLight" parent="." instance=ExtResource("5_b7yac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93668, 1.94174, -15.8445)

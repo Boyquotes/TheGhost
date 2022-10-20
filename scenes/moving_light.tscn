@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://vfumsttbqytt"]
+
+[ext_resource type="Material" uid="uid://bcwd6bngun202" path="res://materials/light.tres" id="1_sdavv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a0eyt"]
+rough = true
+absorbent = true
+
+[sub_resource type="GDScript" id="GDScript_py2iv"]
+script/source = "extends StaticBody3D
+
+@onready var moving_part : RigidBody3D = get_node(\"../RigidBody3D\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	global_transform.origin = moving_part.global_transform.origin
+"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tcicg"]
+radius = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ka1fq"]
+radius = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_xvid3"]
+material = ExtResource("1_sdavv")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_vf5qr"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_c7358"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="MovingLight" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.799789, 8.8932)
+collision_layer = 2
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_a0eyt")
+script = SubResource("GDScript_py2iv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_tcicg")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Moveable"]]
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_ka1fq")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_xvid3")
+
+[node name="CsgTorus3d" type="CSGTorus3D" parent="RigidBody3D"]
+cast_shadow = 0
+inner_radius = 1.0
+outer_radius = 1.05
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_vf5qr")
+
+[node name="CsgTorus3d2" type="CSGTorus3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
+inner_radius = 1.0
+outer_radius = 1.05
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_c7358")
+
+[node name="CsgTorus3d3" type="CSGTorus3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+cast_shadow = 0
+inner_radius = 1.0
+outer_radius = 1.05
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_c7358")
+
+[node name="OmniLight3d" type="OmniLight3D" parent="RigidBody3D"]
+light_color = Color(0.972549, 0.615686, 0.521569, 1)
+light_energy = 8.0
+light_volumetric_fog_energy = 2.0
+light_specular = 3.0
+shadow_enabled = true
+omni_range = 8.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4cp2m0cgfsog"]
+[gd_scene load_steps=7 format=3 uid="uid://qbxqdethwhhn"]
 
 [ext_resource type="Material" uid="uid://bcwd6bngun202" path="res://materials/light.tres" id="2_tfkqa"]
 
@@ -16,6 +16,10 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_3nn2m"]
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lq0iv"]
+height = 4.0
+radius = 8.0
+
 [node name="LightBall" type="RigidBody3D" groups=["Moveable"]]
 mass = 8.0
 continuous_cd = true
@@ -23,10 +27,6 @@ max_contacts_reported = 10
 contact_monitor = true
 can_sleep = false
 freeze_mode = 1
-angular_damp_mode = 1
-angular_damp = 1.568
-
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_nimvk")
@@ -67,3 +67,10 @@ light_volumetric_fog_energy = 2.0
 light_specular = 3.0
 shadow_enabled = true
 omni_range = 8.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CylinderShape3D_lq0iv")
