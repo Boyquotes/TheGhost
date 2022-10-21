@@ -6,6 +6,9 @@ const STATES = {
 	'running' = 3
 }
 
+var light_pos = null
+var player_pos = null
+
 signal entered_state (state : String)
 
 func _ready():
@@ -13,16 +16,53 @@ func _ready():
 	set_physics_process(true)
 	call_deferred("set_state", STATES.idle)
 
-func _update_state(_delta):
+func _update_state(delta):
+	#print(STATES.find_key(state))
 	match state:
 		STATES.idle:
-			if(parent.velocity.length() > 1):
+			parent.navAgent.set_target_location(parent.global_transform.origin)
+			if (light_pos != null):
+				return STATES.running
+			elif (light_pos == null && player_pos != null):
 				return STATES.chasing
+			return STATES.idle
+		STATES.running:
+			if (light_pos != null) : parent.navAgent.set_target_location(2 * light_pos)
+			parent.move(delta)
+			await get_tree().create_timer(1).timeout
+			if light_pos != null:
+				return STATES.running
+			if player_pos != null:
+				return STATES.chasing
+			return STATES.idle
 		STATES.chasing:
-			if(parent.velocity.length() < 1):
+			if (player_pos != null) : parent.navAgent.set_target_location(player_pos)
+			parent.move(delta)
+			if light_pos != null:
+				return STATES.running
+			if player_pos != null:
+				return STATES.chasing
+			else: 
 				return STATES.idle
 	pass
 
 
 func _enter_state(new_state,_old_state):
+	match new_state:
+		STATES.idle:
+			parent.speed = 0
+		STATES.running:
+			parent.speed = 20
+		STATES.chasing:
+			parent.speed = 5
 	emit_signal("entered_state", STATES.find_key(new_state))
+
+
+func _on_fov_player_location(target):
+	player_pos = target
+	pass # Replace with function body.
+
+
+func _on_range_light(position):
+	light_pos = position
+	pass # Replace with function body.
