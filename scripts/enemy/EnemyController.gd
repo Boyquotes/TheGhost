@@ -21,3 +21,4 @@ func rotate_towards_motion(delta):
 
 func die():
 	print("dead hehe")
+	get_parent().remove_child(self)
