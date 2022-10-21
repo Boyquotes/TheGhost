@@ -3,12 +3,12 @@ shader_type spatial;
 
 
 void vertex() {
-	VERTEX.y += sin(TIME * 10.0 + VERTEX.x * 15.0) * 0.01;
-	VERTEX.x += sin(TIME * 5.0 + VERTEX.y * 40.0) * 0.02;
-	VERTEX.z += sin(TIME * 15.0 + VERTEX.y * 30.0) * 0.02;
+	VERTEX.y += sin(TIME * 10.0 + VERTEX.x * 10.0) * 0.10;
+	VERTEX.x += sin(TIME * 10.0 + VERTEX.y * 10.0) * 0.10;
+	VERTEX.z += sin(TIME * 10.0 + VERTEX.y * 10.0) * 0.10;
 }
 
 void fragment() {
-	EMISSION = vec3(1,10,20) * 0.2;
+	EMISSION = vec3(100,10,5) * 1.0;
 	ALPHA = 1.0;
 }

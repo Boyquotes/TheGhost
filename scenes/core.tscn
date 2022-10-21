@@ -1,16 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://nf1l2pajjiao"]
+[gd_scene load_steps=8 format=3 uid="uid://nf1l2pajjiao"]
 
-[ext_resource type="Material" uid="uid://bcwd6bngun202" path="res://materials/light.tres" id="1_6dxlg"]
+[ext_resource type="Shader" path="res://materials/test.gdshader" id="1_h036v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_es8o5"]
 size = Vector3(4, 4, 4)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3bv5t"]
+render_priority = 0
+shader = ExtResource("1_h036v")
+
 [sub_resource type="SphereMesh" id="SphereMesh_guyl4"]
-material = ExtResource("1_6dxlg")
-radius = 4.0
+material = SubResource("ShaderMaterial_3bv5t")
+radius = 5.0
 height = 8.0
 radial_segments = 20
 rings = 20
+
+[sub_resource type="SphereMesh" id="SphereMesh_i3sdc"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_e3fc6"]
 albedo_color = Color(0.435294, 0.223529, 0.352941, 1)
@@ -26,8 +32,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("BoxShape3D_es8o5")
 
-[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+[node name="fluid" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_guyl4")
+
+[node name="glass" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_i3sdc")
 
 [node name="OmniLight3d" type="OmniLight3D" parent="."]
 light_color = Color(0.972549, 0.615686, 0.521569, 1)
