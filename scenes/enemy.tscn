@@ -12,8 +12,8 @@ radius = 1.0
 height = 5.7
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_beahm"]
-height = 10.0
-radius = 10.0
+height = 13.0
+radius = 13.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2vhxp"]
 height = 5.7
@@ -53,7 +53,7 @@ avoidance_enabled = true
 radius = 2.0
 ignore_y = false
 
-[node name="Range" type="Area3D" parent="."]
+[node name="Range" type="Area3D" parent="." groups=["Enemy"]]
 priority = 40.0
 script = ExtResource("6_ccerx")
 

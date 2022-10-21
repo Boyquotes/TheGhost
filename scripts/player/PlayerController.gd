@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var SPEED : int = 6
+@export var SPEED : int = 5
 @export var ROTATION_SPEED : int = 10
 var speed : float = SPEED 
 var motion : Vector3 = Vector3()

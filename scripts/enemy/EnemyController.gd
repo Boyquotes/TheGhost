@@ -3,6 +3,12 @@ extends CharacterBody3D
 @onready var navAgent : NavigationAgent3D = $NavigationAgent3D
 var speed = 5
 
+var health : int = 10 : 
+	set(value):
+		health = value
+		if (health < 1):
+			die()
+
 func move_to_target(delta):
 	var current_location = global_transform.origin
 	var next_location = navAgent.get_next_location()
@@ -12,3 +18,6 @@ func move_to_target(delta):
 
 func rotate_towards_motion(delta):
 	rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta * speed)
+
+func die():
+	print("dead hehe")
