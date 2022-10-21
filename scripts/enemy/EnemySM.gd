@@ -20,24 +20,27 @@ func _update_state(delta):
 	#print(STATES.find_key(state))
 	match state:
 		STATES.idle:
-			parent.navAgent.set_target_location(parent.global_transform.origin)
-			if (light_pos != null):
+			#parent.navAgent.set_target_location(parent.global_transform.origin)
+			if light_pos != null:
 				return STATES.running
-			elif (light_pos == null && player_pos != null):
+			elif  player_pos != null:
 				return STATES.chasing
 			return STATES.idle
 		STATES.running:
-			if (light_pos != null) : parent.navAgent.set_target_location(2 * light_pos)
-			parent.move(delta)
+			if (light_pos != null): 
+				parent.navAgent.set_target_location(2 * parent.global_transform.origin - light_pos)
+			parent.move_to_target(delta)
 			await get_tree().create_timer(1).timeout
 			if light_pos != null:
 				return STATES.running
-			if player_pos != null:
+			elif player_pos != null:
 				return STATES.chasing
 			return STATES.idle
 		STATES.chasing:
-			if (player_pos != null) : parent.navAgent.set_target_location(player_pos)
-			parent.move(delta)
+			if (player_pos != null): 
+				parent.navAgent.set_target_location(player_pos)
+				parent.rotate_towards_motion(delta)
+			parent.move_to_target(delta)
 			if light_pos != null:
 				return STATES.running
 			if player_pos != null:
@@ -50,7 +53,7 @@ func _update_state(delta):
 func _enter_state(new_state,_old_state):
 	match new_state:
 		STATES.idle:
-			parent.speed = 0
+			parent.speed = 1
 		STATES.running:
 			parent.speed = 20
 		STATES.chasing:
@@ -60,9 +63,6 @@ func _enter_state(new_state,_old_state):
 
 func _on_fov_player_location(target):
 	player_pos = target
-	pass # Replace with function body.
-
 
 func _on_range_light(position):
 	light_pos = position
-	pass # Replace with function body.
