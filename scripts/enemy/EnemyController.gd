@@ -9,7 +9,7 @@ var health : int = 10 :
 		if (health < 1):
 			die()
 
-func move_to_target(delta):
+func move_to_target():
 	var current_location = global_transform.origin
 	var next_location = navAgent.get_next_location()
 	var new_velocity = (next_location - current_location).normalized() * speed

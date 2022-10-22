@@ -1,22 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://nf1l2pajjiao"]
+[gd_scene load_steps=10 format=3 uid="uid://cltqeppjuffvx"]
 
-[ext_resource type="Shader" path="res://materials/test.gdshader" id="1_h036v"]
+[ext_resource type="Shader" path="res://materials/lava.gdshader" id="1_yymla"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_es8o5"]
 size = Vector3(4, 4, 4)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3bv5t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2bsw"]
 render_priority = 0
-shader = ExtResource("1_h036v")
+shader = ExtResource("1_yymla")
 
-[sub_resource type="SphereMesh" id="SphereMesh_guyl4"]
-material = SubResource("ShaderMaterial_3bv5t")
-radius = 5.0
-height = 8.0
-radial_segments = 20
-rings = 20
+[sub_resource type="SphereMesh" id="SphereMesh_2fcks"]
+material = SubResource("ShaderMaterial_y2bsw")
+radius = 1.0
+height = 2.0
 
-[sub_resource type="SphereMesh" id="SphereMesh_i3sdc"]
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_3eo1l"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_4yqoo"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wbh5m"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.733333)
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.0
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_e3fc6"]
 albedo_color = Color(0.435294, 0.223529, 0.352941, 1)
@@ -28,24 +37,58 @@ size = Vector3(8, 2, 8)
 [node name="Core" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+[node name="Body" type="CollisionShape3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("BoxShape3D_es8o5")
 
-[node name="fluid" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_guyl4")
-
-[node name="glass" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_i3sdc")
-
-[node name="OmniLight3d" type="OmniLight3D" parent="."]
+[node name="Light" type="OmniLight3D" parent="."]
 light_color = Color(0.972549, 0.615686, 0.521569, 1)
-light_energy = 16.0
-light_volumetric_fog_energy = 2.0
+light_energy = 8.0
+light_volumetric_fog_energy = 4.0
 light_specular = 3.0
 shadow_enabled = true
 omni_range = 16.0
 
-[node name="MeshInstance3d2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.01805, 0)
+[node name="Fluid" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.781475, 0.330333, 0, -0.330333, -0.781475, 0, 0, 0, 0.848424, 0, 0.559633, 0)
+mesh = SubResource("SphereMesh_2fcks")
+
+[node name="Mesh" type="Node3D" parent="."]
+transform = Transform3D(3.657, 0, 0, 0, 3.657, 0, 0, 0, 3.657, 0, 0.559633, 0)
+
+[node name="CsgTorus3d" type="CSGTorus3D" parent="Mesh"]
+cast_shadow = 0
+inner_radius = 1.18
+outer_radius = 1.25
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_3eo1l")
+
+[node name="CsgTorus3d2" type="CSGTorus3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
+inner_radius = 1.18
+outer_radius = 1.25
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_4yqoo")
+
+[node name="CsgTorus3d3" type="CSGTorus3D" parent="Mesh"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+cast_shadow = 0
+inner_radius = 1.18
+outer_radius = 1.25
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_4yqoo")
+
+[node name="Glass" type="CSGSphere3D" parent="Mesh"]
+radius = 1.19
+radial_segments = 20
+rings = 20
+material = SubResource("StandardMaterial3D_wbh5m")
+
+[node name="Base" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(0.273448, 0, 0, 0, 0.273448, 0, 0, 0, 0.273448, 0, -0.978311, 0)
 mesh = SubResource("BoxMesh_upos7")
+skeleton = NodePath("../..")

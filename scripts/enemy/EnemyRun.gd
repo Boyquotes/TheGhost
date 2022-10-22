@@ -1,13 +1,13 @@
 extends Area3D
 
-signal light(position : Vector3)
+signal zap(position : Vector3)
 
-func get_light(obj : Node3D):
-	return obj.is_in_group("Light")
+func get_zaps(obj : Node3D):
+	return obj.is_in_group("Zap")
 
 func _process(_delta):
-	var light_area = get_overlapping_areas().filter(get_light)
-	if(light_area):
-		emit_signal("light", light_area[0].global_transform.origin)
+	var zaps = get_overlapping_areas().filter(get_zaps)
+	if(zaps):
+		emit_signal("zap", zaps[0].global_transform.origin)
 	else:
-		emit_signal("light", null)
+		emit_signal("zap", null)

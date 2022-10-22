@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3ues6tnhgqk7"]
+
+[ext_resource type="Shader" path="res://materials/lava.gdshader" id="1_n7vgc"]
+[ext_resource type="Script" path="res://scenes/LightHit.gd" id="2_27jmr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_spr7y"]
+rough = true
+absorbent = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ka1fq"]
+radius = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdjhx"]
+render_priority = 0
+shader = ExtResource("1_n7vgc")
+
+[sub_resource type="SphereMesh" id="SphereMesh_xvid3"]
+material = SubResource("ShaderMaterial_jdjhx")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_vf5qr"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_c7358"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mk6oj"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.501961)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tbdia"]
+radius = 6.0
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["Moveable"]]
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_spr7y")
+
+[node name="Light" type="OmniLight3D" parent="."]
+light_color = Color(0.972549, 0.615686, 0.521569, 1)
+light_energy = 4.0
+light_volumetric_fog_energy = 4.0
+light_specular = 3.0
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="Body" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ka1fq")
+
+[node name="Fluid" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xvid3")
+
+[node name="StaticMesh" type="Node3D" parent="."]
+
+[node name="CsgTorus3d" type="CSGTorus3D" parent="StaticMesh"]
+cast_shadow = 0
+inner_radius = 1.18
+outer_radius = 1.25
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_vf5qr")
+
+[node name="CsgTorus3d2" type="CSGTorus3D" parent="StaticMesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
+inner_radius = 1.18
+outer_radius = 1.25
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_c7358")
+
+[node name="CsgTorus3d3" type="CSGTorus3D" parent="StaticMesh"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+cast_shadow = 0
+inner_radius = 1.18
+outer_radius = 1.25
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_c7358")
+
+[node name="Glass" type="CSGSphere3D" parent="StaticMesh"]
+radius = 1.19
+radial_segments = 20
+rings = 20
+material = SubResource("StandardMaterial3D_mk6oj")
+
+[node name="LightHit" type="Area3D" parent="." groups=["Burn"]]
+script = ExtResource("2_27jmr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightHit"]
+shape = SubResource("SphereShape3D_tbdia")
+
+[node name="MovingLight" type="Node3D" parent="."]
+
+[connection signal="area_entered" from="LightHit" to="LightHit" method="_on_area_entered"]

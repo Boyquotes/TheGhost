@@ -3,11 +3,12 @@ extends "res://scripts/abstract/StateMachine.gd"
 const STATES = {
 	'chasing'= 1, 
 	'idle'= 2,
-	'running' = 3
+	'hit' = 3
 }
 
-var light_pos = null
+var zap_pos = null
 var player_pos = null
+var on_burn = false
 
 signal entered_state (state : String)
 
@@ -21,18 +22,18 @@ func _update_state(delta):
 	match state:
 		STATES.idle:
 			#parent.navAgent.set_target_location(parent.global_transform.origin)
-			if light_pos != null:
-				return STATES.running
+			if zap_pos != null:
+				return STATES.hit
 			elif  player_pos != null:
 				return STATES.chasing
 			return STATES.idle
-		STATES.running:
-			if (light_pos != null): 
-				parent.navAgent.set_target_location(2 * parent.global_transform.origin - light_pos)
-			parent.move_to_target(delta)
-			await get_tree().create_timer(1).timeout
-			if light_pos != null:
-				return STATES.running
+		STATES.hit:
+			if (zap_pos != null): 
+				parent.navAgent.set_target_location(2 * parent.global_transform.origin - zap_pos)
+			parent.move_to_target()
+			await get_tree().create_timer(0.5).timeout
+			if zap_pos != null:
+				return STATES.hit
 			elif player_pos != null:
 				return STATES.chasing
 			return STATES.idle
@@ -40,9 +41,9 @@ func _update_state(delta):
 			if (player_pos != null): 
 				parent.navAgent.set_target_location(player_pos)
 				parent.rotate_towards_motion(delta)
-			parent.move_to_target(delta)
-			if light_pos != null:
-				return STATES.running
+			parent.move_to_target()
+			if zap_pos != null:
+				return STATES.hit
 			if player_pos != null:
 				return STATES.chasing
 			else: 
@@ -54,7 +55,7 @@ func _enter_state(new_state,_old_state):
 	match new_state:
 		STATES.idle:
 			parent.speed = 1
-		STATES.running:
+		STATES.hit:
 			parent.speed = 20
 		STATES.chasing:
 			parent.speed = 5
@@ -64,5 +65,5 @@ func _enter_state(new_state,_old_state):
 func _on_fov_player_location(target):
 	player_pos = target
 
-func _on_range_light(position):
-	light_pos = position
+func _on_range_zap(position):
+	zap_pos = position
