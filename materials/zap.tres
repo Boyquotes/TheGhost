@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cpoq4pui4ywml"]
 
-[ext_resource type="Texture2D" uid="uid://cdhep1ltjsc8g" path="res://imports/Particles/spark_07.png" id="1_3hhuf"]
+[ext_resource type="Texture2D" uid="uid://cdhep1ltjsc8g" path="res://imports/Particles/spark_07.png" id="1_pvcdh"]
 
 [resource]
 transparency = 1
@@ -8,4 +8,10 @@ blend_mode = 1
 shading_mode = 0
 disable_ambient_light = true
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_3hhuf")
+albedo_texture = ExtResource("1_pvcdh")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = 0.162

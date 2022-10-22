@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3ues6tnhgqk7"]
+[gd_scene load_steps=10 format=3 uid="uid://d3ues6tnhgqk7"]
 
 [ext_resource type="Shader" path="res://materials/lava.gdshader" id="1_n7vgc"]
-[ext_resource type="Script" path="res://scenes/LightHit.gd" id="2_27jmr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_spr7y"]
 rough = true
@@ -88,7 +87,6 @@ rings = 20
 material = SubResource("StandardMaterial3D_mk6oj")
 
 [node name="LightHit" type="Area3D" parent="." groups=["Burn"]]
-script = ExtResource("2_27jmr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LightHit"]
 shape = SubResource("SphereShape3D_tbdia")

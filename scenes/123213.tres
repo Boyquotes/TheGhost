@@ -1,0 +1,10 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://cgryq8t0j868p"]
+
+[resource]
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_max = 360.0
+color = Color(0.545098, 0.745098, 1, 1)
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 10.0
+attractor_interaction_enabled = false

@@ -14,10 +14,18 @@ agent_height = 1.0
 agent_radius = 1.0
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_ffesb"]
+cull_mode = 2
+diffuse_mode = 3
 albedo_color = Color(0.545098, 0.32549, 0.0745098, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04vi7"]
+diffuse_mode = 3
 albedo_color = Color(0.756863, 1, 0.615686, 1)
+metallic = 1.0
+metallic_specular = 1.0
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.08
+detail_blend_mode = 1
 
 [node name="Base Level" type="Node3D"]
 
@@ -65,7 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.14994, 0, -36.379)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.15311, 0, -36.379)
 
 [node name="Enemy4" parent="." instance=ExtResource("4_mvgwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.15311, 0, -14.4628)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.15311, 0, -3.77457)
 
 [node name="Enemy5" parent="." instance=ExtResource("4_mvgwq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.07786, 0, -14.4628)
@@ -89,7 +97,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8765, 0, -26.0177)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.01473, 0, -26.0177)
 
 [node name="RigidBody3D2" parent="." instance=ExtResource("6_tumkg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2141, 3.42516, -9.5757)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2141, 1.9021, -9.5757)
 
 [node name="RigidBody3D" parent="." instance=ExtResource("5_0niwo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08809, -9.5757)

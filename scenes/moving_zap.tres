@@ -1,0 +1,12 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://qf0e57umi4ga"]
+
+[resource]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.8
+gravity = Vector3(0, 0, 0)
+angle_max = 360.0
+hue_variation_min = -0.29
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 10.0
+attractor_interaction_enabled = false

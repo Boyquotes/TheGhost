@@ -15,6 +15,8 @@ radius = 1.0
 height = 2.0
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_3eo1l"]
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_4yqoo"]
@@ -22,12 +24,15 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wbh5m"]
 transparency = 1
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(1, 1, 1, 0.733333)
 metallic = 1.0
 metallic_specular = 0.0
 roughness = 0.0
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_e3fc6"]
+diffuse_mode = 3
 albedo_color = Color(0.435294, 0.223529, 0.352941, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_upos7"]
