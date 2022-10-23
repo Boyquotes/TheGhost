@@ -10,6 +10,7 @@ var zap_pos = null
 var player_pos = null
 var on_burn = false
 
+
 signal entered_state (state : String)
 
 func _ready():
@@ -21,7 +22,7 @@ func _update_state(delta):
 	#print(STATES.find_key(state))
 	match state:
 		STATES.idle:
-			#parent.navAgent.set_target_location(parent.global_transform.origin)
+			parent.navAgent.set_target_location(parent.global_transform.origin)
 			if zap_pos != null:
 				return STATES.hit
 			elif  player_pos != null:
@@ -29,19 +30,19 @@ func _update_state(delta):
 			return STATES.idle
 		STATES.hit:
 			if (zap_pos != null): 
-				parent.navAgent.set_target_location(2 * parent.global_transform.origin - zap_pos)
+				parent.navAgent.set_target_location(1.4 * parent.global_transform.origin - 0.4 *zap_pos)
 			parent.move_to_target()
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.6).timeout
 			if zap_pos != null:
 				return STATES.hit
 			elif player_pos != null:
 				return STATES.chasing
 			return STATES.idle
 		STATES.chasing:
-			if (player_pos != null): 
+			if (player_pos != null && zap_pos == null): 
 				parent.navAgent.set_target_location(player_pos)
 				parent.rotate_towards_motion(delta)
-			parent.move_to_target()
+				parent.move_to_target()
 			if zap_pos != null:
 				return STATES.hit
 			if player_pos != null:
@@ -56,7 +57,16 @@ func _enter_state(new_state,_old_state):
 		STATES.idle:
 			parent.speed = 1
 		STATES.hit:
+			parent.health -= 5
 			parent.speed = 20
+			#print("aplico")
+			#if (zap_pos != null):
+			#	parent.body.apply_central_impulse(2 * parent.global_transform.origin - zap_pos)
+			#	#parent.navAgent.set_target_location(2 * parent.global_transform.origin - zap_pos)
+			if parent.health > 0:
+				pass
+				#parent.body.apply_central_impulse(2 * parent.global_transform.origin - zap_pos)
+				#await get_tree().create_timer(2).timeout
 		STATES.chasing:
 			parent.speed = 5
 	emit_signal("entered_state", STATES.find_key(new_state))

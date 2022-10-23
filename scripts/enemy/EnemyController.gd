@@ -6,7 +6,7 @@ var speed = 5
 @export var health : int = 10 : 
 	set(value):
 		health = value
-		if (health < 1):
+		if (health == 0):
 			die()
 
 func move_to_target():
@@ -17,8 +17,9 @@ func move_to_target():
 	move_and_slide()
 
 func rotate_towards_motion(delta):
+	#TODO rotation on random value between 0 and 1
 	rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta * speed)
 
 func die():
-	print("dead hehe")
-	get_parent().remove_child(self)
+	if get_parent() :
+		get_parent().remove_child(self)

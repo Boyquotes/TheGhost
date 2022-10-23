@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxnwx5cvxmv65"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_spr7y"]
+rough = true
+absorbent = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ka1fq"]
+radius = 1.2
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_vf5qr"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_c7358"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mk6oj"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.501961)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+
+[node name="Moving_ball" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Moveable"]]
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_spr7y")
+
+[node name="Body" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_ka1fq")
+
+[node name="StaticMesh" type="Node3D" parent="RigidBody3D"]
+
+[node name="CsgTorus3d" type="CSGTorus3D" parent="RigidBody3D/StaticMesh"]
+cast_shadow = 0
+inner_radius = 1.18
+outer_radius = 1.25
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_vf5qr")
+
+[node name="CsgTorus3d2" type="CSGTorus3D" parent="RigidBody3D/StaticMesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
+inner_radius = 1.18
+outer_radius = 1.25
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_c7358")
+
+[node name="CsgTorus3d3" type="CSGTorus3D" parent="RigidBody3D/StaticMesh"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+cast_shadow = 0
+inner_radius = 1.18
+outer_radius = 1.25
+sides = 30
+ring_sides = 10
+material = SubResource("ORMMaterial3D_c7358")
+
+[node name="Glass" type="CSGSphere3D" parent="RigidBody3D/StaticMesh"]
+radius = 1.19
+radial_segments = 20
+rings = 20
+material = SubResource("StandardMaterial3D_mk6oj")

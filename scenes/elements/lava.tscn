@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://2lij0dqj26mc"]
+
+[ext_resource type="Shader" path="res://materials/lava.gdshader" id="1_b4bxb"]
+[ext_resource type="Script" path="res://scripts/props/lava.gd" id="1_yqm4s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdjhx"]
+render_priority = 0
+shader = ExtResource("1_b4bxb")
+
+[sub_resource type="SphereMesh" id="SphereMesh_xvid3"]
+material = SubResource("ShaderMaterial_jdjhx")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tbdia"]
+radius = 6.0
+
+[node name="Lava" type="Node3D"]
+script = ExtResource("1_yqm4s")
+
+[node name="Light" type="OmniLight3D" parent="."]
+light_color = Color(0.972549, 0.615686, 0.521569, 1)
+light_energy = 4.0
+light_volumetric_fog_energy = 4.0
+light_specular = 3.0
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="Fluid" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xvid3")
+skeleton = NodePath("../..")
+
+[node name="LightHit" type="Area3D" parent="." groups=["Burn"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightHit"]
+shape = SubResource("SphereShape3D_tbdia")

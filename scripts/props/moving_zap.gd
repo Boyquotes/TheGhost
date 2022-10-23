@@ -48,8 +48,6 @@ func _on_light_hit_area_entered(area):
 		scale -= Vector3(0.1,0.1,0.1)
 		light.omni_range -= light_reduce_ammount
 		fluid_sparkles.amount -= sparkle_reduce_ammount
-		
-		area.get_parent().health -= 4
 
 		await get_tree().create_timer(0.25).timeout
 		
