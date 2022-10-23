@@ -3,10 +3,10 @@
 [resource]
 lifetime_randomness = 0.1
 emission_shape = 1
-emission_sphere_radius = 1.98
+emission_sphere_radius = 2.0
 gravity = Vector3(0, 0, 0)
 angle_max = 360.0
-scale_max = 4.0
+scale_max = 8.0
 color = Color(0.545098, 0.745098, 1, 1)
 turbulence_enabled = true
 turbulence_noise_strength = 20.0
