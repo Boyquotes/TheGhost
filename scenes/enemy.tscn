@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://buoxiewkj7l7v"]
 
 [ext_resource type="Script" path="res://scripts/enemy/EnemyController.gd" id="1_i31ap"]
-[ext_resource type="PackedScene" uid="uid://scgwj0h7l7w7" path="res://imports/creepy.gltf" id="1_oxprh"]
+[ext_resource type="PackedScene" uid="uid://d3rw17i5jr6qf" path="res://imports/creepy.gltf" id="1_oxprh"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemySM.gd" id="2_gkpqm"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemyVision.gd" id="3_oxosb"]
 [ext_resource type="Script" path="res://scripts/AnimateState.gd" id="5_r3y6l"]

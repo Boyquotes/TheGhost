@@ -2,11 +2,12 @@
 
 [resource]
 lifetime_randomness = 1.0
-emission_shape = 1
-emission_sphere_radius = 0.8
+emission_shape = 2
+emission_sphere_radius = 0.5
 gravity = Vector3(0, 0, 0)
 angle_max = 360.0
-hue_variation_min = -0.29
+scale_max = 2.0
+color = Color(0.545098, 0.745098, 1, 1)
 turbulence_noise_strength = 20.0
 turbulence_noise_scale = 10.0
 attractor_interaction_enabled = false

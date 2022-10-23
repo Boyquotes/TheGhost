@@ -7,6 +7,9 @@ var light : OmniLight3D = $Light
 @onready 
 var effects = $Effects
 
+@onready
+var fluid_sparkles : GPUParticles3D = $FluidSparkles
+
 @onready 
 var body = get_parent().get_node("RigidBody3D")
 
@@ -14,6 +17,7 @@ var body = get_parent().get_node("RigidBody3D")
 var light_hit_colision : CollisionShape3D = $LightHit/CollisionShape3D
 
 var light_reduce_ammount
+var sparkle_reduce_ammount
 var beam_on_cd = false
 
 @export var health : int = 10 : 
@@ -24,6 +28,7 @@ var beam_on_cd = false
 
 func _ready():
 	light_reduce_ammount = light.omni_range/10.0
+	sparkle_reduce_ammount = fluid_sparkles.amount/10
 
 func _physics_process(_delta):
 	global_transform.origin = body.global_transform.origin
@@ -42,6 +47,7 @@ func _on_light_hit_area_entered(area):
 		
 		scale -= Vector3(0.1,0.1,0.1)
 		light.omni_range -= light_reduce_ammount
+		fluid_sparkles.amount -= sparkle_reduce_ammount
 		
 		area.get_parent().health -= 4
 
