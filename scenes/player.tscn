@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://n12lfihol1cx"]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://scripts/player/PlayerCamera.gd" id="1_61f35"]
-[ext_resource type="Environment" uid="uid://dr4atdwky80l5" path="res://materials/env.tres" id="2_7hus6"]
+[ext_resource type="Environment" uid="uid://dr4atdwky80l5" path="res://materials/player/env.tres" id="2_7hus6"]
 [ext_resource type="Script" path="res://scripts/player/PlayerController.gd" id="3_scj0i"]
 [ext_resource type="Script" path="res://scripts/player/PlayerSM.gd" id="4_1eweg"]
 [ext_resource type="Script" path="res://scripts/player/PlayerBody.gd" id="5_fti6i"]

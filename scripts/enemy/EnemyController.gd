@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var navAgent : NavigationAgent3D = $NavigationAgent3D
 var speed = 5
 
-var health : int = 10 : 
+@export var health : int = 10 : 
 	set(value):
 		health = value
 		if (health < 1):

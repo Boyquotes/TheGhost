@@ -68,5 +68,4 @@ ui_down={
 [physics]
 
 3d/run_on_separate_thread=true
-common/physics_ticks_per_second=120
 3d/physics_engine="GodotPhysics3D"

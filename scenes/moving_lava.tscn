@@ -92,5 +92,3 @@ material = SubResource("StandardMaterial3D_mk6oj")
 shape = SubResource("SphereShape3D_tbdia")
 
 [node name="MovingLight" type="Node3D" parent="."]
-
-[connection signal="area_entered" from="LightHit" to="LightHit" method="_on_area_entered"]
