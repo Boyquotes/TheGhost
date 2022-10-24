@@ -6,6 +6,8 @@ const STATES = {
 	'hit' = 3
 }
 
+signal entered_state (state : String)
+
 @onready var animator : AnimationPlayer = get_node("../Mesh/AnimationPlayer")
 
 @export var stun_time = 0.3
@@ -31,8 +33,6 @@ func _ready():
 	call_deferred("set_state", STATES.idle)
 
 func _update_state(delta):
-	if(animator.has_animation(STATES.find_key(state))):
-		animator.play(STATES.find_key(state))
 	#print(STATES.find_key(state))
 	match state:
 		STATES.idle:
@@ -56,6 +56,7 @@ func _update_state(delta):
 
 
 func _enter_state(new_state,_old_state):
+	emit_signal("entered_state", STATES.find_key(new_state))
 	match new_state:
 		STATES.idle:
 			parent.navAgent.set_target_location(parent.global_transform.origin)

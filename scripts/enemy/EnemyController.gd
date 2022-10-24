@@ -21,10 +21,10 @@ func rotate_towards_motion(delta):
 	#TODO rotation on random value between 0 and 1
 	rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta * speed)
 
-func die():
-	if get_parent() :
-		get_parent().remove_child(self)
-
 func stun(zap_pos):
 	sm.zap_pos = zap_pos
 	sm.stunned = true
+	
+func die():
+	if get_parent() :
+		get_parent().remove_child(self)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://buoxiewkj7l7v"]
+[gd_scene load_steps=9 format=3 uid="uid://buoxiewkj7l7v"]
 
 [ext_resource type="Script" path="res://scripts/enemy/EnemyController.gd" id="1_i31ap"]
-[ext_resource type="PackedScene" uid="uid://scgwj0h7l7w7" path="res://imports/creepy.gltf" id="1_oxprh"]
+[ext_resource type="PackedScene" uid="uid://cq45qusam8u1p" path="res://imports/creepy.gltf" id="1_oxprh"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemySM.gd" id="2_gkpqm"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemyVision.gd" id="3_oxosb"]
+[ext_resource type="Script" path="res://scripts/AnimateState.gd" id="5_r3y6l"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_464ay"]
 radius = 1.0
@@ -18,6 +19,7 @@ height = 5.7
 radius = 1.5
 
 [node name="Enemy" type="CharacterBody3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 collision_layer = 2
 collision_mask = 2
 axis_lock_angular_y = true
@@ -63,5 +65,7 @@ disabled = true
 
 [node name="Mesh" parent="." instance=ExtResource("1_oxprh")]
 transform = Transform3D(1.501, 0, 0, 0, 1.501, 0, 0, 0, 1.501, 0, 0, 0)
+script = ExtResource("5_r3y6l")
 
 [connection signal="player_location" from="FOV" to="SM" method="_on_fov_player_location"]
+[connection signal="entered_state" from="SM" to="Mesh" method="_on_sm_entered_state"]
