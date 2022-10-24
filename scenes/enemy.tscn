@@ -56,6 +56,7 @@ shape = SubResource("CylinderShape3D_2vhxp")
 
 [node name="SM" type="Node" parent="."]
 script = ExtResource("2_gkpqm")
+stun_time = 0.5
 
 [node name="Disabled" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.798, 0)

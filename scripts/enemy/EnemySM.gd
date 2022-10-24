@@ -11,6 +11,7 @@ signal entered_state (state : String)
 @onready var animator : AnimationPlayer = get_node("../Mesh/AnimationPlayer")
 
 @export var stun_time = 0.3
+@export var stun_force = 10.0
 
 var zap_pos = null
 var player_pos = null
@@ -59,12 +60,15 @@ func _enter_state(new_state,_old_state):
 	emit_signal("entered_state", STATES.find_key(new_state))
 	match new_state:
 		STATES.idle:
-			parent.navAgent.set_target_location(parent.global_transform.origin)
 			parent.speed = 1
+			parent.navAgent.set_target_location(parent.global_transform.origin)
 		STATES.hit:
 			parent.health -= 5
-			parent.navAgent.set_target_location(1.5 * parent.global_transform.origin - 0.5 * zap_pos)
 			parent.speed = 30
+			var enemy_location = parent.global_transform.origin
+			var light_to_enemy_vector : Vector3 = enemy_location - zap_pos
+			var le_size_sqrd = light_to_enemy_vector.length_squared()
+			parent.navAgent.set_target_location(enemy_location + stun_force * light_to_enemy_vector/le_size_sqrd)
 		STATES.chasing:
 			parent.speed = 5
 

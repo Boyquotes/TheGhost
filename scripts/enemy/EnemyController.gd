@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var navAgent : NavigationAgent3D = $NavigationAgent3D
 @onready var sm : StateMachine = $SM
+@onready var seed = randf_range(0.1,1.5)
 var speed = 5
 
 @export var health : int = 10 : 
@@ -18,8 +19,7 @@ func move_to_target():
 	move_and_slide()
 
 func rotate_towards_motion(delta):
-	#TODO rotation on random value between 0 and 1
-	rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta * speed)
+	rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta * speed *  seed)
 
 func stun(zap_pos):
 	sm.zap_pos = zap_pos

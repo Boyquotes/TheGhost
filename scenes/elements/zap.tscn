@@ -63,6 +63,7 @@ shadow_enabled = true
 omni_range = 8.0
 
 [node name="Effects" type="Node3D" parent="."]
+visible = false
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Effects"]
 transform = Transform3D(-2.87184e-08, 0, 0.657, 0, 0.651, 0, -0.657, 0, -2.87184e-08, 0, 0, -6.351)

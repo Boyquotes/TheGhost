@@ -67,6 +67,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7, 3, 1)
 [node name="Enemy" parent="." instance=ExtResource("4_mvgwq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31.6874)
 
+[node name="Enemy2" parent="." instance=ExtResource("4_mvgwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.495, 0, -31.6874)
+
+[node name="Enemy3" parent="." instance=ExtResource("4_mvgwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9851, 0, -31.6874)
+
+[node name="Enemy4" parent="." instance=ExtResource("4_mvgwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9851, 0, -22.156)
+
 [node name="Moving_ball" parent="." instance=ExtResource("5_0nib7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1312, -36.3178)
 
