@@ -39,7 +39,7 @@ script = ExtResource("1_ymryp")
 material_override = ExtResource("2_4cw08")
 cast_shadow = 0
 amount = 60
-lifetime = 0.2
+lifetime = 0.1
 randomness = 1.0
 process_material = ExtResource("3_1h5m7")
 draw_pass_1 = SubResource("QuadMesh_8a3ki")
@@ -57,7 +57,7 @@ shape = SubResource("SphereShape3D_tbdia")
 
 [node name="Light" type="OmniLight3D" parent="."]
 light_color = Color(0.701961, 0.803922, 1, 1)
-light_energy = 3.0
+light_energy = 2.0
 light_volumetric_fog_energy = 30.0
 shadow_enabled = true
 omni_range = 8.0

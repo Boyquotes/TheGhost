@@ -43,6 +43,7 @@ func _on_light_hit_enemy(obj):
 		
 		look_at(obj.global_position+Vector3(0,5,0))
 		effects.visible = true
+		light.light_energy = 3
 
 		await get_tree().create_timer(0.3).timeout
 		
@@ -51,7 +52,7 @@ func _on_light_hit_enemy(obj):
 		
 		await get_tree().create_timer(2.7).timeout
 		
-		light.light_energy = 3
+		light.light_energy = 2
 		scale -= Vector3(0.1,0.1,0.1)
 		light.omni_range -= light_reduce_ammount
 		fluid_sparkles.amount -= sparkle_reduce_ammount
