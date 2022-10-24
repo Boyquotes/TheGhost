@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://buoxiewkj7l7v"]
 
 [ext_resource type="Script" path="res://scripts/enemy/EnemyController.gd" id="1_i31ap"]
-[ext_resource type="PackedScene" uid="uid://dnvhr3wxh43ow" path="res://imports/creepy.gltf" id="1_oxprh"]
+[ext_resource type="PackedScene" uid="uid://cq45qusam8u1p" path="res://imports/creepy.gltf" id="1_oxprh"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemySM.gd" id="2_gkpqm"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemyVision.gd" id="3_oxosb"]
 [ext_resource type="Script" path="res://scripts/AnimateState.gd" id="5_r3y6l"]
@@ -32,9 +32,6 @@ health = 100
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 agent_height_offset = 1.1
 path_max_distance = 10.0
-avoidance_enabled = true
-radius = 2.0
-ignore_y = false
 
 [node name="Body" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79414, 0)

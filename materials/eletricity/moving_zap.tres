@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://g8w0hnohmkva"]
 
-[ext_resource type="Texture2D" uid="uid://cdi1wouan8pdl" path="res://imports/Particles/spark_03.png" id="1_lbgmh"]
+[ext_resource type="Texture2D" uid="uid://bigefx7ysjmsg" path="res://imports/Particles/spark_03.png" id="1_lbgmh"]
 
 [resource]
 transparency = 1

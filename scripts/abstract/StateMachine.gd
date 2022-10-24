@@ -10,7 +10,7 @@ var states = {}
 func _physics_process(delta):
 	if state != null:
 		_refresh(delta)
-		var transition = await _update_state(delta)
+		var transition = _update_state(delta)
 		if transition != null:
 			set_state(transition)
 

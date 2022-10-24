@@ -10,15 +10,15 @@ var effects = $Effects
 @onready
 var fluid_sparkles : GPUParticles3D = $FluidSparkles
 
-@onready 
+@onready
 var body = get_parent().get_node("RigidBody3D")
 
 @onready 
 var light_hit_colision : CollisionShape3D = $LightHit/CollisionShape3D
 
-var light_reduce_ammount
-var sparkle_reduce_ammount
-var beam_on_cd = false
+var light_reduce_ammount : float
+var sparkle_reduce_ammount : int
+var beam_on_cd : bool = false
 
 @export var health : int = 10 : 
 	set(value):
@@ -51,7 +51,8 @@ func _on_light_hit_enemy(obj):
 		light.light_energy = 1
 		scale -= Vector3(0.1,0.1,0.1)
 		light.omni_range -= light_reduce_ammount
-		fluid_sparkles.amount -= sparkle_reduce_ammount
+		if fluid_sparkles.amount - sparkle_reduce_ammount > 0:
+			fluid_sparkles.amount -= sparkle_reduce_ammount
 		
 		await get_tree().create_timer(1.7).timeout
 		
