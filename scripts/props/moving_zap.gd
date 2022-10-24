@@ -43,7 +43,7 @@ func _on_light_hit_enemy(obj):
 		obj.stun(global_transform.origin)
 		beam_on_cd = true
 		effects.visible = true
-		light.light_energy = 3
+		light.light_energy = 10
 
 		await get_tree().create_timer(0.3).timeout
 		
@@ -56,7 +56,7 @@ func _on_light_hit_enemy(obj):
 		
 		await get_tree().create_timer(cd).timeout
 		
-		light.light_energy = 2
+		light.light_energy = 5
 		
 		health -=1
 		effects.visible = false
