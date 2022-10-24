@@ -53,7 +53,7 @@ func _on_light_hit_enemy(obj):
 		light.omni_range -= light_reduce_ammount
 		fluid_sparkles.amount -= sparkle_reduce_ammount
 		
-		await get_tree().create_timer(2.7).timeout
+		await get_tree().create_timer(1.7).timeout
 		
 		light.light_energy = 2
 		
