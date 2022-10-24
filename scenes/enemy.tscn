@@ -23,9 +23,6 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 collision_layer = 2
 collision_mask = 2
 axis_lock_angular_y = true
-slide_on_ceiling = false
-wall_min_slide_angle = 0.0
-safe_margin = 0.05
 script = ExtResource("1_i31ap")
 health = 100
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6ehtv3kqb2po"]
+[gd_scene load_steps=12 format=3 uid="uid://c6ehtv3kqb2po"]
 
 [ext_resource type="PackedScene" uid="uid://dmoaf6bm2qvxp" path="res://scenes/player.tscn" id="1_v4kr2"]
 [ext_resource type="PackedScene" uid="uid://cltqeppjuffvx" path="res://scenes/core.tscn" id="3_24p4y"]
@@ -14,19 +14,19 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 agent_height = 1.0
 agent_radius = 1.0
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_ffesb"]
-cull_mode = 2
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_un21g"]
 diffuse_mode = 3
-albedo_color = Color(0.545098, 0.32549, 0.0745098, 1)
+specular_mode = 1
+albedo_color = Color(0.533333, 0.286275, 0.0588235, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04vi7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cutk1"]
 diffuse_mode = 3
-albedo_color = Color(0.756863, 1, 0.615686, 1)
-metallic = 1.0
-metallic_specular = 1.0
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 16.08
-detail_blend_mode = 1
+specular_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8bwr3"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.662745, 1, 0.635294, 1)
 
 [node name="Base Level" type="Node3D"]
 
@@ -35,24 +35,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.14513, 0.788531, -23.7374)
 navmesh = SubResource("NavigationMesh_y6332")
 
 [node name="Box" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.16429, 0.674, 11.1803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.16429, 0.674, 14.706)
 use_collision = true
 collision_layer = 3
 collision_mask = 3
 size = Vector3(2, 2, 2)
-material = SubResource("ORMMaterial3D_ffesb")
+material = SubResource("StandardMaterial3D_un21g")
 
 [node name="Wall" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(-3.40622e-07, 0, -1, 0, 5.21432, 0, 7.79252, 0, -4.37114e-08, 5.37657, 0.994239, 20.543)
 use_collision = true
 collision_layer = 3
 collision_mask = 3
+material = SubResource("StandardMaterial3D_cutk1")
 
 [node name="Wall2" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(-3.40622e-07, 0, -1, 0, 5.21432, 0, 7.79252, 0, -4.37114e-08, 11.7487, 0.994239, 20.543)
 use_collision = true
 collision_layer = 3
 collision_mask = 3
+material = SubResource("StandardMaterial3D_cutk1")
 
 [node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.14513, -0.788531, 23.7374)
@@ -61,7 +63,7 @@ use_collision = true
 collision_layer = 3
 collision_mask = 3
 size = Vector3(1000, 1000, 1)
-material = SubResource("StandardMaterial3D_04vi7")
+material = SubResource("StandardMaterial3D_8bwr3")
 
 [node name="Core" parent="NavigationRegion3D" instance=ExtResource("3_24p4y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.14513, 3.21147, 23.7374)

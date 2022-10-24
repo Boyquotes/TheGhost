@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxnwx5cvxmv65"]
+[gd_scene load_steps=5 format=3 uid="uid://bxnwx5cvxmv65"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_spr7y"]
 rough = true
@@ -7,14 +7,15 @@ absorbent = true
 [sub_resource type="SphereShape3D" id="SphereShape3D_ka1fq"]
 radius = 1.2
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_vf5qr"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_c7358"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pb5uc"]
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mk6oj"]
 transparency = 1
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(1, 1, 1, 0.501961)
 metallic = 1.0
 metallic_specular = 1.0
@@ -37,7 +38,7 @@ inner_radius = 1.18
 outer_radius = 1.25
 sides = 30
 ring_sides = 10
-material = SubResource("ORMMaterial3D_vf5qr")
+material = SubResource("StandardMaterial3D_pb5uc")
 
 [node name="CsgTorus3d2" type="CSGTorus3D" parent="RigidBody3D/StaticMesh"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -46,7 +47,7 @@ inner_radius = 1.18
 outer_radius = 1.25
 sides = 30
 ring_sides = 10
-material = SubResource("ORMMaterial3D_c7358")
+material = SubResource("StandardMaterial3D_pb5uc")
 
 [node name="CsgTorus3d3" type="CSGTorus3D" parent="RigidBody3D/StaticMesh"]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
@@ -55,7 +56,7 @@ inner_radius = 1.18
 outer_radius = 1.25
 sides = 30
 ring_sides = 10
-material = SubResource("ORMMaterial3D_c7358")
+material = SubResource("StandardMaterial3D_pb5uc")
 
 [node name="Glass" type="CSGSphere3D" parent="RigidBody3D/StaticMesh"]
 radius = 1.19
