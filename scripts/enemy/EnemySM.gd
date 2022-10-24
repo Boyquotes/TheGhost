@@ -63,7 +63,7 @@ func _enter_state(new_state,_old_state):
 			parent.speed = 1
 		STATES.hit:
 			parent.health -= 5
-			parent.navAgent.set_target_location(1.2 * parent.global_transform.origin - 0.2 * zap_pos)
+			parent.navAgent.set_target_location(1.5 * parent.global_transform.origin - 0.5 * zap_pos)
 			parent.speed = 30
 		STATES.chasing:
 			parent.speed = 5
