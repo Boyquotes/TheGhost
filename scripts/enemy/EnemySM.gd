@@ -8,8 +8,6 @@ const STATES = {
 
 signal entered_state (state : String)
 
-@onready var animator : AnimationPlayer = get_node("../Mesh/AnimationPlayer")
-
 @export var stun_time = 0.3
 @export var stun_force = 10.0
 

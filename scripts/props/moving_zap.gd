@@ -20,6 +20,8 @@ var light_reduce_ammount : float
 var sparkle_reduce_ammount : int
 var beam_on_cd : bool = false
 
+@export var cd : float = 1.7
+
 @export var health : int = 10 : 
 	set(value):
 		health = value
@@ -37,11 +39,9 @@ func _on_light_hit_enemy(obj):
 	if (health < 1 || beam_on_cd):
 		return
 	if (obj != null):
-		obj.stun(global_transform.origin)
-		
-		beam_on_cd = true
-		
 		look_at(obj.global_position+Vector3(0,2,0))
+		obj.stun(global_transform.origin)
+		beam_on_cd = true
 		effects.visible = true
 		light.light_energy = 3
 
@@ -54,7 +54,7 @@ func _on_light_hit_enemy(obj):
 		if fluid_sparkles.amount - sparkle_reduce_ammount > 0:
 			fluid_sparkles.amount -= sparkle_reduce_ammount
 		
-		await get_tree().create_timer(1.7).timeout
+		await get_tree().create_timer(cd).timeout
 		
 		light.light_energy = 2
 		
