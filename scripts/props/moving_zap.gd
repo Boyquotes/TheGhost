@@ -33,23 +33,28 @@ func _ready():
 func _physics_process(_delta):
 	global_transform.origin = body.global_transform.origin
 
-
-func _on_light_hit_area_entered(area):
+func _on_light_hit_enemy(obj):
 	if (health < 1 || beam_on_cd):
 		return
-	
-	if (area.is_in_group("Enemy")):
+	if (obj != null):
+		obj.stun(global_transform.origin)
 		
 		beam_on_cd = true
 		
-		look_at(area.get_parent().global_position+Vector3(0,5,0))
+		look_at(obj.global_position+Vector3(0,5,0))
 		effects.visible = true
+
+		await get_tree().create_timer(0.3).timeout
 		
+		effects.visible = false
+		light.light_energy = 1
+		
+		await get_tree().create_timer(2.7).timeout
+		
+		light.light_energy = 3
 		scale -= Vector3(0.1,0.1,0.1)
 		light.omni_range -= light_reduce_ammount
 		fluid_sparkles.amount -= sparkle_reduce_ammount
-
-		await get_tree().create_timer(0.25).timeout
 		
 		health -=1
 		effects.visible = false

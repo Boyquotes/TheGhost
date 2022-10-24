@@ -9,5 +9,3 @@ func _physics_process(_delta):
 	var zaps = get_overlapping_areas().filter(get_zaps)
 	if(zaps):
 		emit_signal("zap", zaps[0].global_transform.origin)
-	else:
-		emit_signal("zap", null)

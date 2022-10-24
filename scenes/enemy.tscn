@@ -1,11 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://buoxiewkj7l7v"]
+[gd_scene load_steps=8 format=3 uid="uid://buoxiewkj7l7v"]
 
 [ext_resource type="Script" path="res://scripts/enemy/EnemyController.gd" id="1_i31ap"]
 [ext_resource type="PackedScene" uid="uid://scgwj0h7l7w7" path="res://imports/creepy.gltf" id="1_oxprh"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemySM.gd" id="2_gkpqm"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemyVision.gd" id="3_oxosb"]
-[ext_resource type="Script" path="res://scripts/AnimateState.gd" id="5_r3y6l"]
-[ext_resource type="Script" path="res://scripts/enemy/EnemyRun.gd" id="6_ccerx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_464ay"]
 radius = 1.0
@@ -40,10 +38,6 @@ ignore_y = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79414, 0)
 shape = SubResource("CapsuleShape3D_464ay")
 
-[node name="Mesh" parent="." instance=ExtResource("1_oxprh")]
-transform = Transform3D(1.501, 0, 0, 0, 1.501, 0, 0, 0, 1.501, 0, 0, 0)
-script = ExtResource("5_r3y6l")
-
 [node name="FOV" type="Area3D" parent="."]
 script = ExtResource("3_oxosb")
 
@@ -53,7 +47,6 @@ shape = SubResource("CylinderShape3D_beahm")
 
 [node name="Range" type="Area3D" parent="." groups=["Enemy"]]
 priority = 40.0
-script = ExtResource("6_ccerx")
 
 [node name="Range" type="CollisionShape3D" parent="Range"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79963, 0)
@@ -68,6 +61,7 @@ visible = false
 shape = SubResource("CapsuleShape3D_464ay")
 disabled = true
 
+[node name="Mesh" parent="." instance=ExtResource("1_oxprh")]
+transform = Transform3D(1.501, 0, 0, 0, 1.501, 0, 0, 0, 1.501, 0, 0, 0)
+
 [connection signal="player_location" from="FOV" to="SM" method="_on_fov_player_location"]
-[connection signal="zap" from="Range" to="SM" method="_on_range_zap"]
-[connection signal="entered_state" from="SM" to="Mesh" method="_on_sm_entered_state"]

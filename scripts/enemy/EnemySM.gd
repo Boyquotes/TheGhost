@@ -6,12 +6,24 @@ const STATES = {
 	'hit' = 3
 }
 
+@onready var animator : AnimationPlayer = get_node("../Mesh/AnimationPlayer")
+
+@export var stun_time = 0.3
+
 var zap_pos = null
 var player_pos = null
 var on_burn = false
+var is_hit = false
 
-
-signal entered_state (state : String)
+var stunned = false :
+	set(value):
+		if value == true:
+			stunned = true
+			set_state(STATES.hit)
+			await get_tree().create_timer(stun_time).timeout
+			stunned = false
+		else:
+			stunned = false
 
 func _ready():
 	add_states(STATES)
@@ -19,61 +31,41 @@ func _ready():
 	call_deferred("set_state", STATES.idle)
 
 func _update_state(delta):
+	if(animator.has_animation(STATES.find_key(state))):
+		animator.play(STATES.find_key(state))
 	#print(STATES.find_key(state))
 	match state:
 		STATES.idle:
-			parent.navAgent.set_target_location(parent.global_transform.origin)
-			if zap_pos != null:
-				return STATES.hit
-			elif  player_pos != null:
+			if  player_pos != null:
 				return STATES.chasing
-			return STATES.idle
 		STATES.hit:
-			if (zap_pos != null): 
-				parent.navAgent.set_target_location(1.4 * parent.global_transform.origin - 0.4 *zap_pos)
-			parent.move_to_target()
-			await get_tree().create_timer(0.6).timeout
-			if zap_pos != null:
-				return STATES.hit
-			elif player_pos != null:
+			parent.move_to_target() #apply knockback
+			if stunned == true:
+				return
+			if player_pos != null:
 				return STATES.chasing
-			return STATES.idle
+			else:
+				return STATES.idle
 		STATES.chasing:
-			if (player_pos != null && zap_pos == null): 
+			if (player_pos != null): 
 				parent.navAgent.set_target_location(player_pos)
 				parent.rotate_towards_motion(delta)
 				parent.move_to_target()
-			if zap_pos != null:
-				return STATES.hit
-			if player_pos != null:
-				return STATES.chasing
-			else: 
+			if player_pos == null:
 				return STATES.idle
-	pass
 
 
 func _enter_state(new_state,_old_state):
 	match new_state:
 		STATES.idle:
+			parent.navAgent.set_target_location(parent.global_transform.origin)
 			parent.speed = 1
 		STATES.hit:
 			parent.health -= 5
-			parent.speed = 20
-			#print("aplico")
-			#if (zap_pos != null):
-			#	parent.body.apply_central_impulse(2 * parent.global_transform.origin - zap_pos)
-			#	#parent.navAgent.set_target_location(2 * parent.global_transform.origin - zap_pos)
-			if parent.health > 0:
-				pass
-				#parent.body.apply_central_impulse(2 * parent.global_transform.origin - zap_pos)
-				#await get_tree().create_timer(2).timeout
+			parent.navAgent.set_target_location(1.2 * parent.global_transform.origin - 0.2 * zap_pos)
+			parent.speed = 30
 		STATES.chasing:
 			parent.speed = 5
-	emit_signal("entered_state", STATES.find_key(new_state))
-
 
 func _on_fov_player_location(target):
 	player_pos = target
-
-func _on_range_zap(position):
-	zap_pos = position

@@ -67,22 +67,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7, 3, 1)
 [node name="Enemy" parent="." instance=ExtResource("4_mvgwq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31.6874)
 
-[node name="Enemy2" parent="." instance=ExtResource("4_mvgwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8936, 0, -31.6874)
-
-[node name="Enemy3" parent="." instance=ExtResource("4_mvgwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8936, 0, -22.0104)
-
-[node name="Enemy4" parent="." instance=ExtResource("4_mvgwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8936, 0, -16.2502)
-
-[node name="Enemy5" parent="." instance=ExtResource("4_mvgwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8936, 0, -27.2502)
-
 [node name="Moving_ball" parent="." instance=ExtResource("5_0nib7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1312, -19.1585)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1312, -36.3178)
 
 [node name="Lava" parent="Moving_ball" instance=ExtResource("6_o8tr5")]
+
+[node name="Moving_ball3" parent="." instance=ExtResource("5_0nib7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.93379, 3.1312, -25.9234)
+
+[node name="Lava" parent="Moving_ball3" instance=ExtResource("6_o8tr5")]
 
 [node name="Moving_ball2" parent="." instance=ExtResource("5_0nib7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.97315, 3.1312, -19.1585)

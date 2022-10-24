@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var navAgent : NavigationAgent3D = $NavigationAgent3D
+@onready var sm : StateMachine = $SM
 var speed = 5
 
 @export var health : int = 10 : 
@@ -23,3 +24,7 @@ func rotate_towards_motion(delta):
 func die():
 	if get_parent() :
 		get_parent().remove_child(self)
+
+func stun(zap_pos):
+	sm.zap_pos = zap_pos
+	sm.stunned = true

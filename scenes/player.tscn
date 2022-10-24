@@ -51,6 +51,7 @@ script = ExtResource("4_1eweg")
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_55mml")
 continuous_cd = true
 max_contacts_reported = 10
@@ -58,6 +59,7 @@ contact_monitor = true
 can_sleep = false
 freeze_mode = 1
 script = ExtResource("5_fti6i")
+force = 14
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="PlayerController/PlayerBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60741, 0)

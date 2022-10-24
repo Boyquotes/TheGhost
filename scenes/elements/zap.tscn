@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://kty2tew4afmr"]
+[gd_scene load_steps=16 format=3 uid="uid://kty2tew4afmr"]
 
 [ext_resource type="Script" path="res://scripts/props/moving_zap.gd" id="1_ymryp"]
 [ext_resource type="Material" uid="uid://g8w0hnohmkva" path="res://materials/eletricity/moving_zap.tres" id="2_4cw08"]
 [ext_resource type="Material" uid="uid://qf0e57umi4ga" path="res://materials/eletricity/aasdas.tres" id="3_1h5m7"]
 [ext_resource type="Shader" path="res://materials/eletricity/eletricity.gdshader" id="4_emmwn"]
 [ext_resource type="Shader" path="res://materials/eletricity/balblal.gdshader" id="5_8tf82"]
+[ext_resource type="Script" path="res://scripts/props/LightHit.gd" id="5_g18xq"]
 [ext_resource type="Shader" path="res://materials/eletricity/beam.gdshader" id="6_4jr6b"]
 [ext_resource type="Material" uid="uid://cpoq4pui4ywml" path="res://materials/eletricity/zap.tres" id="7_n7g24"]
 [ext_resource type="Material" uid="uid://cgryq8t0j868p" path="res://materials/eletricity/123213.tres" id="8_jmsrh"]
@@ -49,13 +50,14 @@ mesh = SubResource("SphereMesh_xvid3")
 skeleton = NodePath("../../RigidBody3D")
 
 [node name="LightHit" type="Area3D" parent="." groups=["Zap"]]
+script = ExtResource("5_g18xq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LightHit"]
 shape = SubResource("SphereShape3D_tbdia")
 
 [node name="Light" type="OmniLight3D" parent="."]
 light_color = Color(0.701961, 0.803922, 1, 1)
-light_energy = 2.0
+light_energy = 3.0
 light_volumetric_fog_energy = 30.0
 shadow_enabled = true
 omni_range = 8.0
@@ -88,4 +90,4 @@ fixed_fps = 60
 process_material = ExtResource("8_jmsrh")
 draw_pass_1 = SubResource("QuadMesh_8a3ki")
 
-[connection signal="area_entered" from="LightHit" to="." method="_on_light_hit_area_entered"]
+[connection signal="enemy" from="LightHit" to="." method="_on_light_hit_enemy"]
