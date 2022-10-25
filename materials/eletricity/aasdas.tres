@@ -1,10 +1,10 @@
 [gd_resource type="ParticleProcessMaterial" format=3 uid="uid://qf0e57umi4ga"]
 
 [resource]
-lifetime_randomness = 1.0
 emission_shape = 2
-emission_sphere_radius = 0.5
+emission_sphere_radius = 0.6
 gravity = Vector3(0, 0, 0)
+angle_min = -360.0
 angle_max = 360.0
 scale_max = 2.0
 color = Color(0.545098, 0.745098, 1, 1)

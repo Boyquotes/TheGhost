@@ -18,8 +18,8 @@ shader = ExtResource("4_emmwn")
 
 [sub_resource type="SphereMesh" id="SphereMesh_xvid3"]
 material = SubResource("ShaderMaterial_fq0a8")
-radius = 0.8
-height = 1.6
+radius = 0.6
+height = 1.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tbdia"]
 radius = 6.0
@@ -38,8 +38,9 @@ script = ExtResource("1_ymryp")
 [node name="FluidSparkles" type="GPUParticles3D" parent="."]
 material_override = ExtResource("2_4cw08")
 cast_shadow = 0
-amount = 60
-lifetime = 0.1
+amount = 16
+lifetime = 0.01
+explosiveness = 1.0
 randomness = 1.0
 process_material = ExtResource("3_1h5m7")
 draw_pass_1 = SubResource("QuadMesh_8a3ki")
@@ -83,11 +84,12 @@ material = SubResource("ShaderMaterial_nrsuc")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -6)
 material_override = ExtResource("7_n7g24")
 cast_shadow = 0
-amount = 10
-lifetime = 0.1
-speed_scale = 10.0
+amount = 30
+lifetime = 0.3
+speed_scale = 57.0
+explosiveness = 1.0
 randomness = 1.0
-fixed_fps = 60
+visibility_aabb = AABB(-0.879935, -2.32747, -3.20189, 1.75987, 4.65494, 6.40378)
 process_material = ExtResource("8_jmsrh")
 draw_pass_1 = SubResource("QuadMesh_8a3ki")
 
