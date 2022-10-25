@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var navAgent : NavigationAgent3D = $NavigationAgent3D
 @onready var sm : StateMachine = $SM
-@onready var randf_seed = randf_range(0.1,1.5)
+@onready var randf_seed = randf_range(0.5,1.0)
 var speed = 5
 
 @export var health : int = 10 : 

@@ -22,11 +22,14 @@ albedo_color = Color(0.533333, 0.286275, 0.0588235, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cutk1"]
 diffuse_mode = 3
 specular_mode = 1
+albedo_color = Color(0.443137, 0.443137, 0.443137, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8bwr3"]
 diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(0.662745, 1, 0.635294, 1)
+emission = Color(0.662745, 1, 0.635294, 1)
+emission_energy_multiplier = 0.01
 
 [node name="Base Level" type="Node3D"]
 
@@ -43,14 +46,14 @@ size = Vector3(2, 2, 2)
 material = SubResource("StandardMaterial3D_un21g")
 
 [node name="Wall" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(-3.40622e-07, 0, -1, 0, 5.21432, 0, 7.79252, 0, -4.37114e-08, 5.37657, 0.994239, 20.543)
+transform = Transform3D(-3.40622e-07, 0, -2.1234, 0, 9.41547, 0, 7.79252, 0, -9.2817e-08, 4.81118, 2.92513, 20.543)
 use_collision = true
 collision_layer = 3
 collision_mask = 3
 material = SubResource("StandardMaterial3D_cutk1")
 
 [node name="Wall2" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(-3.40622e-07, 0, -1, 0, 5.21432, 0, 7.79252, 0, -4.37114e-08, 11.7487, 0.994239, 20.543)
+transform = Transform3D(-3.40622e-07, 0, -2.1234, 0, 9.41547, 0, 7.79252, 0, -9.2817e-08, 13.1483, 2.951, 20.5715)
 use_collision = true
 collision_layer = 3
 collision_mask = 3
@@ -74,7 +77,7 @@ collision_mask = 3
 transform = Transform3D(4.52918, 0, 0, 0, 4.52918, 0, 0, 0, 4.52918, -8.14513, 4.22128, 50.4523)
 
 [node name="Player" parent="." instance=ExtResource("1_v4kr2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7, 3, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.69743, 3.0069, 0.994151)
 
 [node name="Enemy" parent="." instance=ExtResource("4_mvgwq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31.6874)

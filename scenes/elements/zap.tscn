@@ -58,12 +58,12 @@ shape = SubResource("SphereShape3D_tbdia")
 [node name="Light" type="OmniLight3D" parent="."]
 light_color = Color(0.701961, 0.803922, 1, 1)
 light_energy = 2.0
-light_volumetric_fog_energy = 5.0
+light_volumetric_fog_energy = 10.0
 shadow_enabled = true
+shadow_bias = 0.0
 omni_range = 8.0
 
 [node name="Effects" type="Node3D" parent="."]
-visible = false
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Effects"]
 transform = Transform3D(-2.87184e-08, 0, 0.657, 0, 0.651, 0, -0.657, 0, -2.87184e-08, 0, 0, -6.351)
