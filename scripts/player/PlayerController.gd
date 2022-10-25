@@ -20,10 +20,10 @@ func _apply_movement(_delta):
 func _handle_move_input():
 	speed = 0
 	motion = motion.normalized()
-	
-	if Input.is_action_pressed("ui_right") || Input.is_action_pressed("ui_left") || Input.is_action_pressed("ui_down") || Input.is_action_pressed("ui_up"):
-		motion.x = Input.get_action_strength("ui_right") * COS45 - Input.get_action_strength("ui_up") * COS45 - Input.get_action_strength("ui_left") * COS45 + Input.get_action_strength("ui_down") * COS45
-		motion.z = Input.get_action_strength("ui_down") * COS45 + Input.get_action_strength("ui_left") * COS45 - Input.get_action_strength("ui_right") * COS45 - Input.get_action_strength("ui_up") * COS45 
+	#TODO rotate camera around player, make static materials in front of player transparent
+	if Input.is_action_pressed("move_right") || Input.is_action_pressed("move_left") || Input.is_action_pressed("move_down") || Input.is_action_pressed("move_up"):
+		motion.x = Input.get_action_strength("move_right") * COS45 - Input.get_action_strength("move_up") * COS45 - Input.get_action_strength("move_left") * COS45 + Input.get_action_strength("move_down") * COS45
+		motion.z = Input.get_action_strength("move_down") * COS45 + Input.get_action_strength("move_left") * COS45 - Input.get_action_strength("move_right") * COS45 - Input.get_action_strength("move_up") * COS45 
 		speed = motion.normalized().length() * SPEED
 		
 	motion = motion.normalized() * speed
