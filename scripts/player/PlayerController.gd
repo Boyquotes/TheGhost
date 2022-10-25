@@ -5,8 +5,9 @@ extends CharacterBody3D
 var speed : float = SPEED 
 var motion : Vector3 = Vector3()
 
-const COS45 = 0.52532198881
-const sin45 = 0.85090352453
+const DEG = 0.52532198881
+var mx = 1.0
+var mz = 0.0
 
 @onready var mesh = $PlayerBody/Mesh
 
@@ -22,8 +23,8 @@ func _handle_move_input():
 	motion = motion.normalized()
 	#TODO rotate camera around player, make static materials in front of player transparent
 	if Input.is_action_pressed("move_right") || Input.is_action_pressed("move_left") || Input.is_action_pressed("move_down") || Input.is_action_pressed("move_up"):
-		motion.x = Input.get_action_strength("move_right") * COS45 - Input.get_action_strength("move_up") * COS45 - Input.get_action_strength("move_left") * COS45 + Input.get_action_strength("move_down") * COS45
-		motion.z = Input.get_action_strength("move_down") * COS45 + Input.get_action_strength("move_left") * COS45 - Input.get_action_strength("move_right") * COS45 - Input.get_action_strength("move_up") * COS45 
+		motion.x = Input.get_action_strength("move_down") * mx - Input.get_action_strength("move_up") * mx - Input.get_action_strength("move_left") * mz + Input.get_action_strength("move_right") * mz 
+		motion.z = Input.get_action_strength("move_down") * mz - Input.get_action_strength("move_up") * mz + Input.get_action_strength("move_left") * mx - + Input.get_action_strength("move_right") * mx
 		speed = motion.normalized().length() * SPEED
 		
 	motion = motion.normalized() * speed
@@ -31,3 +32,8 @@ func _handle_move_input():
 
 func _handle_move_rotation(delta):
 	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-motion.x, -motion.z), delta * ROTATION_SPEED)
+
+func _on_camera_node_cam_rotation(rot):
+	print(rad_to_deg(rot))
+	mx = sin(rot)
+	mz = cos(rot)

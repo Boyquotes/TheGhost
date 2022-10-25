@@ -7,7 +7,7 @@ signal player_body_pos (pos : Vector3, delta : float)
 const DELTA : float = 0.01
 
 func _physics_process(delta):
-	emit_signal("player_body_pos", global_transform.origin, delta)
+	emit_signal("player_body_pos", global_position, delta)
 
 func remove_not_moveable(obj : Node3D):
 	return obj.is_in_group("Moveable")
