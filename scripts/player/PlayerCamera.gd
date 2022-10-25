@@ -1,9 +1,11 @@
 extends Node3D
 
-var CORRECTION_SPEED : float = 4.0
+var CORRECTION_SPEED : float = 5.0
 @onready var OFFSET = Vector3(0, offset_value, offset_value)
 var targetPosition : Vector3 = Vector3.ZERO
+var axis_rot : float = 0
 @export var offset_value : float =  20.0
+var locked = false
 
 signal cam_rotation(rot : float)
 
@@ -19,8 +21,6 @@ func _ready():
 			var mz = cos(value)
 			OFFSET.x = mx * offset_value
 			OFFSET.z = mz * offset_value
-			
-
 
 func _on_player_body_player_body_pos(pos, delta):
 	targetPosition = pos + OFFSET
@@ -30,7 +30,19 @@ func _on_player_body_player_body_pos(pos, delta):
 		CORRECTION_SPEED*delta)
 	rotation.y = lerp_angle(rotation.y, rot, CORRECTION_SPEED*delta)
 
-func _physics_process(delta):
-	if Input.is_action_pressed("move_cam_left") || Input.is_action_pressed("move_cam_right"):
-		rot += (Input.get_action_raw_strength("move_cam_left") - Input.get_action_raw_strength("move_cam_right")) * 0.05
-		
+func _input(event):
+	if event.is_action("move_cam_left") || event.is_action("move_cam_right"):
+		if event.get_action_strength("move_cam_left") > 0.5:
+			rotate_camera(1)
+			locked = true
+		if Input.is_action_just_released("move_cam_left"):
+			locked = false
+		if event.get_action_strength("move_cam_right") > 0.5:
+			rotate_camera(-1)
+			locked = true
+		if Input.is_action_just_released("move_cam_right"):
+			locked = false
+
+func rotate_camera(dir):
+	if !locked :
+		rot+=int(dir / TAU * 8) / 8.0 * TAU
