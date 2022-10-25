@@ -8,6 +8,9 @@ var light : OmniLight3D = $Light
 var effects = $Effects
 
 @onready
+var effects_particles : GPUParticles3D = $EffectsParticles
+
+@onready
 var fluid_sparkles : GPUParticles3D = $FluidSparkles
 
 @onready
@@ -41,6 +44,7 @@ func _on_light_hit_enemy(obj):
 	if (obj != null):
 		look_at(obj.global_position+Vector3(0,2,0))
 		obj.stun(global_transform.origin)
+		effects_particles.emitting = true
 		beam_on_cd = true
 		effects.visible = true
 		light.light_energy = 10

@@ -1,11 +1,12 @@
 [gd_resource type="ParticleProcessMaterial" format=3 uid="uid://cgryq8t0j868p"]
 
 [resource]
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 2.0
 gravity = Vector3(0, 0, 0)
+angle_min = -360.0
 angle_max = 360.0
-scale_max = 5.0
+scale_max = 2.0
 color = Color(0.545098, 0.745098, 1, 1)
 turbulence_noise_strength = 20.0
 turbulence_noise_speed_random = 4.19

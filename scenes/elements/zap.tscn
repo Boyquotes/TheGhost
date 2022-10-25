@@ -64,8 +64,21 @@ shadow_enabled = true
 shadow_bias = 0.0
 omni_range = 8.0
 
+[node name="EffectsParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -6)
+material_override = ExtResource("7_n7g24")
+cast_shadow = 0
+emitting = false
+amount = 200
+lifetime = 0.01
+one_shot = true
+preprocess = 0.01
+explosiveness = 0.05
+interpolate = false
+process_material = ExtResource("8_jmsrh")
+draw_pass_1 = SubResource("QuadMesh_8a3ki")
+
 [node name="Effects" type="Node3D" parent="."]
-visible = false
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Effects"]
 transform = Transform3D(-2.87184e-08, 0, 0.657, 0, 0.651, 0, -0.657, 0, -2.87184e-08, 0, 0, -6.351)
@@ -79,18 +92,5 @@ transform = Transform3D(1.25532e-15, 2.84561e-08, 0.657, 0.657, -2.84561e-08, 2.
 radius = 0.2
 height = 10.0
 material = SubResource("ShaderMaterial_nrsuc")
-
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="Effects"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -6)
-material_override = ExtResource("7_n7g24")
-cast_shadow = 0
-amount = 30
-lifetime = 0.3
-speed_scale = 57.0
-explosiveness = 1.0
-randomness = 1.0
-visibility_aabb = AABB(-0.879935, -2.32747, -3.20189, 1.75987, 4.65494, 6.40378)
-process_material = ExtResource("8_jmsrh")
-draw_pass_1 = SubResource("QuadMesh_8a3ki")
 
 [connection signal="enemy" from="LightHit" to="." method="_on_light_hit_enemy"]

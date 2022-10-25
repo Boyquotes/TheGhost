@@ -22,12 +22,12 @@ height = 3.2
 [node name="Player" type="Node3D"]
 
 [node name="CameraNode" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 18, 10)
 script = ExtResource("1_61f35")
 offset_value = 20.0
 
 [node name="Camera3d" type="Camera3D" parent="CameraNode"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
 environment = ExtResource("2_7hus6")
 attributes = SubResource("CameraAttributesPractical_8uttm")
 projection = 1

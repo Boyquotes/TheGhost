@@ -17,7 +17,6 @@ func _refresh(delta):
 	parent._apply_movement(delta)
 
 func _update_state(delta):
-	parent._handle_move_input()
 	match state:
 		STATES.idle:
 			if parent.speed != 0 :

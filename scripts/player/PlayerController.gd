@@ -5,6 +5,9 @@ extends CharacterBody3D
 var speed : float = SPEED 
 var motion : Vector3 = Vector3()
 
+const COS45 = 0.52532198881
+const sin45 = 0.85090352453
+
 @onready var mesh = $PlayerBody/Mesh
 
 signal motion_direction (direction : Vector3)
@@ -19,8 +22,8 @@ func _handle_move_input():
 	motion = motion.normalized()
 	
 	if Input.is_action_pressed("ui_right") || Input.is_action_pressed("ui_left") || Input.is_action_pressed("ui_down") || Input.is_action_pressed("ui_up"):
-		motion.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-		motion.z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		motion.x = Input.get_action_strength("ui_right") * COS45 - Input.get_action_strength("ui_up") * COS45 - Input.get_action_strength("ui_left") * COS45 + Input.get_action_strength("ui_down") * COS45
+		motion.z = Input.get_action_strength("ui_down") * COS45 + Input.get_action_strength("ui_left") * COS45 - Input.get_action_strength("ui_right") * COS45 - Input.get_action_strength("ui_up") * COS45 
 		speed = motion.normalized().length() * SPEED
 		
 	motion = motion.normalized() * speed

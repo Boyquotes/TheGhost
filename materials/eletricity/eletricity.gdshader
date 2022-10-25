@@ -7,6 +7,6 @@ void vertex() {
 }
 
 void fragment() {
-	EMISSION = vec3(5,10,100) * 1.0;
+	EMISSION = vec3(5,10,100) * 10.0;
 	ALPHA = 1.0;
 }
