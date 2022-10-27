@@ -69,7 +69,7 @@ size = Vector3(1000, 1000, 1)
 material = SubResource("StandardMaterial3D_8bwr3")
 
 [node name="Core" parent="NavigationRegion3D" instance=ExtResource("3_24p4y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.14513, 3.21147, 23.7374)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.14513, 3.21147, 23.7374)
 collision_layer = 3
 collision_mask = 3
 

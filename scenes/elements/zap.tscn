@@ -62,6 +62,7 @@ light_energy = 2.0
 light_volumetric_fog_energy = 10.0
 shadow_enabled = true
 shadow_bias = 0.0
+shadow_blur = 0.0
 omni_range = 8.0
 
 [node name="EffectsParticles" type="GPUParticles3D" parent="."]

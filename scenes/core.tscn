@@ -1,41 +1,67 @@
-[gd_scene load_steps=9 format=3 uid="uid://cltqeppjuffvx"]
+[gd_scene load_steps=15 format=3 uid="uid://cltqeppjuffvx"]
 
-[ext_resource type="Shader" path="res://materials/lava.gdshader" id="1_yymla"]
+[ext_resource type="Material" uid="uid://cv1elwyxjdi1f" path="res://materials/new_standard_material_3d.tres" id="1_fsp24"]
+[ext_resource type="PackedScene" uid="uid://bqw1ejx37pmdk" path="res://imports/furnance.gltf" id="3_lbbla"]
+[ext_resource type="Texture2D" uid="uid://e2alpnt33v0c" path="res://imports/Particles/smoke_04.png" id="3_u4xuv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_es8o5"]
 size = Vector3(4, 4, 4)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2bsw"]
-render_priority = 0
-shader = ExtResource("1_yymla")
+[sub_resource type="PlaneMesh" id="PlaneMesh_wf51l"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_2fcks"]
-material = SubResource("ShaderMaterial_y2bsw")
-radius = 1.0
-height = 2.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t577o"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wbh5m"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7cu00"]
 transparency = 1
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(1, 1, 1, 0.733333)
-metallic = 1.0
-metallic_specular = 0.0
-roughness = 0.0
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 0.458824, 0.270588, 1)
+emission_energy_multiplier = 16.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06xpg"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.803922, 0.160784, 0.466667, 1)
+[sub_resource type="FogMaterial" id="FogMaterial_jpfqo"]
+density = 0.5
+albedo = Color(0.443137, 0.443137, 0.443137, 1)
+emission = Color(0.29219, 0.29219, 0.29219, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_upos7"]
-material = SubResource("StandardMaterial3D_06xpg")
-size = Vector3(8, 2, 8)
+[sub_resource type="FogMaterial" id="FogMaterial_ieg7k"]
+density = 0.1176
+
+[sub_resource type="Environment" id="Environment_wpy7i"]
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyty8"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_u4xuv")
+emission_enabled = true
+emission = Color(0.196078, 0.196078, 0.196078, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_jfdwt"]
+offsets = PackedFloat32Array(0.391775, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dmlji"]
+gradient = SubResource("Gradient_jfdwt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x5qaq"]
+direction = Vector3(0, 1, 0)
+spread = 90.0
+gravity = Vector3(0, -3, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+linear_accel_max = 2.0
+damping_max = 2.0
+scale_min = 4.0
+scale_max = 8.0
+color_ramp = SubResource("GradientTexture1D_dmlji")
+
+[sub_resource type="QuadMesh" id="QuadMesh_amu13"]
 
 [node name="Core" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
@@ -44,54 +70,71 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("BoxShape3D_es8o5")
 
-[node name="Light" type="OmniLight3D" parent="."]
-light_color = Color(0.972549, 0.615686, 0.521569, 1)
-light_energy = 8.0
-light_volumetric_fog_energy = 5.0
-light_specular = 3.0
-shadow_enabled = true
-omni_range = 16.0
+[node name="Window" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1.4973, -3.1316, 1.30888, 0.00669384)
+mesh = SubResource("PlaneMesh_wf51l")
+surface_material_override/0 = ExtResource("1_fsp24")
 
-[node name="Fluid" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.781475, 0.330333, 0, -0.330333, -0.781475, 0, 0, 0, 0.848424, 0, 0.559633, 0)
-mesh = SubResource("SphereMesh_2fcks")
-
-[node name="Mesh" type="Node3D" parent="."]
-transform = Transform3D(3.657, 0, 0, 0, 3.657, 0, 0, 0, 3.657, 0, 0.559633, 0)
-
-[node name="CsgTorus3d" type="CSGTorus3D" parent="Mesh"]
-cast_shadow = 0
-inner_radius = 1.18
-outer_radius = 1.25
-sides = 30
-ring_sides = 10
-material = SubResource("StandardMaterial3D_t577o")
-
-[node name="CsgTorus3d2" type="CSGTorus3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-cast_shadow = 0
-inner_radius = 1.18
-outer_radius = 1.25
-sides = 30
-ring_sides = 10
-material = SubResource("StandardMaterial3D_t577o")
-
-[node name="CsgTorus3d3" type="CSGTorus3D" parent="Mesh"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
-cast_shadow = 0
-inner_radius = 1.18
-outer_radius = 1.25
-sides = 30
-ring_sides = 10
-material = SubResource("StandardMaterial3D_t577o")
-
-[node name="Glass" type="CSGSphere3D" parent="Mesh"]
-radius = 1.19
-radial_segments = 20
-rings = 20
-material = SubResource("StandardMaterial3D_wbh5m")
-
-[node name="Base" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(0.273448, 0, 0, 0, 0.273448, 0, 0, 0, 0.273448, 0, -0.978311, 0)
-mesh = SubResource("BoxMesh_upos7")
+[node name="Window2" type="MeshInstance3D" parent="Window"]
+transform = Transform3D(0.75, 0.433013, -0.748651, 0.433013, 0.25, 1.2967, 0.333934, -0.57839, -4.37114e-08, 1.55281, -2.68954, -2.1059)
+mesh = SubResource("PlaneMesh_wf51l")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_fsp24")
+
+[node name="Window3" type="MeshInstance3D" parent="Window"]
+transform = Transform3D(-0.75, 0.433013, -0.748651, -0.433013, 0.25, 1.2967, 0.333934, 0.57839, -4.37114e-08, 1.55412, -2.69181, 2.11242)
+mesh = SubResource("PlaneMesh_wf51l")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_fsp24")
+
+[node name="Window4" type="MeshInstance3D" parent="Window"]
+transform = Transform3D(-8.64872e-09, 0.568715, -0.191389, 1.498e-08, 0.328348, 0.331495, 0.264288, 0, -1.11746e-08, 5.30133, -0.554045, 0.0024962)
+mesh = SubResource("PlaneMesh_wf51l")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_7cu00")
+
+[node name="furnance" parent="." instance=ExtResource("3_lbbla")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, -4.04826, 0)
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22372, -1.98959, -0.199799)
+extents = Vector3(20, 2, 20)
+shape = 2
+material = SubResource("FogMaterial_jpfqo")
+
+[node name="FogVolume2" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.28259, 7.75334, 0.0132061)
+extents = Vector3(2, 2, 2)
+shape = 0
+material = SubResource("FogMaterial_ieg7k")
+
+[node name="SpotLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30678, 0)
+light_color = Color(1, 0.513726, 0.403922, 1)
+light_volumetric_fog_energy = 38.178
+light_specular = 16.0
+shadow_enabled = true
+omni_range = 20.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wpy7i")
+
+[node name="Smoke" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.998216, 0, 0, 0, 0.998216, 0, 0, 0, 0.998216, 6.22939, 7.57771, 0)
+material_override = SubResource("StandardMaterial3D_kyty8")
+amount = 20
+lifetime = 2.0
+speed_scale = 0.5
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_x5qaq")
+draw_pass_1 = SubResource("QuadMesh_amu13")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.26783, 6.39249, 0)
+light_color = Color(1, 0.513726, 0.403922, 1)
+light_energy = 0.455
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+light_specular = 16.0
+spot_angle = 126.3

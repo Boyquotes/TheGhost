@@ -29,7 +29,6 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 script = ExtResource("1_61f35")
 
 [node name="Camera3d" type="Camera3D" parent="CameraNode"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 environment = ExtResource("2_7hus6")
 attributes = SubResource("CameraAttributesPractical_8uttm")
 projection = 1
