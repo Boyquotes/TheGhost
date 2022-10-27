@@ -1,0 +1,177 @@
+[gd_scene load_steps=17 format=3 uid="uid://cltqeppjuffvx"]
+
+[ext_resource type="Material" uid="uid://cv1elwyxjdi1f" path="res://materials/new_standard_material_3d.tres" id="1_fsp24"]
+[ext_resource type="PackedScene" uid="uid://djo1f3hx4y1ol" path="res://imports/furnance.gltf" id="1_miidb"]
+[ext_resource type="PackedScene" uid="uid://tgb2br0dibq5" path="res://imports/furnance_door.glb" id="2_sdbwy"]
+[ext_resource type="Shader" path="res://materials/lavaf.gdshader" id="3_stjqu"]
+[ext_resource type="Texture2D" uid="uid://e2alpnt33v0c" path="res://imports/Particles/smoke_04.png" id="3_u4xuv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jfj8v"]
+render_priority = 0
+shader = ExtResource("3_stjqu")
+
+[sub_resource type="FogMaterial" id="FogMaterial_jpfqo"]
+density = 0.5
+albedo = Color(0.443137, 0.443137, 0.443137, 1)
+emission = Color(0.29219, 0.29219, 0.29219, 1)
+
+[sub_resource type="FogMaterial" id="FogMaterial_ieg7k"]
+albedo = Color(0, 0, 0, 1)
+
+[sub_resource type="Environment" id="Environment_wpy7i"]
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyty8"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_u4xuv")
+emission_enabled = true
+emission = Color(0.133333, 0.133333, 0.133333, 1)
+emission_energy_multiplier = 6.0
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_jfdwt"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dmlji"]
+gradient = SubResource("Gradient_jfdwt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x5qaq"]
+direction = Vector3(0, 1, 0)
+spread = 90.0
+gravity = Vector3(0, -3, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+linear_accel_min = 1.0
+linear_accel_max = 2.0
+damping_max = 2.0
+scale_min = 4.0
+scale_max = 8.0
+color = Color(0.239216, 0.239216, 0.239216, 1)
+color_ramp = SubResource("GradientTexture1D_dmlji")
+
+[sub_resource type="QuadMesh" id="QuadMesh_amu13"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wf51l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7cu00"]
+transparency = 1
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 0.458824, 0.270588, 1)
+emission_energy_multiplier = 16.0
+
+[node name="Core" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="furnance" parent="." instance=ExtResource("1_miidb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.95027, 0)
+
+[node name="Door1" type="Node3D" parent="furnance"]
+
+[node name="furnance_door" parent="furnance/Door1" instance=ExtResource("2_sdbwy")]
+transform = Transform3D(-1, -0.000715645, 0, 0.000715645, -1, 0, 0, 0, 1, 0.0182905, 1.47933, 2.93192)
+
+[node name="Door2" type="Node3D" parent="furnance"]
+
+[node name="furnance_door2" parent="furnance/Door2" instance=ExtResource("2_sdbwy")]
+transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, -4.37114e-08, -2.96493, 1.47933, 0.0487419)
+
+[node name="Door3" type="Node3D" parent="furnance"]
+
+[node name="furnance_door3" parent="furnance/Door3" instance=ExtResource("2_sdbwy")]
+transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, -4.37114e-08, 2.92384, 1.47933, 0.0487419)
+
+[node name="Door4" type="Node3D" parent="furnance"]
+
+[node name="furnance_door4" parent="furnance/Door4" instance=ExtResource("2_sdbwy")]
+transform = Transform3D(-1, -0.000715645, 0, 0.000715645, -1, 0, 0, 0, 1, 0.0182905, 1.47933, -2.89181)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="furnance"]
+transform = Transform3D(4.79687, 0, 0, 0, 2.27779, 0, 0, 0, 5.10066, 0, -0.357728, 0)
+material = SubResource("ShaderMaterial_jfj8v")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="FogVolume" type="FogVolume" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22372, -1.98959, -0.199799)
+extents = Vector3(20, 2, 20)
+shape = 2
+material = SubResource("FogMaterial_jpfqo")
+
+[node name="FogVolume2" type="FogVolume" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0460973, 4.93696, 4.56527)
+extents = Vector3(3, 3, 3)
+shape = 1
+material = SubResource("FogMaterial_ieg7k")
+
+[node name="SpotLight3D" type="OmniLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172429, 0)
+light_color = Color(1, 0.513726, 0.403922, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 3.97
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 10.0
+shadow_blur = 2.0
+omni_range = 30.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
+environment = SubResource("Environment_wpy7i")
+
+[node name="Smoke" type="GPUParticles3D" parent="Node3D"]
+transform = Transform3D(0.998216, 0, 0, 0, 0.998216, 0, 0, 0, 0.998216, -0.0320849, 4.32126, 4.71112)
+material_override = SubResource("StandardMaterial3D_kyty8")
+amount = 200
+lifetime = 2.0
+speed_scale = 0.5
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_x5qaq")
+draw_pass_1 = SubResource("QuadMesh_amu13")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0603607, 2.20577, 4.6754)
+light_color = Color(1, 0.513726, 0.403922, 1)
+light_energy = 37.666
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 0.0
+light_specular = 16.0
+spot_range = 2.482
+spot_angle = 24.54
+
+[node name="windows" type="Node3D" parent="."]
+
+[node name="Window2" type="MeshInstance3D" parent="windows"]
+transform = Transform3D(-5.96046e-08, 2.5332e-07, -1.4973, 0.866025, 0.5, -4.76837e-07, 0.499999, -0.866023, -6.54491e-08, -0.0259862, 0.00550222, -2.40171)
+mesh = SubResource("PlaneMesh_wf51l")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_fsp24")
+
+[node name="Window3" type="MeshInstance3D" parent="windows"]
+transform = Transform3D(0.5, 0.866024, 0, -0.866025, 0.499999, 0, 0, 0, 1.4973, 2.28719, 0.243972, 0.365556)
+mesh = SubResource("PlaneMesh_wf51l")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_fsp24")
+
+[node name="Window4" type="MeshInstance3D" parent="windows"]
+transform = Transform3D(-1.72974e-08, -8.9407e-08, -0.382777, -7.99361e-15, 0.656695, -1.49012e-07, 0.395718, 0, -1.67317e-08, -0.00111794, 3.21329, 0.0104314)
+mesh = SubResource("PlaneMesh_wf51l")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_7cu00")
+
+[node name="Window" type="MeshInstance3D" parent="windows"]
+transform = Transform3D(0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1.4973, -2.1627, 0.392128, 0.00669384)
+mesh = SubResource("PlaneMesh_wf51l")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_fsp24")
+
+[node name="ShaderGlobalsOverride" type="ShaderGlobalsOverride" parent="."]

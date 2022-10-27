@@ -25,7 +25,7 @@ height = 3.2
 [node name="Player" type="Node3D"]
 
 [node name="CameraNode" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 20)
 script = ExtResource("1_61f35")
 
 [node name="Camera3d" type="Camera3D" parent="CameraNode"]
