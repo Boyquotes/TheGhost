@@ -8,8 +8,9 @@ const STATES = {
 
 signal entered_state (state : String)
 
-@export var stun_time = 0.3
+@export var stun_time = 0.1
 @export var stun_force = 50.0
+@export var faster_time = 0.2
 
 var zap_pos = null
 var player_pos = null
@@ -45,9 +46,9 @@ func _update_state(delta):
 			else:
 				return STATES.idle
 		STATES.chasing:
-			if (player_pos != null): 
+			parent.rotate_towards_motion(delta)
+			if (player_pos != null):
 				parent.navAgent.set_target_location(player_pos)
-				parent.rotate_towards_motion(delta)
 				parent.move_to_target()
 			if player_pos == null:
 				return STATES.idle
@@ -57,6 +58,8 @@ func _enter_state(new_state,_old_state):
 	emit_signal("entered_state", STATES.find_key(new_state))
 	match new_state:
 		STATES.idle:
+			parent.navAgent.set_target_location(parent.global_transform.origin)
+		STATES.chasing:
 			parent.navAgent.set_target_location(parent.global_transform.origin)
 		STATES.hit:
 			parent.health -= 5

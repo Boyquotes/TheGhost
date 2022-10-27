@@ -15,6 +15,9 @@ margin = 0.02
 height = 3.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_55mml"]
+friction = 68.99
+rough = true
+absorbent = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ra0m0"]
 height = 3.2
@@ -22,7 +25,7 @@ height = 3.2
 [node name="Player" type="Node3D"]
 
 [node name="CameraNode" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10)
 script = ExtResource("1_61f35")
 
 [node name="Camera3d" type="Camera3D" parent="CameraNode"]
@@ -49,7 +52,7 @@ script = ExtResource("4_1eweg")
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-mass = 10.0
+mass = 0.01
 physics_material_override = SubResource("PhysicsMaterial_55mml")
 continuous_cd = true
 max_contacts_reported = 10
@@ -57,7 +60,6 @@ contact_monitor = true
 can_sleep = false
 freeze_mode = 1
 script = ExtResource("5_fti6i")
-force = 14
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="PlayerController/PlayerBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60741, 0)

@@ -32,6 +32,7 @@ var beam_on_cd : bool = false
 			get_parent().remove_child(self)
 
 func _ready():
+	effects.visible = false
 	light_reduce_ammount = light.omni_range/10.0
 	sparkle_reduce_ammount = fluid_sparkles.amount/10
 

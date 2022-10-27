@@ -2,7 +2,7 @@ extends RigidBody3D
 
 signal player_body_pos (pos : Vector3, delta : float)
 
-@export var force: int = 5
+@export var force : int = 50
 
 const DELTA : float = 0.01
 

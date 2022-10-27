@@ -1,10 +1,10 @@
 extends Node3D
 
-var CORRECTION_SPEED : float = 5.0
-@onready var OFFSET = Vector3(0, offset_value, offset_value)
-var targetPosition : Vector3 = Vector3.ZERO
-var axis_rot : float = 0
 @export var offset_value : float =  20.0
+@export var CORRECTION_SPEED : float = 5.0
+@onready var OFFSET = Vector3(0, offset_value, offset_value)
+
+var targetPosition : Vector3 = Vector3.ZERO
 var locked = false
 
 signal cam_rotation(rot : float)
@@ -32,12 +32,12 @@ func _on_player_body_player_body_pos(pos, delta):
 
 func _input(event):
 	if event.is_action("move_cam_left") || event.is_action("move_cam_right"):
-		if event.get_action_strength("move_cam_left") > 0.5:
+		if event.get_action_strength("move_cam_left") > 0.7:
 			rotate_camera(1)
 			locked = true
 		if Input.is_action_just_released("move_cam_left"):
 			locked = false
-		if event.get_action_strength("move_cam_right") > 0.5:
+		if event.get_action_strength("move_cam_right") > 0.7:
 			rotate_camera(-1)
 			locked = true
 		if Input.is_action_just_released("move_cam_right"):

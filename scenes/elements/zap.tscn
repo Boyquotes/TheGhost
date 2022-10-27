@@ -70,15 +70,15 @@ material_override = ExtResource("7_n7g24")
 cast_shadow = 0
 emitting = false
 amount = 200
-lifetime = 0.01
+lifetime = 0.1
 one_shot = true
 preprocess = 0.01
-explosiveness = 0.05
 interpolate = false
 process_material = ExtResource("8_jmsrh")
 draw_pass_1 = SubResource("QuadMesh_8a3ki")
 
 [node name="Effects" type="Node3D" parent="."]
+visible = false
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Effects"]
 transform = Transform3D(-2.87184e-08, 0, 0.657, 0, 0.651, 0, -0.657, 0, -2.87184e-08, 0, 0, -6.351)

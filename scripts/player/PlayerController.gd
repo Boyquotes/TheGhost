@@ -13,7 +13,6 @@ var mz = 0.0
 signal motion_direction (direction : Vector3)
 
 func _apply_movement(_delta):
-	_handle_move_input()
 	velocity = Vector3(motion.x, 0, motion.z)
 	move_and_slide()
 

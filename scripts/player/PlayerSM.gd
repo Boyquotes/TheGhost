@@ -12,16 +12,16 @@ func _ready():
 	set_physics_process(true)
 	call_deferred("set_state",STATES.idle)
 
-
-func _refresh(delta):
-	parent._apply_movement(delta)
-
 func _update_state(delta):
+	#print(STATES.find_key(state))
+	parent._apply_movement(delta)
 	match state:
 		STATES.idle:
+			parent._handle_move_input()
 			if parent.speed != 0 :
 				return STATES.walking
 		STATES.walking:
+			parent._handle_move_input()
 			parent._handle_move_rotation(delta)
 			if parent.speed == 0 :
 				return STATES.idle
