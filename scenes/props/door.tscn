@@ -14,14 +14,14 @@ func rigidBodyOnDoor(body):
 
 
 func rigidBodyOutDoor(body):
-	if isOpen :
+	if body.is_in_group(\"Moveable\") && isOpen :
 		await get_tree().create_timer(2).timeout
-		await animator.play(\"close\")
+		animator.play(\"close\")
 		isOpen=false
 
 func open():
 	if !isOpen :
-		await animator.play(\"open\")
+		animator.play(\"open\")
 		isOpen= true
 "
 
