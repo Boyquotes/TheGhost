@@ -5,7 +5,7 @@ const STATES = {
 	'walking'= 2
 }
 
-signal entered_state (state : String)
+signal entered_state (state : String, starSec : float)
 
 func _ready():
 	add_states(STATES)
@@ -28,4 +28,4 @@ func _update_state(delta):
 
 
 func _enter_state(new_state,_old_state):
-	emit_signal("entered_state", STATES.find_key(new_state))
+	emit_signal("entered_state", STATES.find_key(new_state), 0.0)

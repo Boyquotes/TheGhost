@@ -3,12 +3,13 @@ extends "res://scripts/abstract/StateMachine.gd"
 const STATES = {
 	'chasing'= 1, 
 	'idle'= 2,
-	'hit' = 3
+	'hit' = 3,
+	'attack'= 4
 }
 
 @onready var raycast : RayCast3D
 
-signal entered_state (state : String)
+signal entered_state (state : String, startSec : float)
 
 @export var stun_time = 0.1
 @export var stun_force = 50.0
@@ -17,7 +18,17 @@ signal entered_state (state : String)
 var zap_pos = null
 var player_pos = null
 var on_burn = false
-var is_hit = false
+var nextAnimDelay = 0.0
+
+var attacking = false :
+	set(value):
+		if value == true:
+			attacking = true
+			set_state(STATES.attack)
+			await get_tree().create_timer(0.875).timeout
+			attacking = false
+		else:
+			attacking = false
 
 var stunned = false :
 	set(value):
@@ -56,14 +67,23 @@ func _update_state(delta):
 				parent.move_to_target()
 			if player_pos == null:
 				return STATES.idle
-
+		STATES.attack:
+			parent.rotate_towards_motion(delta)
+			if player_pos != null:
+				parent.navAgent.set_target_location(player_pos)
+				parent.move_to_target()
+			if attacking :
+				return
+			if player_pos != null :
+				set_state(STATES.chasing)
+			else:
+				return STATES.idle
 
 func _enter_state(new_state,_old_state):
-	emit_signal("entered_state", STATES.find_key(new_state))
+	emit_signal("entered_state", STATES.find_key(new_state), nextAnimDelay)
+	nextAnimDelay = 0.0
 	match new_state:
 		STATES.idle:
-			parent.navAgent.set_target_location(parent.global_transform.origin)
-		STATES.chasing:
 			parent.navAgent.set_target_location(parent.global_transform.origin)
 		STATES.hit:
 			parent.health -= 5
@@ -71,6 +91,8 @@ func _enter_state(new_state,_old_state):
 			var light_to_enemy_vector : Vector3 = enemy_location - zap_pos
 			var le_size_sqrd = light_to_enemy_vector.length_squared()
 			parent.move(stun_time/3, stun_force * light_to_enemy_vector/le_size_sqrd)
+		STATES.attack:
+			nextAnimDelay = 0.875
 
 func _on_fov_player_location(target):
 	if raycast == null:
@@ -84,3 +106,10 @@ func _on_fov_player_location(target):
 				player_pos = null
 	elif parent.navAgent.is_target_reached():
 		player_pos = null
+
+
+func _on_range_body_entered(body):
+	if stunned :
+		return
+	if (body.is_in_group("Player")):
+		attacking = true
