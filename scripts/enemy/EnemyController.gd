@@ -45,3 +45,13 @@ func stun(zap_pos):
 func die():
 	if get_parent() :
 		get_parent().remove_child(self)
+
+
+func _on_range_body_entered(body : RigidBody3D):
+	if sm.stunned :
+		return
+	if (body.is_in_group("Player") && !sm.attacking):
+		sm.attacking = true
+		await get_tree().create_timer(0.5).timeout
+		body.apply_central_impulse((body.global_position - global_position).normalized() * 0.05) 
+		body.get_parent().hit()

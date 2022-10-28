@@ -115,6 +115,8 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_288ug")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Furnance"]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Furnance/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_nmq8c")

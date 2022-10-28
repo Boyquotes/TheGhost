@@ -8,7 +8,7 @@ var motion : Vector3 = Vector3()
 var mx = 1.0
 var mz = 0.0
 
-@onready var mesh = $PlayerBody/Mesh
+@onready var mesh = $RigidBody3D/Mesh
 
 signal motion_direction (direction : Vector3)
 
@@ -33,3 +33,6 @@ func _handle_move_rotation(delta):
 func _on_camera_node_cam_rotation(rot):
 	mx = sin(rot)
 	mz = cos(rot)
+
+func hit():
+	mesh.hit()

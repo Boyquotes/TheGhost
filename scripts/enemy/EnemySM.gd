@@ -106,10 +106,3 @@ func _on_fov_player_location(target):
 				player_pos = null
 	elif parent.navAgent.is_target_reached():
 		player_pos = null
-
-
-func _on_range_body_entered(body):
-	if stunned :
-		return
-	if (body.is_in_group("Player")):
-		attacking = true
