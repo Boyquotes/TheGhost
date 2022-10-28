@@ -21,7 +21,7 @@ var beam_on_cd : bool = false
 @export var health : int = 10 : 
 	set(value):
 		health = value
-		if (health <= 0):
+		if (health <= 0 && get_parent() != null):
 			get_parent().remove_child(self)
 
 func _ready():

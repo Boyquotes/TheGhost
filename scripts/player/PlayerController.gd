@@ -19,14 +19,13 @@ func _apply_movement(_delta):
 func _handle_move_input():
 	speed = 0
 	motion = motion.normalized()
-	#TODO make static materials in front of player transparent
+
 	if Input.is_action_pressed("move_right") || Input.is_action_pressed("move_left") || Input.is_action_pressed("move_down") || Input.is_action_pressed("move_up"):
 		motion.x = Input.get_action_strength("move_down") * mx - Input.get_action_strength("move_up") * mx - Input.get_action_strength("move_left") * mz + Input.get_action_strength("move_right") * mz 
 		motion.z = Input.get_action_strength("move_down") * mz - Input.get_action_strength("move_up") * mz + Input.get_action_strength("move_left") * mx - + Input.get_action_strength("move_right") * mx
 		speed = motion.normalized().length() * SPEED
 		
 	motion = motion.normalized() * speed
-	emit_signal("motion_direction", motion)
 
 func _handle_move_rotation(delta):
 	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-motion.x, -motion.z), delta * ROTATION_SPEED)

@@ -59,6 +59,7 @@ contact_monitor = true
 can_sleep = false
 freeze_mode = 1
 script = ExtResource("5_fti6i")
+force = 2000
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="PlayerController/PlayerBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60741, 0)
@@ -68,6 +69,6 @@ shape = SubResource("CapsuleShape3D_ra0m0")
 script = ExtResource("7_48n3g")
 
 [connection signal="cam_rotation" from="CameraNode" to="PlayerController" method="_on_camera_node_cam_rotation"]
-[connection signal="motion_direction" from="PlayerController" to="PlayerController/PlayerBody" method="_on_controller_motion_direction"]
 [connection signal="entered_state" from="PlayerController/SM" to="PlayerController/PlayerBody/Mesh" method="_on_sm_entered_state"]
+[connection signal="body_entered" from="PlayerController/PlayerBody" to="PlayerController/PlayerBody" method="_on_body_entered"]
 [connection signal="player_body_pos" from="PlayerController/PlayerBody" to="CameraNode" method="_on_player_body_player_body_pos"]

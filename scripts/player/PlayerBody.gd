@@ -12,8 +12,9 @@ func _physics_process(delta):
 func remove_not_moveable(obj : Node3D):
 	return obj.is_in_group("Moveable")
 
-func _on_controller_motion_direction(direction):
+func _on_body_entered(body):
 	var moveable_objects = get_colliding_bodies().filter(remove_not_moveable)
 	if moveable_objects:
 		for object in moveable_objects:
-			object.apply_central_impulse(direction*DELTA*force)
+			var direction = body.global_position - global_position
+			object.apply_central_impulse(direction*DELTA*force) # Replace with function body.
