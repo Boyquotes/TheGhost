@@ -70,7 +70,7 @@ size = Vector3(1000, 1000, 1)
 material = SubResource("StandardMaterial3D_8bwr3")
 
 [node name="Core" parent="NavigationRegion3D" instance=ExtResource("3_24p4y")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.145, 3.654, 23.737)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.145, 3.67395, 23.737)
 
 [node name="Ramp" parent="NavigationRegion3D" instance=ExtResource("5_82eor")]
 transform = Transform3D(4.52918, 0, 0, 0, 4.52918, 0, 0, 0, 4.52918, -8.14513, 4.22128, 50.4523)
