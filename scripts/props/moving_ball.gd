@@ -5,4 +5,4 @@ func getFuel():
 	if fuel != null:
 		return fuel.getFuel()
 	else:
-		return 0
+		return [0, ""]

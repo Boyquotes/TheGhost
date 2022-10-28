@@ -69,4 +69,4 @@ func _on_light_hit_enemy(obj):
 func getFuel():
 	var fuel = health
 	health = 0
-	return fuel
+	return [fuel,"zap"]

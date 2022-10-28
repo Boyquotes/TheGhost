@@ -8,7 +8,9 @@ func rigidBodyOnConsumer(body : RigidBody3D):
 	body.freeze = true
 	body.global_position = global_position - Vector3(0,3.0,0)
 	var fuel = body.get_parent().getFuel()
-	if fuel > 0 :
+	if fuel == null:
+		return
+	if fuel[0] > 0 :
 		chimney.speed_scale = 2.0
 		chimneyLight.light_energy= 24.0
 		chimneyLight.light_volumetric_fog_energy = 8
