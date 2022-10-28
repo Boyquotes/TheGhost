@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxnwx5cvxmv65"]
+[gd_scene load_steps=6 format=3 uid="uid://bxnwx5cvxmv65"]
+
+[ext_resource type="Script" path="res://scripts/props/moving_ball.gd" id="1_ibsj7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_spr7y"]
 rough = true
@@ -22,8 +24,9 @@ metallic_specular = 1.0
 roughness = 0.0
 
 [node name="Moving_ball" type="Node3D"]
+script = ExtResource("1_ibsj7")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Moveable"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Fuel", "Moveable"]]
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_spr7y")
 

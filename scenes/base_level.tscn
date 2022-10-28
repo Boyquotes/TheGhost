@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://tjpq8mwoqt15"]
+[gd_scene load_steps=11 format=3 uid="uid://tjpq8mwoqt15"]
 
 [ext_resource type="PackedScene" uid="uid://buoxiewkj7l7v" path="res://scenes/enemy.tscn" id="1_j5pbd"]
 [ext_resource type="PackedScene" uid="uid://dmoaf6bm2qvxp" path="res://scenes/player.tscn" id="1_v4kr2"]
-[ext_resource type="PackedScene" uid="uid://cltqeppjuffvx" path="res://scenes/props/core.tscn" id="3_24p4y"]
+[ext_resource type="PackedScene" uid="uid://ba17uatmb7tib" path="res://scenes/props/core.tscn" id="3_24p4y"]
 [ext_resource type="PackedScene" uid="uid://bxnwx5cvxmv65" path="res://scenes/props/moving_ball.tscn" id="5_0nib7"]
 [ext_resource type="PackedScene" uid="uid://du6pve38pu7jx" path="res://scenes/ramp.tscn" id="5_82eor"]
-[ext_resource type="PackedScene" uid="uid://2lij0dqj26mc" path="res://scenes/elements/lava.tscn" id="6_o8tr5"]
 [ext_resource type="PackedScene" uid="uid://kty2tew4afmr" path="res://scenes/elements/zap.tscn" id="7_mhbyl"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_y6332"]
@@ -37,7 +36,6 @@ emission_energy_multiplier = 0.01
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.95947)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.14513, 0.788531, -23.7374)
 navmesh = SubResource("NavigationMesh_y6332")
 
 [node name="Box" type="CSGBox3D" parent="NavigationRegion3D"]
@@ -72,7 +70,7 @@ size = Vector3(1000, 1000, 1)
 material = SubResource("StandardMaterial3D_8bwr3")
 
 [node name="Core" parent="NavigationRegion3D" instance=ExtResource("3_24p4y")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.14513, 3.21147, 23.7374)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.145, 3.654, 23.737)
 
 [node name="Ramp" parent="NavigationRegion3D" instance=ExtResource("5_82eor")]
 transform = Transform3D(4.52918, 0, 0, 0, 4.52918, 0, 0, 0, 4.52918, -8.14513, 4.22128, 50.4523)
@@ -80,17 +78,17 @@ transform = Transform3D(4.52918, 0, 0, 0, 4.52918, 0, 0, 0, 4.52918, -8.14513, 4
 [node name="Player" parent="." instance=ExtResource("1_v4kr2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.69743, 3.0069, 0.994151)
 
-[node name="Moving_ball" parent="." instance=ExtResource("5_0nib7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1312, -36.3178)
-
-[node name="Lava" parent="Moving_ball" instance=ExtResource("6_o8tr5")]
-
-[node name="Moving_ball3" parent="." instance=ExtResource("5_0nib7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.93379, 3.1312, -25.9234)
-
-[node name="Lava" parent="Moving_ball3" instance=ExtResource("6_o8tr5")]
-
 [node name="Moving_ball2" parent="." instance=ExtResource("5_0nib7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.482159, 3.1312, -4.70586)
 
-[node name="Zap" parent="Moving_ball2" instance=ExtResource("7_mhbyl")]
+[node name="Fuel" parent="Moving_ball2" instance=ExtResource("7_mhbyl")]
+
+[node name="Moving_ball3" parent="." instance=ExtResource("5_0nib7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.482159, 3.1312, 14.6138)
+
+[node name="Fuel" parent="Moving_ball3" instance=ExtResource("7_mhbyl")]
+
+[node name="Moving_ball4" parent="." instance=ExtResource("5_0nib7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5832, 3.1312, 22.1887)
+
+[node name="Fuel" parent="Moving_ball4" instance=ExtResource("7_mhbyl")]

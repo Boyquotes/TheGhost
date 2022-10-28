@@ -1,12 +1,13 @@
 extends Node3D
 
-@onready var animator : AnimationPlayer = $AnimationPlayer
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+@onready var frontDoor = $Door3
 
-func _input(event):
-	if event.is_action("test1"):
-		animator.play("open1")
-	if event.is_action("test2"):
-		animator.play("close1")
+func rigidBodyOnConsumer(body : RigidBody3D):
+	body.freeze = true
+	body.global_position = global_position - Vector3(0,3.0,0)
+	print(body.get_parent().getFuel())
+	body.freeze = false
+	await get_tree().create_timer(1).timeout
+	await frontDoor.open()
+	await get_tree().create_timer(0.5).timeout
+	body.apply_central_impulse(Vector3(0,0,200))

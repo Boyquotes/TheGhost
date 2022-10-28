@@ -66,3 +66,8 @@ func _on_light_hit_enemy(obj):
 		health -=1
 		effects.visible = false
 		beam_on_cd = false
+
+func getFuel():
+	var fuel = health
+	health = 0
+	return fuel
