@@ -3,6 +3,9 @@ extends CharacterBody3D
 @onready var navAgent : NavigationAgent3D = $NavigationAgent3D
 @onready var sm : StateMachine = $SM
 @onready var randf_seed = randf_range(0.5,1.0)
+@onready var mesh : Node3D = $Mesh
+@export @onready var raycast : RayCast3D = $RayCast3D
+
 var speed = 3
 
 @export var health : int = 10 : 
@@ -11,10 +14,10 @@ var speed = 3
 		if (health == 0):
 			die()
 
-var s_velocity = null
+var stun_velocity = null
 
 func move_to_target():
-	if s_velocity == null:
+	if stun_velocity == null:
 		var current_location = global_transform.origin
 		var next_location = navAgent.get_next_location()
 		var new_velocity = (next_location - current_location).normalized() * speed
@@ -22,18 +25,18 @@ func move_to_target():
 		move_and_slide()
 	
 func move(move_duration, direction):
-	s_velocity = direction
+	stun_velocity = direction
 	await get_tree().create_timer(move_duration).timeout
-	s_velocity = null
+	stun_velocity = null
 	
 func _physics_process(delta):
-	if s_velocity != null:
-		rotation.y = lerp_angle(rotation.y, atan2(velocity.x, velocity.z), delta * 100 * randf_seed)
-		velocity = s_velocity
+	if stun_velocity != null:
+		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-velocity.x, -velocity.z), delta * 100 * randf_seed)
+		velocity = stun_velocity
 		move_and_slide()
 
 func rotate_towards_motion(delta):
-	rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta * 10 * randf_seed)
+	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(velocity.x, velocity.z), delta * 10 * randf_seed)
 
 func stun(zap_pos):
 	sm.zap_pos = zap_pos

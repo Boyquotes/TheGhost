@@ -65,19 +65,6 @@ shadow_bias = 0.0
 shadow_blur = 0.0
 omni_range = 8.0
 
-[node name="EffectsParticles" type="GPUParticles3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -6)
-material_override = ExtResource("7_n7g24")
-cast_shadow = 0
-emitting = false
-amount = 200
-lifetime = 0.1
-one_shot = true
-preprocess = 0.01
-interpolate = false
-process_material = ExtResource("8_jmsrh")
-draw_pass_1 = SubResource("QuadMesh_8a3ki")
-
 [node name="Effects" type="Node3D" parent="."]
 visible = false
 
@@ -93,5 +80,25 @@ transform = Transform3D(1.25532e-15, 2.84561e-08, 0.657, 0.657, -2.84561e-08, 2.
 radius = 0.2
 height = 10.0
 material = SubResource("ShaderMaterial_nrsuc")
+
+[node name="EffectsParticles" type="GPUParticles3D" parent="Effects"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -6)
+material_override = ExtResource("7_n7g24")
+cast_shadow = 0
+emitting = false
+amount = 200
+lifetime = 0.1
+one_shot = true
+preprocess = 0.01
+interpolate = false
+process_material = ExtResource("8_jmsrh")
+draw_pass_1 = SubResource("QuadMesh_8a3ki")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(10, 2, 0)
+collision_mask = 7
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
 
 [connection signal="enemy" from="LightHit" to="." method="_on_light_hit_enemy"]

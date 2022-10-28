@@ -8,6 +8,6 @@ func remove_not_player(obj : Node3D):
 func _physics_process(_delta):
 	var player = get_overlapping_bodies().filter(remove_not_player)
 	if(player):
-		emit_signal("player_location", player[0].global_transform.origin)
+		emit_signal("player_location", player[0].global_position)
 	else:
 		emit_signal("player_location", null)

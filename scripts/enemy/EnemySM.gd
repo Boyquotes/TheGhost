@@ -6,6 +6,8 @@ const STATES = {
 	'hit' = 3
 }
 
+@onready var raycast : RayCast3D
+
 signal entered_state (state : String)
 
 @export var stun_time = 0.1
@@ -31,6 +33,8 @@ func _ready():
 	add_states(STATES)
 	set_physics_process(true)
 	call_deferred("set_state", STATES.idle)
+	
+	raycast = parent.raycast
 
 func _update_state(delta):
 	#print(STATES.find_key(state))
@@ -69,4 +73,14 @@ func _enter_state(new_state,_old_state):
 			parent.move(stun_time/3, stun_force * light_to_enemy_vector/le_size_sqrd)
 
 func _on_fov_player_location(target):
-	player_pos = target
+	if raycast == null:
+		return
+	if target != null:
+		raycast.target_position = raycast.global_position - Vector3(0,10,0) - target 
+		if raycast.is_colliding() && raycast.get_collider().is_in_group("Player"):
+			player_pos = target
+		else:
+			if parent.navAgent.is_target_reached():
+				player_pos = null
+	elif parent.navAgent.is_target_reached():
+		player_pos = null

@@ -10,37 +10,38 @@
 radius = 1.0
 height = 5.7
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_beahm"]
-height = 13.0
-radius = 13.0
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2vhxp"]
 height = 5.7
 radius = 1.5
 
-[node name="Enemy" type="CharacterBody3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_beahm"]
+height = 13.0
+radius = 13.0
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("raycast")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 collision_layer = 2
 collision_mask = 2
 axis_lock_angular_y = true
 script = ExtResource("1_i31ap")
+raycast = NodePath("RayCast3D")
 health = 100
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.772, 0)
+target_position = Vector3(10, -1, 0)
+collision_mask = 7
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 agent_height_offset = 1.1
 avoidance_enabled = true
 radius = 2.0
 
-[node name="Body" type="CollisionShape3D" parent="."]
+[node name="Body" type="CollisionShape3D" parent="." groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79414, 0)
 shape = SubResource("CapsuleShape3D_464ay")
-
-[node name="FOV" type="Area3D" parent="."]
-script = ExtResource("3_oxosb")
-
-[node name="Range" type="CollisionShape3D" parent="FOV"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00052, 0)
-shape = SubResource("CylinderShape3D_beahm")
 
 [node name="Range" type="Area3D" parent="." groups=["Enemy"]]
 priority = 40.0
@@ -49,19 +50,21 @@ priority = 40.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79963, 0)
 shape = SubResource("CylinderShape3D_2vhxp")
 
-[node name="SM" type="Node" parent="."]
+[node name="SM" type="Node3D" parent="."]
 script = ExtResource("2_gkpqm")
 stun_time = 0.5
 
-[node name="Disabled" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.798, 0)
-visible = false
-shape = SubResource("CapsuleShape3D_464ay")
-disabled = true
-
 [node name="Mesh" parent="." instance=ExtResource("1_oxprh")]
-transform = Transform3D(1.501, 0, 0, 0, 1.501, 0, 0, 0, 1.501, 0, -0.0168354, 0)
+transform = Transform3D(1.501, 0, 0, 0, 1.501, 0, 0, 0, 1.501, 0, 0, 0)
 script = ExtResource("5_r3y6l")
 
-[connection signal="player_location" from="FOV" to="SM" method="_on_fov_player_location"]
+[node name="FOV" type="Area3D" parent="Mesh"]
+transform = Transform3D(0.666223, 0, 0, 0, 0.666223, 0, 0, 0, 0.666223, 0, 0, -5.07539)
+script = ExtResource("3_oxosb")
+
+[node name="Range" type="CollisionShape3D" parent="Mesh/FOV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00052, 0)
+shape = SubResource("CylinderShape3D_beahm")
+
 [connection signal="entered_state" from="SM" to="Mesh" method="_on_sm_entered_state"]
+[connection signal="player_location" from="Mesh/FOV" to="SM" method="_on_fov_player_location"]
