@@ -21,8 +21,8 @@ var beam_on_cd : bool = false
 @export var health : int = 10 : 
 	set(value):
 		health = value
-		if (health <= 0 && get_parent() != null):
-			get_parent().remove_child(self)
+		if (health <= 0):
+			queue_free()
 
 func _ready():
 	effects.visible = false
