@@ -187,6 +187,8 @@ mesh = SubResource("ArrayMesh_rxsnc")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="DoorMesh"]
+collision_layer = 13
+collision_mask = 13
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorMesh/StaticBody3D"]
 transform = Transform3D(1, 0.000716532, -0.000715645, 0.000716532, -0.00123871, 0.999999, 0.000715645, -0.999999, -0.00123922, 0, 0, 0)

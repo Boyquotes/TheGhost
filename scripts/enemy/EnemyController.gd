@@ -53,5 +53,19 @@ func _on_range_body_entered(body : RigidBody3D):
 	if (body.is_in_group("Player") && !sm.attacking):
 		sm.attacking = true
 		await get_tree().create_timer(0.5).timeout
-		body.apply_central_impulse((body.global_position - global_position).normalized() * 0.05) 
-		body.get_parent().hit()
+		body.apply_central_impulse((body.global_position - global_position).normalized() * 50) 
+		var player_controller = body.get_tree().get_root().get_node_or_null("PlayerController")
+		if (player_controller != null):
+			player_controller.hit()
+
+
+func _on_range_area_entered(area):
+	if sm.stunned :
+		return
+	if (area.is_in_group("Player") && !sm.attacking):
+		sm.attacking = true
+		await get_tree().create_timer(0.5).timeout
+		area.hit(global_position)
+		var player_controller = null
+		if (player_controller != null): 
+			player_controller.hit(global_position)

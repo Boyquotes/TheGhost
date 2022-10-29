@@ -1062,15 +1062,8 @@ collision_layer = 2
 collision_mask = 2
 axis_lock_angular_y = true
 script = ExtResource("1_i31ap")
-raycast = NodePath("RayCast3D")
+raycast = NodePath("Range/RayCast3D")
 health = 100
-
-[node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.772, 0)
-target_position = Vector3(10, -1, 0)
-collision_mask = 7
-debug_shape_custom_color = Color(1, 0, 0, 1)
-debug_shape_thickness = 5
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 agent_height_offset = 1.1
@@ -1082,11 +1075,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79414, 0)
 shape = SubResource("CapsuleShape3D_464ay")
 
 [node name="Range" type="Area3D" parent="." groups=["Enemy"]]
-priority = 40.0
+collision_layer = 3
+collision_mask = 3
 
 [node name="Range" type="CollisionShape3D" parent="Range"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79963, 0)
 shape = SubResource("CylinderShape3D_2vhxp")
+
+[node name="RayCast3D" type="RayCast3D" parent="Range"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.772, 0)
+target_position = Vector3(10, -1, 0)
+collision_mask = 5
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
 
 [node name="SM" type="Node3D" parent="."]
 script = ExtResource("2_gkpqm")
@@ -1278,6 +1280,7 @@ libraries = {
 "": SubResource("AnimationLibrary_1u4iy")
 }
 
+[connection signal="area_entered" from="Range" to="." method="_on_range_area_entered"]
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="entered_state" from="SM" to="Mesh" method="_on_sm_entered_state"]
 [connection signal="player_location" from="Mesh/FOV" to="SM" method="_on_fov_player_location"]

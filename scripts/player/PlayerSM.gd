@@ -2,8 +2,21 @@ extends "res://scripts/abstract/StateMachine.gd"
 
 const STATES = {
 	'idle'= 1, 
-	'walking'= 2
+	'walking'= 2,
+	'hit'= 3
 }
+
+@export var hit_time = 2.0
+
+var is_hit = false:
+	set(value):
+		if value == true:
+			is_hit = true
+			set_state(STATES.hit)
+			await get_tree().create_timer(hit_time).timeout
+			is_hit = false
+		else:
+			is_hit = false
 
 signal entered_state (state : String, starSec : float)
 
@@ -20,6 +33,15 @@ func _update_state(delta):
 			parent._handle_move_input()
 			if parent.speed != 0 :
 				return STATES.walking
+		STATES.hit:
+			parent._handle_move_input()
+			parent._handle_move_rotation(delta)
+			if is_hit == true:
+				return
+			if parent.speed != 0:
+				return STATES.walking
+			elif parent.speed == 0:
+				return STATES.idle
 		STATES.walking:
 			parent._handle_move_input()
 			parent._handle_move_rotation(delta)
@@ -28,4 +50,5 @@ func _update_state(delta):
 
 
 func _enter_state(new_state,_old_state):
+	#print(STATES.find_key(state))
 	emit_signal("entered_state", STATES.find_key(new_state), 0.0)

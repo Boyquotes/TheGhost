@@ -8,6 +8,8 @@ var motion : Vector3 = Vector3()
 var mx = 1.0
 var mz = 0.0
 
+@onready var sm = $SM
+@onready var mesh_decoy = $RigidBody3D/MeshDecoy
 @onready var mesh = $RigidBody3D/Mesh
 
 signal motion_direction (direction : Vector3)
@@ -28,11 +30,15 @@ func _handle_move_input():
 	motion = motion.normalized() * speed
 
 func _handle_move_rotation(delta):
+	if !sm.is_hit :
+		mesh_decoy.rotation.y = lerp_angle(mesh_decoy.rotation.y, atan2(-motion.x, -motion.z), delta * ROTATION_SPEED)
 	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-motion.x, -motion.z), delta * ROTATION_SPEED)
-
 func _on_camera_node_cam_rotation(rot):
 	mx = sin(rot)
 	mz = cos(rot)
 
-func hit():
-	mesh.hit()
+func hit(vector):
+	#motion = motion.normalized() * speed * 10
+	print("hit")
+	sm.is_hit = true
+	mesh_decoy.hit()

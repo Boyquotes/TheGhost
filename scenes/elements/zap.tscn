@@ -51,6 +51,8 @@ mesh = SubResource("SphereMesh_xvid3")
 skeleton = NodePath("../../RigidBody3D")
 
 [node name="LightHit" type="Area3D" parent="." groups=["Zap"]]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("5_g18xq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LightHit"]

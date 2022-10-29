@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://tjpq8mwoqt15"]
 
 [ext_resource type="PackedScene" uid="uid://buoxiewkj7l7v" path="res://scenes/enemy.tscn" id="1_j5pbd"]
-[ext_resource type="PackedScene" uid="uid://dmoaf6bm2qvxp" path="res://scenes/player.tscn" id="1_v4kr2"]
+[ext_resource type="PackedScene" uid="uid://daupsa8xbx47i" path="res://scenes/player.tscn" id="1_v4kr2"]
 [ext_resource type="PackedScene" uid="uid://ba17uatmb7tib" path="res://scenes/props/core.tscn" id="3_24p4y"]
 [ext_resource type="PackedScene" uid="uid://bxnwx5cvxmv65" path="res://scenes/props/moving_ball.tscn" id="5_0nib7"]
 [ext_resource type="PackedScene" uid="uid://du6pve38pu7jx" path="res://scenes/ramp.tscn" id="5_82eor"]
@@ -38,38 +38,38 @@ navmesh = SubResource("NavigationMesh_y6332")
 [node name="Box" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.16429, 0.674, 14.706)
 use_collision = true
-collision_layer = 7
-collision_mask = 7
+collision_layer = 15
+collision_mask = 15
 size = Vector3(2, 2, 2)
 material = SubResource("StandardMaterial3D_un21g")
 
 [node name="Wall" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(-3.40622e-07, 0, -2.1234, 0, 9.41547, 0, 7.79252, 0, -9.2817e-08, 4.81118, 2.92513, 20.543)
 use_collision = true
-collision_layer = 7
-collision_mask = 7
+collision_layer = 15
+collision_mask = 15
 material = SubResource("StandardMaterial3D_cutk1")
 
 [node name="Wall3" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(-7.35049, 0, -0.704996, 0, 9.41547, 0, 2.58722, 0, -2.00295, 4.81118, 2.92513, -8.30952)
 use_collision = true
-collision_layer = 7
-collision_mask = 7
+collision_layer = 15
+collision_mask = 15
 material = SubResource("StandardMaterial3D_cutk1")
 
 [node name="Wall2" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(-3.40622e-07, 0, -2.1234, 0, 9.41547, 0, 7.79252, 0, -9.2817e-08, 13.1483, 2.951, 20.5715)
 use_collision = true
-collision_layer = 7
-collision_mask = 7
+collision_layer = 15
+collision_mask = 15
 material = SubResource("StandardMaterial3D_cutk1")
 
 [node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.14513, -0.788531, 23.7374)
 cast_shadow = 0
 use_collision = true
-collision_layer = 7
-collision_mask = 7
+collision_layer = 15
+collision_mask = 15
 size = Vector3(1000, 1000, 1)
 material = SubResource("StandardMaterial3D_8bwr3")
 
@@ -78,6 +78,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.145
 
 [node name="Ramp" parent="NavigationRegion3D" instance=ExtResource("5_82eor")]
 transform = Transform3D(4.52918, 0, 0, 0, 4.52918, 0, 0, 0, 4.52918, -8.14513, 4.22128, 50.4523)
+layers = 15
 
 [node name="Enemy" parent="." instance=ExtResource("1_j5pbd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -3.66769)
