@@ -17,7 +17,7 @@ func check_heals():
 	if controller.health < 10 && heals > 0:
 		# do funcs popHeal() -> INT on heals areas
 		controller.health +=1
-		healingSphere.transparency = 0.8
+		healingSphere.transparency = 0.97
 		return
 		
 	healingSphere.transparency = 1.0

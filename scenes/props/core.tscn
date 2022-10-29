@@ -96,6 +96,7 @@ collision_use_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_amu13"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hkw1h"]
+size = Vector3(0.1, 0.1, 10.1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wf51l"]
 
