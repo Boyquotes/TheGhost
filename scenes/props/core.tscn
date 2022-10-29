@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://cv1elwyxjdi1f" path="res://materials/new_standard_material_3d.tres" id="1_fsp24"]
 [ext_resource type="Script" path="res://scripts/props/Furnance.gd" id="2_1ppdy"]
 [ext_resource type="Shader" path="res://materials/lavaf.gdshader" id="3_stjqu"]
-[ext_resource type="Texture2D" uid="uid://cv03jsysnkuyo" path="res://imports/Particles/smoke_04.png" id="3_u4xuv"]
+[ext_resource type="Texture2D" uid="uid://e2alpnt33v0c" path="res://imports/Particles/smoke_04.png" id="3_u4xuv"]
 [ext_resource type="PackedScene" uid="uid://b01nkjct22a5n" path="res://scenes/props/door.tscn" id="5_egmt6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jfj8v"]
@@ -143,8 +143,7 @@ light_indirect_energy = 16.0
 light_volumetric_fog_energy = 3.97
 shadow_enabled = true
 shadow_bias = 0.0
-shadow_normal_bias = 10.0
-shadow_blur = 2.0
+shadow_normal_bias = 0.0
 omni_range = 30.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Effects"]
