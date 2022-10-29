@@ -14,9 +14,19 @@ var is_hit = false:
 			is_hit = true
 			set_state(STATES.hit)
 			await get_tree().create_timer(hit_time).timeout
+			is_block = true
 			is_hit = false
 		else:
 			is_hit = false
+			
+var is_block = false:
+	set(value):
+		if value == true:
+			is_block = true
+			await get_tree().create_timer(0.1).timeout
+			is_block = false
+		else:
+			is_block = false
 
 signal entered_state (state : String, starSec : float)
 
@@ -48,5 +58,5 @@ func _update_state(delta):
 
 
 func _enter_state(new_state,_old_state):
-	#print(STATES.find_key(state))
+	print(STATES.find_key(state))
 	emit_signal("entered_state", STATES.find_key(new_state), 0.0)

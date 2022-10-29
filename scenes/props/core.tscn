@@ -71,7 +71,7 @@ particles_anim_loop = false
 [sub_resource type="Gradient" id="Gradient_jfdwt"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dmlji"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0ci80"]
 gradient = SubResource("Gradient_jfdwt")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x5qaq"]
@@ -86,7 +86,10 @@ damping_max = 2.0
 scale_min = 4.0
 scale_max = 8.0
 color = Color(0.239216, 0.239216, 0.239216, 1)
-color_ramp = SubResource("GradientTexture1D_dmlji")
+color_ramp = SubResource("GradientTexture1D_0ci80")
+turbulence_enabled = true
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 3.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_amu13"]
 

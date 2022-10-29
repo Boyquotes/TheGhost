@@ -81,7 +81,7 @@ func _update_state(delta):
 				return STATES.idle
 
 func _enter_state(new_state,_old_state):
-	print(STATES.find_key(new_state))
+	#print(STATES.find_key(new_state))
 	emit_signal("entered_state", STATES.find_key(new_state), nextAnimDelay)
 	nextAnimDelay = 0.0
 	match new_state:

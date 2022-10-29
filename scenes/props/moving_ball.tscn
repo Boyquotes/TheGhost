@@ -27,7 +27,7 @@ roughness = 0.0
 script = ExtResource("1_ibsj7")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Fuel", "Moveable"]]
-mass = 20.0
+mass = 153.6
 physics_material_override = SubResource("PhysicsMaterial_spr7y")
 
 [node name="Body" type="CollisionShape3D" parent="RigidBody3D"]

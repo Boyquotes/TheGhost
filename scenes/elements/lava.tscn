@@ -20,8 +20,8 @@ script = ExtResource("1_yqm4s")
 
 [node name="Light" type="OmniLight3D" parent="."]
 light_color = Color(0.972549, 0.615686, 0.521569, 1)
-light_energy = 5.0
-light_volumetric_fog_energy = 10.0
+light_energy = 3.0
+light_volumetric_fog_energy = 5.0
 shadow_enabled = true
 omni_range = 8.0
 

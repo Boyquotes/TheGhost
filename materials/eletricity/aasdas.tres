@@ -1,4 +1,10 @@
-[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://qf0e57umi4ga"]
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://qf0e57umi4ga"]
+
+[sub_resource type="Gradient" id="Gradient_oeonx"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1df52"]
+gradient = SubResource("Gradient_oeonx")
 
 [resource]
 emission_shape = 2
@@ -8,6 +14,7 @@ angle_min = -360.0
 angle_max = 360.0
 scale_max = 2.0
 color = Color(0.545098, 0.745098, 1, 1)
+color_ramp = SubResource("GradientTexture1D_1df52")
 turbulence_noise_strength = 20.0
 turbulence_noise_scale = 10.0
 attractor_interaction_enabled = false

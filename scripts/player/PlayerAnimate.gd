@@ -14,9 +14,6 @@ var is_hit = true :
 			is_hit = false
 		else:
 			is_hit = false
-
-func _physics_process(delta):
-	emit_signal("player_body_pos", body_pos.global_position, delta)
 	
 func _on_sm_entered_state(state, startSec):
 	if(animator.has_animation(state)):
