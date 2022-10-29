@@ -2,7 +2,9 @@ extends Area3D
 
 @onready var controller = get_tree().get_first_node_in_group("Controller")
 @onready var timer = $Timer
-@onready var healingSphere : CSGSphere3D = $CSGSphere3D
+@onready var animator : AnimationPlayer = $AnimationPlayer
+
+var healed = false
 
 func _ready():
 	timer.start()
@@ -17,10 +19,12 @@ func check_heals():
 	if controller.health < 10 && heals > 0:
 		# do funcs popHeal() -> INT on heals areas
 		controller.health +=1
-		healingSphere.transparency = 0.97
+		animator.play("Healing")
+		healed = true
 		return
-		
-	healingSphere.transparency = 1.0
+	if healed:
+		animator.play("StopHealing")
+		healed = false
 
 
 func _on_timer_timeout():
