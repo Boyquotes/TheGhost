@@ -98,7 +98,7 @@ func _on_fov_player_location(target):
 	if raycast == null:
 		return
 	if target != null:
-		raycast.target_position = raycast.global_position - Vector3(0,10,0) - target 
+		raycast.target_position = raycast.global_position - Vector3(0,11,0) - target 
 		if raycast.is_colliding() && raycast.get_collider().is_in_group("Player"):
 			player_pos = target
 		else:

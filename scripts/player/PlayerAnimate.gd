@@ -3,6 +3,17 @@ extends Node3D
 
 signal player_body_pos (pos : Vector3, delta : float)
 
+var is_hit = true :
+	set(value):
+		if value == true:
+			is_hit = true
+			$Armature/Skeleton3D.physical_bones_start_simulation()
+			await get_tree().create_timer(2).timeout
+			$Armature/Skeleton3D.physical_bones_stop_simulation()
+			is_hit = false
+		else:
+			is_hit = false
+
 func _physics_process(delta):
 	emit_signal("player_body_pos", global_position, delta)
 	
@@ -12,6 +23,4 @@ func _on_sm_entered_state(state, startSec):
 		animator.seek(startSec, true)
 
 func hit() -> void:
-	$Armature/Skeleton3D.physical_bones_start_simulation()
-	await get_tree().create_timer(2).timeout
-	$Armature/Skeleton3D.physical_bones_stop_simulation()
+	is_hit = true

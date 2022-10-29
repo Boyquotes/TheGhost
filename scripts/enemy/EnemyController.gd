@@ -47,13 +47,12 @@ func die():
 		get_parent().remove_child(self)
 
 
-func _on_range_body_entered(body : RigidBody3D):
+func _on_range_body_entered(body):
 	if sm.stunned :
 		return
 	if (body.is_in_group("Player") && !sm.attacking):
 		sm.attacking = true
 		await get_tree().create_timer(0.5).timeout
-		body.apply_central_impulse((body.global_position - global_position).normalized() * 50) 
 		var player_controller = body.get_tree().get_root().get_node_or_null("PlayerController")
 		if (player_controller != null):
 			player_controller.hit()

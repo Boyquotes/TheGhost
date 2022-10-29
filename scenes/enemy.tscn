@@ -1083,8 +1083,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79963, 0)
 shape = SubResource("CylinderShape3D_2vhxp")
 
 [node name="RayCast3D" type="RayCast3D" parent="Range"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.772, 0)
-target_position = Vector3(10, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+target_position = Vector3(10.125, -1, 0)
 collision_mask = 5
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 0, 1)
