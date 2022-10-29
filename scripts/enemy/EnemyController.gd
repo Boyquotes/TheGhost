@@ -48,5 +48,6 @@ func _on_range_area_entered(area):
 	if (area.is_in_group("Player") && !sm.attacking):
 		sm.attacking = true
 		await get_tree().create_timer(0.5).timeout
+		#TODO trocar esse if por uma hitbox kkkk
 		if (global_position-area.global_position).length() < 3:
 			area.hit(global_position)

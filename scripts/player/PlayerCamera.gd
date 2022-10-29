@@ -54,4 +54,4 @@ func _on_mesh_player_real_pos(pos, delta):
 		targetPosition, 
 		CORRECTION_SPEED*delta)
 	rotation.y = lerp_angle(rotation.y, rot, CORRECTION_SPEED*delta)
-	pass # Replace with function body.
+

@@ -81,7 +81,7 @@ func _update_state(delta):
 				return STATES.idle
 
 func _enter_state(new_state,_old_state):
-	#print(STATES.find_key(new_state))
+	print(STATES.find_key(new_state))
 	emit_signal("entered_state", STATES.find_key(new_state), nextAnimDelay)
 	nextAnimDelay = 0.0
 	match new_state:
@@ -101,7 +101,6 @@ func _enter_state(new_state,_old_state):
 			parent.speed = 3
 
 func _on_fov_player_location(target):
-	#testar a "memoria" do inimigo com o teste da janela
 	if raycast == null:
 		return
 	if target != null:

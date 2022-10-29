@@ -58,5 +58,5 @@ func _update_state(delta):
 
 
 func _enter_state(new_state,_old_state):
-	print(STATES.find_key(state))
+	#print(STATES.find_key(state))
 	emit_signal("entered_state", STATES.find_key(new_state), 0.0)
