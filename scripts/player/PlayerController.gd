@@ -6,6 +6,8 @@ var speed : float = SPEED
 var motion : Vector3 = Vector3()
 var health = 10 :
 	set(value):
+		if (value < 0):
+			value = 0
 		health = value
 		sm.health = value
 

@@ -69,7 +69,8 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Gradient" id="Gradient_jfdwt"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.163636, 0.890909, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_l5faa"]
 gradient = SubResource("Gradient_jfdwt")
@@ -87,9 +88,10 @@ scale_min = 4.0
 scale_max = 8.0
 color = Color(0.239216, 0.239216, 0.239216, 1)
 color_ramp = SubResource("GradientTexture1D_l5faa")
-turbulence_enabled = true
 turbulence_noise_strength = 0.5
 turbulence_noise_scale = 3.0
+collision_mode = 2
+collision_use_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_amu13"]
 
@@ -155,20 +157,22 @@ omni_range = 30.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Effects"]
 environment = SubResource("Environment_wpy7i")
 
-[node name="Smoke" type="GPUParticles3D" parent="Effects" groups=["Heal"]]
-transform = Transform3D(0.998216, 0, 0, 0, 0.998216, 0, 0, 0, 0.998216, -0.0320849, 4.32126, 4.71112)
+[node name="Smoke" type="GPUParticles3D" parent="Effects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320849, 4.32126, 4.71112)
+layers = 8
 material_override = SubResource("StandardMaterial3D_kyty8")
-amount = 50
+amount = 100
 lifetime = 2.0
 speed_scale = 0.5
 randomness = 1.0
 fixed_fps = 60
+visibility_aabb = AABB(-53.8734, -16.0251, -63.4635, 107.747, 32.0501, 126.927)
 process_material = SubResource("ParticleProcessMaterial_x5qaq")
 draw_pass_1 = SubResource("QuadMesh_amu13")
 
 [node name="Area3D" type="Area3D" parent="Effects/Smoke" groups=["Heal"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Effects/Smoke/Area3D" groups=["Heal"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Effects/Smoke/Area3D"]
 shape = SubResource("BoxShape3D_hkw1h")
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Effects"]
