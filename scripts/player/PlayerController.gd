@@ -39,6 +39,6 @@ func _on_camera_node_cam_rotation(rot):
 
 func hit(vector):
 	#motion = motion.normalized() * speed * 10
-	print("hit")
+	#print("hit")
 	sm.is_hit = true
 	mesh_decoy.hit()

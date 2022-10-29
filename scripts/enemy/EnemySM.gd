@@ -17,6 +17,7 @@ signal entered_state (state : String, startSec : float)
 
 var zap_pos = null
 var player_pos = null
+			
 var on_burn = false
 var nextAnimDelay = 0.0
 
@@ -49,9 +50,10 @@ func _ready():
 
 func _update_state(delta):
 	#print(STATES.find_key(state))
+	var parent_velocity = parent.velocity.length()
 	match state:
 		STATES.idle:
-			if  player_pos != null:
+			if player_pos != null:
 				return STATES.chasing
 		STATES.hit:
 			if stunned == true:
@@ -62,29 +64,30 @@ func _update_state(delta):
 				return STATES.idle
 		STATES.chasing:
 			parent.rotate_towards_motion(delta)
-			if (player_pos != null):
+			if player_pos != null:
 				parent.navAgent.set_target_location(player_pos)
 				parent.move_to_target()
 			if player_pos == null:
 				return STATES.idle
 		STATES.attack:
-			parent.rotate_towards_motion(delta)
 			if player_pos != null:
 				parent.navAgent.set_target_location(player_pos)
 				parent.move_to_target()
 			if attacking :
 				return
-			if player_pos != null :
+			if player_pos != null:
 				set_state(STATES.chasing)
 			else:
 				return STATES.idle
 
 func _enter_state(new_state,_old_state):
+	print(STATES.find_key(new_state))
 	emit_signal("entered_state", STATES.find_key(new_state), nextAnimDelay)
 	nextAnimDelay = 0.0
 	match new_state:
 		STATES.idle:
 			parent.navAgent.set_target_location(parent.global_transform.origin)
+			parent.speed = 0
 		STATES.hit:
 			parent.health -= 5
 			var enemy_location = parent.global_transform.origin
@@ -92,13 +95,17 @@ func _enter_state(new_state,_old_state):
 			var le_size_sqrd = light_to_enemy_vector.length_squared()
 			parent.move(stun_time/3, stun_force * light_to_enemy_vector/le_size_sqrd)
 		STATES.attack:
+			parent.speed = 2
 			nextAnimDelay = 0.875
+		STATES.chasing:
+			parent.speed = 3
 
 func _on_fov_player_location(target):
+	#testar a "memoria" do inimigo com o teste da janela
 	if raycast == null:
 		return
 	if target != null:
-		raycast.target_position = raycast.global_position - Vector3(0,11,0) - target 
+		raycast.target_position = target - raycast.global_position  
 		if raycast.is_colliding() && raycast.get_collider().is_in_group("Player"):
 			player_pos = target
 		else:

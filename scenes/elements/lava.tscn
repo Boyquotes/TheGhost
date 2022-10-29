@@ -30,6 +30,8 @@ mesh = SubResource("SphereMesh_xvid3")
 skeleton = NodePath("../..")
 
 [node name="LightHit" type="Area3D" parent="." groups=["Burn"]]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LightHit"]
 shape = SubResource("SphereShape3D_tbdia")

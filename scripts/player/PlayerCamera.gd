@@ -47,11 +47,11 @@ func rotate_camera(dir):
 	if !locked :
 		rot+=int(dir / TAU * 8) / 8.0 * TAU
 
-
-func _on_mesh_player_body_pos(pos, delta):
+func _on_mesh_player_real_pos(pos, delta):
 	targetPosition = pos + OFFSET
 	global_position = lerp(
 		global_position, 
 		targetPosition, 
 		CORRECTION_SPEED*delta)
 	rotation.y = lerp_angle(rotation.y, rot, CORRECTION_SPEED*delta)
+	pass # Replace with function body.

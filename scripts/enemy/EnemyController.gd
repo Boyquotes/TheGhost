@@ -12,7 +12,7 @@ var speed = 3
 	set(value):
 		health = value
 		if (health == 0):
-			die()
+			queue_free()
 
 var stun_velocity = null
 
@@ -41,22 +41,6 @@ func rotate_towards_motion(delta):
 func stun(zap_pos):
 	sm.zap_pos = zap_pos
 	sm.stunned = true
-	
-func die():
-	if get_parent() :
-		get_parent().remove_child(self)
-
-
-func _on_range_body_entered(body):
-	if sm.stunned :
-		return
-	if (body.is_in_group("Player") && !sm.attacking):
-		sm.attacking = true
-		await get_tree().create_timer(0.5).timeout
-		var player_controller = body.get_tree().get_root().get_node_or_null("PlayerController")
-		if (player_controller != null):
-			player_controller.hit()
-
 
 func _on_range_area_entered(area):
 	if sm.stunned :
@@ -64,7 +48,5 @@ func _on_range_area_entered(area):
 	if (area.is_in_group("Player") && !sm.attacking):
 		sm.attacking = true
 		await get_tree().create_timer(0.5).timeout
-		area.hit(global_position)
-		var player_controller = null
-		if (player_controller != null): 
-			player_controller.hit(global_position)
+		if (global_position-area.global_position).length() < 3:
+			area.hit(global_position)

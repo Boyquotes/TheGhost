@@ -36,8 +36,6 @@ func _update_state(delta):
 		STATES.hit:
 			parent._handle_move_input()
 			parent._handle_move_rotation(delta)
-			if is_hit == true:
-				return
 			if parent.speed != 0:
 				return STATES.walking
 			elif parent.speed == 0:

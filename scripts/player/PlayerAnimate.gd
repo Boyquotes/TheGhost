@@ -1,5 +1,6 @@
 extends Node3D
 @onready var animator : AnimationPlayer = get_node("AnimationPlayer")
+@onready var body_pos = $Armature/Skeleton3D/PhysicalBoneRoot
 
 signal player_body_pos (pos : Vector3, delta : float)
 
@@ -15,7 +16,7 @@ var is_hit = true :
 			is_hit = false
 
 func _physics_process(delta):
-	emit_signal("player_body_pos", global_position, delta)
+	emit_signal("player_body_pos", body_pos.global_position, delta)
 	
 func _on_sm_entered_state(state, startSec):
 	if(animator.has_animation(state)):
