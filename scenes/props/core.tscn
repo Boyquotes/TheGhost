@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ba17uatmb7tib"]
+[gd_scene load_steps=23 format=3 uid="uid://ba17uatmb7tib"]
 
 [ext_resource type="Material" uid="uid://cv1elwyxjdi1f" path="res://materials/new_standard_material_3d.tres" id="1_fsp24"]
 [ext_resource type="Script" path="res://scripts/props/Furnance.gd" id="2_1ppdy"]
@@ -71,7 +71,7 @@ particles_anim_loop = false
 [sub_resource type="Gradient" id="Gradient_jfdwt"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_0ci80"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l5faa"]
 gradient = SubResource("Gradient_jfdwt")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x5qaq"]
@@ -86,12 +86,14 @@ damping_max = 2.0
 scale_min = 4.0
 scale_max = 8.0
 color = Color(0.239216, 0.239216, 0.239216, 1)
-color_ramp = SubResource("GradientTexture1D_0ci80")
+color_ramp = SubResource("GradientTexture1D_l5faa")
 turbulence_enabled = true
 turbulence_noise_strength = 0.5
 turbulence_noise_scale = 3.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_amu13"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hkw1h"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wf51l"]
 
@@ -153,7 +155,7 @@ omni_range = 30.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Effects"]
 environment = SubResource("Environment_wpy7i")
 
-[node name="Smoke" type="GPUParticles3D" parent="Effects"]
+[node name="Smoke" type="GPUParticles3D" parent="Effects" groups=["Heal"]]
 transform = Transform3D(0.998216, 0, 0, 0, 0.998216, 0, 0, 0, 0.998216, -0.0320849, 4.32126, 4.71112)
 material_override = SubResource("StandardMaterial3D_kyty8")
 amount = 50
@@ -163,6 +165,11 @@ randomness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_x5qaq")
 draw_pass_1 = SubResource("QuadMesh_amu13")
+
+[node name="Area3D" type="Area3D" parent="Effects/Smoke" groups=["Heal"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Effects/Smoke/Area3D" groups=["Heal"]]
+shape = SubResource("BoxShape3D_hkw1h")
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0603607, 2.20577, 4.6754)

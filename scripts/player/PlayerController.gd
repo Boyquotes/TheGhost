@@ -4,6 +4,10 @@ extends CharacterBody3D
 @export var ROTATION_SPEED : int = 10
 var speed : float = SPEED 
 var motion : Vector3 = Vector3()
+var health = 10 :
+	set(value):
+		health = value
+		sm.health = value
 
 var mx = 1.0
 var mz = 0.0

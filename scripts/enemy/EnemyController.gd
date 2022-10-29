@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var sm : StateMachine = $SM
 @onready var randf_seed = randf_range(0.5,1.0)
 @onready var mesh : Node3D = $Mesh
+@onready var atk_hitbox : Area3D = $Mesh/AtkHitbox
 @export @onready var raycast : RayCast3D = $RayCast3D
 
 var speed = 3
@@ -41,13 +42,17 @@ func rotate_towards_motion(delta):
 func stun(zap_pos):
 	sm.zap_pos = zap_pos
 	sm.stunned = true
+	
+func remove_not_player(obj):
+	return obj.is_in_group("Player")
 
-func _on_range_area_entered(area):
+func _on_atk_hitbox_area_entered(area):
 	if sm.stunned :
 		return
 	if (area.is_in_group("Player") && !sm.attacking):
 		sm.attacking = true
 		await get_tree().create_timer(0.5).timeout
 		#TODO trocar esse if por uma hitbox kkkk
-		if (global_position-area.global_position).length() < 3:
+		var hitboxes_hits = atk_hitbox.get_overlapping_areas().filter(remove_not_player)
+		if hitboxes_hits:
 			area.hit(global_position)

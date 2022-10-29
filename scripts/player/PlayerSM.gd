@@ -6,7 +6,18 @@ const STATES = {
 	'hit'= 3
 }
 
+@onready var attractor = get_tree().get_first_node_in_group("Attractor")
+
 @export var hit_time = 2.0
+
+var health = 10 :
+	set(value):
+		print(value)
+		health = value
+		if health < 10 :
+			attractor.visible = true
+		if health == 10 :
+			attractor.visible = false
 
 var is_hit = false:
 	set(value):
@@ -59,4 +70,7 @@ func _update_state(delta):
 
 func _enter_state(new_state,_old_state):
 	#print(STATES.find_key(state))
+	match new_state:
+		STATES.hit:
+			health -= 3
 	emit_signal("entered_state", STATES.find_key(new_state), 0.0)
