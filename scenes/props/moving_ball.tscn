@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/props/moving_ball.gd" id="1_ibsj7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_spr7y"]
+friction = 5.99
 rough = true
 absorbent = true
 

@@ -23,7 +23,10 @@ func check_heals():
 		healed = true
 		return
 	if healed:
-		animator.play("StopHealing")
+		if controller.health > 9:
+			animator.play("FullyHealed")
+		else:
+			animator.play("StopHealing")
 		healed = false
 
 

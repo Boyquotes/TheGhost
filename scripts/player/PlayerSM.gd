@@ -3,12 +3,26 @@ extends "res://scripts/abstract/StateMachine.gd"
 const STATES = {
 	'idle'= 1, 
 	'walking'= 2,
-	'hit'= 3
+	'hit'= 3,
+	'push'= 4
 }
 
 @onready var attractor = get_tree().get_first_node_in_group("Attractor")
 
 @export var hit_time = 2.0
+
+var is_pushing = false:
+	set(value):
+		is_pushing = value
+		if value == true:
+			parent.rotate_now()
+			set_state(STATES.push)
+			await get_tree().create_timer(0.30).timeout
+			parent.push()
+			await get_tree().create_timer(0.37).timeout
+			set_state(STATES.idle)
+			is_pushing=false
+			parent.is_pushing=false
 
 var health = 10 :
 	set(value):
@@ -48,7 +62,6 @@ func _ready():
 
 func _update_state(delta):
 	#print(STATES.find_key(state))
-	parent._apply_movement(delta)
 	match state:
 		STATES.idle:
 			parent._handle_move_input()
@@ -57,6 +70,7 @@ func _update_state(delta):
 		STATES.hit:
 			parent._handle_move_input()
 			parent._handle_move_rotation(delta)
+			parent._apply_movement(delta)
 			if parent.speed != 0:
 				return STATES.walking
 			elif parent.speed == 0:
@@ -64,6 +78,7 @@ func _update_state(delta):
 		STATES.walking:
 			parent._handle_move_input()
 			parent._handle_move_rotation(delta)
+			parent._apply_movement(delta)
 			if parent.speed == 0 :
 				return STATES.idle
 
@@ -72,5 +87,13 @@ func _enter_state(new_state,_old_state):
 	#print(STATES.find_key(state))
 	match new_state:
 		STATES.hit:
+			parent.SPEED = 5
 			health -= 3
+		STATES.idle:
+			parent.SPEED = 5
+		STATES.walking:
+			parent.SPEED = 5
+		STATES.push:
+			parent.SPEED = 0
+		
 	emit_signal("entered_state", STATES.find_key(new_state), 0.0)
