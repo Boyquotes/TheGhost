@@ -6,7 +6,7 @@ extends Node3D
 
 func rigidBodyOnConsumer(body : RigidBody3D):
 	body.freeze = true
-	body.global_position = global_position - Vector3(0,3.0,0)
+	body.global_position = global_position - Vector3(0,1.0,0)
 	var fuel = body.get_parent().getFuel()
 	if fuel == null:
 		return
@@ -21,5 +21,5 @@ func rigidBodyOnConsumer(body : RigidBody3D):
 	chimneyLight.light_volumetric_fog_energy = 4
 	body.freeze = false
 	frontDoor.open()
-	await get_tree().create_timer(0.5).timeout
-	body.apply_central_impulse(Vector3(0,0,200))
+	await get_tree().create_timer(0.7).timeout
+	body.apply_central_impulse(Vector3(0,0,5000))

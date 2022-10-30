@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/props/moving_ball.gd" id="1_ibsj7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_spr7y"]
-friction = 5.99
+friction = 17.77
 rough = true
 absorbent = true
 
@@ -30,6 +30,7 @@ script = ExtResource("1_ibsj7")
 [node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Fuel", "Moveable"]]
 mass = 153.6
 physics_material_override = SubResource("PhysicsMaterial_spr7y")
+linear_damp = 1.0
 
 [node name="Body" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("SphereShape3D_ka1fq")
