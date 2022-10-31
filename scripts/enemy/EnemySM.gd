@@ -13,27 +13,24 @@ signal entered_state (state : String, startSec : float)
 
 @export var stun_time = 0.5
 @export var stun_force = 50.0
-var zap_pos = null
+var stun_source_pos = null
+var speed = 5.0
 
 var attacking = false :
 	set(value):
+		attacking = value
 		if value == true:
-			attacking = true
 			set_state(STATES.attack)
 			await get_tree().create_timer(0.875).timeout
-			attacking = false
-		else:
 			attacking = false
 
 
 var stunned = false :
 	set(value):
+		stunned = value
 		if value == true:
-			stunned = true
 			set_state(STATES.hit)
 			await get_tree().create_timer(stun_time).timeout
-			stunned = false
-		else:
 			stunned = false
 
 
@@ -42,7 +39,6 @@ func _ready():
 	call_deferred("set_state", STATES.idle)
 
 func _update_state(delta):
-	var parent_velocity = parent.linear_velocity.length()
 	match state:
 		STATES.idle:
 			if parent.has_target:
@@ -74,10 +70,10 @@ func _enter_state(new_state, old_state):
 		STATES.hit:
 			parent.health -= 5
 			var enemy_location = parent.global_transform.origin
-			var light_to_enemy_vector : Vector3 = enemy_location - zap_pos
+			var light_to_enemy_vector : Vector3 = enemy_location - stun_source_pos
 			var le_size_sqrd = light_to_enemy_vector.length_squared()
 			parent.move(stun_time/2, stun_force * light_to_enemy_vector/le_size_sqrd)
 		STATES.chasing:
-			parent.speed = 5.0
+			parent.speed = speed
 		STATES.attack:
-			parent.speed = 1.0
+			parent.speed = speed/5.0

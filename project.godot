@@ -25,6 +25,10 @@ run/main_scene="res://scenes/base_level.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://scripts/globals/Globals.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -122,15 +126,5 @@ push={
 
 [rendering]
 
-lights_and_shadows/directional_shadow/soft_shadow_filter_quality=4
-lights_and_shadows/directional_shadow/soft_shadow_filter_quality.mobile=4
-lights_and_shadows/directional_shadow/16_bits=false
-lights_and_shadows/positional_shadow/soft_shadow_filter_quality=4
-lights_and_shadows/positional_shadow/soft_shadow_filter_quality.mobile=4
-global_illumination/voxel_gi/quality=1
+global_illumination/gi/use_half_resolution=true
 environment/glow/use_high_quality=true
-lights_and_shadows/positional_shadow/atlas_16_bits=false
-lights_and_shadows/positional_shadow/atlas_quadrant_0_subdiv=3
-lights_and_shadows/positional_shadow/atlas_quadrant_1_subdiv=3
-lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv=4
-lights_and_shadows/positional_shadow/atlas_quadrant_3_subdiv=5

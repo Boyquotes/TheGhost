@@ -4,13 +4,10 @@ extends RigidBody3D
 @onready var mesh : Node3D = $Mesh
 @onready var raycast : RayCast3D = $RayCast3D
 @onready var sm : Node3D = $EnemySM
+@onready var speed = sm.speed
 
-@onready var randf_seed = randf_range(0.5,1.0)
-
-var speed = 5.0
-
+var randf_seed = randf_range(0.9,1.1)
 var has_target = false
-
 var stun_velocity = null
 
 @export var health : int = 10 : 
@@ -19,13 +16,12 @@ var stun_velocity = null
 		if (health == 0):
 			queue_free()
 
+
 var chasing = false :
 	set(value):
+		chasing = value
 		if value == true:
-			chasing = true
 			await get_tree().create_timer(1.0).timeout
-			chasing = false
-		else:
 			chasing = false
 
 func _physics_process(delta):
@@ -56,8 +52,8 @@ func _on_enemy_fov_player(player):
 func _on_enemy_navigation_agent_3d_navigation_finished():
 	has_target = false
 
-func stun(zap_pos):
-	sm.zap_pos = zap_pos
+func stun(stun_source_pos):
+	sm.stun_source_pos = stun_source_pos
 	sm.stunned = true
 
 func move(move_duration, direction):

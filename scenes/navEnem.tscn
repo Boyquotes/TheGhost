@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://xe810j2tvb2l"]
+[gd_scene load_steps=18 format=3 uid="uid://c2vpkqe4hq06c"]
 
 [ext_resource type="Script" path="res://scripts/enemy/EnemyController.gd" id="1_od0kc"]
-[ext_resource type="Script" path="res://scripts/enemy/EnemyVision.gd" id="1_ycvkj"]
+[ext_resource type="Script" path="res://scripts/globals/InvisibleAreaFindPlayer.gd" id="1_ycvkj"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemySM.gd" id="2_ydgsm"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemyAtk.gd" id="4_hc1xp"]
 

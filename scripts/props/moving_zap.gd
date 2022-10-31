@@ -38,7 +38,6 @@ func _on_light_hit_enemy(obj):
 	if (obj != null):
 		var enemy_position = obj.transform.origin+Vector3(0,3,0)
 		raycast.target_position = (enemy_position - raycast.global_position)*2.0
-		print(raycast.get_collider())
 		if !raycast.is_colliding():
 			return
 		if !raycast.get_collider().is_in_group("Enemy"):

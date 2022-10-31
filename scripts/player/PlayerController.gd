@@ -86,7 +86,6 @@ func get_moveables(obj : RigidBody3D):
 func push():
 	var objsToPush = pushArea.get_overlapping_bodies().filter(get_moveables)
 	for obj in objsToPush:
-		print(obj)
 		if obj is RigidBody3D:
 			obj.apply_central_force(motion * 1000)
 	
