@@ -1,6 +1,6 @@
 extends Area3D
 
-signal player_location(target : Vector3)
+signal player(player)
 
 func remove_not_player(obj : Node3D):
 	return obj.is_in_group("Player")
@@ -8,6 +8,4 @@ func remove_not_player(obj : Node3D):
 func _physics_process(_delta):
 	var player = get_overlapping_areas().filter(remove_not_player)
 	if(player):
-		emit_signal("player_location", player[0].location())
-	else:
-		emit_signal("player_location", null)
+		emit_signal("player", player[0])

@@ -1,13 +1,17 @@
-extends CharacterBody3D
+extends RigidBody3D
 
-@onready var navAgent : NavigationAgent3D = $NavigationAgent3D
-@onready var sm : StateMachine = $SM
-@onready var randf_seed = randf_range(0.5,1.0)
+@onready var nav_agent : NavigationAgent3D = $EnemyNavigationAgent3D
 @onready var mesh : Node3D = $Mesh
-@onready var atk_hitbox : Area3D = $Mesh/AtkHitbox
-@export @onready var raycast : RayCast3D = $RayCast3D
+@onready var raycast : RayCast3D = $RayCast3D
+@onready var sm : Node3D = $EnemySM
 
-var speed = 3
+@onready var randf_seed = randf_range(0.5,1.0)
+
+var speed = 5.0
+
+var has_target = false
+
+var stun_velocity = null
 
 @export var health : int = 10 : 
 	set(value):
@@ -15,44 +19,48 @@ var speed = 3
 		if (health == 0):
 			queue_free()
 
-var stun_velocity = null
+var chasing = false :
+	set(value):
+		if value == true:
+			chasing = true
+			await get_tree().create_timer(1.0).timeout
+			chasing = false
+		else:
+			chasing = false
 
-func move_to_target():
-	if stun_velocity == null:
-		var current_location = global_transform.origin
-		var next_location = navAgent.get_next_location()
-		var new_velocity = (next_location - current_location).normalized() * speed
-		velocity = new_velocity
-		move_and_slide()
-	
-func move(move_duration, direction):
-	stun_velocity = direction
-	await get_tree().create_timer(move_duration).timeout
-	stun_velocity = null
-	
 func _physics_process(delta):
 	if stun_velocity != null:
-		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-velocity.x, -velocity.z), delta * 100 * randf_seed)
-		velocity = stun_velocity
-		move_and_slide()
+		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(linear_velocity.x, linear_velocity.z), delta * 100 * randf_seed)
+		linear_velocity = stun_velocity
+	
+	elif has_target:
+		var origin = global_transform.origin
+		var target = nav_agent.get_next_location()
+		var velocity = (target - origin).normalized()
+		linear_velocity = velocity * speed
+		rotate_towards_motion(delta)
 
 func rotate_towards_motion(delta):
-	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(velocity.x, velocity.z), delta * 10 * randf_seed)
+	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 10 * randf_seed)
+
+func _on_enemy_fov_player(player):
+	if chasing == true:
+		has_target = true
+		nav_agent.set_target_location(player.global_position)
+	else :
+		raycast.target_position = player.global_position - raycast.global_position
+		if raycast.is_colliding() && raycast.get_collider().is_in_group("Player"):
+			chasing = true
+			
+
+func _on_enemy_navigation_agent_3d_navigation_finished():
+	has_target = false
 
 func stun(zap_pos):
 	sm.zap_pos = zap_pos
 	sm.stunned = true
-	
-func remove_not_player(obj):
-	return obj.is_in_group("Player")
 
-func _on_atk_hitbox_area_entered(area):
-	if sm.stunned :
-		return
-	if (area.is_in_group("Player") && !sm.attacking):
-		sm.attacking = true
-		await get_tree().create_timer(0.5).timeout
-		#TODO trocar esse if por uma hitbox kkkk
-		var hitboxes_hits = atk_hitbox.get_overlapping_areas().filter(remove_not_player)
-		if hitboxes_hits:
-			area.hit(global_position)
+func move(move_duration, direction):
+	stun_velocity = direction
+	await get_tree().create_timer(move_duration).timeout
+	stun_velocity = null

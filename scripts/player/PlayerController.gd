@@ -70,6 +70,9 @@ func _on_camera_node_cam_rotation(rot):
 func hit(vector):
 	sm.is_hit = true
 	mesh_decoy.hit()
+	Engine.time_scale = 0.3
+	await get_tree().create_timer(0.2).timeout
+	Engine.time_scale = 1.0
 
 func get_location():
 	if sm.is_block == false:
@@ -81,10 +84,9 @@ func get_moveables(obj : RigidBody3D):
 	return obj.is_in_group("Moveable")
 	
 func push():
-	print("push")
 	var objsToPush = pushArea.get_overlapping_bodies().filter(get_moveables)
 	for obj in objsToPush:
 		print(obj)
 		if obj is RigidBody3D:
-			obj.apply_central_force(motion * 10000)
+			obj.apply_central_force(motion * 1000)
 	

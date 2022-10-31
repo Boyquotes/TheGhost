@@ -36,13 +36,15 @@ func _on_light_hit_enemy(obj):
 	if (health < 1 || beam_on_cd):
 		return
 	if (obj != null):
-		raycast.target_position = obj.global_position - raycast.global_position
+		var enemy_position = obj.transform.origin+Vector3(0,3,0)
+		raycast.target_position = (enemy_position - raycast.global_position)*2.0
+		print(raycast.get_collider())
 		if !raycast.is_colliding():
 			return
 		if !raycast.get_collider().is_in_group("Enemy"):
 			return
 		
-		effects.look_at(obj.global_position+Vector3(0,2,0))
+		effects.look_at(enemy_position)
 		obj.stun(global_transform.origin)
 		beam_on_cd = true
 		effects.visible = true
