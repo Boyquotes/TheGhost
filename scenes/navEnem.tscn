@@ -1276,6 +1276,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0.130924)
 shape = SubResource("CapsuleShape3D_oru1d")
 
 [node name="EnemyNavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 2.0
+target_desired_distance = 2.0
 agent_height_offset = 0.5
 max_speed = 30.0
 ignore_y = false
