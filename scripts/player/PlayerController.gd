@@ -1,6 +1,6 @@
-extends CharacterBody3D
+extends RigidBody3D
 
-@export var SPEED : int = 5
+@export var SPEED : float = 5.0
 @export var ROTATION_SPEED : int = 10
 
 var is_pushing = false :
@@ -12,7 +12,9 @@ var is_pushing = false :
 			sm.is_pushing = true
 		else:
 			is_pushing =false
+			
 
+var on_floor = true
 
 var speed : float = SPEED 
 var motion : Vector3 = Vector3()
@@ -27,16 +29,17 @@ var mx = 1.0
 var mz = 0.0
 
 @onready var sm = $SM
-@onready var mesh_decoy = $RigidBody3D/MeshDecoy
-@onready var mesh_decoy_location = $RigidBody3D/MeshDecoy/Armature/Skeleton3D/PhysicalBoneRoot/BodyLocation
-@onready var mesh = $RigidBody3D/Mesh
-@onready var pushArea : Area3D = $RigidBody3D/Mesh/Push
+@onready var mesh_decoy = $MeshDecoy
+@onready var mesh_decoy_location = $MeshDecoy/Armature/Skeleton3D/PhysicalBoneRoot/BodyLocation
+@onready var mesh = $Mesh
+@onready var pushArea : Area3D = $Mesh/Push
 
 signal motion_direction (direction : Vector3)
 
-func _apply_movement(_delta):
-	velocity = Vector3(motion.x, 0, motion.z)
-	move_and_slide()
+func _apply_movement():
+	print(on_floor)
+	if on_floor:
+		linear_velocity = (Vector3(motion.x, linear_velocity.y, motion.z))
 
 func _handle_move_input():
 	speed = 0
@@ -87,5 +90,8 @@ func push():
 	var objsToPush = pushArea.get_overlapping_bodies().filter(get_moveables)
 	for obj in objsToPush:
 		if obj is RigidBody3D:
-			obj.apply_central_force(motion * 1000)
-	
+			obj.apply_central_force(motion * 500)
+
+
+func _on_floor_detector(boolean):
+	on_floor = boolean

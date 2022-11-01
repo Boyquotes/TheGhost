@@ -31,9 +31,9 @@ transform = Transform3D(4.52918, 0, 0, 0, 4.52918, 0, 0, 0, 4.52918, 0, 4.60171,
 mesh = SubResource("ArrayMesh_jp5gh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 3
-collision_mask = 3
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["Floor"]]
+collision_layer = 15
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ietob")

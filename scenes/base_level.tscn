@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cumlguav5tn55" path="res://scenes/player.tscn" id="1_v4kr2"]
 [ext_resource type="PackedScene" uid="uid://ba17uatmb7tib" path="res://scenes/props/core.tscn" id="3_24p4y"]
-[ext_resource type="PackedScene" uid="uid://xe810j2tvb2l" path="res://scenes/navEnem.tscn" id="4_qh00a"]
+[ext_resource type="PackedScene" uid="uid://c2vpkqe4hq06c" path="res://scenes/navEnem.tscn" id="4_qh00a"]
 [ext_resource type="PackedScene" uid="uid://bxnwx5cvxmv65" path="res://scenes/props/moving_ball.tscn" id="5_0nib7"]
 [ext_resource type="PackedScene" uid="uid://du6pve38pu7jx" path="res://scenes/ramp.tscn" id="5_82eor"]
 [ext_resource type="PackedScene" uid="uid://2lij0dqj26mc" path="res://scenes/elements/lava.tscn" id="6_k8y47"]
@@ -65,12 +65,12 @@ collision_layer = 15
 collision_mask = 15
 material = SubResource("StandardMaterial3D_cutk1")
 
-[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D" groups=["Floor"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.14513, -0.788531, 23.7374)
 cast_shadow = 0
 use_collision = true
 collision_layer = 15
-collision_mask = 15
+collision_mask = 4
 size = Vector3(1000, 1000, 1)
 material = SubResource("StandardMaterial3D_8bwr3")
 
@@ -78,28 +78,29 @@ material = SubResource("StandardMaterial3D_8bwr3")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.145, 3.67395, 23.737)
 
 [node name="Ramp" parent="NavigationRegion3D" instance=ExtResource("5_82eor")]
-transform = Transform3D(4.52918, 0, 0, 0, 4.52918, 0, 0, 0, 4.52918, -8.14513, 4.22128, 50.4523)
-layers = 15
+transform = Transform3D(4.52918, 0, 0, 0, 4.52918, 0, 0, 0, 4.52918, -10.9906, 4.17361, 50.8499)
 
-[node name="EnemyBody" parent="NavigationRegion3D" instance=ExtResource("4_qh00a")]
+[node name="EnemyBody" parent="." instance=ExtResource("4_qh00a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7213, 0, 17.942)
 
 [node name="Player" parent="." instance=ExtResource("1_v4kr2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.69743, -0.27117, 0.994151)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3973, 2.10225, 28.6987)
 
 [node name="Moving_ball2" parent="." instance=ExtResource("5_0nib7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5472, 1.67866, -5.47989)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8195, 1.67866, 41.959)
 
 [node name="Lava" parent="Moving_ball2" instance=ExtResource("6_k8y47")]
 
 [node name="Moving_ball3" parent="." instance=ExtResource("5_0nib7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8042, 3.1312, 14.6138)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8042, 3.1312, 41.032)
 
 [node name="Lava" parent="Moving_ball3" instance=ExtResource("6_k8y47")]
 
 [node name="Moving_ball4" parent="." instance=ExtResource("5_0nib7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.9052, 3.1312, 22.1887)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.9052, 3.1312, 60.9119)
 
 [node name="Lava" parent="Moving_ball4" instance=ExtResource("6_k8y47")]
+transform = Transform3D(0.998857, 0, -0.0478038, 0, 1, 0, 0.0478038, 0, 0.998857, 0, 0, 0)
 
 [node name="Moving_ball5" parent="." instance=ExtResource("5_0nib7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.66912, 3.1312, 22.1887)
