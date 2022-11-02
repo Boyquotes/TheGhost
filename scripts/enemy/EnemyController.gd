@@ -39,12 +39,14 @@ func _physics_process(delta):
 func rotate_towards_motion(delta):
 	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 10 * randf_seed)
 
-func _on_enemy_fov_player(player):
+func _on_enemy_fov_player(player_location):
+	if player_location == null:
+		return
 	if chasing == true:
 		has_target = true
-		nav_agent.set_target_location(player.global_position)
+		nav_agent.set_target_location(player_location)
 	else :
-		raycast.target_position = player.global_position - raycast.global_position
+		raycast.target_position = player_location - raycast.global_position
 		if raycast.is_colliding() && raycast.get_collider().is_in_group("Player"):
 			chasing = true
 			

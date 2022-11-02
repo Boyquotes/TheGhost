@@ -1,12 +1,12 @@
 extends Node3D
 
 @onready var frontDoor = $Doors/Door3
-@onready var chimney : GPUParticles3D = $Effects/Smoke
+@onready var chimney : CPUParticles3D = $Effects/Smoke
 @onready var chimneyLight : OmniLight3D = $Effects/OmniLight3D
 
 func rigidBodyOnConsumer(body : RigidBody3D):
 	body.freeze = true
-	body.global_position = global_position - Vector3(0,1.0,0)
+	body.global_position = global_position - Vector3(0,3.0,0)
 	var fuel = body.get_parent().getFuel()
 	if fuel == null:
 		return

@@ -14,7 +14,10 @@ var is_pushing = false :
 			is_pushing =false
 			
 
-var on_floor = true
+var on_floor = true :
+	set(value):
+		on_floor = value
+		sm.on_floor = value
 
 var speed : float = SPEED 
 var motion : Vector3 = Vector3()
@@ -37,7 +40,6 @@ var mz = 0.0
 signal motion_direction (direction : Vector3)
 
 func _apply_movement():
-	print(on_floor)
 	if on_floor:
 		linear_velocity = (Vector3(motion.x, linear_velocity.y, motion.z))
 

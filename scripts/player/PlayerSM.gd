@@ -4,12 +4,19 @@ const STATES = {
 	'idle'= 1, 
 	'walking'= 2,
 	'hit'= 3,
-	'push'= 4
+	'push'= 4,
+	'falling' = 5
 }
 
 @onready var attractor = get_tree().get_first_node_in_group("Attractor")
 
 @export var hit_time = 2.0
+
+var on_floor = false:
+	set(value):
+		if on_floor != value && value == false:
+			set_state(STATES.falling)
+		on_floor = value
 
 var SPEED
 
@@ -80,10 +87,14 @@ func _update_state(delta):
 			parent._apply_movement()
 			if parent.speed == 0 :
 				return STATES.idle
+		STATES.falling:
+			if is_hit:
+				return STATES.hit
+			if on_floor == true:
+				return STATES.walking
 
 
-func _enter_state(new_state,_old_state):
-	#print(STATES.find_key(state))
+func _enter_state(new_state,old_state):
 	match new_state:
 		STATES.hit:
 			parent.SPEED = SPEED
