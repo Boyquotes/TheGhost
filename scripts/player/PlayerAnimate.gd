@@ -16,7 +16,7 @@ var is_hit = true :
 			is_hit = false
 	
 func _on_sm_entered_state(state, startSec):
-	print("playing " + state)
+	#print("playing " + state)
 	if(animator.has_animation(state)):
 		animator.play(state)
 		animator.seek(startSec, true)

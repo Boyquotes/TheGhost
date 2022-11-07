@@ -12,7 +12,7 @@ const STATES = {
 
 @export var hit_time = 2.0
 
-var on_floor = false:
+var on_floor:
 	set(value):
 		if on_floor != value && value == false:
 			set_state(STATES.falling)
@@ -24,7 +24,6 @@ var is_pushing = false:
 	set(value):
 		is_pushing = value
 		if value:
-			parent.rotate_now()
 			set_state(STATES.push)
 			await get_tree().create_timer(0.30).timeout
 			parent.push()
@@ -64,7 +63,7 @@ func _ready():
 	SPEED = parent.SPEED
 	add_states(STATES)
 	set_physics_process(true)
-	call_deferred("set_state",STATES.idle)
+	call_deferred("set_state",STATES.falling)
 
 func _update_state(delta):
 	#print(STATES.find_key(state))

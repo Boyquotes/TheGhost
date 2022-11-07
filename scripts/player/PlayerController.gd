@@ -37,8 +37,6 @@ var mz = 0.0
 @onready var mesh = $Mesh
 @onready var pushArea : Area3D = $Mesh/Push
 
-signal motion_direction (direction : Vector3)
-
 func _apply_movement():
 	if on_floor:
 		linear_velocity = (Vector3(motion.x, linear_velocity.y, motion.z))
@@ -62,17 +60,11 @@ func _handle_move_rotation(delta):
 		mesh_decoy.rotation.y = lerp_angle(mesh_decoy.rotation.y, atan2(-motion.x, -motion.z), delta * ROTATION_SPEED)
 	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-motion.x, -motion.z), delta * ROTATION_SPEED)
 
-func rotate_now():
-	if !sm.is_hit :
-		mesh_decoy.rotation.y = atan2(-motion.x, -motion.z)
-	mesh.rotation.y = atan2(-motion.x, -motion.z)
-
-
 func _on_camera_node_cam_rotation(rot):
 	mx = sin(rot)
 	mz = cos(rot)
 
-func hit(vector):
+func hit():
 	sm.is_hit = true
 	mesh_decoy.hit()
 	Engine.time_scale = 0.3
@@ -85,11 +77,9 @@ func get_location():
 	else:
 		return null
 
-func get_moveables(obj : RigidBody3D):
-	return obj.is_in_group("Moveable")
 	
 func push():
-	var objsToPush = pushArea.get_overlapping_bodies().filter(get_moveables)
+	var objsToPush = pushArea.get_overlapping_bodies().filter(func(obj): return obj.is_in_group("Moveable"))
 	for obj in objsToPush:
 		if obj is RigidBody3D:
 			obj.apply_central_force(motion * 500)

@@ -76,4 +76,4 @@ func _enter_state(new_state, old_state):
 		STATES.chasing:
 			parent.speed = speed
 		STATES.attack:
-			parent.speed = speed/5.0
+			parent.speed = speed/3.0

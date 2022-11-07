@@ -2,7 +2,19 @@ extends Node3D
 
 @export var offset_value : float =  20.0
 @export var CORRECTION_SPEED : float = 5.0
+
 @onready var OFFSET = Vector3(0, offset_value, offset_value)
+
+const START_ROT = -2.35619449019234
+@export var rot : float = 0:
+	set(value):
+		rot = value
+		if(OFFSET != null):
+			emit_signal("cam_rotation", value)
+			var mx = sin(value)
+			var mz = cos(value)
+			OFFSET.x = mx * offset_value
+			OFFSET.z = mz * offset_value
 
 var targetPosition : Vector3 = Vector3.ZERO
 var locked = false
@@ -10,17 +22,7 @@ var locked = false
 signal cam_rotation(rot : float)
 
 func _ready():
-	emit_signal("cam_rotation", rotation.y)
-
-@export var rot : float = 0:
-	set(value):
-		if(OFFSET != null):
-			rot = value
-			emit_signal("cam_rotation", rot)
-			var mx = sin(value)
-			var mz = cos(value)
-			OFFSET.x = mx * offset_value
-			OFFSET.z = mz * offset_value
+	rot = START_ROT
 
 func _on_player_body_player_body_pos(pos, delta):
 	targetPosition = pos + OFFSET

@@ -21,7 +21,7 @@ func _physics_process(_delta):
 		on_cd = true
 		var hitboxes_hits = get_overlapping_areas().filter(remove_not_player)
 		if hitboxes_hits:
-			area.hit(global_position)
+			area.hit()
 
 func remove_not_player(obj : Node3D):
 	return obj.is_in_group("Player")

@@ -7,7 +7,7 @@ var location:
 	get:
 		return controller.get_location()
 
-func hit(vector3):
-	controller.hit(vector3)
+func hit():
+	controller.hit()
 	controller.health -= 9
 	$Smoke.emitting = true

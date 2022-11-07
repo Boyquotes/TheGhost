@@ -44,8 +44,8 @@ backface_collision = true
 
 [sub_resource type="FogMaterial" id="FogMaterial_jpfqo"]
 density = 0.5
-albedo = Color(0.443137, 0.443137, 0.443137, 1)
-emission = Color(0.435294, 0.235294, 0, 1)
+emission = Color(0.329412, 0.329412, 0.329412, 1)
+height_falloff = 1.06463
 
 [sub_resource type="FogMaterial" id="FogMaterial_ieg7k"]
 albedo = Color(0.403922, 0, 0, 1)
@@ -113,8 +113,7 @@ shape = SubResource("ConcavePolygonShape3D_nmq8c")
 [node name="Effects" type="Node3D" parent="."]
 
 [node name="FogVolume" type="FogVolume" parent="Effects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22372, -1.98959, -0.199799)
-extents = Vector3(20, 2, 20)
+extents = Vector3(14, 4, 15)
 shape = 2
 material = SubResource("FogMaterial_jpfqo")
 
@@ -125,7 +124,7 @@ shape = 1
 material = SubResource("FogMaterial_ieg7k")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Effects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172429, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.613868, 0)
 light_color = Color(1, 0.513726, 0.403922, 1)
 light_energy = 16.0
 light_indirect_energy = 16.0
