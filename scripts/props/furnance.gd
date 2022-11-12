@@ -18,8 +18,8 @@ func rigidBodyOnConsumer(body : RigidBody3D):
 	await get_tree().create_timer(2).timeout
 	chimneyLight.light_energy = 16.0
 	chimney.speed_scale = 1.0
-	chimneyLight.light_volumetric_fog_energy = 4
+	chimneyLight.light_volumetric_fog_energy = 1
 	body.freeze = false
 	frontDoor.open()
 	await get_tree().create_timer(0.7).timeout
-	body.apply_central_impulse(Vector3(0,0,500))
+	body.apply_central_impulse(Vector3(0,0,90000))

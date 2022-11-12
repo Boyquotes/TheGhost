@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ba17uatmb7tib"]
+[gd_scene load_steps=21 format=3 uid="uid://ba17uatmb7tib"]
 
 [ext_resource type="Material" uid="uid://cv1elwyxjdi1f" path="res://materials/new_standard_material_3d.tres" id="1_fsp24"]
 [ext_resource type="Script" path="res://scripts/props/Furnance.gd" id="2_1ppdy"]
@@ -43,12 +43,10 @@ data = PackedVector3Array(0.0111532, 3.01525, 1.84404, -0.176078, 3.05162, 3.793
 backface_collision = true
 
 [sub_resource type="FogMaterial" id="FogMaterial_jpfqo"]
-density = 0.5
-emission = Color(0.329412, 0.329412, 0.329412, 1)
-height_falloff = 1.06463
-
-[sub_resource type="FogMaterial" id="FogMaterial_ieg7k"]
-albedo = Color(0.403922, 0, 0, 1)
+density = 0.7
+albedo = Color(0.72549, 0.72549, 0.72549, 1)
+emission = Color(0.203922, 0.203922, 0.203922, 1)
+height_falloff = 5.06431
 
 [sub_resource type="Environment" id="Environment_wpy7i"]
 volumetric_fog_enabled = true
@@ -56,14 +54,14 @@ volumetric_fog_density = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyty8"]
 transparency = 1
-blend_mode = 1
 cull_mode = 2
+no_depth_test = true
 vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0, 0, 0.333333)
 albedo_texture = ExtResource("3_u4xuv")
-emission_enabled = true
-emission = Color(0.133333, 0.133333, 0.133333, 1)
 emission_energy_multiplier = 6.0
-disable_receive_shadows = true
+backlight = Color(1, 1, 1, 1)
+refraction_texture = ExtResource("3_u4xuv")
 billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
@@ -117,22 +115,14 @@ extents = Vector3(14, 4, 15)
 shape = 2
 material = SubResource("FogMaterial_jpfqo")
 
-[node name="FogVolume2" type="FogVolume" parent="Effects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0460973, 4.93696, 4.56527)
-extents = Vector3(3, 3, 3)
-shape = 1
-material = SubResource("FogMaterial_ieg7k")
-
 [node name="OmniLight3D" type="OmniLight3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.613868, 0)
-light_color = Color(1, 0.513726, 0.403922, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 3.97
+light_color = Color(1, 0.388235, 0.184314, 1)
+light_energy = 20.0
+light_specular = 5.0
 shadow_enabled = true
 shadow_bias = 0.0
-shadow_normal_bias = 0.0
-omni_range = 30.0
+omni_range = 14.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Effects"]
 environment = SubResource("Environment_wpy7i")
@@ -140,7 +130,7 @@ environment = SubResource("Environment_wpy7i")
 [node name="Smoke" type="CPUParticles3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320849, 4.32126, 4.71112)
 material_override = SubResource("StandardMaterial3D_kyty8")
-amount = 100
+amount = 50
 lifetime = 2.0
 speed_scale = 0.5
 randomness = 1.0
