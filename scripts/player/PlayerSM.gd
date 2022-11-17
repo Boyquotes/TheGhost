@@ -25,12 +25,9 @@ var is_pushing = false:
 		is_pushing = value
 		if value:
 			set_state(STATES.push)
-			await get_tree().create_timer(0.30).timeout
-			parent.push()
-			await get_tree().create_timer(0.37).timeout
+			await get_tree().create_timer(0.67).timeout
 			set_state(STATES.idle)
 			is_pushing=false
-			parent.is_pushing=false
 
 var health = 10 :
 	set(value):
@@ -66,23 +63,22 @@ func _ready():
 	call_deferred("set_state",STATES.falling)
 
 func _update_state(delta):
-	#print(STATES.find_key(state))
 	match state:
 		STATES.idle:
 			parent._handle_move_input()
 			if parent.speed != 0 :
 				return STATES.walking
 		STATES.hit:
-			parent._handle_move_input()
 			parent._handle_move_rotation(delta)
+			parent._handle_move_input()
 			parent._apply_movement()
 			if parent.speed != 0:
 				return STATES.walking
 			elif parent.speed == 0:
 				return STATES.idle
 		STATES.walking:
-			parent._handle_move_input()
 			parent._handle_move_rotation(delta)
+			parent._handle_move_input()
 			parent._apply_movement()
 			if parent.speed == 0 :
 				return STATES.idle
@@ -94,6 +90,7 @@ func _update_state(delta):
 
 
 func _enter_state(new_state,old_state):
+	print(STATES.find_key(new_state))
 	match new_state:
 		STATES.hit:
 			parent.SPEED = SPEED

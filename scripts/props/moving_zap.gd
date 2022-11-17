@@ -61,7 +61,7 @@ func _on_light_hit_enemy(obj):
 		
 		await get_tree().create_timer(cd).timeout
 		
-		light.light_energy = 5
+		light.light_energy = 3
 		
 		health -=1
 		effects.visible = false

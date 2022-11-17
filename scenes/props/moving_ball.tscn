@@ -30,7 +30,6 @@ collision_layer = 3
 collision_mask = 3
 mass = 5000.0
 physics_material_override = SubResource("PhysicsMaterial_spr7y")
-gravity_scale = 3.0
 linear_damp = 1.0
 
 [node name="Body" type="CollisionShape3D" parent="RigidBody3D"]

@@ -1,6 +1,6 @@
 extends Area3D
 
-@onready var sm : StateMachine = get_tree().get_first_node_in_group("StateMachine")
+@onready var sm : StateMachine = get_parent().get_parent().get_node("EnemySM")
 
 var on_cd = false:
 	set(value):

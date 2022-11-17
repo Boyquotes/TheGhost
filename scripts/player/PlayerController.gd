@@ -3,17 +3,6 @@ extends RigidBody3D
 @export var SPEED : float = 150.0
 @export var ROTATION_SPEED : int = 10
 
-var is_pushing = false :
-	set(value):
-		if sm.is_hit || sm.is_pushing :
-			return
-		if value == true:
-			is_pushing = true
-			sm.is_pushing = true
-		else:
-			is_pushing =false
-			
-
 var on_floor = true :
 	set(value):
 		on_floor = value
@@ -38,7 +27,6 @@ var mz = 0.0
 @onready var pushArea : Area3D = $Mesh/Push
 
 func _apply_movement():
-	print(linear_velocity.length())
 	if on_floor && linear_velocity.length() < MAX_SPEED:
 		apply_central_impulse(Vector3(motion.x, 0, motion.z))
 
@@ -53,7 +41,7 @@ func _handle_move_input():
 
 func _input(event):
 	if event.is_action_pressed("push"):
-		is_pushing = true
+		push()
 
 func _handle_move_rotation(delta):
 	if !sm.is_hit :
@@ -79,11 +67,17 @@ func get_location():
 
 	
 func push():
-	mesh.rotation.y = atan2(-motion.x, -motion.z)
+	if sm.is_hit || sm.is_pushing :
+			return
 	var objsToPush = pushArea.get_overlapping_bodies().filter(func(obj): return obj.is_in_group("Moveable"))
 	for obj in objsToPush:
 		if obj is RigidBody3D:
-			obj.apply_central_impulse((obj.global_position - global_position).normalized()* 20000)
+			var direction = (obj.global_position - global_position).normalized()
+			mesh_decoy.rotation.y = atan2(-direction.x, -direction.z)
+			mesh.rotation.y = atan2(-direction.x, -direction.z)
+			sm.is_pushing = true
+			await get_tree().create_timer(0.30).timeout
+			obj.apply_central_impulse(direction* 20000)
 
 
 func _on_floor_detector(boolean):

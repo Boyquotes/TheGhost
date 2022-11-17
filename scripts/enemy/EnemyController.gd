@@ -16,7 +16,6 @@ var stun_velocity = null
 		if (health == 0):
 			queue_free()
 
-
 var chasing = false :
 	set(value):
 		chasing = value
@@ -45,6 +44,8 @@ func _on_enemy_fov_player(player_location):
 	if chasing == true:
 		has_target = true
 		nav_agent.set_target_location(player_location)
+		if !nav_agent.is_target_reachable():
+			nav_agent.set_target_location(global_position)
 	else :
 		raycast.target_position = player_location - raycast.global_position
 		if raycast.is_colliding() && raycast.get_collider().is_in_group("Player"):

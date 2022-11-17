@@ -9,7 +9,7 @@ const STATES = {
 
 signal entered_state (state : String, startSec : float)
 
-@onready var animator : AnimationPlayer = get_tree().get_first_node_in_group("AnimationPlayer")
+@onready var animator : AnimationPlayer = get_node("AnimationPlayer")
 
 @export var stun_time = 0.5
 @export var stun_force = 50.0
