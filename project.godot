@@ -31,8 +31,8 @@ Globals="*res://scripts/globals/Globals.gd"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_width=426
+window/size/viewport_height=240
 window/size/mode=3
 window/size/resizable=false
 window/vsync/vsync_mode=0

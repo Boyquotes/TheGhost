@@ -8,9 +8,7 @@ const STATES = {
 	'falling' = 5
 }
 
-@onready var attractor = get_tree().get_first_node_in_group("Attractor")
-
-@export var hit_time = 2.0
+@export var hit_time = 2.1
 
 var on_floor:
 	set(value):
@@ -32,10 +30,6 @@ var is_pushing = false:
 var health = 10 :
 	set(value):
 		health = value
-		if health < 10 :
-			attractor.visible = true
-		if health == 10 :
-			attractor.visible = false
 
 var is_hit = false:
 	set(value):
@@ -91,15 +85,12 @@ func _update_state(delta):
 
 func _enter_state(new_state,old_state):
 	print(STATES.find_key(new_state))
+	parent.SPEED = SPEED
 	match new_state:
 		STATES.hit:
-			parent.SPEED = SPEED
 			health -= 3
-		STATES.idle:
-			parent.SPEED = SPEED
 		STATES.walking:
 			parent.SPEED = SPEED
 		STATES.push:
 			parent.SPEED = 0
-		
 	emit_signal("entered_state", STATES.find_key(new_state), 0.0)

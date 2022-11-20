@@ -9,6 +9,7 @@ extends RigidBody3D
 var randf_seed = randf_range(0.9,1.1)
 var has_target = false
 var stun_velocity = null
+var on_floor = false
 
 @export var health : int = 10 : 
 	set(value):
@@ -28,7 +29,7 @@ func _physics_process(delta):
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(linear_velocity.x, linear_velocity.z), delta * 100 * randf_seed)
 		linear_velocity = stun_velocity
 	
-	elif has_target:
+	elif has_target && on_floor:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_location()
 		var velocity = (target - origin).normalized()
@@ -63,3 +64,6 @@ func move(move_duration, direction):
 	stun_velocity = direction
 	await get_tree().create_timer(move_duration).timeout
 	stun_velocity = null
+
+func _on_enemy_floor_detector_enemy_on_floor(boolean):
+	on_floor = boolean

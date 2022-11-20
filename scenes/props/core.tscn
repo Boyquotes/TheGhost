@@ -1,10 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://ba17uatmb7tib"]
+[gd_scene load_steps=22 format=3 uid="uid://ba17uatmb7tib"]
 
 [ext_resource type="Material" uid="uid://cv1elwyxjdi1f" path="res://materials/new_standard_material_3d.tres" id="1_fsp24"]
 [ext_resource type="Script" path="res://scripts/props/Furnance.gd" id="2_1ppdy"]
 [ext_resource type="Shader" path="res://materials/lavaf.gdshader" id="3_stjqu"]
 [ext_resource type="Texture2D" uid="uid://e2alpnt33v0c" path="res://imports/Particles/smoke_04.png" id="3_u4xuv"]
-[ext_resource type="PackedScene" uid="uid://21a0emi3ddxd" path="res://imports/v1.gltf" id="4_hcvs0"]
+[ext_resource type="PackedScene" uid="uid://dtua4y0absm4y" path="res://imports/v1.gltf" id="4_hcvs0"]
 [ext_resource type="PackedScene" uid="uid://b01nkjct22a5n" path="res://scenes/props/door.tscn" id="5_egmt6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jfj8v"]
@@ -43,10 +43,13 @@ data = PackedVector3Array(0.0111532, 3.01525, 1.84404, -0.176078, 3.05162, 3.793
 backface_collision = true
 
 [sub_resource type="FogMaterial" id="FogMaterial_jpfqo"]
-density = 0.7
+density = 0.6
 albedo = Color(0.72549, 0.72549, 0.72549, 1)
 emission = Color(0.203922, 0.203922, 0.203922, 1)
-height_falloff = 5.06431
+height_falloff = 8.22694
+edge_fade = 2.78576
+
+[sub_resource type="FogMaterial" id="FogMaterial_ul60a"]
 
 [sub_resource type="Environment" id="Environment_wpy7i"]
 volumetric_fog_enabled = true
@@ -54,13 +57,16 @@ volumetric_fog_density = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyty8"]
 transparency = 1
-cull_mode = 2
+blend_mode = 1
 no_depth_test = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
 vertex_color_use_as_albedo = true
-albedo_color = Color(0, 0, 0, 0.333333)
+vertex_color_is_srgb = true
+albedo_color = Color(0.301961, 0.301961, 0.301961, 1)
 albedo_texture = ExtResource("3_u4xuv")
-emission_energy_multiplier = 6.0
-backlight = Color(1, 1, 1, 1)
+refraction_scale = 1.0
 refraction_texture = ExtResource("3_u4xuv")
 billboard_mode = 3
 particles_anim_h_frames = 1
@@ -70,7 +76,7 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id="QuadMesh_amu13"]
 
 [sub_resource type="Gradient" id="Gradient_jfdwt"]
-offsets = PackedFloat32Array(0, 0.163636, 0.890909, 1)
+offsets = PackedFloat32Array(0, 0.163636, 0.818841, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hkw1h"]
@@ -112,8 +118,13 @@ shape = SubResource("ConcavePolygonShape3D_nmq8c")
 
 [node name="FogVolume" type="FogVolume" parent="Effects"]
 extents = Vector3(14, 4, 15)
-shape = 2
 material = SubResource("FogMaterial_jpfqo")
+
+[node name="FogVolume2" type="FogVolume" parent="Effects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.325113, 3.78475, 4.60944)
+extents = Vector3(1.21477, 1.86171, 1.97708)
+shape = 2
+material = SubResource("FogMaterial_ul60a")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.613868, 0)
@@ -130,9 +141,9 @@ environment = SubResource("Environment_wpy7i")
 [node name="Smoke" type="CPUParticles3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320849, 4.32126, 4.71112)
 material_override = SubResource("StandardMaterial3D_kyty8")
-amount = 50
-lifetime = 2.0
-speed_scale = 0.5
+amount = 36
+lifetime = 1.5
+speed_scale = 0.27
 randomness = 1.0
 fixed_fps = 60
 mesh = SubResource("QuadMesh_amu13")
@@ -146,7 +157,6 @@ linear_accel_max = 2.0
 damping_max = 2.0
 scale_amount_min = 4.0
 scale_amount_max = 8.0
-color = Color(0.239216, 0.239216, 0.239216, 1)
 color_ramp = SubResource("Gradient_jfdwt")
 
 [node name="Area3D" type="Area3D" parent="Effects/Smoke"]
