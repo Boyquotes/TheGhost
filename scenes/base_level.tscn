@@ -112,6 +112,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.2571, 2.58714, 33.75)
 [node name="EnemyBody" parent="." instance=ExtResource("7_rb7xi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.80371, 23.7827, 18.6633)
 
+[node name="EnemyBody2" parent="." instance=ExtResource("7_rb7xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03043, 23.7827, 18.6633)
+
+[node name="EnemyBody3" parent="." instance=ExtResource("7_rb7xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0218, 23.7827, 18.6633)
+
+[node name="EnemyBody4" parent="." instance=ExtResource("7_rb7xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0218, 23.7827, 30.3414)
+
+[node name="EnemyBody5" parent="." instance=ExtResource("7_rb7xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.4344, 23.7827, 30.3414)
+
+[node name="EnemyBody6" parent="." instance=ExtResource("7_rb7xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.4344, 23.7827, 8.77701)
+
 [node name="Moving_ball3" parent="." instance=ExtResource("1_ngsh4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4436, 2.58714, 33.75)
 
