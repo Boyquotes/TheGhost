@@ -8,7 +8,7 @@ const STATES = {
 	'falling' = 5
 }
 
-@export var hit_time = 2.1
+@export var hit_time = 2.0
 
 var on_floor:
 	set(value):
@@ -45,7 +45,7 @@ var is_block = false:
 		is_block = value
 		if value:
 			is_block = true
-			await get_tree().create_timer(0.1).timeout
+			await get_tree().create_timer(0.2).timeout
 			is_block = false
 
 signal entered_state (state : String, starSec : float)
