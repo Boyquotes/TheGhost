@@ -28,7 +28,7 @@ var mz = 0.0
 
 func _apply_movement():
 	if on_floor && linear_velocity.length() < MAX_SPEED:
-		apply_central_impulse(Vector3(motion.x, 24, motion.z))
+		apply_central_impulse(Vector3(motion.x, 27, motion.z))
 
 func _handle_move_input():
 	speed = 0
