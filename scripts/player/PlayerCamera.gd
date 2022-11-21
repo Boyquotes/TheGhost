@@ -5,6 +5,8 @@ extends Node3D
 
 @onready var OFFSET = Vector3(0, offset_value, offset_value)
 
+@onready var camera = get_tree().get_first_node_in_group("PlayerCamera")
+
 const START_ROT = -2.35619449019234
 @export var rot : float = 0:
 	set(value):
@@ -26,11 +28,11 @@ func _ready():
 
 func _on_player_body_player_body_pos(pos, delta):
 	targetPosition = pos + OFFSET
-	global_position = lerp(
-		global_position, 
+	camera.global_position = lerp(
+		camera.global_position, 
 		targetPosition, 
 		CORRECTION_SPEED*delta)
-	rotation.y = lerp_angle(rotation.y, rot, CORRECTION_SPEED*delta)
+	camera.rotation.y = lerp_angle(camera.rotation.y, rot, CORRECTION_SPEED*delta)
 
 func _input(event):
 	if event.is_action("move_cam_left") || event.is_action("move_cam_right"):
@@ -51,9 +53,9 @@ func rotate_camera(dir):
 
 func _on_mesh_player_real_pos(pos, delta):
 	targetPosition = pos + OFFSET
-	global_position = lerp(
-		global_position, 
+	camera.global_position = lerp(
+		camera.global_position, 
 		targetPosition, 
 		CORRECTION_SPEED*delta)
-	rotation.y = lerp_angle(rotation.y, rot, CORRECTION_SPEED*delta)
+	camera.rotation.y = lerp_angle(camera.rotation.y, rot, CORRECTION_SPEED*delta)
 
