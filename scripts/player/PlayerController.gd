@@ -1,7 +1,7 @@
 extends RigidBody3D
 @export var MAX_SPEED : float = 5.0
 @export var SPEED : float = 30.0
-@export var ROTATION_SPEED : int = 10
+@export var ROTATION_SPEED : int = 5.0
 
 var on_floor = true :
 	set(value):

@@ -45,7 +45,7 @@ var is_block = false:
 		is_block = value
 		if value:
 			is_block = true
-			await get_tree().create_timer(0.2).timeout
+			await get_tree().create_timer(0.3).timeout
 			is_block = false
 
 signal entered_state (state : String, starSec : float)
@@ -84,7 +84,6 @@ func _update_state(delta):
 
 
 func _enter_state(new_state,old_state):
-	print(STATES.find_key(new_state))
 	parent.SPEED = SPEED
 	match new_state:
 		STATES.hit:
