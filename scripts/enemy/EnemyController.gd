@@ -6,7 +6,7 @@ extends RigidBody3D
 @onready var sm : Node3D = $EnemySM
 @onready var speed = sm.speed
 
-var randf_seed = randf_range(0.9,1.1)
+var randf_seed = randf_range(0.8,1.2)
 var has_target = false
 var stun_velocity = null
 var on_floor = false
@@ -21,23 +21,23 @@ var chasing = false :
 	set(value):
 		chasing = value
 		if value == true:
-			await get_tree().create_timer(1.0).timeout
+			await get_tree().create_timer(0.5).timeout
 			chasing = false
 
 func _physics_process(delta):
 	if stun_velocity != null:
-		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(linear_velocity.x, linear_velocity.z), delta * 100 * randf_seed)
+		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(linear_velocity.x, linear_velocity.z), delta * 100)
 		linear_velocity = stun_velocity
 	
 	elif has_target && on_floor:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_location()
 		var velocity = (target - origin).normalized()
-		linear_velocity = velocity * speed
+		linear_velocity = velocity * speed * randf_seed
 		rotate_towards_motion(delta)
 
 func rotate_towards_motion(delta):
-	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 10 * randf_seed)
+	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 10 * randf_seed * randf_seed)
 
 func _on_enemy_fov_player(player_location):
 	if player_location == null:
@@ -51,7 +51,6 @@ func _on_enemy_fov_player(player_location):
 		raycast.target_position = player_location - raycast.global_position
 		if raycast.is_colliding() && raycast.get_collider().is_in_group("Player"):
 			chasing = true
-			
 
 func _on_enemy_navigation_agent_3d_navigation_finished():
 	has_target = false

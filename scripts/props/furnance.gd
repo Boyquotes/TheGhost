@@ -6,10 +6,13 @@ extends Node3D
 
 var chimney_smoke_speed : float
 
+var content_on_consumer : bool = false
+
 func _ready():
 	chimney_smoke_speed = chimney.speed_scale
 
 func rigidBodyOnConsumer(body : RigidBody3D):
+	content_on_consumer = true
 	body.freeze = true
 	body.global_position = global_position - Vector3(0,3.0,0)
 	var fuel = body.get_parent().getFuel()
@@ -28,3 +31,7 @@ func rigidBodyOnConsumer(body : RigidBody3D):
 	frontDoor.open()
 	await get_tree().create_timer(0.7).timeout
 	body.apply_central_impulse(Vector3(0,0,90000))
+
+
+func rigidBodyOutConsumer(body):
+	pass # Replace with function body.

@@ -25,6 +25,7 @@ var mz = 0.0
 @onready var mesh_decoy_location = $MeshDecoy/Armature/Skeleton3D/PhysicalBoneRoot/BodyLocation
 @onready var mesh = $Mesh
 @onready var pushArea : Area3D = $Mesh/Push
+@onready var ui : Label = $VBoxContainer/Label
 
 func _apply_movement():
 	if on_floor && linear_velocity.length() < MAX_SPEED:
@@ -67,7 +68,6 @@ func get_location():
 	else:
 		return null
 
-	
 func push():
 	if sm.is_hit || sm.is_pushing :
 			return
@@ -80,7 +80,6 @@ func push():
 			sm.is_pushing = true
 			await get_tree().create_timer(0.30).timeout
 			obj.apply_central_impulse(direction* 40000)
-
 
 func _on_floor_detector(boolean):
 	on_floor = boolean

@@ -64,8 +64,11 @@ func _update_state(delta):
 func _enter_state(new_state, old_state):
 	var state_name = STATES.find_key(new_state)
 	if animator.has_animation(state_name):
+		if new_state == STATES.chasing:
+			animator.playback_speed = parent.randf_seed
+		else :
+			animator.playback_speed = 1.0
 		animator.play(state_name)
-	
 	match new_state:
 		STATES.hit:
 			parent.health -= 5
@@ -77,3 +80,8 @@ func _enter_state(new_state, old_state):
 			parent.speed = speed
 		STATES.attack:
 			parent.speed = speed/3.0
+	match old_state:
+		STATES.attack:
+			parent.speed = speed/1.5
+			await get_tree().create_timer(0.5).timeout #slow after attacking
+			parent.speed = speed
