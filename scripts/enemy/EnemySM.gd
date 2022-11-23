@@ -76,12 +76,5 @@ func _enter_state(new_state, old_state):
 			var light_to_enemy_vector : Vector3 = enemy_location - stun_source_pos
 			var le_size_sqrd = light_to_enemy_vector.length_squared()
 			parent.move(stun_time/2, stun_force * light_to_enemy_vector/le_size_sqrd)
-		STATES.chasing:
-			parent.speed = speed
 		STATES.attack:
 			parent.speed = speed/3.0
-	match old_state:
-		STATES.attack:
-			parent.speed = speed/1.5
-			await get_tree().create_timer(0.5).timeout #slow after attacking
-			parent.speed = speed

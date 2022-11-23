@@ -1,7 +1,9 @@
 extends RigidBody3D
-@export var MAX_SPEED : float = 5.0
-@export var SPEED : float = 30.0
+@export var MAX_SPEED : float = 6.0
+@export var SPEED : float = 300.0
 @export var ROTATION_SPEED : int = 5.0
+
+var INITIAL_MASS = mass
 
 var on_floor = true :
 	set(value):
@@ -29,7 +31,7 @@ var mz = 0.0
 
 func _apply_movement():
 	if on_floor && linear_velocity.length() < MAX_SPEED:
-		apply_central_impulse(Vector3(motion.x, 27, motion.z))
+		apply_central_impulse(Vector3(motion.x, 400.0, motion.z))
 
 func _handle_move_input():
 	speed = 0
@@ -43,6 +45,8 @@ func _handle_move_input():
 func _input(event):
 	if event.is_action_pressed("push"):
 		push()
+	if event.is_action_pressed("jump"):
+		apply_central_impulse(Vector3(motion.x/5.0, 20000.0, motion.z/5.0))
 
 func _handle_move_rotation(delta):
 	if motion.length() < 10:
@@ -79,7 +83,7 @@ func push():
 			mesh.rotation.y = atan2(-direction.x, -direction.z)
 			sm.is_pushing = true
 			await get_tree().create_timer(0.30).timeout
-			obj.apply_central_impulse(direction* 40000)
+			obj.apply_central_impulse(direction* 100000)
 
 func _on_floor_detector(boolean):
 	on_floor = boolean

@@ -1307,6 +1307,7 @@ shape = SubResource("CapsuleShape3D_oru1d")
 path_desired_distance = 2.0
 target_desired_distance = 2.0
 agent_height_offset = 0.5
+path_max_distance = 100.0
 avoidance_enabled = true
 max_speed = 10000.0
 

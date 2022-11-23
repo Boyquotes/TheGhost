@@ -26,7 +26,7 @@ var is_hit = true :
 			
 func _physics_process(delta):
 	if is_walking:
-		animator.playback_speed = lerpf(animator.playback_speed, controller.linear_velocity.length() / 5.0, delta * 20.0)
+		animator.playback_speed = lerpf(animator.playback_speed, controller.linear_velocity.length() / controller.MAX_SPEED, delta * 20.0)
 		
 func _on_sm_entered_state(state, startSec):
 	#print("playing " + state)

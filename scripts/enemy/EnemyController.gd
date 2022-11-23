@@ -45,10 +45,12 @@ func _on_enemy_fov_player(player_location):
 	if chasing == true:
 		has_target = true
 		nav_agent.set_target_location(player_location)
-		if !nav_agent.is_target_reachable():
-			nav_agent.set_target_location(global_position)
+		#if !nav_agent.is_target_reachable():
+		#	nav_agent.set_target_location(global_position)
 	else :
-		raycast.target_position = player_location - raycast.global_position
+		raycast.target_position = player_location - raycast.global_position #- Vector3(player_location.x,0,player_location.z)
+		var ray_size_sqrd = raycast.target_position.length_squared()
+		raycast.target_position = 3000000 * raycast.target_position/ray_size_sqrd
 		if raycast.is_colliding() && raycast.get_collider().is_in_group("Player"):
 			chasing = true
 
