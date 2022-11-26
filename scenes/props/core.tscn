@@ -145,7 +145,7 @@ light_energy = 20.0
 light_specular = 5.0
 shadow_enabled = true
 shadow_bias = 0.0
-omni_range = 30.0
+omni_range = 14.142
 
 [node name="Smoke" type="CPUParticles3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320849, 4.32126, 4.71112)

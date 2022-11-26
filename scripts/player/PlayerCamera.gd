@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var offset_value : float =  20.0
-@export var CORRECTION_SPEED : float = 5.0
+@export var CORRECTION_SPEED : float = 6.0
 
 @onready var OFFSET = Vector3(0, offset_value, offset_value)
 

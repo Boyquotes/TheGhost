@@ -97,7 +97,7 @@ func push():
 			mesh.rotation.y = atan2(-direction.x, -direction.z)
 			sm.is_pushing = true
 			await get_tree().create_timer(0.30).timeout
-			obj.apply_central_impulse(direction* 100000)
+			obj.apply_central_impulse(direction* 130000)
 
 func _on_floor_detector(boolean):
 	on_floor = boolean

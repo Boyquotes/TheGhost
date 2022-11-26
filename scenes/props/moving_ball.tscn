@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/props/moving_ball.gd" id="1_ibsj7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_spr7y"]
-friction = 0.1
+friction = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ka1fq"]
 radius = 1.2
