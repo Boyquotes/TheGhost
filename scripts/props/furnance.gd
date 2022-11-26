@@ -30,7 +30,7 @@ func rigidBodyOnConsumer(body : RigidBody3D):
 	body.freeze = false
 	frontDoor.open()
 	await get_tree().create_timer(0.7).timeout
-	body.apply_central_impulse(Vector3(0,0,90000))
+	body.apply_central_impulse(Vector3(0,0,100000))
 
 
 func rigidBodyOutConsumer(body):

@@ -1,6 +1,6 @@
 extends RigidBody3D
-@export var MAX_SPEED : float = 6.0
-@export var SPEED : float = 300.0
+@export var MAX_SPEED : float = 5.0
+@export var SPEED : float = 900.0
 @export var ROTATION_SPEED : int = 5.0
 
 var INITIAL_MASS = mass
@@ -31,22 +31,26 @@ var mz = 0.0
 
 func _apply_movement():
 	if on_floor && linear_velocity.length() < MAX_SPEED:
-		apply_central_impulse(Vector3(motion.x, 400.0, motion.z))
+		apply_central_impulse(Vector3(motion.x, 350.0, motion.z))
 
 func _handle_move_input():
 	speed = 0
 	if Input.is_action_pressed("move_right") || Input.is_action_pressed("move_left") || Input.is_action_pressed("move_down") || Input.is_action_pressed("move_up"):
 		motion.x = Input.get_action_strength("move_down") * mx - Input.get_action_strength("move_up") * mx - Input.get_action_strength("move_left") * mz + Input.get_action_strength("move_right") * mz 
 		motion.z = Input.get_action_strength("move_down") * mz - Input.get_action_strength("move_up") * mz + Input.get_action_strength("move_left") * mx - + Input.get_action_strength("move_right") * mx
-		speed = motion.normalized().length() * SPEED
+		if linear_velocity.length() < 3:
+			speed = motion.normalized().length() * SPEED * 0.6
+		else:
+			speed = motion.normalized().length() * SPEED
+		
 		
 	motion = motion.normalized() * speed
 
 func _input(event):
 	if event.is_action_pressed("push"):
 		push()
-	if event.is_action_pressed("jump"):
-		apply_central_impulse(Vector3(motion.x/5.0, 20000.0, motion.z/5.0))
+	if event.is_action_pressed("jump") && on_floor:
+		apply_central_impulse(Vector3(motion.x, 10000.0, motion.z))
 
 func _handle_move_rotation(delta):
 	if motion.length() < 10:

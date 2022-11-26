@@ -29,11 +29,11 @@ func _physics_process(delta):
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(linear_velocity.x, linear_velocity.z), delta * 100)
 		linear_velocity = stun_velocity
 	
-	elif has_target && on_floor:
+	if has_target && on_floor:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_location()
-		var velocity = (target - origin).normalized()
-		linear_velocity = velocity * speed * randf_seed
+		nav_agent.set_velocity((target - origin).normalized() * speed * randf_seed)
+
 		rotate_towards_motion(delta)
 
 func rotate_towards_motion(delta):
@@ -41,17 +41,19 @@ func rotate_towards_motion(delta):
 
 func _on_enemy_fov_player(player_location):
 	if player_location == null:
+		raycast.debug_shape_custom_color = Color(1,0,0,1)
 		return
 	if chasing == true:
 		has_target = true
 		nav_agent.set_target_location(player_location)
-		#if !nav_agent.is_target_reachable():
-		#	nav_agent.set_target_location(global_position)
 	else :
 		raycast.target_position = player_location - raycast.global_position #- Vector3(player_location.x,0,player_location.z)
 		var ray_size_sqrd = raycast.target_position.length_squared()
 		raycast.target_position = 3000000 * raycast.target_position/ray_size_sqrd
+		if raycast.is_colliding():
+			raycast.debug_shape_custom_color = Color(0,1,0,1)
 		if raycast.is_colliding() && raycast.get_collider().is_in_group("Player"):
+			raycast.debug_shape_custom_color = Color(0,0,1,1)
 			chasing = true
 
 func _on_enemy_navigation_agent_3d_navigation_finished():
@@ -68,3 +70,7 @@ func move(move_duration, direction):
 
 func _on_enemy_floor_detector_enemy_on_floor(boolean):
 	on_floor = boolean
+
+
+func _on_enemy_navigation_agent_3d_velocity_computed(safe_velocity):
+	linear_velocity = safe_velocity

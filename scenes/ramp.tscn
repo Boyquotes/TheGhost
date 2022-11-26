@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://du6pve38pu7jx"]
+[gd_scene load_steps=6 format=3 uid="uid://du6pve38pu7jx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d373"]
 resource_name = "Material"
@@ -23,6 +23,11 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6mnr"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_es8n2"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ietob"]
@@ -32,6 +37,7 @@ data = PackedVector3Array(1, -1, -1, -4.40135, 1, 1, -4.40135, 1, -1, 1, -1, -1,
 transform = Transform3D(4.52918, 0, 0, 0, 4.52918, 0, 0, 0, 4.52918, 0, 4.60171, 0)
 mesh = SubResource("ArrayMesh_jp5gh")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_a6mnr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["Floor"]]
 collision_layer = 15
