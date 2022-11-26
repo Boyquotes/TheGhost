@@ -45,6 +45,8 @@ func _on_light_hit_enemy(obj):
 		
 		effects.look_at(enemy_position)
 		obj.stun(global_transform.origin)
+		var explosion_dir = global_transform.origin - enemy_position
+		#body.apply_central_impulse(Vector3(explosion_dir.x, explosion_dir.y, explosion_dir.z)* 12000.0)
 		beam_on_cd = true
 		effects.visible = true
 		effects_particles.emitting = true

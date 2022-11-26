@@ -25,10 +25,11 @@ var chasing = false :
 			chasing = false
 
 func _physics_process(delta):
-	if stun_velocity != null:
-		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(linear_velocity.x, linear_velocity.z), delta * 100)
-		linear_velocity = stun_velocity
-	
+	if stun_velocity:
+		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(linear_velocity.x, linear_velocity.z), delta * 100.0)
+		apply_central_impulse(Vector3(stun_velocity.x, stun_velocity.y, stun_velocity.z)* 1000.0)
+		return
+
 	if has_target && on_floor:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_location()
@@ -37,7 +38,7 @@ func _physics_process(delta):
 		rotate_towards_motion(delta)
 
 func rotate_towards_motion(delta):
-	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 10 * randf_seed * randf_seed)
+	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 5.0 * randf_seed * randf_seed)
 
 func _on_enemy_fov_player(player_location):
 	if player_location == null:
@@ -47,14 +48,15 @@ func _on_enemy_fov_player(player_location):
 		has_target = true
 		nav_agent.set_target_location(player_location)
 	else :
-		raycast.target_position = player_location - raycast.global_position #- Vector3(player_location.x,0,player_location.z)
-		var ray_size_sqrd = raycast.target_position.length_squared()
-		raycast.target_position = 3000000 * raycast.target_position/ray_size_sqrd
-		if raycast.is_colliding():
-			raycast.debug_shape_custom_color = Color(0,1,0,1)
+		var target = player_location - raycast.global_position #- Vector3(player_location.x,0,player_location.z)
+		var ray_size_sqrd = target.length_squared()
+		raycast.target_position = 3000000 * target/ray_size_sqrd
 		if raycast.is_colliding() && raycast.get_collider().is_in_group("Player"):
 			raycast.debug_shape_custom_color = Color(0,0,1,1)
 			chasing = true
+			return
+		if raycast.is_colliding():
+			raycast.debug_shape_custom_color = Color(0,1,0,1)
 
 func _on_enemy_navigation_agent_3d_navigation_finished():
 	has_target = false

@@ -9,7 +9,7 @@ var isOpen = false
 
 func rigidBodyOnDoor(body):
 	if body.is_in_group(\"Moveable\") && !isOpen:
-		await animator.play(\"open\")
+		animator.play(\"open\")
 		isOpen = true
 
 

@@ -14,7 +14,7 @@ signal entered_state (state : String, startSec : float)
 @export var stun_time = 0.5
 @export var stun_force = 50.0
 var stun_source_pos = null
-var speed = 5.0
+var speed = 3.5
 
 var attacking = false :
 	set(value):
@@ -38,7 +38,7 @@ func _ready():
 	add_states(STATES)
 	call_deferred("set_state", STATES.idle)
 
-func _update_state(delta):
+func _update_state(_delta):
 	match state:
 		STATES.idle:
 			if parent.has_target:
@@ -61,7 +61,7 @@ func _update_state(delta):
 			else:
 				return STATES.idle
 
-func _enter_state(new_state, old_state):
+func _enter_state(new_state, _old_state):
 	var state_name = STATES.find_key(new_state)
 	if animator.has_animation(state_name):
 		if new_state == STATES.chasing:

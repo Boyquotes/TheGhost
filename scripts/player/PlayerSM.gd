@@ -63,12 +63,10 @@ func _update_state(delta):
 			if parent.speed != 0 :
 				return STATES.walking
 		STATES.hit:
-			parent._handle_move_rotation(delta)
 			parent._handle_move_input()
-			parent._apply_movement()
-			if parent.speed != 0:
+			if parent.speed > 1 :
 				return STATES.walking
-			elif parent.speed == 0:
+			else:
 				return STATES.idle
 		STATES.walking:
 			parent._handle_move_rotation(delta)
@@ -77,11 +75,8 @@ func _update_state(delta):
 			if parent.speed == 0 :
 				return STATES.idle
 		STATES.falling:
-			if is_hit:
-				return STATES.hit
 			if on_floor == true:
 				return STATES.walking
-
 
 func _enter_state(new_state,old_state):
 	parent.SPEED = SPEED
