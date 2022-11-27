@@ -24,13 +24,14 @@ var mz = 0.0
 
 @onready var sm = $SM
 @onready var mesh_decoy = $MeshDecoy
-@onready var mesh_decoy_location = $MeshDecoy/Armature/Skeleton3D/PhysicalBoneRoot/BodyLocation
+@onready var mesh_decoy_location = $"MeshDecoy/Armature/Skeleton3D/Physical Bone Root/BodyLocation"
 @onready var mesh = $Mesh
 @onready var pushArea : Area3D = $Mesh/Push
 @onready var ui : Label = $VBoxContainer/Label
 @onready var player_text : Label3D = $MeshDecoy/Label3D
 
 func _apply_movement():
+	print(get_contact_count())
 	if on_floor && linear_velocity.length() < MAX_SPEED:
 		apply_central_impulse(Vector3(motion.x, 333.3, motion.z))
 
@@ -61,14 +62,12 @@ func _input(event):
 	if event.is_action_pressed("push"):
 		push()
 	if event.is_action_pressed("jump") && on_floor:
-		apply_central_impulse(Vector3(motion.x*2, 15000.0, motion.z*2))
+		apply_central_impulse(Vector3(motion.x*3, 15000.0, motion.z*3))
 	if event.is_action_pressed("talk") && on_floor:
-		player_text.update_text("Hey !")
-		await get_tree().create_timer(1.0).timeout
-		player_text.update_text("")
-		player_text.update_text("Are you there?")
-		await get_tree().create_timer(1.0).timeout
-		player_text.update_text("")
+		player_text.add_to_queue("Salve Livs", 0.3)
+		sm.set_state(8)
+		player_text.add_to_queue("Parabéns com dancinha", 0.5)
+		player_text.add_to_queue("UwU", 1.0)
 
 func _handle_move_rotation(delta):
 	if motion.length() < 10:

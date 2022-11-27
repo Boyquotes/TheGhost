@@ -139,86 +139,14 @@ surface_material_override/0 = null
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.6401, 31.5217)
 
 [node name="Moving_ball" parent="." instance=ExtResource("4_ayfrc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.03444, 24.7854)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21042, 1.88359, 24.7854)
 
 [node name="Fuel" parent="Moving_ball" instance=ExtResource("5_gjdlb")]
 
 [node name="Moving_ball2" parent="." instance=ExtResource("4_ayfrc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.03444, 24.7854)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0602, 5.03444, 24.7854)
 
 [node name="Fuel" parent="Moving_ball2" instance=ExtResource("6_jpi4j")]
 
 [node name="EnemyBody" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5353, 19.0973, 32.591)
-
-[node name="EnemyBody2" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.71758, 24.1104, 32.591)
-
-[node name="EnemyBody3" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.71758, 20.2983, 16.4909)
-
-[node name="EnemyBody4" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3988, 36.2377, 16.4909)
-
-[node name="EnemyBody5" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.12437, 52.5429, 16.4909)
-
-[node name="EnemyBody6" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.20343, 73.1294, 16.4909)
-
-[node name="EnemyBody7" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.20343, 95.9417, 31.8091)
-
-[node name="EnemyBody8" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.5378, 95.9417, 31.8091)
-
-[node name="EnemyBody9" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3571, 95.9417, 31.8091)
-
-[node name="EnemyBody10" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3571, 60.7049, 31.8091)
-
-[node name="EnemyBody11" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.1711, 13.9742, 31.8091)
-
-[node name="EnemyBody12" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.1711, 13.9742, -52.7676)
-
-[node name="EnemyBody13" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.1711, 80.1873, -52.7676)
-
-[node name="EnemyBody14" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.3946, 80.1873, -52.7676)
-
-[node name="EnemyBody15" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.3946, 80.1873, -88.2537)
-
-[node name="EnemyBody16" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.6996, 93.2544, -15.5478)
-
-[node name="EnemyBody17" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8512, 93.2544, -15.5478)
-
-[node name="EnemyBody18" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8512, 93.2544, 85.49)
-
-[node name="EnemyBody19" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7738, 93.2544, 85.49)
-
-[node name="EnemyBody20" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8225, 93.2544, 67.4262)
-
-[node name="EnemyBody21" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1566, 1.5689, 67.4262)
-
-[node name="EnemyBody22" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5425, 19.9993, 14.2015)
-
-[node name="EnemyBody23" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12071, 61.5482, 14.2015)
-
-[node name="EnemyBody24" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5148, 193.527, 14.2015)
-
-[node name="EnemyBody25" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.90585, 193.527, -21.3299)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.535, 1800, 32.591)

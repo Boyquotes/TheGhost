@@ -7,7 +7,8 @@ const STATES = {
 	'push'= 4,
 	'falling' = 5,
 	'jumping' = 6,
-	'landing' = 7
+	'landing' = 7,
+	'dancing' = 8
 }
 
 @export var hit_time = 2.0
@@ -111,3 +112,5 @@ func _on_animation_player_animation_finished(anim_name):
 		set_state(STATES.walking)
 	if (anim_name == "jumping"):
 		set_state(STATES.falling)
+	if (anim_name == "dancing"):
+		set_state(STATES.idle)

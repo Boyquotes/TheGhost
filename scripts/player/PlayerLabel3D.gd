@@ -1,35 +1,40 @@
 extends Label3D
 
-var text_queue : Array[String] = [""]:
-	set(value):
-		text_queue = value
-		print(text_queue)
-		
+class TextObject:
+	var text_value : String
+	var time : float
 
-var is_cleaning = false
+var text_queue : Array[TextObject]
 
-var is_filling = false
+var locked = false
 
 func _process(delta):
-	if (text_queue.size() >= 1) && !is_cleaning && !is_filling :
+	if (text_queue.size() >= 1) && !locked :
 		clean_text()
-		if (!is_cleaning):
+		if (!locked):
 			fill_text()
+	elif !locked:
+		clean_text()
 
-func update_text(new_text : String):
-	text_queue.append(new_text)
+func add_to_queue(new_text : String, display_time : float = 0.0):
+	var text_object = TextObject.new()
+	text_object.text_value = new_text
+	text_object.time = display_time
+	text_queue.append(text_object)
 
 func clean_text():
-	is_cleaning = true
+	locked = true
 	while text.length() >= 1:
 		text = text.left(-1)
 		await get_tree().create_timer(0.03).timeout
-	is_cleaning = false
+	locked = false
 	
 func fill_text():
-	is_filling = true
+	locked = true
 	var next_text = text_queue.pop_front()
-	for c in next_text:
+	for c in next_text.text_value:
 		text += c
-		await get_tree().create_timer(0.09).timeout
-	is_filling = false
+		await get_tree().create_timer(0.08).timeout
+	if next_text.time:
+		await get_tree().create_timer(next_text.time).timeout
+	locked = false
