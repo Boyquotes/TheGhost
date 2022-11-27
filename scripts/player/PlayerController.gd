@@ -63,10 +63,8 @@ func _input(event):
 	if event.is_action_pressed("jump") && on_floor:
 		apply_central_impulse(Vector3(motion.x*3, 15000.0, motion.z*3))
 	if event.is_action_pressed("talk") && on_floor:
-		sm.set_state(8)
-		player_text.add_to_queue("dancinha", 0.5)
-		player_text.add_to_queue("UwU", 1.0)
-		player_text.add_to_queue("!!! !!!", 1.0)
+		player_text.add_to_queue("Hey!", 0.5)
+
 
 func _handle_move_rotation(delta):
 	if motion.length() < 10:

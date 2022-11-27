@@ -40,3 +40,7 @@ func fill_text():
 	if next_text.time:
 		await get_tree().create_timer(next_text.time).timeout
 	locked = false
+
+func purge():
+	text_queue.clear()
+	clean_text()

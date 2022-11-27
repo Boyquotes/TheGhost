@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://tjpq8mwoqt15"]
+[gd_scene load_steps=16 format=3 uid="uid://tjpq8mwoqt15"]
 
+[ext_resource type="PackedScene" uid="uid://1cinutwv1t3l" path="res://scenes/props/floor.tscn" id="1_qn23l"]
 [ext_resource type="PackedScene" uid="uid://cumlguav5tn55" path="res://scenes/player.tscn" id="3_5fsbt"]
 [ext_resource type="PackedScene" uid="uid://ba17uatmb7tib" path="res://scenes/props/core.tscn" id="3_24p4y"]
 [ext_resource type="PackedScene" uid="uid://bxnwx5cvxmv65" path="res://scenes/props/moving_ball.tscn" id="4_ayfrc"]
@@ -33,15 +34,6 @@ size = Vector3(50, 10.5, 1)
 diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(0.286275, 0.309804, 0.286275, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wxlvy"]
-size = Vector3(999, 1, 999)
-
-[sub_resource type="BoxMesh" id="BoxMesh_267hq"]
-size = Vector3(999, 1, 999)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pl0i"]
-albedo_color = Color(0.501961, 1, 0.490196, 1)
 
 [node name="Base Level" type="Node3D"]
 
@@ -114,19 +106,23 @@ mesh = SubResource("BoxMesh_0bgr7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
 
-[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D"]
-collision_layer = 15
-collision_mask = 15
-collision_priority = 23.685
+[node name="Floor" parent="NavigationRegion3D" instance=ExtResource("1_qn23l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.4368)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor"]
-shape = SubResource("BoxShape3D_wxlvy")
+[node name="Floor2" parent="NavigationRegion3D" instance=ExtResource("1_qn23l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.9981, 0, 25.4368)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor/CollisionShape3D"]
-transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_267hq")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_2pl0i")
+[node name="Floor3" parent="NavigationRegion3D" instance=ExtResource("1_qn23l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.9981, 0, 75.1067)
+
+[node name="Floor4" parent="NavigationRegion3D" instance=ExtResource("1_qn23l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9029, 0, 75.1067)
+
+[node name="Floor5" parent="NavigationRegion3D" instance=ExtResource("1_qn23l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.7769, 0, 24.7116)
+
+[node name="Floor6" parent="NavigationRegion3D" instance=ExtResource("1_qn23l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.7769, 0, 73.49)
 
 [node name="Furnance" parent="NavigationRegion3D" instance=ExtResource("3_24p4y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21004, 4, 32.2068)
