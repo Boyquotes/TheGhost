@@ -3,8 +3,10 @@ extends Node3D
 @onready var animator2 = $AnimationPlayer2
 @onready var controller : RigidBody3D = get_parent()
 @onready var light : OmniLight3D = get_tree().get_first_node_in_group("PlayerLight")
+@onready var label : Label3D = get_node("Label3D")
 
 var is_walking = false
+var is_jumping = false
 
 func _ready():
 	animator2.play("Spawn")
@@ -27,15 +29,18 @@ var is_hit = true :
 func _physics_process(delta):
 	if is_walking:
 		animator.playback_speed = lerpf(animator.playback_speed, controller.linear_velocity.length() / controller.MAX_SPEED, delta * 10.0)
-		
+	if is_jumping:
+		animator.playback_speed = lerpf(animator.playback_speed, controller.linear_velocity.length() / (controller.MAX_SPEED*1.5), delta * 20.0)
 func _on_sm_entered_state(state, startSec):
-	#print("playing " + state)
 	if(animator.has_animation(state)):
-		if state == "walking":
+		if state == "walking" || state == "landing":
 			is_walking = true
+		elif state == "jumping" :
+			is_jumping = true
 		else :
 			animator.playback_speed = 1.0
 			is_walking = false
+			is_jumping = false
 		animator.play(state)
 		animator.seek(startSec, true)
 

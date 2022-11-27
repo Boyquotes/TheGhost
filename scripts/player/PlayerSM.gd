@@ -5,7 +5,9 @@ const STATES = {
 	'walking'= 2,
 	'hit'= 3,
 	'push'= 4,
-	'falling' = 5
+	'falling' = 5,
+	'jumping' = 6,
+	'landing' = 7
 }
 
 @export var hit_time = 2.0
@@ -13,7 +15,10 @@ const STATES = {
 var on_floor:
 	set(value):
 		if on_floor != value && value == false:
-			set_state(STATES.falling)
+			if (parent.linear_velocity.y >= 0):
+				set_state(STATES.jumping)
+			elif(parent.linear_velocity.y < 0):
+				set_state(STATES.falling)
 		on_floor = value
 
 var SPEED
@@ -76,7 +81,17 @@ func _update_state(delta):
 				return STATES.idle
 		STATES.falling:
 			if on_floor == true:
-				return STATES.walking
+				return STATES.landing
+		STATES.jumping:
+			if on_floor == true:
+				return STATES.landing
+		STATES.landing:
+			parent._handle_move_rotation(delta)
+			parent._handle_move_input()
+			parent._apply_movement()
+			if parent.speed == 0 :
+				return STATES.idle
+			
 
 func _enter_state(new_state,old_state):
 	parent.SPEED = SPEED
@@ -87,4 +102,12 @@ func _enter_state(new_state,old_state):
 			parent.SPEED = SPEED
 		STATES.push:
 			parent.SPEED = 0
+		STATES.landing:
+			parent.SPEED = SPEED * 0.9
 	emit_signal("entered_state", STATES.find_key(new_state), 0.0)
+
+func _on_animation_player_animation_finished(anim_name):
+	if (anim_name == "landing"):
+		set_state(STATES.walking)
+	if (anim_name == "jumping"):
+		set_state(STATES.falling)

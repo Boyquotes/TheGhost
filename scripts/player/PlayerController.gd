@@ -28,6 +28,7 @@ var mz = 0.0
 @onready var mesh = $Mesh
 @onready var pushArea : Area3D = $Mesh/Push
 @onready var ui : Label = $VBoxContainer/Label
+@onready var player_text : Label3D = $MeshDecoy/Label3D
 
 func _apply_movement():
 	if on_floor && linear_velocity.length() < MAX_SPEED:
@@ -60,7 +61,14 @@ func _input(event):
 	if event.is_action_pressed("push"):
 		push()
 	if event.is_action_pressed("jump") && on_floor:
-		apply_central_impulse(Vector3(motion.x, 10000.0, motion.z))
+		apply_central_impulse(Vector3(motion.x*2, 15000.0, motion.z*2))
+	if event.is_action_pressed("talk") && on_floor:
+		player_text.update_text("Hey !")
+		await get_tree().create_timer(1.0).timeout
+		player_text.update_text("")
+		player_text.update_text("Are you there?")
+		await get_tree().create_timer(1.0).timeout
+		player_text.update_text("")
 
 func _handle_move_rotation(delta):
 	if motion.length() < 10:
