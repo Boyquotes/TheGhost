@@ -31,7 +31,6 @@ var mz = 0.0
 @onready var player_text : Label3D = $MeshDecoy/Label3D
 
 func _apply_movement():
-	print(get_contact_count())
 	if on_floor && linear_velocity.length() < MAX_SPEED:
 		apply_central_impulse(Vector3(motion.x, 333.3, motion.z))
 
@@ -64,10 +63,10 @@ func _input(event):
 	if event.is_action_pressed("jump") && on_floor:
 		apply_central_impulse(Vector3(motion.x*3, 15000.0, motion.z*3))
 	if event.is_action_pressed("talk") && on_floor:
-		player_text.add_to_queue("Salve Livs", 0.3)
 		sm.set_state(8)
-		player_text.add_to_queue("Parabéns com dancinha", 0.5)
+		player_text.add_to_queue("dancinha", 0.5)
 		player_text.add_to_queue("UwU", 1.0)
+		player_text.add_to_queue("!!! !!!", 1.0)
 
 func _handle_move_rotation(delta):
 	if motion.length() < 10:

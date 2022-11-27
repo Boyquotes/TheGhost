@@ -24,11 +24,13 @@ func add_to_queue(new_text : String, display_time : float = 0.0):
 
 func clean_text():
 	locked = true
+	var clear_delta = 0.05
 	while text.length() >= 1:
 		text = text.left(-1)
-		await get_tree().create_timer(0.03).timeout
+		await get_tree().create_timer(clear_delta).timeout
+		clear_delta = lerpf(clear_delta, 0.02, 0.75)
 	locked = false
-	
+
 func fill_text():
 	locked = true
 	var next_text = text_queue.pop_front()
