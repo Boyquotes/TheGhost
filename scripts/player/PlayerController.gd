@@ -40,7 +40,7 @@ func _handle_move_input():
 		motion.x = Input.get_action_strength("move_down") * mx - Input.get_action_strength("move_up") * mx - Input.get_action_strength("move_left") * mz + Input.get_action_strength("move_right") * mz 
 		motion.z = Input.get_action_strength("move_down") * mz - Input.get_action_strength("move_up") * mz + Input.get_action_strength("move_left") * mx - + Input.get_action_strength("move_right") * mx
 		if linear_velocity.length() < 1:
-			speed = motion.normalized().length() * SPEED * 2
+			speed = motion.normalized().length() * SPEED * 10
 		if linear_velocity.length() < 2:
 			speed = motion.normalized().length() * SPEED * 0.1
 		if linear_velocity.length() < 3:
@@ -62,8 +62,6 @@ func _input(event):
 		push()
 	if event.is_action_pressed("jump") && on_floor:
 		apply_central_impulse(Vector3(motion.x*3, 15000.0, motion.z*3))
-	if event.is_action_pressed("talk") && on_floor:
-		player_text.add_to_queue("Hey!", 0.5)
 
 
 func _handle_move_rotation(delta):

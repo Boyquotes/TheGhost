@@ -31,7 +31,9 @@ func _physics_process(delta):
 		animator.playback_speed = lerpf(animator.playback_speed, controller.linear_velocity.length() / controller.MAX_SPEED, delta * 10.0)
 	if is_jumping:
 		animator.playback_speed = lerpf(animator.playback_speed, controller.linear_velocity.length() / (controller.MAX_SPEED*1.5), delta * 20.0)
+
 func _on_sm_entered_state(state, startSec):
+	#label.add_to_queue(state, 0.0)
 	if(animator.has_animation(state)):
 		if state == "walking" || state == "landing":
 			is_walking = true

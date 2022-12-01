@@ -12,7 +12,8 @@ var content_on_consumer : bool = false
 func _ready():
 	chimney_smoke_speed = chimney.speed_scale
 	text.add_to_queue("Hellloooooo!", 10.0)
-
+	text.add_to_queue("HEGHEHEHE!", 10.0)
+	
 func rigidBodyOnConsumer(body : RigidBody3D):
 	content_on_consumer = true
 	body.freeze = true
