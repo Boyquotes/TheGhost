@@ -1,11 +1,13 @@
 shader_type spatial;
+render_mode diffuse_toon;
 render_mode cull_disabled;
+render_mode specular_toon;
 
-uniform vec4 albedo : source_color;
+uniform vec4 albedo : source_color = vec4(0.05, 0.09, 0.01, 1.0);
 
 uniform vec3 player_pos = vec3(0.0);
-uniform float interact_power = 0.5;
-uniform float radius = 1.0;
+uniform float interact_power = 0.05;
+uniform float radius = 5.0;
 
 void vertex() {
 	vec3 world_vert = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz; // model space to world space
@@ -20,4 +22,5 @@ void vertex() {
 
 void fragment() {
 	ALBEDO = albedo.rgb;
+	
 }

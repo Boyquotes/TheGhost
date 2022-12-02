@@ -1,7 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://tjpq8mwoqt15"]
 
 [ext_resource type="PackedScene" uid="uid://1cinutwv1t3l" path="res://scenes/props/floor.tscn" id="1_qn23l"]
-[ext_resource type="PackedScene" uid="uid://cwp1ve1aktg5" path="res://scenes/props/floorgrass.tscn" id="2_nwmnn"]
 [ext_resource type="PackedScene" uid="uid://cumlguav5tn55" path="res://scenes/player.tscn" id="3_5fsbt"]
 [ext_resource type="PackedScene" uid="uid://ba17uatmb7tib" path="res://scenes/props/core.tscn" id="3_24p4y"]
 [ext_resource type="PackedScene" uid="uid://bxnwx5cvxmv65" path="res://scenes/props/moving_ball.tscn" id="4_ayfrc"]
@@ -9,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://du6pve38pu7jx" path="res://scenes/ramp.tscn" id="5_82eor"]
 [ext_resource type="PackedScene" uid="uid://kty2tew4afmr" path="res://scenes/elements/zap.tscn" id="5_gjdlb"]
 [ext_resource type="PackedScene" uid="uid://2lij0dqj26mc" path="res://scenes/elements/lava.tscn" id="6_jpi4j"]
+[ext_resource type="PackedScene" uid="uid://cwp1ve1aktg5" path="res://scenes/props/floorgrass.tscn" id="9_3ep4e"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_y6332"]
 vertices = PackedVector3Array(-13.5155, 0.92513, 30.7305, -13.5155, 0.92513, 32.2305, -11.7655, 0.92513, 31.9805, -13.5155, 0.92513, 30.7305, -11.7655, 0.92513, 31.9805, -11.7655, 0.92513, 28.7305, -14.7655, 0.92513, 29.4805, -14.0155, 0.92513, 2.48047, -24.0155, 0.92513, 9.23047, -24.0155, 0.92513, 16.2305, -11.0155, 0.92513, 27.7305, -4.0155, 0.92513, 27.4805, -4.0155, 0.92513, 2.48047, -24.0155, 0.92513, 30.2305, -21.5155, 0.92513, 30.2305, -20.5155, 0.92513, 29.4805, -24.0155, 0.92513, 23.2305, -14.7655, 0.92513, 29.4805, -11.7655, 0.92513, 28.7305, -11.0155, 0.92513, 27.7305, -24.0155, 0.92513, 16.2305, -24.0155, 0.92513, 23.2305, -20.5155, 0.92513, 29.4805, -14.0155, 0.92513, 2.48047, -24.0155, 0.92513, 2.48047, -24.0155, 0.92513, 9.23047, 20.7345, 0.92513, 9.23047, 20.7345, 0.92513, 2.48047, 14.4845, 0.92513, 2.48047, 20.7345, 0.92513, 9.23047, 14.4845, 0.92513, 2.48047, 8.2345, 0.92513, 2.48047, 20.7345, 0.92513, 16.2305, 20.7345, 0.92513, 9.23047, 8.2345, 0.92513, 2.48047, 1.9845, 0.92513, 2.48047, -4.0155, 0.92513, 27.4805, -2.7655, 0.92513, 28.2305, 20.7345, 0.92513, 22.9805, 20.7345, 0.92513, 16.2305, 1.9845, 0.92513, 2.48047, -4.0155, 0.92513, 2.48047, -2.7655, 0.92513, 28.2305, -2.5155, 0.92513, 30.2305, 20.7345, 0.92513, 29.9805, 20.7345, 0.92513, 22.9805, -6.0155, 0.92513, 38.4805, -7.2655, 0.92513, 38.7305, -7.2655, 0.92513, 38.9805, -1.0155, 0.92513, 39.2305, -3.7655, 0.92513, 36.7305, -5.0155, 0.92513, 36.7305, -6.0155, 0.92513, 38.4805, -2.7655, 0.92513, 35.9805, -3.7655, 0.92513, 36.7305, -6.0155, 0.92513, 38.4805, -1.0155, 0.92513, 39.2305, 8.9845, 0.92513, 47.2305, 20.7345, 0.92513, 47.2305, 20.7345, 0.92513, 38.4805, -0.515501, 0.92513, 39.9805, -0.765501, 1.17513, 41.4805, 8.9845, 0.92513, 47.2305, -2.7655, 0.92513, 35.9805, -1.0155, 0.92513, 39.2305, -0.515501, 0.92513, 39.9805, -1.5155, 1.17513, 41.9805, -3.0155, 1.67513, 41.9805, -2.7655, 1.67513, 47.2305, -0.765501, 1.17513, 41.4805, -1.5155, 1.17513, 41.9805, -2.7655, 1.67513, 47.2305, 8.9845, 0.92513, 47.2305, 0.171999, 0.92513, 47.2305, -2.5155, 0.92513, 30.2305, -2.7655, 0.92513, 35.9805, -0.515501, 0.92513, 39.9805, 8.9845, 0.92513, 47.2305, 20.7345, 0.92513, 38.4805, 20.7345, 0.92513, 29.9805, -18.5155, 0.92513, 38.9805, -18.5155, 0.92513, 37.4805, -20.5155, 0.92513, 37.4805, -24.0155, 0.92513, 38.9805, -21.7655, 0.92513, 36.2305, -21.5155, 0.92513, 30.2305, -24.0155, 0.92513, 30.2305, -24.0155, 0.92513, 38.9805, -24.0155, 0.92513, 38.9805, -20.5155, 0.92513, 37.4805, -21.7655, 0.92513, 36.2305, -9.0155, 0.92513, 37.9805, -9.2655, 0.92513, 36.7305, -10.5155, 0.92513, 36.7305, -7.2655, 0.92513, 38.9805, -7.2655, 0.92513, 38.7305, -9.0155, 0.92513, 37.9805, -14.7655, 0.92513, 37.4805, -18.5155, 0.92513, 37.4805, -18.5155, 0.92513, 38.9805, -9.0155, 0.92513, 37.9805, -10.5155, 0.92513, 36.7305, -11.5155, 0.92513, 35.9805, -13.7655, 0.92513, 36.7305, -14.7655, 0.92513, 37.4805, -11.5155, 0.92513, 35.9805, -11.7655, 0.92513, 31.9805, -13.5155, 0.92513, 32.2305, -13.7655, 0.92513, 36.7305, -18.7655, 10.6751, 32.4805, -18.7655, 10.6751, 34.4805, -16.5155, 10.6751, 34.4805, -16.5155, 10.6751, 32.4805, -18.5155, 0.92513, 32.7305, -18.5155, 0.92513, 34.2305, -16.7655, 0.92513, 34.2305, -16.7655, 0.92513, 32.7305, -25.2655, 8.67513, 41.9805, -25.2655, 8.67513, 47.7305, -24.5155, 8.42513, 47.2305, -14.2655, 5.17513, 41.9805, -25.2655, 8.67513, 41.9805, -24.5155, 8.42513, 47.2305, -13.7655, 5.17513, 47.2305, -3.0155, 1.67513, 41.9805, -14.2655, 5.17513, 41.9805, -13.7655, 5.17513, 47.2305, -2.7655, 1.67513, 47.2305, -24.0155, 0.92513, 42.2305, -24.0155, 0.92513, 47.2305, -21.2655, 0.92513, 47.2305, -21.2655, 0.92513, 42.2305)
@@ -70,8 +70,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
 
 [node name="Wall3" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22.8116, 2.92513, 24.7006)
-collision_layer = 15
-collision_mask = 15
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Wall3"]
 shape = SubResource("BoxShape3D_r5dwp")
@@ -120,16 +120,20 @@ surface_material_override/0 = null
 [node name="Player" parent="." instance=ExtResource("3_5fsbt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.6401, 31.5217)
 
-[node name="Grass2" parent="." instance=ExtResource("2_nwmnn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3626, 0.54015, 7.66595)
-
-[node name="Node3D" parent="." instance=ExtResource("2_nwmnn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54015, 7.66595)
-
 [node name="Moving_ball" parent="." instance=ExtResource("4_ayfrc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.820261, 1.88359, 17.4323)
 
 [node name="Fuel" parent="Moving_ball" instance=ExtResource("5_gjdlb")]
+
+[node name="Moving_ball3" parent="." instance=ExtResource("4_ayfrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90804, 1.88359, 31.0687)
+
+[node name="Fuel" parent="Moving_ball3" instance=ExtResource("5_gjdlb")]
+
+[node name="Moving_ball4" parent="." instance=ExtResource("4_ayfrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5777, 1.88359, 31.0687)
+
+[node name="Fuel" parent="Moving_ball4" instance=ExtResource("5_gjdlb")]
 
 [node name="Moving_ball2" parent="." instance=ExtResource("4_ayfrc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0602, 5.03444, 24.7854)
@@ -149,3 +153,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.0754, 1206.48, -9.48381)
 transform = Transform3D(1, 0, 0, 0, 0.423298, 0.90599, 0, -0.90599, 0.423298, 0, 29.2843, 38.0391)
 visible = false
 light_volumetric_fog_energy = 0.197
+
+[node name="Grass" parent="." instance=ExtResource("9_3ep4e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7049, 0.5, 29.7865)
+
+[node name="Grass2" parent="." instance=ExtResource("9_3ep4e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.709, 0.5, 29.7778)
+
+[node name="Grass3" parent="." instance=ExtResource("9_3ep4e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7074, 0.5, 31.7927)
+
+[node name="Grass4" parent="." instance=ExtResource("9_3ep4e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7041, 0.5, 31.7907)
