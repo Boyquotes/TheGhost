@@ -144,13 +144,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0602, 5.03444, 24.7854)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.535, 1800, 32.591)
 
 [node name="EnemyBody2" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9256, 1630.86, 32.591)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8699, 1630.86, 32.591)
 
 [node name="EnemyBody3" parent="." instance=ExtResource("4_mqyxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.0754, 1206.48, -9.48381)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.79436, 1206.48, 5.06684)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.423298, 0.90599, 0, -0.90599, 0.423298, 0, 29.2843, 38.0391)
+visible = false
 light_volumetric_fog_energy = 0.197
 
 [node name="4X4Grass" type="Node3D" parent="."]
