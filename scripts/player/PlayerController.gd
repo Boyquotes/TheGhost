@@ -62,6 +62,10 @@ func _input(event):
 		push()
 	if event.is_action_pressed("jump") && on_floor:
 		apply_central_impulse(Vector3(motion.x*3, 15000.0, motion.z*3))
+	if event.is_action_pressed("talk") && on_floor:
+		player_text.add_to_queue("teste", 1)
+		player_text.add_to_queue("segundo texto", 1)
+		player_text.add_to_queue("ultimo texto", 1)
 
 
 func _handle_move_rotation(delta):
