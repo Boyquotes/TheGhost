@@ -55,8 +55,9 @@ func _handle_move_input():
 		
 	motion = motion.normalized() * speed
 
-func _process(delta):
+func _process(_delta):
 	ui.text = str(Engine.get_frames_per_second())
+	
 func _input(event):
 	if event.is_action_pressed("push"):
 		push()

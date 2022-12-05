@@ -8,7 +8,7 @@ var text_queue : Array[TextObject]
 
 var locked = false
 
-func _process(delta):
+func _process(_delta):
 	if (text_queue.size() >= 1) && !locked :
 		clean_text()
 		if (!locked):
