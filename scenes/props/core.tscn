@@ -2,9 +2,9 @@
 
 [ext_resource type="Material" uid="uid://cv1elwyxjdi1f" path="res://materials/new_standard_material_3d.tres" id="1_fsp24"]
 [ext_resource type="Script" path="res://scripts/props/Furnance.gd" id="2_1ppdy"]
-[ext_resource type="FontFile" uid="uid://conawpd07hsob" path="res://imports/Fonts/IBM3161.ttf" id="3_o85w4"]
+[ext_resource type="FontFile" uid="uid://d8mkopi838dy" path="res://imports/Fonts/IBM3161.ttf" id="3_o85w4"]
 [ext_resource type="Shader" path="res://materials/lavaf.gdshader" id="3_stjqu"]
-[ext_resource type="Texture2D" uid="uid://e2alpnt33v0c" path="res://imports/Particles/smoke_04.png" id="3_u4xuv"]
+[ext_resource type="Texture2D" uid="uid://dlirtqayjlqdb" path="res://imports/Particles/smoke_04.png" id="3_u4xuv"]
 [ext_resource type="Script" path="res://scripts/player/PlayerLabel3D.gd" id="4_dm8td"]
 [ext_resource type="PackedScene" uid="uid://b01nkjct22a5n" path="res://scenes/props/door.tscn" id="5_egmt6"]
 
