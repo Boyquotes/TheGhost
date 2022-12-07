@@ -54,9 +54,6 @@ func _handle_move_input():
 		
 		
 	motion = motion.normalized() * speed
-
-func _process(_delta):
-	ui.text = str(Engine.get_frames_per_second())
 	
 func _input(event):
 	if event.is_action_pressed("push"):
@@ -108,3 +105,9 @@ func push():
 
 func _on_floor_detector(boolean):
 	on_floor = boolean
+
+func _on_daytime_changed(text : String, color : Color):
+	if ui != null:
+		print(color)
+		ui.set("custom_colors/font_color", color)
+		ui.add_to_queue(text.to_upper(), 2)

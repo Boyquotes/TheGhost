@@ -23,10 +23,10 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6mnr"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpw8w"]
 diffuse_mode = 3
 specular_mode = 1
-albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
+albedo_color = Color(0.286275, 0.309804, 0.286275, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_es8n2"]
 
@@ -37,7 +37,7 @@ data = PackedVector3Array(1, -1, -1, -4.40135, 1, 1, -4.40135, 1, -1, 1, -1, -1,
 transform = Transform3D(4.52918, 0, 0, 0, 4.52918, 0, 0, 0, 4.52918, 0, 4.60171, 0)
 mesh = SubResource("ArrayMesh_jp5gh")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_a6mnr")
+surface_material_override/0 = SubResource("StandardMaterial3D_gpw8w")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["Floor"]]
 collision_layer = 15

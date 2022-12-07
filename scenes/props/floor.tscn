@@ -6,12 +6,10 @@ size = Vector3(50, 1, 50)
 [sub_resource type="BoxMesh" id="BoxMesh_idk53"]
 size = Vector3(50, 1, 50)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pl0i"]
-cull_mode = 2
-depth_draw_mode = 1
-albedo_color = Color(0.235294, 0.227451, 0.227451, 1)
-metallic_specular = 0.0
-rim = 0.5
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj8cy"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.286275, 0.309804, 0.286275, 1)
 
 [node name="Floor" type="StaticBody3D"]
 collision_layer = 15
@@ -25,4 +23,4 @@ shape = SubResource("BoxShape3D_wxlvy")
 transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_idk53")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_2pl0i")
+surface_material_override/0 = SubResource("StandardMaterial3D_kj8cy")

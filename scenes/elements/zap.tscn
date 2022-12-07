@@ -61,7 +61,6 @@ shape = SubResource("SphereShape3D_tbdia")
 [node name="Light" type="OmniLight3D" parent="."]
 light_color = Color(0.521569, 0.686275, 1, 1)
 light_energy = 3.0
-light_volumetric_fog_energy = 4.0
 light_specular = 5.0
 shadow_enabled = true
 omni_range = 10.0
