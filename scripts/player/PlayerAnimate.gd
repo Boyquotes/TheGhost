@@ -29,20 +29,20 @@ var is_hit = true :
 func _physics_process(delta):
 	if is_walking:
 		animator.playback_speed = lerpf(animator.playback_speed, controller.linear_velocity.length() / controller.MAX_SPEED, delta * 10.0)
-	if is_jumping:
-		animator.playback_speed = lerpf(animator.playback_speed, controller.linear_velocity.length() / (controller.MAX_SPEED*1.5), delta * 20.0)
 
 func _on_sm_entered_state(state, startSec):
-	#label.add_to_queue(state, 0.0)
+	label.hard_reset()
+	label.override(state)
 	if(animator.has_animation(state)):
-		if state == "walking" || state == "landing":
+		if state in ["walking"] :
 			is_walking = true
-		elif state == "jumping" :
-			is_jumping = true
 		else :
 			animator.playback_speed = 1.0
 			is_walking = false
-			is_jumping = false
+		if state in ["landing"]:
+			animator.playback_default_blend_time = 0
+		else :
+			animator.playback_default_blend_time = 0.3
 		animator.play(state)
 		animator.seek(startSec, true)
 

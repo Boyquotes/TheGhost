@@ -13,14 +13,7 @@ const STATES = {
 
 @export var hit_time = 2.0
 
-var on_floor:
-	set(value):
-		if on_floor != value && value == false:
-			if (parent.linear_velocity.y >= 0):
-				set_state(STATES.jumping)
-			elif(parent.linear_velocity.y < 0):
-				set_state(STATES.falling)
-		on_floor = value
+var on_floor = false
 
 var SPEED
 
@@ -56,6 +49,9 @@ var is_block = false:
 
 signal entered_state (state : String, starSec : float)
 
+func jump():
+	set_state(STATES.jumping)
+
 func _ready():
 	SPEED = parent.SPEED
 	add_states(STATES)
@@ -80,19 +76,16 @@ func _update_state(delta):
 			parent._apply_movement()
 			if parent.speed == 0 :
 				return STATES.idle
-		STATES.falling:
-			if on_floor == true:
-				return STATES.landing
 		STATES.jumping:
-			if on_floor == true:
+			parent._handle_move_rotation(delta)
+			parent._apply_movement()
+		STATES.falling:
+			if on_floor:
 				return STATES.landing
 		STATES.landing:
 			parent._handle_move_rotation(delta)
 			parent._handle_move_input()
 			parent._apply_movement()
-			if parent.speed == 0 :
-				return STATES.idle
-			
 
 func _enter_state(new_state,_old_state):
 	parent.SPEED = SPEED
@@ -103,8 +96,10 @@ func _enter_state(new_state,_old_state):
 			parent.SPEED = SPEED
 		STATES.push:
 			parent.SPEED = 0
+		STATES.jumping:
+			parent.SPEED = SPEED * 0.3
 		STATES.landing:
-			parent.SPEED = SPEED * 0.9
+			parent.SPEED = SPEED * 0.6
 	emit_signal("entered_state", STATES.find_key(new_state), 0.0)
 
 func _on_animation_player_animation_finished(anim_name):

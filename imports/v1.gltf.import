@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bg3mmnnslo8yt"
+uid="uid://1b6judc7x3iu"
 path="res://.godot/imported/v1.gltf-6bd91eb7a0301c5d2816d4c0f1785865.scn"
 
 [deps]
@@ -25,6 +25,7 @@ meshes/lightmap_texel_size=0.2
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
+animation/trimming=false
 import_script/path=""
 _subresources={
 "animations": {

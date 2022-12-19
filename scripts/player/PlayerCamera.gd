@@ -58,4 +58,3 @@ func _on_mesh_player_real_pos(pos, delta):
 		targetPosition, 
 		CORRECTION_SPEED*delta)
 	camera.rotation.y = lerp_angle(camera.rotation.y, rot, CORRECTION_SPEED*delta)
-

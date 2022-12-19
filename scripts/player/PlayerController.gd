@@ -58,8 +58,11 @@ func _handle_move_input():
 func _input(event):
 	if event.is_action_pressed("push"):
 		push()
-	if event.is_action_pressed("jump") && on_floor:
-		apply_central_impulse(Vector3(motion.x*3, 15000.0, motion.z*3))
+	if event.is_action_pressed("jump") && on_floor && !sm.is_hit:
+		sm.jump()
+		await get_tree().create_timer(0.3).timeout
+		var direction = motion.normalized()
+		apply_central_impulse(Vector3(direction.x*170.0, 17000.0, direction.z*170.0))
 	if event.is_action_pressed("talk") && on_floor:
 		player_text.add_to_queue("teste", 1)
 		player_text.add_to_queue("segundo texto", 1)
@@ -108,6 +111,5 @@ func _on_floor_detector(boolean):
 
 func _on_daytime_changed(text : String, color : Color):
 	if ui != null:
-		print(color)
 		ui.set("custom_colors/font_color", color)
 		ui.add_to_queue(text.to_upper(), 2)

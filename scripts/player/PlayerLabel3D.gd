@@ -40,6 +40,14 @@ func fill_text():
 	if next_text.time:
 		await get_tree().create_timer(next_text.time).timeout
 	locked = false
+	
+func override(new_text : String):
+	text = new_text
+	locked = true
+
+func hard_reset():
+	locked = false
+	text = ""
 
 func purge():
 	text_queue.clear()
