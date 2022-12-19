@@ -31,8 +31,8 @@ func _physics_process(delta):
 		animator.playback_speed = lerpf(animator.playback_speed, controller.linear_velocity.length() / controller.MAX_SPEED, delta * 10.0)
 
 func _on_sm_entered_state(state, startSec):
-	label.hard_reset()
-	label.override(state)
+	#label.hard_reset()
+	#label.override(state)
 	if(animator.has_animation(state)):
 		if state in ["walking"] :
 			is_walking = true

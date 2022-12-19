@@ -5,6 +5,8 @@ extends RigidBody3D
 
 var INITIAL_MASS = mass
 
+var jumping = false
+
 var on_floor = true :
 	set(value):
 		on_floor = value
@@ -36,6 +38,8 @@ func _apply_movement():
 
 func _handle_move_input():
 	speed = 0
+	if !is_move_input():
+		return
 	if Input.is_action_pressed("move_right") || Input.is_action_pressed("move_left") || Input.is_action_pressed("move_down") || Input.is_action_pressed("move_up"):
 		motion.x = Input.get_action_strength("move_down") * mx - Input.get_action_strength("move_up") * mx - Input.get_action_strength("move_left") * mz + Input.get_action_strength("move_right") * mz 
 		motion.z = Input.get_action_strength("move_down") * mz - Input.get_action_strength("move_up") * mz + Input.get_action_strength("move_left") * mx - + Input.get_action_strength("move_right") * mx
@@ -51,18 +55,13 @@ func _handle_move_input():
 			speed = motion.normalized().length() * SPEED * 0.7
 		else:
 			speed = motion.normalized().length() * SPEED
-		
-		
 	motion = motion.normalized() * speed
-	
+
 func _input(event):
 	if event.is_action_pressed("push"):
 		push()
-	if event.is_action_pressed("jump") && on_floor && !sm.is_hit:
-		sm.jump()
-		await get_tree().create_timer(0.3).timeout
-		var direction = motion.normalized()
-		apply_central_impulse(Vector3(direction.x*170.0, 17000.0, direction.z*170.0))
+	if event.is_action_pressed("jump") && !sm.is_hit && on_floor && !jumping:
+		jump()
 	if event.is_action_pressed("talk") && on_floor:
 		player_text.add_to_queue("teste", 1)
 		player_text.add_to_queue("segundo texto", 1)
@@ -70,7 +69,7 @@ func _input(event):
 
 
 func _handle_move_rotation(delta):
-	if motion.length() < 10:
+	if motion.length() < 10 || jumping || !is_move_input():
 		return
 	if !sm.is_hit :
 		mesh_decoy.rotation.y = lerp_angle(mesh_decoy.rotation.y, atan2(-motion.x, -motion.z), delta * ROTATION_SPEED)
@@ -105,7 +104,21 @@ func push():
 			sm.is_pushing = true
 			await get_tree().create_timer(0.30).timeout
 			obj.apply_central_impulse(direction* 130000)
-
+			
+func jump():
+	jumping = true
+	sm.jump()
+	var direction = Vector3.ZERO
+	direction.x = Input.get_action_strength("move_down") * mx - Input.get_action_strength("move_up") * mx - Input.get_action_strength("move_left") * mz + Input.get_action_strength("move_right") * mz 
+	direction.z = Input.get_action_strength("move_down") * mz - Input.get_action_strength("move_up") * mz + Input.get_action_strength("move_left") * mx - + Input.get_action_strength("move_right") * mx
+	if is_move_input():
+		mesh.rotation.y = atan2(-direction.x, -direction.z)
+		mesh_decoy.rotation.y = atan2(-direction.x, -direction.z)
+	await get_tree().create_timer(0.33).timeout
+	apply_central_impulse(Vector3(direction.x*5000.0, 15000.0, direction.z*5000.0))
+	await get_tree().create_timer(0.1).timeout
+	jumping = false
+	
 func _on_floor_detector(boolean):
 	on_floor = boolean
 
@@ -113,3 +126,9 @@ func _on_daytime_changed(text : String, color : Color):
 	if ui != null:
 		ui.set("custom_colors/font_color", color)
 		ui.add_to_queue(text.to_upper(), 2)
+
+func is_move_input():
+	if Input.is_action_pressed("move_down") || Input.is_action_pressed("move_up") || Input.is_action_pressed("move_right") || Input.is_action_pressed("move_left"):
+		return true
+	else:
+		return false

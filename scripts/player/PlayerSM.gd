@@ -77,7 +77,7 @@ func _update_state(delta):
 			if parent.speed == 0 :
 				return STATES.idle
 		STATES.jumping:
-			parent._handle_move_rotation(delta)
+			parent._handle_move_input()
 			parent._apply_movement()
 		STATES.falling:
 			if on_floor:
@@ -97,7 +97,7 @@ func _enter_state(new_state,_old_state):
 		STATES.push:
 			parent.SPEED = 0
 		STATES.jumping:
-			parent.SPEED = SPEED * 0.3
+			parent.SPEED = SPEED * 0.05
 		STATES.landing:
 			parent.SPEED = SPEED * 0.6
 	emit_signal("entered_state", STATES.find_key(new_state), 0.0)
