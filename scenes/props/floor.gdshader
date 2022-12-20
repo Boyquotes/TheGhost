@@ -6,7 +6,7 @@ render_mode specular_toon;
 uniform vec4 albedo : source_color = vec4(0.09, 0.12, 0.02, 1.0);
 
 uniform vec3 player_pos = vec3(0.0);
-uniform float interact_power = 0.08;
+uniform float interact_power = 0.05;
 uniform float radius = 7.0;
 
 void vertex() {

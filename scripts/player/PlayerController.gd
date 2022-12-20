@@ -33,7 +33,7 @@ var mz = 0.0
 @onready var player_text : Label3D = $MeshDecoy/Label3D
 
 func _apply_movement():
-	if on_floor && linear_velocity.length() < MAX_SPEED:
+	if on_floor && linear_velocity.length() < MAX_SPEED && is_move_input():
 		apply_central_impulse(Vector3(motion.x, 333.3, motion.z))
 
 func _handle_move_input():
@@ -115,7 +115,7 @@ func jump():
 		mesh.rotation.y = atan2(-direction.x, -direction.z)
 		mesh_decoy.rotation.y = atan2(-direction.x, -direction.z)
 	await get_tree().create_timer(0.33).timeout
-	apply_central_impulse(Vector3(direction.x*5000.0, 15000.0, direction.z*5000.0))
+	apply_central_impulse(Vector3(direction.x*7000.0, 15000.0, direction.z*7000.0))
 	await get_tree().create_timer(0.1).timeout
 	jumping = false
 	
