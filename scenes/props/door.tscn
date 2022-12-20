@@ -5,7 +5,12 @@ script/source = "extends Node3D
 
 @onready var animator : AnimationPlayer = $AnimationPlayer
 
-var isOpen = false
+var isOpen = false:
+	set(value):
+		isOpen = value
+		emit_signal(\"is_open\", value)
+
+signal is_open (isOpen : bool)
 
 func rigidBodyOnDoor(body):
 	if body.is_in_group(\"Moveable\") && !isOpen:
