@@ -47,10 +47,9 @@ data = PackedVector3Array(0.0111532, 3.01525, 1.84404, -0.176078, 3.05162, 3.793
 backface_collision = true
 
 [sub_resource type="FogMaterial" id="FogMaterial_jpfqo"]
-density = 3.0
-emission = Color(0.203922, 0.203922, 0.203922, 1)
+density = 2.0
+emission = Color(0.329412, 0.329412, 0.329412, 1)
 height_falloff = 20.0
-edge_fade = 0.2
 
 [sub_resource type="FogMaterial" id="FogMaterial_ul60a"]
 
@@ -133,7 +132,7 @@ script = ExtResource("4_dm8td")
 [node name="FogVolume" type="FogVolume" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.69471, 0)
 extents = Vector3(14, 4, 15)
-shape = 2
+shape = 0
 material = SubResource("FogMaterial_jpfqo")
 
 [node name="FogVolume2" type="FogVolume" parent="Effects"]

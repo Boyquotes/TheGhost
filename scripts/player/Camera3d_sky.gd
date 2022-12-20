@@ -44,13 +44,13 @@ func cycle():
 	next_light = 1.0
 	next_color = STATES.midnight
 	next_dir_light_int = 0.01
-	await get_tree().create_timer(10*3).timeout
+	await get_tree().create_timer(10*1).timeout
 	next_color = STATES.morning
 	next_light = 1.1
-	next_dir_light_int = 0.1
+	next_dir_light_int = 0.2
 	await get_tree().create_timer(7*3).timeout
 	next_color = STATES.midday
-	next_light = 1.5
+	next_light = 1.7
 	await get_tree().create_timer(10*3).timeout
 	next_color = STATES.afternoon
 	next_light = 1.0
