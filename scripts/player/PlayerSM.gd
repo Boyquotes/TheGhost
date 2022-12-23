@@ -103,7 +103,7 @@ func _enter_state(new_state,_old_state):
 		STATES.jumping:
 			parent.SPEED = SPEED * 0.05
 		STATES.landing:
-			parent.SPEED = SPEED * 0.6
+			parent.SPEED = SPEED * 0.8
 	emit_signal("entered_state", STATES.find_key(new_state), 0.0)
 
 func _on_animation_player_animation_finished(anim_name):

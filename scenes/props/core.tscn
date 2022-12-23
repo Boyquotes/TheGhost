@@ -1,12 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://ba17uatmb7tib"]
+[gd_scene load_steps=25 format=3 uid="uid://ba17uatmb7tib"]
 
 [ext_resource type="Material" uid="uid://cv1elwyxjdi1f" path="res://materials/new_standard_material_3d.tres" id="1_fsp24"]
 [ext_resource type="Script" path="res://scripts/props/Furnance.gd" id="2_1ppdy"]
-[ext_resource type="FontFile" uid="uid://d8mkopi838dy" path="res://imports/Fonts/IBM3161.ttf" id="3_o85w4"]
+[ext_resource type="FontFile" uid="uid://c2l264es1yt2y" path="res://imports/Fonts/IBM3161.ttf" id="3_o85w4"]
 [ext_resource type="Shader" path="res://materials/lavaf.gdshader" id="3_stjqu"]
-[ext_resource type="Texture2D" uid="uid://dlirtqayjlqdb" path="res://imports/Particles/smoke_04.png" id="3_u4xuv"]
 [ext_resource type="Script" path="res://scripts/player/PlayerLabel3D.gd" id="4_dm8td"]
 [ext_resource type="PackedScene" uid="uid://b01nkjct22a5n" path="res://scenes/props/door.tscn" id="5_egmt6"]
+[ext_resource type="Material" uid="uid://57mhr4iww31h" path="res://materials/smoke_material.tres" id="5_n6xer"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jfj8v"]
 render_priority = 0
@@ -53,26 +53,6 @@ density = 2.0
 emission = Color(0.329412, 0.329412, 0.329412, 1)
 height_falloff = 20.0
 
-[sub_resource type="FogMaterial" id="FogMaterial_ul60a"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyty8"]
-transparency = 1
-blend_mode = 1
-cull_mode = 2
-shading_mode = 0
-diffuse_mode = 3
-specular_mode = 1
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-albedo_color = Color(0.301961, 0.301961, 0.301961, 1)
-albedo_texture = ExtResource("3_u4xuv")
-refraction_scale = 1.0
-refraction_texture = ExtResource("3_u4xuv")
-billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
 [sub_resource type="QuadMesh" id="QuadMesh_amu13"]
 
 [sub_resource type="Gradient" id="Gradient_jfdwt"]
@@ -81,6 +61,27 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hkw1h"]
 size = Vector3(0.1, 0.1, 10.1)
+
+[sub_resource type="Gradient" id="Gradient_1pavc"]
+offsets = PackedFloat32Array(0, 0.0818182, 0.654545, 1)
+colors = PackedColorArray(0.203922, 0.203922, 0.203922, 0, 1, 1, 1, 1, 1, 1, 1, 0.698039, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dmlji"]
+gradient = SubResource("Gradient_1pavc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rjppq"]
+direction = Vector3(0, 0.1, -1)
+spread = 25.0
+gravity = Vector3(0, -4.9, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+scale_min = 3.0
+scale_max = 3.0
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_dmlji")
+collision_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_5dxlh"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wf51l"]
 
@@ -94,11 +95,11 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(_delta):
 	if is_open:
 		var objsToPush = get_overlapping_bodies().filter(func(obj): return obj.is_in_group(\"Moveable\"))
 		for obj in objsToPush:
-			obj.apply_central_impulse((global_position - obj.global_position) * 50)
+			obj.apply_central_impulse((global_position - obj.global_position) * 500)
 
 
 func _on_door_is_open(isOpen):
@@ -173,12 +174,6 @@ extents = Vector3(14, 4, 15)
 shape = 0
 material = SubResource("FogMaterial_jpfqo")
 
-[node name="FogVolume2" type="FogVolume" parent="Effects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.325113, 3.78475, 4.60944)
-extents = Vector3(3, 1.86, 3)
-shape = 2
-material = SubResource("FogMaterial_ul60a")
-
 [node name="OmniLight3D" type="OmniLight3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.613868, 0)
 light_color = Color(1, 0.388235, 0.184314, 1)
@@ -190,7 +185,8 @@ omni_range = 14.142
 
 [node name="Smoke" type="CPUParticles3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320849, 4.32126, 4.71112)
-material_override = SubResource("StandardMaterial3D_kyty8")
+visible = false
+material_override = ExtResource("5_n6xer")
 amount = 36
 lifetime = 1.5
 speed_scale = 0.27
@@ -222,6 +218,22 @@ light_volumetric_fog_energy = 0.2
 light_specular = 16.0
 spot_range = 2.482
 spot_angle = 24.54
+
+[node name="Smoke2" type="GPUParticles3D" parent="Effects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320849, 4.32126, 4.71112)
+material_override = ExtResource("5_n6xer")
+amount = 36
+lifetime = 1.5
+speed_scale = 0.27
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_rjppq")
+draw_pass_1 = SubResource("QuadMesh_5dxlh")
+
+[node name="Area3D" type="Area3D" parent="Effects/Smoke2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Effects/Smoke2/Area3D"]
+shape = SubResource("BoxShape3D_hkw1h")
 
 [node name="Windows" type="Node3D" parent="."]
 

@@ -13,7 +13,7 @@ var body = get_parent().get_node("RigidBody3D")
 var light_hit_colision : CollisionShape3D = $LightHit/CollisionShape3D
 
 var light_reduce_ammount : float
-var sparkle_reduce_ammount : int
+var sparkle_reduce_ammount : float
 var beam_on_cd : bool = false
 
 @export var cd : float = 1.7
@@ -27,7 +27,7 @@ var beam_on_cd : bool = false
 func _ready():
 	effects.visible = false
 	light_reduce_ammount = light.omni_range/10.0
-	sparkle_reduce_ammount = fluid_sparkles.amount/10
+	sparkle_reduce_ammount = fluid_sparkles.amount/10.0
 
 func _physics_process(_delta):
 	global_transform.origin = body.global_transform.origin
@@ -45,7 +45,7 @@ func _on_light_hit_enemy(obj):
 		
 		effects.look_at(enemy_position)
 		obj.stun(global_transform.origin)
-		var explosion_dir = global_transform.origin - enemy_position
+		#var explosion_dir = global_transform.origin - enemy_position
 		#body.apply_central_impulse(Vector3(explosion_dir.x, explosion_dir.y, explosion_dir.z)* 12000.0)
 		beam_on_cd = true
 		effects.visible = true

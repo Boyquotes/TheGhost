@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cwp1ve1aktg5"]
 
-[ext_resource type="ArrayMesh" uid="uid://b6wvq2lw2aw2x" path="res://imports/grass_straw.obj" id="1_ruwlg"]
+[ext_resource type="ArrayMesh" uid="uid://fhkeltuw5hkv" path="res://imports/grass_straw.obj" id="1_ruwlg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obb33"]
 
@@ -16,9 +16,10 @@ script/source = "extends Area3D
 @onready var current_y = global_position.y
 var shader_material : ShaderMaterial
 
-var target : Vector3 = Vector3(global_position.x, 7.5, global_position.z)
+var target : Vector3
 
 func _ready():
+	target = Vector3(global_position.x, 7.5, global_position.z)
 	folliage.material_override = ShaderMaterial.new()
 	folliage.material_override.shader = shader
 	shader_material = folliage.material_override
