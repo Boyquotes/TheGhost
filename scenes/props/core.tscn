@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ba17uatmb7tib"]
+[gd_scene load_steps=27 format=3 uid="uid://ba17uatmb7tib"]
 
 [ext_resource type="Material" uid="uid://cv1elwyxjdi1f" path="res://materials/new_standard_material_3d.tres" id="1_fsp24"]
 [ext_resource type="Script" path="res://scripts/props/Furnance.gd" id="2_1ppdy"]
@@ -6,7 +6,6 @@
 [ext_resource type="Shader" path="res://materials/lavaf.gdshader" id="3_stjqu"]
 [ext_resource type="Script" path="res://scripts/player/PlayerLabel3D.gd" id="4_dm8td"]
 [ext_resource type="PackedScene" uid="uid://b01nkjct22a5n" path="res://scenes/props/door.tscn" id="5_egmt6"]
-[ext_resource type="Material" uid="uid://57mhr4iww31h" path="res://materials/smoke_material.tres" id="5_n6xer"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jfj8v"]
 render_priority = 0
@@ -53,35 +52,64 @@ density = 2.0
 emission = Color(0.329412, 0.329412, 0.329412, 1)
 height_falloff = 20.0
 
-[sub_resource type="QuadMesh" id="QuadMesh_amu13"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4wgrj"]
+load_path = "res://.godot/imported/smoke_04.png-9bb63a1906f266350ae7aeb883d494f2.s3tc.ctex"
 
-[sub_resource type="Gradient" id="Gradient_jfdwt"]
-offsets = PackedFloat32Array(0, 0.163636, 0.818841, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ki458"]
+load_path = "res://.godot/imported/smoke_04.png-9bb63a1906f266350ae7aeb883d494f2.s3tc.ctex"
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hkw1h"]
-size = Vector3(0.1, 0.1, 10.1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2087w"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(0.376471, 0.376471, 0.376471, 0.635294)
+albedo_texture = SubResource("CompressedTexture2D_4wgrj")
+refraction_scale = 1.0
+refraction_texture = SubResource("CompressedTexture2D_ki458")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [sub_resource type="Gradient" id="Gradient_1pavc"]
-offsets = PackedFloat32Array(0, 0.0818182, 0.654545, 1)
+offsets = PackedFloat32Array(0, 0.142857, 0.805195, 1)
 colors = PackedColorArray(0.203922, 0.203922, 0.203922, 0, 1, 1, 1, 1, 1, 1, 1, 0.698039, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_dmlji"]
 gradient = SubResource("Gradient_1pavc")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rjppq"]
-direction = Vector3(0, 0.1, -1)
-spread = 25.0
+[sub_resource type="Curve" id="Curve_m2wah"]
+min_value = 1.0
+max_value = 9.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 9), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_l6mkp"]
+curve = SubResource("Curve_m2wah")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hrbr5"]
+particle_flag_rotate_y = true
+direction = Vector3(0, 2, 0)
+spread = 10.0
 gravity = Vector3(0, -4.9, 0)
 initial_velocity_min = 5.0
-initial_velocity_max = 5.0
-scale_min = 3.0
+initial_velocity_max = 6.0
+linear_accel_max = 1.0
+damping_min = 1.0
+damping_max = 1.0
 scale_max = 3.0
-color = Color(0, 0, 0, 1)
+scale_curve = SubResource("CurveTexture_l6mkp")
 color_ramp = SubResource("GradientTexture1D_dmlji")
+turbulence_noise_strength = 2.0
+turbulence_noise_scale = 1.0
 collision_mode = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_5dxlh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hkw1h"]
+size = Vector3(0.1, 0.1, 10.1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wf51l"]
 
@@ -118,8 +146,8 @@ func _on_door_4_is_open(isOpen):
 	is_open = isOpen # Replace with function body.
 "
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xhbua"]
-size = Vector3(12, 3, 12)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ouvuf"]
+size = Vector3(12, 1, 12)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mqnjb"]
 
@@ -129,6 +157,7 @@ script = ExtResource("2_1ppdy")
 
 [node name="Lava" type="CSGBox3D" parent="."]
 transform = Transform3D(5.346, 0, 0, 0, 2.511, 0, 0, 0, 5.39378, 0, -3.30541, 0)
+visible = false
 cast_shadow = 0
 material = SubResource("ShaderMaterial_jfj8v")
 
@@ -183,33 +212,6 @@ shadow_enabled = true
 shadow_bias = 0.0
 omni_range = 14.142
 
-[node name="Smoke" type="CPUParticles3D" parent="Effects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320849, 4.32126, 4.71112)
-visible = false
-material_override = ExtResource("5_n6xer")
-amount = 36
-lifetime = 1.5
-speed_scale = 0.27
-randomness = 1.0
-fixed_fps = 60
-mesh = SubResource("QuadMesh_amu13")
-direction = Vector3(0, 1, 0)
-spread = 90.0
-gravity = Vector3(0, -3, 0)
-initial_velocity_min = 3.0
-initial_velocity_max = 5.0
-linear_accel_min = 1.0
-linear_accel_max = 2.0
-damping_max = 2.0
-scale_amount_min = 5.0
-scale_amount_max = 10.0
-color_ramp = SubResource("Gradient_jfdwt")
-
-[node name="Area3D" type="Area3D" parent="Effects/Smoke"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Effects/Smoke/Area3D"]
-shape = SubResource("BoxShape3D_hkw1h")
-
 [node name="SpotLight3D2" type="SpotLight3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0603607, 2.20577, 4.6754)
 light_color = Color(0.956863, 0.329412, 0.145098, 1)
@@ -219,20 +221,19 @@ light_specular = 16.0
 spot_range = 2.482
 spot_angle = 24.54
 
-[node name="Smoke2" type="GPUParticles3D" parent="Effects"]
+[node name="Smoke" type="GPUParticles3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320849, 4.32126, 4.71112)
-material_override = ExtResource("5_n6xer")
-amount = 36
-lifetime = 1.5
-speed_scale = 0.27
-randomness = 1.0
+material_override = SubResource("StandardMaterial3D_2087w")
+lifetime = 2.0
+speed_scale = 0.2
+randomness = 0.4
 fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_rjppq")
+process_material = SubResource("ParticleProcessMaterial_hrbr5")
 draw_pass_1 = SubResource("QuadMesh_5dxlh")
 
-[node name="Area3D" type="Area3D" parent="Effects/Smoke2"]
+[node name="Area3D" type="Area3D" parent="Effects/Smoke"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Effects/Smoke2/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Effects/Smoke/Area3D"]
 shape = SubResource("BoxShape3D_hkw1h")
 
 [node name="Windows" type="Node3D" parent="."]
@@ -281,7 +282,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.23901, 0)
 script = SubResource("GDScript_4gy3r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Gravity"]
-shape = SubResource("BoxShape3D_xhbua")
+shape = SubResource("BoxShape3D_ouvuf")
 
 [node name="ConsumerDetector" type="Area3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -2.467, 0)

@@ -45,8 +45,10 @@ func _on_enemy_fov_player(player_location):
 		raycast.debug_shape_custom_color = Color(1,0,0,1)
 		return
 	if chasing == true:
-		has_target = true
 		nav_agent.set_target_location(player_location)
+		if !nav_agent.is_target_reachable():
+			return
+		has_target = true
 	else :
 		var target = player_location - raycast.global_position #- Vector3(player_location.x,0,player_location.z)
 		var ray_size_sqrd = target.length_squared()

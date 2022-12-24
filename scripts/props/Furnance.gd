@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var frontDoor = $Doors/Door3
-@onready var chimney : CPUParticles3D = $Effects/Smoke
+@onready var chimney : GPUParticles3D = $Effects/Smoke
 @onready var chimneyLight : OmniLight3D = $Effects/OmniLight3D
 @onready var text : Label3D = $Furnance/Label3D
 
@@ -33,4 +33,4 @@ func rigidBodyOnConsumer(body : RigidBody3D):
 	body.freeze = false
 	frontDoor.open()
 	await get_tree().create_timer(0.7).timeout
-	body.apply_central_impulse(Vector3(0,0,300000))
+	body.apply_central_impulse((frontDoor.global_position-global_position) * 150000)

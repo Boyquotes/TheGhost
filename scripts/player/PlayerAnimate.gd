@@ -35,14 +35,16 @@ func _on_sm_entered_state(state, startSec):
 	#label.override(state)
 	if(animator.has_animation(state)):
 		if state in ["walking"] :
+			animator.playback_default_blend_time = 0.3
 			is_walking = true
-		else :
-			animator.playback_speed = 1.0
-			is_walking = false
-		if state in ["landing"]:
+		elif state in ["landing"]:
 			animator.playback_default_blend_time = 0
+			animator.playback_speed = 1.2
+			is_walking = false
 		else :
 			animator.playback_default_blend_time = 0.3
+			animator.playback_speed = 1.0
+			is_walking = false
 		animator.play(state)
 		animator.seek(startSec, true)
 

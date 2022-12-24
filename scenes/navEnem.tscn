@@ -1088,6 +1088,7 @@ continuous_cd = true
 max_contacts_reported = 10
 contact_monitor = true
 can_sleep = false
+linear_damp = 0.1
 script = ExtResource("1_od0kc")
 health = 30
 
