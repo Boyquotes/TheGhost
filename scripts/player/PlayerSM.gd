@@ -17,6 +17,8 @@ var on_floor = false
 
 var SPEED
 
+var was_high_fall = true
+
 var is_pushing = false:
 	set(value):
 		is_pushing = value
@@ -38,7 +40,7 @@ var is_hit = false:
 			await get_tree().create_timer(hit_time).timeout
 			is_block = true
 			is_hit = false
-			
+
 var is_block = false:
 	set(value):
 		is_block = value
@@ -91,7 +93,7 @@ func _update_state(delta):
 			parent._handle_move_input()
 			parent._apply_movement()
 
-func _enter_state(new_state,_old_state):
+func _enter_state(new_state,old_state):
 	parent.SPEED = SPEED
 	match new_state:
 		STATES.hit:
@@ -101,14 +103,14 @@ func _enter_state(new_state,_old_state):
 		STATES.push:
 			parent.SPEED = 0
 		STATES.jumping:
-			parent.SPEED = SPEED * 0.05
+			parent.SPEED = SPEED * 0.1
 		STATES.landing:
-			parent.SPEED = SPEED * 0.6
+			parent.SPEED = SPEED * 0.5
 	emit_signal("entered_state", STATES.find_key(new_state), 0.0)
 
 func _on_animation_player_animation_finished(anim_name):
 	if (anim_name == "landing"):
-		set_state(STATES.walking)
+		set_state(STATES.idle)
 	if (anim_name == "jumping"):
 		set_state(STATES.falling)
 	if (anim_name == "dancing"):

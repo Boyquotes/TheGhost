@@ -1,12 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://c2vpkqe4hq06c"]
+[gd_scene load_steps=22 format=3 uid="uid://c2vpkqe4hq06c"]
 
 [ext_resource type="Script" path="res://scripts/enemy/EnemyController.gd" id="1_od0kc"]
 [ext_resource type="Script" path="res://scripts/globals/InvisibleAreaFindPlayer.gd" id="1_ycvkj"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemySM.gd" id="2_ydgsm"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemyAtk.gd" id="4_hc1xp"]
+[ext_resource type="FontFile" uid="uid://d8mkopi838dy" path="res://imports/Fonts/IBM3161.ttf" id="5_sqe8j"]
+[ext_resource type="Script" path="res://scripts/player/PlayerLabel3D.gd" id="6_cu4we"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nvh4r"]
-rough = true
+friction = 0.51
 absorbent = true
 
 [sub_resource type="Animation" id="Animation_267fg"]
@@ -1088,6 +1090,7 @@ continuous_cd = true
 max_contacts_reported = 10
 contact_monitor = true
 can_sleep = false
+linear_damp = 0.1
 script = ExtResource("1_od0kc")
 health = 30
 
@@ -1101,6 +1104,26 @@ playback_default_blend_time = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_ovlx5")
 }
+
+[node name="Label3D" type="Label3D" parent="EnemySM"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 5.43991, 0)
+ignore_occlusion_culling = true
+billboard = 1
+alpha_cut = 1
+render_priority = 127
+outline_render_priority = 127
+modulate = Color(0.294118, 0, 0.0156863, 1)
+outline_modulate = Color(0.294118, 0, 0.0156863, 1)
+text = "Hey!"
+font = ExtResource("5_sqe8j")
+font_size = 192
+outline_size = 10
+horizontal_alignment = 0
+vertical_alignment = 2
+line_spacing = -32.0
+autowrap_mode = 3
+width = 1344.0
+script = ExtResource("6_cu4we")
 
 [node name="Mesh" type="Node3D" parent="."]
 
@@ -1309,12 +1332,11 @@ shape = SubResource("CapsuleShape3D_oru1d")
 
 [node name="EnemyNavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 2.0
-target_desired_distance = 2.0
-path_max_distance = 30.0
-avoidance_enabled = true
+target_desired_distance = 2.5
+path_max_distance = 100.0
 radius = 0.5
-time_horizon = 1.0
-max_speed = 4.0
+max_neighbors = 20
+max_speed = 22.0
 ignore_y = false
 
 [node name="RayCast3D" type="RayCast3D" parent="." groups=["RayCast"]]

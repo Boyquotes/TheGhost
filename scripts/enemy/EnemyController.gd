@@ -4,7 +4,8 @@ extends RigidBody3D
 @onready var mesh : Node3D = $Mesh
 @onready var raycast : RayCast3D = $RayCast3D
 @onready var sm : Node3D = $EnemySM
-@onready var speed = sm.speed
+@onready var label : Label3D = $Label3D
+var speed = 3.5
 
 var randf_seed = randf_range(0.8,1.2)
 var has_target = false
@@ -33,8 +34,8 @@ func _physics_process(delta):
 	if has_target && on_floor:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_location()
-		nav_agent.set_velocity((target - origin).normalized() * speed * randf_seed)
-
+		#nav_agent.set_velocity((target - origin).normalized() * speed * randf_seed)
+		linear_velocity = (target - origin).normalized() * speed * randf_seed
 		rotate_towards_motion(delta)
 
 func rotate_towards_motion(delta):
@@ -45,8 +46,10 @@ func _on_enemy_fov_player(player_location):
 		raycast.debug_shape_custom_color = Color(1,0,0,1)
 		return
 	if chasing == true:
-		has_target = true
 		nav_agent.set_target_location(player_location)
+		if !nav_agent.is_target_reachable():
+			return
+		has_target = true
 	else :
 		var target = player_location - raycast.global_position #- Vector3(player_location.x,0,player_location.z)
 		var ray_size_sqrd = target.length_squared()

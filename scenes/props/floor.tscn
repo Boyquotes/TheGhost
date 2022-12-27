@@ -9,10 +9,9 @@ size = Vector3(50, 1, 50)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj8cy"]
 albedo_color = Color(0.286275, 0.309804, 0.286275, 1)
 
-[node name="Floor" type="StaticBody3D"]
+[node name="platform" type="StaticBody3D"]
 collision_layer = 15
 collision_mask = 15
-collision_priority = -999.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_wxlvy")

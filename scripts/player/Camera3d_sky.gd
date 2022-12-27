@@ -41,18 +41,20 @@ func _process(delta):
 	dir_light.light_energy = lerpf(dir_light.light_energy, next_dir_light_int, 0.75 * delta)
 
 func cycle():
-	next_light = 1.0
-	next_color = STATES.midnight
-	next_dir_light_int = 0.01
-	await get_tree().create_timer(10*1).timeout
+	#next_light = 1.0
+	#next_color = STATES.midnight
+	#next_dir_light_int = 0.01
+	#await get_tree().create_timer(12*3).timeout
 	next_color = STATES.morning
-	next_light = 1.1
+	next_light = 1.3
 	next_dir_light_int = 0.2
-	await get_tree().create_timer(7*3).timeout
+	environment.volumetric_fog_density = env.volumetric_fog_density + 0.01
+	await get_tree().create_timer(5*3).timeout
 	next_color = STATES.midday
 	next_light = 1.7
-	await get_tree().create_timer(10*3).timeout
+	environment.volumetric_fog_density = env.volumetric_fog_density - 0.01
+	await get_tree().create_timer(5*3).timeout
 	next_color = STATES.afternoon
 	next_light = 1.0
-	await get_tree().create_timer(3*3).timeout
+	await get_tree().create_timer(2*3).timeout
 	cycle()

@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbrdb37i16jho"]
+
+[sub_resource type="GDScript" id="GDScript_tn282"]
+script/source = "extends RigidBody3D
+
+@onready var height = global_position.y
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	apply_central_force(Vector3.UP * 50 * mass)
+	#se tiver rb em contato, aplicar força central somando a massa mais a massa do rb  
+	#if global_position.y < height-1:
+	#	apply_central_force(Vector3.UP * 300 * mass)
+	#elif global_position.y < height-0.5:
+	#	apply_central_force(Vector3.UP * 100 * mass)
+	#elif global_position.y >= height:
+	#	global_position.y = height
+	#	linear_velocity = Vector3.ZERO
+"
+
+[sub_resource type="BoxMesh" id="BoxMesh_pim7x"]
+size = Vector3(2.7, 1.6, 2.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0g0p"]
+albedo_color = Color(0.286275, 0.309804, 0.286275, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c8lwc"]
+size = Vector3(2.7, 1.6, 2.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cgou5"]
+size = Vector3(1, 0.609499, 1)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+collision_layer = 8388608
+collision_mask = 8388608
+
+[node name="Platform" type="RigidBody3D" parent="." groups=["IsPushedDown"]]
+collision_layer = 8388617
+collision_mask = 8388617
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 1000.0
+can_sleep = false
+linear_damp = 1.0
+script = SubResource("GDScript_tn282")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platform"]
+mesh = SubResource("BoxMesh_pim7x")
+surface_material_override/0 = SubResource("StandardMaterial3D_t0g0p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform"]
+shape = SubResource("BoxShape3D_c8lwc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12517, 0)
+shape = SubResource("BoxShape3D_cgou5")

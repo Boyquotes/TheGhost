@@ -16,9 +16,10 @@ script/source = "extends Area3D
 @onready var current_y = global_position.y
 var shader_material : ShaderMaterial
 
-var target : Vector3 = Vector3(global_position.x, 7.5, global_position.z)
+var target : Vector3
 
 func _ready():
+	target = Vector3(global_position.x, 7.5, global_position.z)
 	folliage.material_override = ShaderMaterial.new()
 	folliage.material_override.shader = shader
 	shader_material = folliage.material_override

@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var offset_value : float =  20.0
-@export var CORRECTION_SPEED : float = 6.0
+@export var CORRECTION_SPEED : float = 9.0
 
 @onready var OFFSET = Vector3(0, offset_value, offset_value)
 
@@ -58,3 +58,8 @@ func _on_mesh_player_real_pos(pos, delta):
 		targetPosition, 
 		CORRECTION_SPEED*delta)
 	camera.rotation.y = lerp_angle(camera.rotation.y, rot, CORRECTION_SPEED*delta)
+
+
+func _on_player_controller_player_spawn(pos):
+	targetPosition = pos + OFFSET
+	camera.global_position = targetPosition

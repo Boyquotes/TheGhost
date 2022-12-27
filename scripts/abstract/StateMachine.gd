@@ -1,7 +1,7 @@
 extends Node
 class_name StateMachine
 
-@export var state = null
+@export var state : int = 0
 var previous_state = null
 var states = {}
 

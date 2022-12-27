@@ -9,12 +9,13 @@ const STATES = {
 
 signal entered_state (state : String, startSec : float)
 
-@onready var animator : AnimationPlayer = get_node("AnimationPlayer")
+@onready var animator : AnimationPlayer = $AnimationPlayer
+@onready var label : Label3D = $Label3D
 
 @export var stun_time = 0.5
 @export var stun_force = 50.0
 var stun_source_pos = null
-var speed = 3.5
+var speed : float
 
 var attacking = false :
 	set(value):
@@ -35,6 +36,7 @@ var stunned = false :
 
 
 func _ready():
+	speed = parent.speed
 	add_states(STATES)
 	call_deferred("set_state", STATES.idle)
 
@@ -63,6 +65,7 @@ func _update_state(_delta):
 
 func _enter_state(new_state, _old_state):
 	var state_name = STATES.find_key(new_state)
+	label.override(state_name)
 	if animator.has_animation(state_name):
 		if new_state == STATES.chasing:
 			animator.playback_speed = parent.randf_seed
