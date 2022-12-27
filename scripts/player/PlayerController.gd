@@ -33,6 +33,7 @@ var mz = 0.0
 @onready var pushArea : Area3D = $Mesh/Push
 @onready var ui : Label = $VBoxContainer/Label
 @onready var player_text : Label3D = $MeshDecoy/Label3D
+@onready var floor_detector : Area3D = $FloorDetector
 
 signal player_spawn (pos : Vector3)
 
@@ -40,6 +41,7 @@ func _ready():
 	INITIAL_POSITION = get_parent().global_position
 
 func _apply_movement():
+	print("on_floor " + str(on_floor))
 	if on_floor && linear_velocity.length() < MAX_SPEED && is_move_input():
 		apply_central_impulse(Vector3(motion.x, 333.3, motion.z))
 	
@@ -50,7 +52,7 @@ func _handle_move_input():
 	motion.x = Input.get_action_strength("move_down") * mx - Input.get_action_strength("move_up") * mx - Input.get_action_strength("move_left") * mz + Input.get_action_strength("move_right") * mz 
 	motion.z = Input.get_action_strength("move_down") * mz - Input.get_action_strength("move_up") * mz + Input.get_action_strength("move_left") * mx - + Input.get_action_strength("move_right") * mx
 	if linear_velocity.length() < 1:
-		speed = motion.normalized().length() * SPEED * 5
+		speed = motion.normalized().length() * SPEED * 15
 	if linear_velocity.length() < 2:
 		speed = motion.normalized().length() * SPEED * 0.1
 	if linear_velocity.length() < 3:
@@ -94,7 +96,7 @@ func ik():
 	reset()
 
 func reset():
-	await get_tree().create_timer(0.5).timeout
+	sm.set_state(5)
 	emit_signal("player_spawn", INITIAL_POSITION)
 	global_position = INITIAL_POSITION
 
@@ -122,13 +124,15 @@ func jump():
 	sm.jump()
 	var direction = Vector3.ZERO
 	if is_move_input():
-		print("isMoveInput")
 		direction.x = Input.get_action_strength("move_down") * mx - Input.get_action_strength("move_up") * mx - Input.get_action_strength("move_left") * mz + Input.get_action_strength("move_right") * mz 
 		direction.z = Input.get_action_strength("move_down") * mz - Input.get_action_strength("move_up") * mz + Input.get_action_strength("move_left") * mx - + Input.get_action_strength("move_right") * mx
 		mesh.rotation.y = atan2(-direction.x, -direction.z)
 		mesh_decoy.rotation.y = atan2(-direction.x, -direction.z)
 	await get_tree().create_timer(0.33).timeout
-	apply_central_impulse(Vector3(direction.x*6000.0, 13000.0, direction.z*6000.0))
+	if on_floor:
+		apply_central_impulse(Vector3(direction.x*6000.0, 13000.0, direction.z*6000.0))
+		for obj in floor_detector.get_overlapping_bodies().filter(func(obj): return obj.is_in_group("IsPushedDown")):
+			obj.apply_central_impulse(Vector3(direction.x*6000.0, -10000.0, direction.z*6000.0))
 	jumping = false
 	
 func _on_floor_detector(boolean):

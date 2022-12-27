@@ -4,6 +4,7 @@ extends Node3D
 @onready var chimney : GPUParticles3D = $Effects/Smoke
 @onready var chimneyLight : OmniLight3D = $Effects/OmniLight3D
 @onready var text : Label3D = $Furnance/Label3D
+@onready var doors : Node3D = $Doors
 
 var chimney_smoke_speed : float
 
@@ -25,8 +26,13 @@ func rigidBodyOnConsumer(body : RigidBody3D):
 		chimney.speed_scale = chimney_smoke_speed * 4.0
 		chimneyLight.light_energy= 24.0
 		chimneyLight.light_volumetric_fog_energy = 8
+		for door in doors.get_children():
+			door.sparks_high()
 
 	await get_tree().create_timer(2).timeout
+	if fuel[0] > 0:
+		for door in doors.get_children():
+			door.sparks_low()
 	chimneyLight.light_energy = 16.0
 	chimney.speed_scale = chimney_smoke_speed
 	chimneyLight.light_volumetric_fog_energy = 1

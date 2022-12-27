@@ -262,6 +262,14 @@ mesh = SubResource("PlaneMesh_wf51l")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("1_fsp24")
 
+[node name="Gravity" type="Area3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -2.23901, 0)
+collision_layer = 0
+script = SubResource("GDScript_4gy3r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gravity"]
+shape = SubResource("BoxShape3D_ouvuf")
+
 [node name="Doors" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
@@ -277,21 +285,14 @@ transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8
 [node name="Door4" parent="Doors" instance=ExtResource("5_egmt6")]
 transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, -4.37114e-08, -2.84383, -2.47492, 0.0100476)
 
-[node name="Gravity" type="Area3D" parent="Doors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.23901, 0)
-script = SubResource("GDScript_4gy3r")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Gravity"]
-shape = SubResource("BoxShape3D_ouvuf")
-
 [node name="ConsumerDetector" type="Area3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -2.467, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConsumerDetector"]
 shape = SubResource("BoxShape3D_mqnjb")
 
-[connection signal="is_open" from="Doors/Door" to="Doors/Gravity" method="_on_door_is_open"]
-[connection signal="is_open" from="Doors/Door2" to="Doors/Gravity" method="_on_door_2_is_open"]
-[connection signal="is_open" from="Doors/Door3" to="Doors/Gravity" method="_on_door_3_is_open"]
-[connection signal="is_open" from="Doors/Door4" to="Doors/Gravity" method="_on_door_4_is_open"]
+[connection signal="is_open" from="Doors/Door" to="Gravity" method="_on_door_is_open"]
+[connection signal="is_open" from="Doors/Door2" to="Gravity" method="_on_door_2_is_open"]
+[connection signal="is_open" from="Doors/Door3" to="Gravity" method="_on_door_3_is_open"]
+[connection signal="is_open" from="Doors/Door4" to="Gravity" method="_on_door_4_is_open"]
 [connection signal="body_entered" from="ConsumerDetector" to="." method="rigidBodyOnConsumer"]

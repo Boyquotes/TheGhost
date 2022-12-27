@@ -1,12 +1,24 @@
 [gd_scene load_steps=17 format=3 uid="uid://b01nkjct22a5n"]
 
-[ext_resource type="Texture2D" uid="uid://dj3p8jlnmspel" path="res://imports/Particles/smoke_07.png" id="1_hk6nh"]
+[ext_resource type="Texture2D" uid="uid://dvwtcanvyv8rw" path="res://imports/Particles/light.png" id="1_nm8so"]
 
 [sub_resource type="GDScript" id="GDScript_85e3p"]
 script/source = "extends Node3D
 
 @onready var animator : AnimationPlayer = $AnimationPlayer
 @onready var attractor : GPUParticlesAttractor3D = $GPUParticlesAttractorBox3D
+@onready var sparks : GPUParticles3D = $Sparks
+
+var amount
+var speed_scale
+var lifetime
+var explosiveness
+
+func _ready():
+	amount = sparks.amount
+	speed_scale = sparks.speed_scale
+	lifetime = sparks.lifetime
+	explosiveness = sparks.explosiveness
 
 var isOpen = false:
 	set(value):
@@ -32,6 +44,19 @@ func open():
 	if !isOpen :
 		animator.play(\"open\")
 		isOpen= true
+
+
+func sparks_high():
+	sparks.amount = 3 * amount
+	sparks.speed_scale = 4 * speed_scale
+	sparks.lifetime = 3 * lifetime
+	sparks.explosiveness = 0
+	
+func sparks_low():
+	sparks.amount = amount
+	sparks.speed_scale = speed_scale
+	sparks.lifetime = lifetime
+	sparks.explosiveness = explosiveness
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pbpn"]
@@ -197,14 +222,12 @@ size = Vector3(5, 1, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qbc01"]
 transparency = 1
-blend_mode = 1
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_hk6nh")
+albedo_texture = ExtResource("1_nm8so")
 emission_enabled = true
 emission = Color(1, 0.352941, 0.219608, 1)
-emission_energy_multiplier = 64.0
-clearcoat_enabled = true
+emission_energy_multiplier = 128.0
 billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
@@ -223,9 +246,9 @@ emission_box_extents = Vector3(2, 1, 0.5)
 direction = Vector3(0, -0.7, -2)
 spread = 18.87
 gravity = Vector3(0, -0.3, 0)
-initial_velocity_min = 1.0
 initial_velocity_max = 3.0
-linear_accel_max = 0.1
+linear_accel_min = -0.2
+linear_accel_max = 0.2
 damping_min = 0.5
 damping_max = 1.0
 scale_min = 0.05
@@ -263,12 +286,12 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.60178)
 shape = SubResource("BoxShape3D_mqnjb")
 
-[node name="Smoke2" type="GPUParticles3D" parent="."]
-transform = Transform3D(-0.997606, 1.93552e-11, 1.50635e-07, -1.84741e-13, 0.997606, 8.57722e-08, -1.50673e-07, 8.55916e-08, -0.999998, -1.38383e-08, -0.158292, -0.842012)
+[node name="Sparks" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.997606, 1.93552e-11, 1.50635e-07, -1.84741e-13, 0.997606, 8.57722e-08, -1.50673e-07, 8.55916e-08, -0.999998, -1.38383e-08, -0.158292, -0.062573)
 layers = 8
 material_override = SubResource("StandardMaterial3D_qbc01")
-amount = 24
-lifetime = 2.0
+amount = 12
+explosiveness = 0.6
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_81ne4")
 draw_pass_1 = SubResource("QuadMesh_12b64")
@@ -277,12 +300,16 @@ draw_pass_1 = SubResource("QuadMesh_12b64")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.164, 0.863023)
 visible = false
 strength = 10.0
+directionality = 1.0
 extents = Vector3(2, 5, 2)
 
 [node name="GPUParticlesAttractorBox3D2" type="GPUParticlesAttractorBox3D" parent="GPUParticlesAttractorBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.69688)
 strength = 25.0
 extents = Vector3(2, 5, 3)
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="GPUParticlesAttractorBox3D/GPUParticlesAttractorBox3D2"]
+extents = Vector3(1, 1, 0.377571)
 
 [connection signal="body_entered" from="DoorDetector" to="." method="rigidBodyOnDoor"]
 [connection signal="body_exited" from="DoorDetector" to="." method="rigidBodyOutDoor"]
