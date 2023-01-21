@@ -2,9 +2,10 @@
 
 [ext_resource type="Material" uid="uid://cv1elwyxjdi1f" path="res://materials/new_standard_material_3d.tres" id="1_fsp24"]
 [ext_resource type="Script" path="res://scripts/props/Furnance.gd" id="2_1ppdy"]
-[ext_resource type="FontFile" uid="uid://d8mkopi838dy" path="res://imports/Fonts/IBM3161.ttf" id="3_o85w4"]
+[ext_resource type="FontFile" uid="uid://4dbhvlqdv7x4" path="res://imports/Fonts/IBM3161.ttf" id="3_o85w4"]
 [ext_resource type="Shader" path="res://materials/lavaf.gdshader" id="3_stjqu"]
 [ext_resource type="Script" path="res://scripts/player/PlayerLabel3D.gd" id="4_dm8td"]
+[ext_resource type="Texture2D" uid="uid://b0s6v0ahvti2a" path="res://imports/Particles/smoke_04.png" id="5_b2ix4"]
 [ext_resource type="PackedScene" uid="uid://b01nkjct22a5n" path="res://scenes/props/door.tscn" id="5_egmt6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jfj8v"]
@@ -52,11 +53,7 @@ density = 2.0
 emission = Color(0.329412, 0.329412, 0.329412, 1)
 height_falloff = 20.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4wgrj"]
-load_path = "res://.godot/imported/smoke_04.png-9bb63a1906f266350ae7aeb883d494f2.s3tc.ctex"
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ki458"]
-load_path = "res://.godot/imported/smoke_04.png-9bb63a1906f266350ae7aeb883d494f2.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2087w"]
 transparency = 1
@@ -65,7 +62,7 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 albedo_color = Color(0.376471, 0.376471, 0.376471, 0.635294)
-albedo_texture = SubResource("CompressedTexture2D_4wgrj")
+albedo_texture = ExtResource("5_b2ix4")
 refraction_scale = 1.0
 refraction_texture = SubResource("CompressedTexture2D_ki458")
 billboard_mode = 3

@@ -190,7 +190,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0682, 65.3236, 11.0778)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0682, 65.3236, 39.292)
 
 [node name="Player" parent="." instance=ExtResource("3_5fsbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.539, 9.76165, 23.152)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.539, 12.2971, 49.0092)
 
 [node name="Moving_ball" parent="." instance=ExtResource("4_ayfrc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00263, 3.6667, 25.9079)

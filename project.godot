@@ -8,16 +8,6 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "Node",
-"class": &"StateMachine",
-"language": &"GDScript",
-"path": "res://scripts/abstract/StateMachine.gd"
-}]
-_global_script_class_icons={
-"StateMachine": ""
-}
-
 [application]
 
 config/name="TheGhost"
@@ -37,6 +27,10 @@ window/size/mode=3
 window/size/resizable=false
 window/vsync/vsync_mode=0
 window/stretch/mode="viewport"
+
+[editor]
+
+export/convert_text_resources_to_binary=true
 
 [gui]
 
