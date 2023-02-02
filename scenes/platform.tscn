@@ -52,6 +52,7 @@ linear_damp = 1.0
 script = SubResource("GDScript_tn282")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platform"]
+layers = 3
 mesh = SubResource("BoxMesh_pim7x")
 surface_material_override/0 = SubResource("StandardMaterial3D_t0g0p")
 

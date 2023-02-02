@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/globals/InvisibleAreaFindPlayer.gd" id="1_ycvkj"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemySM.gd" id="2_ydgsm"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemyAtk.gd" id="4_hc1xp"]
-[ext_resource type="FontFile" uid="uid://d8mkopi838dy" path="res://imports/Fonts/IBM3161.ttf" id="5_sqe8j"]
+[ext_resource type="FontFile" uid="uid://4dbhvlqdv7x4" path="res://imports/Fonts/IBM3161.ttf" id="5_sqe8j"]
 [ext_resource type="Script" path="res://scripts/player/PlayerLabel3D.gd" id="6_cu4we"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nvh4r"]

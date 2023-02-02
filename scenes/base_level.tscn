@@ -78,6 +78,7 @@ shape = SubResource("BoxShape3D_sg7gd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall/CollisionShape3D"]
 transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
+layers = 3
 mesh = SubResource("BoxMesh_egyaw")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_1pt10")
@@ -94,6 +95,7 @@ collision_mask = 15
 shape = SubResource("BoxShape3D_r5dwp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall2/CollisionShape3D"]
+layers = 3
 mesh = SubResource("BoxMesh_0bgr7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
@@ -107,6 +109,7 @@ collision_mask = 4
 shape = SubResource("BoxShape3D_r5dwp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall3/CollisionShape3D"]
+layers = 3
 mesh = SubResource("BoxMesh_0bgr7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
@@ -120,6 +123,7 @@ collision_mask = 15
 shape = SubResource("BoxShape3D_r5dwp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall4/CollisionShape3D"]
+layers = 3
 mesh = SubResource("BoxMesh_0bgr7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
@@ -133,6 +137,7 @@ collision_mask = 15
 shape = SubResource("BoxShape3D_r5dwp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall5/CollisionShape3D"]
+layers = 3
 mesh = SubResource("BoxMesh_0bgr7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")

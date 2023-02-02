@@ -18,6 +18,7 @@ shape = SubResource("BoxShape3D_wxlvy")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
+layers = 3
 mesh = SubResource("BoxMesh_idk53")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_kj8cy")

@@ -35,6 +35,7 @@ data = PackedVector3Array(1, -1, -1, -4.40135, 1, 1, -4.40135, 1, -1, 1, -1, -1,
 
 [node name="Ramp" type="MeshInstance3D"]
 transform = Transform3D(4.52918, 0, 0, 0, 4.52918, 0, 0, 0, 4.52918, 0, 4.60171, 0)
+layers = 3
 mesh = SubResource("ArrayMesh_jp5gh")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_gpw8w")

@@ -41,10 +41,10 @@ func _process(delta):
 	dir_light.light_energy = lerpf(dir_light.light_energy, next_dir_light_int, 0.75 * delta)
 
 func cycle():
-	#next_light = 1.0
-	#next_color = STATES.midnight
-	#next_dir_light_int = 0.01
-	#await get_tree().create_timer(12*3).timeout
+	next_light = 1.0
+	next_color = STATES.midnight
+	next_dir_light_int = 0.01
+	await get_tree().create_timer(12*3).timeout
 	next_color = STATES.morning
 	next_light = 1.3
 	next_dir_light_int = 0.2

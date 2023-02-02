@@ -68,9 +68,9 @@ func _enter_state(new_state, _old_state):
 	label.override(state_name)
 	if animator.has_animation(state_name):
 		if new_state == STATES.chasing:
-			animator.playback_speed = parent.randf_seed
+			animator.speed_scale = parent.randf_seed
 		else :
-			animator.playback_speed = 1.0
+			animator.speed_scale = 1.0
 		animator.play(state_name)
 	match new_state:
 		STATES.hit:
