@@ -41,7 +41,6 @@ func _ready():
 	INITIAL_POSITION = get_parent().global_position
 
 func _apply_movement():
-	print("on_floor " + str(on_floor))
 	if on_floor && linear_velocity.length() < MAX_SPEED && is_move_input():
 		apply_central_impulse(Vector3(motion.x, 333.3, motion.z))
 	

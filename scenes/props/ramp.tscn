@@ -1,11 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://du6pve38pu7jx"]
+[gd_scene load_steps=5 format=3 uid="uid://du6pve38pu7jx"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d373"]
-resource_name = "Material"
-cull_mode = 2
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpw8w"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.286275, 0.309804, 0.286275, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jp5gh"]
 resource_name = "ramp _Cube"
@@ -15,18 +13,13 @@ _surfaces = [{
 "format": 4119,
 "index_count": 24,
 "index_data": PackedByteArray(2, 0, 14, 0, 8, 0, 2, 0, 5, 0, 14, 0, 4, 0, 17, 0, 13, 0, 15, 0, 6, 0, 12, 0, 15, 0, 9, 0, 6, 0, 10, 0, 3, 0, 0, 0, 10, 0, 16, 0, 3, 0, 11, 0, 1, 0, 7, 0),
-"material": SubResource("StandardMaterial3D_0d373"),
+"material": SubResource("StandardMaterial3D_gpw8w"),
 "name": "Material",
 "primitive": 3,
 "vertex_count": 18,
 "vertex_data": PackedByteArray(0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 255, 255, 255, 255, 255, 127, 255, 255, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 149, 162, 104, 221, 150, 34, 74, 209, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 255, 127, 255, 127, 255, 127, 255, 255, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 149, 162, 104, 221, 150, 34, 74, 209, 220, 215, 140, 192, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 255, 127, 255, 127, 255, 255, 220, 215, 140, 192, 0, 0, 128, 63, 0, 0, 128, 191, 255, 255, 255, 255, 255, 127, 255, 255, 220, 215, 140, 192, 0, 0, 128, 63, 0, 0, 128, 191, 149, 162, 104, 221, 150, 34, 74, 209, 220, 215, 140, 192, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 255, 127, 255, 127, 255, 255, 220, 215, 140, 192, 0, 0, 128, 191, 0, 0, 128, 191, 255, 127, 0, 0, 255, 255, 255, 191, 220, 215, 140, 192, 0, 0, 128, 191, 0, 0, 128, 191, 255, 255, 255, 255, 255, 127, 255, 255, 220, 215, 140, 192, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 255, 127, 255, 127, 255, 255, 220, 215, 140, 192, 0, 0, 128, 63, 0, 0, 128, 63, 255, 127, 255, 127, 255, 127, 255, 255, 220, 215, 140, 192, 0, 0, 128, 63, 0, 0, 128, 63, 149, 162, 104, 221, 150, 34, 74, 209, 220, 215, 140, 192, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 255, 127, 255, 127, 255, 255, 220, 215, 140, 192, 0, 0, 128, 191, 0, 0, 128, 63, 255, 127, 0, 0, 255, 255, 255, 191, 220, 215, 140, 192, 0, 0, 128, 191, 0, 0, 128, 63, 255, 127, 255, 127, 255, 127, 255, 255)
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpw8w"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.286275, 0.309804, 0.286275, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_es8n2"]
 
@@ -38,7 +31,6 @@ transform = Transform3D(4.52918, 0, 0, 0, 4.52918, 0, 0, 0, 4.52918, 0, 4.60171,
 layers = 3
 mesh = SubResource("ArrayMesh_jp5gh")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_gpw8w")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["Floor"]]
 collision_layer = 15
