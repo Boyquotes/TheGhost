@@ -204,7 +204,7 @@ script = ExtResource("6_kl01s")
 
 [node name="FogVolume" type="FogVolume" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.69471, 0)
-extents = Vector3(14, 4, 15)
+size = Vector3(28, 8, 30)
 shape = 0
 material = SubResource("FogMaterial_jpfqo")
 

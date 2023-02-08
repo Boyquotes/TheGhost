@@ -171,12 +171,12 @@ transform = Transform3D(4.52918, 0, 0, 0, 4.52918, 0, 0, 0, 4.52918, -5.854, 3.6
 
 [node name="FogVolume" type="FogVolume" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 112.018, 31.5217)
-extents = Vector3(100, 20, 100)
+size = Vector3(200, 40, 200)
 material = SubResource("FogMaterial_oswsl")
 
 [node name="FogVolume2" type="FogVolume" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -74.7252, 31.5217)
-extents = Vector3(100, 30, 100)
+size = Vector3(200, 60, 200)
 material = SubResource("FogMaterial_2sf1i")
 
 [node name="EnemyBody" parent="." instance=ExtResource("6_opw6j")]
