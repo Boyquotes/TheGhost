@@ -3,23 +3,8 @@
 [sub_resource type="GDScript" id="GDScript_tn282"]
 script/source = "extends RigidBody3D
 
-@onready var height = global_position.y
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	apply_central_force(Vector3.UP * 50 * mass)
-	#se tiver rb em contato, aplicar força central somando a massa mais a massa do rb  
-	#if global_position.y < height-1:
-	#	apply_central_force(Vector3.UP * 300 * mass)
-	#elif global_position.y < height-0.5:
-	#	apply_central_force(Vector3.UP * 100 * mass)
-	#elif global_position.y >= height:
-	#	global_position.y = height
-	#	linear_velocity = Vector3.ZERO
 "
 
 [sub_resource type="BoxMesh" id="BoxMesh_pim7x"]

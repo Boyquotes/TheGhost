@@ -93,7 +93,7 @@ func _update_state(delta):
 			parent._handle_move_input()
 			parent._apply_movement()
 
-func _enter_state(new_state,old_state):
+func _enter_state(new_state,_old_state):
 	parent.SPEED = SPEED
 	match new_state:
 		STATES.hit:

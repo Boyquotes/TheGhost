@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwp1ve1aktg5"]
+[gd_scene load_steps=9 format=3 uid="uid://cwp1ve1aktg5"]
 
 [ext_resource type="ArrayMesh" uid="uid://bkffnu622r380" path="res://imports/grass_straw.obj" id="1_ruwlg"]
+[ext_resource type="AudioStream" uid="uid://bcvtesktiujs2" path="res://imports/Audio/grass.ogg" id="2_gtrpa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obb33"]
 
@@ -14,6 +15,7 @@ script/source = "extends Area3D
 @onready var folliage : MultiMeshInstance3D = $Folliage
 @onready var shader : Shader = preload(\"res://scenes/props/floor.gdshader\")
 @onready var current_y = global_position.y
+@onready var sound : AudioStreamPlayer3D = $AudioStreamPlayer3D
 var shader_material : ShaderMaterial
 
 var target : Vector3
@@ -27,7 +29,7 @@ func _ready():
 func _physics_process(delta):
 	if shader_material == null:
 		return
-	if !get_overlapping_bodies().is_empty():
+	if not get_overlapping_bodies().is_empty():
 		var bodies = get_overlapping_bodies()
 		if shader_material.get_shader_parameter(\"radius\") != null:
 			shader_material.set_shader_parameter(\"radius\", lerpf(shader_material.get_shader_parameter(\"radius\"), 7.3, delta * 2))
@@ -40,6 +42,11 @@ func _physics_process(delta):
 			shader_material.set_shader_parameter(\"radius\", lerpf(shader_material.get_shader_parameter(\"radius\"), 1.0, delta * 2))
 	shader_material.set_shader_parameter(\"player_pos\", target)
 	
+
+
+func _on_body_entered(body):
+	if not sound.playing:
+		sound.play(0.0)
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sjdxh"]
@@ -77,3 +84,13 @@ shape = SubResource("BoxShape3D_sjdxh")
 
 [node name="Folliage" type="MultiMeshInstance3D" parent="Area3D"]
 multimesh = SubResource("MultiMesh_uye6c")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.434624, 0)
+stream = ExtResource("2_gtrpa")
+volume_db = -20.0
+unit_size = 30.0
+max_db = -5.7
+pitch_scale = 0.9
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

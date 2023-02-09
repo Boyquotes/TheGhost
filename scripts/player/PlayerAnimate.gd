@@ -11,7 +11,7 @@ var is_jumping = false
 func _ready():
 	animator2.play("Spawn")
 
-var is_hit = true :
+var is_hit = false :
 	set(value):
 		if value == true:
 			is_hit = true
@@ -29,9 +29,12 @@ var is_hit = true :
 func _physics_process(delta):
 	if is_walking:
 		animator.speed_scale = lerpf(animator.speed_scale, controller.linear_velocity.length() / controller.MAX_SPEED, delta * 10.0)
+	if is_walking && is_hit:
+		animator.play("walking_soundless")
+	if is_walking and !is_hit and animator.current_animation == "walking_soundless":
+		animator.play("walking")
 
 func _on_sm_entered_state(state, startSec):
-	#label.hard_reset()
 	label.override(state)
 	if(animator.has_animation(state)):
 		if state in ["walking"] :
@@ -45,8 +48,9 @@ func _on_sm_entered_state(state, startSec):
 			animator.playback_default_blend_time = 0.3
 			animator.speed_scale = 1.0
 			is_walking = false
-		animator.play(state)
-		animator.seek(startSec, true)
+		if not is_hit:
+			animator.play(state)
+			animator.seek(startSec, true)
 
 func hit() -> void:
 	is_hit = true
