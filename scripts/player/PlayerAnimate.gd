@@ -48,9 +48,8 @@ func _on_sm_entered_state(state, startSec):
 			animator.playback_default_blend_time = 0.3
 			animator.speed_scale = 1.0
 			is_walking = false
-		if not is_hit:
-			animator.play(state)
-			animator.seek(startSec, true)
+		animator.play(state)
+		animator.seek(startSec, true)
 
 func hit() -> void:
 	is_hit = true

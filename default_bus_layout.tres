@@ -1,9 +1,12 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://bvbhsbscboxak"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://bvbhsbscboxak"]
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_vvpio"]
 resource_name = "Reverb"
 room_size = 1.0
 damping = 1.0
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_3f2u7"]
+resource_name = "Amplify"
 
 [resource]
 bus/1/name = &"Ambient"
@@ -14,3 +17,5 @@ bus/1/volume_db = 0.0
 bus/1/send = &"Master"
 bus/1/effect/0/effect = SubResource("AudioEffectReverb_vvpio")
 bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectAmplify_3f2u7")
+bus/1/effect/1/enabled = true
