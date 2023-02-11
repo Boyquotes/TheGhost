@@ -18,7 +18,6 @@ var is_hit = false :
 			is_hit = true
 			skeleton.physical_bones_start_simulation()
 			animator2.play("Despawn")
-			skeleton.reset_bone_poses()
 			await get_tree().create_timer(2).timeout
 			skeleton.physical_bones_stop_simulation()
 			light.blink()
