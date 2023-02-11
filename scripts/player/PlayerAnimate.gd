@@ -4,6 +4,7 @@ extends Node3D
 @onready var controller : RigidBody3D = get_parent()
 @onready var light : OmniLight3D = get_tree().get_first_node_in_group("PlayerLight")
 @onready var label : Label3D = get_node("Label3D")
+@onready var skeleton : Skeleton3D = $Armature/Skeleton3D
 
 var is_walking = false
 var is_jumping = false
@@ -15,10 +16,11 @@ var is_hit = false :
 	set(value):
 		if value == true:
 			is_hit = true
-			$Armature/Skeleton3D.physical_bones_start_simulation()
+			skeleton.physical_bones_start_simulation()
 			animator2.play("Despawn")
+			skeleton.reset_bone_poses()
 			await get_tree().create_timer(2).timeout
-			$Armature/Skeleton3D.physical_bones_stop_simulation()
+			skeleton.physical_bones_stop_simulation()
 			light.blink()
 			rotation.y = atan2(-controller.motion.x, -controller.motion.z)
 			animator2.play("Spawn")
