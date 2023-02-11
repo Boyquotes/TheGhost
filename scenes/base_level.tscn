@@ -180,7 +180,7 @@ size = Vector3(200, 60, 200)
 material = SubResource("FogMaterial_2sf1i")
 
 [node name="Player" parent="." instance=ExtResource("3_5fsbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.314783, 12.2971, 3.32927)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.314783, 119.564, 3.32927)
 
 [node name="Moving_ball" parent="." instance=ExtResource("4_ayfrc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00263, 3.6667, 25.9079)
