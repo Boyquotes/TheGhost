@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://scripts/enemy/EnemyController.gd" id="1_od0kc"]
 [ext_resource type="Script" path="res://scripts/globals/InvisibleAreaFindPlayer.gd" id="1_ycvkj"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemySM.gd" id="2_ydgsm"]
-[ext_resource type="AudioStream" uid="uid://dipthtpe5el78" path="res://imports/Audio/creepy_step.ogg" id="3_5gwkj"]
-[ext_resource type="AudioStream" uid="uid://b3dkju1a8gmsh" path="res://imports/Audio/charging_crackling.ogg" id="3_hj686"]
-[ext_resource type="AudioStream" uid="uid://bow3t0nqtwuds" path="res://imports/Audio/heavy_impact.ogg" id="4_8r32e"]
-[ext_resource type="AudioStream" uid="uid://cmof3wvpfjdjo" path="res://imports/Audio/creep_step02.ogg" id="4_13ijo"]
+[ext_resource type="AudioStream" uid="uid://c0ummq7kskbw6" path="res://imports/Audio/creepy_step.ogg" id="3_5gwkj"]
+[ext_resource type="AudioStream" uid="uid://df0k3v77p0r5s" path="res://imports/Audio/charging_crackling.ogg" id="3_hj686"]
+[ext_resource type="AudioStream" uid="uid://y03r1c4jipw1" path="res://imports/Audio/heavy_impact.ogg" id="4_8r32e"]
+[ext_resource type="AudioStream" uid="uid://bc1w4kk4h8tc0" path="res://imports/Audio/creep_step02.ogg" id="4_13ijo"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemyAtk.gd" id="4_hc1xp"]
-[ext_resource type="AudioStream" uid="uid://2gwrphp25mvf" path="res://imports/Audio/creepy_step3.ogg" id="5_i2qk7"]
-[ext_resource type="FontFile" uid="uid://4dbhvlqdv7x4" path="res://imports/Fonts/IBM3161.ttf" id="5_sqe8j"]
+[ext_resource type="AudioStream" uid="uid://b0es2ew8vn0ul" path="res://imports/Audio/creepy_step3.ogg" id="5_i2qk7"]
+[ext_resource type="FontFile" uid="uid://7npjsho23vg3" path="res://imports/Fonts/IBM3161.ttf" id="5_sqe8j"]
 [ext_resource type="Script" path="res://scripts/player/PlayerLabel3D.gd" id="6_cu4we"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nvh4r"]
@@ -1204,6 +1204,7 @@ shape = SubResource("BoxShape3D_xv4gv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50599, -1.59329)
 volume_db = -15.0
 unit_size = 3.0
+doppler_tracking = 2
 
 [node name="EnemyFOV" type="Area3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1534)
@@ -1399,6 +1400,7 @@ skin = SubResource("Skin_0kxnx")
 stream = SubResource("AudioStreamPolyphonic_agq7l")
 volume_db = -10.0
 unit_size = 2.0
+doppler_tracking = 2
 
 [node name="EnemyBodyColisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0.130924)

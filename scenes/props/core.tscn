@@ -2,11 +2,11 @@
 
 [ext_resource type="Material" uid="uid://cv1elwyxjdi1f" path="res://materials/new_standard_material_3d.tres" id="1_fsp24"]
 [ext_resource type="Script" path="res://scripts/props/Furnance.gd" id="2_1ppdy"]
-[ext_resource type="FontFile" uid="uid://4dbhvlqdv7x4" path="res://imports/Fonts/IBM3161.ttf" id="3_o85w4"]
+[ext_resource type="FontFile" uid="uid://7npjsho23vg3" path="res://imports/Fonts/IBM3161.ttf" id="3_o85w4"]
 [ext_resource type="Shader" path="res://materials/lavaf.gdshader" id="3_stjqu"]
 [ext_resource type="Script" path="res://scripts/player/PlayerLabel3D.gd" id="4_dm8td"]
-[ext_resource type="AudioStream" uid="uid://dbehmkfdpypq6" path="res://imports/Audio/furnance.wav" id="5_2e2fg"]
-[ext_resource type="Texture2D" uid="uid://b0s6v0ahvti2a" path="res://imports/Particles/smoke_04.png" id="5_b2ix4"]
+[ext_resource type="AudioStream" uid="uid://bhd00y4jafyiy" path="res://imports/Audio/furnance.wav" id="5_2e2fg"]
+[ext_resource type="Texture2D" uid="uid://benvq5gl0r6a3" path="res://imports/Particles/smoke_04.png" id="5_b2ix4"]
 [ext_resource type="PackedScene" uid="uid://b01nkjct22a5n" path="res://scenes/props/door.tscn" id="5_egmt6"]
 [ext_resource type="Script" path="res://scripts/props/FurnanceAudio.gd" id="6_kl01s"]
 
