@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://2lij0dqj26mc"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Shader" path="res://materials/lava.gdshader" id="1_b4bxb"]
-[ext_resource type="Script" path="res://scripts/props/lava.gd" id="1_yqm4s"]
+[ext_resource type="Script" path="res://scripts/elements/lava.gd" id="1_yqm4s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jdjhx"]
 render_priority = 0

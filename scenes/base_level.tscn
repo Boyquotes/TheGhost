@@ -1,14 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://d1ykru3tveu4b"]
+[gd_scene load_steps=23 format=3 uid="uid://bfan743wneoqh"]
 
 [ext_resource type="PackedScene" uid="uid://54bowu5kbo8k" path="res://scenes/props/3x_3_grass.tscn" id="1_lebs5"]
 [ext_resource type="PackedScene" uid="uid://1cinutwv1t3l" path="res://scenes/props/floor.tscn" id="1_qn23l"]
-[ext_resource type="PackedScene" uid="uid://cbrdb37i16jho" path="res://scenes/platform.tscn" id="3_3sf5p"]
-[ext_resource type="PackedScene" uid="uid://cm7k70kejmue8" path="res://scenes/player.tscn" id="3_5fsbt"]
-[ext_resource type="PackedScene" uid="uid://ba17uatmb7tib" path="res://scenes/props/core.tscn" id="3_24p4y"]
+[ext_resource type="PackedScene" uid="uid://coq63uagid74d" path="res://scenes/player/player.tscn" id="3_5fsbt"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/furnance/core.tscn" id="3_24p4y"]
 [ext_resource type="PackedScene" uid="uid://bxnwx5cvxmv65" path="res://scenes/props/moving_ball.tscn" id="4_ayfrc"]
 [ext_resource type="PackedScene" uid="uid://du6pve38pu7jx" path="res://scenes/props/ramp.tscn" id="5_82eor"]
-[ext_resource type="PackedScene" uid="uid://2lij0dqj26mc" path="res://scenes/elements/lava.tscn" id="6_jpi4j"]
-[ext_resource type="PackedScene" uid="uid://c2vpkqe4hq06c" path="res://scenes/navEnem.tscn" id="11_4gi8k"]
+[ext_resource type="PackedScene" path="res://scenes/elements/lava.tscn" id="6_jpi4j"]
+[ext_resource type="PackedScene" path="res://scenes/elements/zap.tscn" id="9_4xot8"]
+[ext_resource type="PackedScene" uid="uid://c2vpkqe4hq06c" path="res://scenes/foes/enemy_cracking_door.tscn" id="11_4gi8k"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cqbhm"]
 vertices = PackedVector3Array(-16.956, 0.63604, 8.0805, -16.056, 0.63604, 7.5805, -16.056, 0.63604, 2.5805, -17.656, 0.63604, 9.3805, -16.956, 0.63604, 8.0805, -16.056, 0.63604, 2.5805, -23.856, 0.63604, 2.5805, -23.856, 0.63604, 9.3805, -16.056, 0.63604, 7.5805, -10.056, 0.63604, 7.5805, -10.056, 0.63604, 2.5805, -16.056, 0.63604, 2.5805, -8.156, 0.63604, 10.1805, -8.356, 0.63604, 10.4805, -8.056, 0.63604, 10.8805, -8.156, 0.63604, 9.3805, -8.156, 0.63604, 10.1805, -8.056, 0.63604, 10.8805, -8.056, 0.63604, 11.2805, -8.356, 0.63604, 12.4805, -8.056, 0.63604, 12.8805, -3.456, 0.63604, 17.7805, -8.056, 0.63604, 12.8805, -8.256, 0.63604, 14.0805, -8.056, 0.63604, 15.0805, -4.356, 0.63604, 18.2805, -3.456, 0.63604, 17.7805, -8.056, 0.63604, 15.0805, -8.556, 0.63604, 15.9805, -4.356, 0.63604, 18.2805, -4.056, 0.63604, 2.5805, -8.156, 0.63604, 9.3805, -8.056, 0.63604, 10.8805, -3.456, 0.63604, 17.7805, 2.044, 0.63604, 17.7805, 2.044, 0.63604, 2.5805, -10.056, 0.63604, 2.5805, -10.056, 0.63604, 7.5805, -8.956, 0.63604, 8.0805, -8.056, 0.63604, 10.8805, -8.056, 0.63604, 11.2805, -3.456, 0.63604, 17.7805, -10.056, 0.63604, 2.5805, -8.956, 0.63604, 8.0805, -8.156, 0.63604, 9.3805, -4.056, 0.63604, 2.5805, 20.544, 0.63604, 11.1805, 20.544, 0.63604, 2.5805, 11.244, 0.63604, 2.5805, 2.044, 0.63604, 2.5805, 2.044, 0.63604, 17.7805, 2.844, 0.63604, 17.7805, 2.044, 0.63604, 2.5805, 2.844, 0.63604, 17.7805, 3.844, 0.63604, 18.2805, 4.444, 0.63604, 19.3805, 4.444, 0.63604, 19.9805, 20.544, 0.63604, 19.8805, 3.844, 0.63604, 18.2805, 4.444, 0.63604, 19.3805, 20.544, 0.63604, 19.8805, 20.544, 0.63604, 11.1805, 11.244, 0.63604, 2.5805, 2.044, 0.63604, 2.5805, -23.856, 0.63604, 15.3805, -17.656, 0.63604, 15.3805, -17.656, 0.63604, 9.3805, -23.856, 0.63604, 9.3805, -23.856, 0.63604, 30.0805, -22.456, 0.63604, 30.0805, -22.456, 0.63604, 29.2805, -23.856, 0.63604, 30.0805, -22.456, 0.63604, 29.2805, -21.956, 0.63604, 28.2805, -23.856, 0.63604, 22.6805, -15.956, 0.63604, 17.0805, -17.156, 0.63604, 16.4805, -23.856, 0.63604, 15.3805, -23.856, 0.63604, 22.6805, -20.856, 0.63604, 27.6805, -15.956, 0.63604, 27.6805, -23.856, 0.63604, 22.6805, -21.956, 0.63604, 28.2805, -20.856, 0.63604, 27.6805, -17.156, 0.63604, 16.4805, -17.656, 0.63604, 15.3805, -23.856, 0.63604, 15.3805, -4.556, 0.63604, 18.4805, -4.356, 0.63604, 18.2805, -8.556, 0.63604, 15.9805, -9.056, 0.63604, 16.5805, -12.956, 0.63604, 17.1805, -13.456, 0.63604, 16.9805, -13.656, 0.63604, 17.1805, -10.356, 0.63604, 17.1805, -11.256, 0.63604, 16.9805, -11.456, 0.63604, 17.1805, -5.056, 0.63604, 19.3805, -5.056, 0.63604, 19.3805, -4.556, 0.63604, 18.4805, -9.056, 0.63604, 16.5805, -10.356, 0.63604, 17.1805, -5.056, 0.63604, 19.3805, -13.656, 0.63604, 17.1805, -14.356, 0.63604, 17.1805, -14.356, 0.63604, 27.7805, -13.656, 0.63604, 28.1805, -4.956, 0.63604, 25.7805, -5.056, 0.63604, 19.3805, -12.956, 0.63604, 17.1805, -13.656, 0.63604, 17.1805, -5.056, 0.63604, 19.3805, -11.456, 0.63604, 17.1805, -12.956, 0.63604, 17.1805, -14.356, 0.63604, 17.1805, -14.856, 0.63604, 16.9805, -15.256, 0.63604, 17.1805, -15.956, 0.63604, 27.6805, -14.356, 0.63604, 27.7805, -15.256, 0.63604, 17.1805, -15.956, 0.63604, 17.0805, -15.956, 0.63604, 27.6805, 4.444, 0.63604, 19.9805, 4.444, 0.63604, 25.0805, 20.544, 0.63604, 25.1805, 20.544, 0.63604, 19.8805, -3.756, 0.63604, 38.9805, -4.456, 0.63604, 39.6805, -3.956, 0.63604, 40.5805, -3.756, 0.63604, 38.9805, -3.956, 0.63604, 40.5805, -3.956, 0.63604, 40.9805, 0.643999, 0.63604, 47.1805, 7.244, 0.63604, 47.1805, 2.844, 0.63604, 27.2805, 0.943998, 0.63604, 27.2805, 0.844, 0.63604, 27.5805, 2.844, 0.63604, 27.2805, 0.844, 0.63604, 27.5805, -0.356001, 0.63604, 28.1805, -3.756, 0.63604, 38.9805, -5.456, 0.83604, 42.4805, -6.056, 1.03604, 42.4805, -5.956, 1.03604, 47.1805, -4.456, 0.63604, 41.9805, -5.456, 0.83604, 42.4805, -5.956, 1.03604, 47.1805, -5.056, 0.63604, 44.0605, -3.956, 0.63604, 40.9805, -4.456, 0.63604, 41.9805, -5.956, 1.03604, 47.1805, 0.643999, 0.63604, 47.1805, -5.056, 0.63604, 44.0605, -4.856, 0.63604, 47.1805, 20.544, 0.63604, 25.1805, 4.444, 0.63604, 25.6805, 3.844, 0.63604, 26.7805, 3.844, 0.63604, 26.7805, 2.844, 0.63604, 27.2805, -3.756, 0.63604, 38.9805, -0.356001, 0.63604, 28.1805, -0.756001, 0.63604, 28.0805, -3.756, 0.63604, 38.9805, 13.844, 0.63604, 47.1805, 20.544, 0.63604, 47.1805, 20.544, 0.63604, 36.1805, 20.544, 0.63604, 25.1805, 4.444, 0.63604, 25.0805, 4.444, 0.63604, 25.6805, 7.244, 0.63604, 47.1805, 13.844, 0.63604, 47.1805, 20.544, 0.63604, 36.1805, 20.544, 0.63604, 25.1805, 3.844, 0.63604, 26.7805, -3.756, 0.63604, 38.9805, -5.156, 0.63604, 27.6805, -4.356, 0.63604, 26.7805, -4.956, 0.63604, 25.7805, -13.656, 0.63604, 28.1805, -13.056, 0.63604, 29.1805, -5.356, 0.63604, 39.1805, -4.456, 0.63604, 39.6805, -3.756, 0.63604, 38.9805, -3.556, 0.63604, 27.1805, -4.356, 0.63604, 26.7805, -5.156, 0.63604, 27.6805, -1.656, 0.63604, 27.6805, -1.856, 0.63604, 27.2805, -3.556, 0.63604, 27.1805, -0.756001, 0.63604, 28.0805, -1.656, 0.63604, 27.6805, -3.556, 0.63604, 27.1805, -3.756, 0.63604, 38.9805, -14.556, 0.63604, 37.1805, -15.156, 0.63604, 37.1805, -15.056, 0.63604, 39.0805, -13.556, 0.63604, 36.6805, -14.556, 0.63604, 37.1805, -15.056, 0.63604, 39.0805, -5.356, 0.63604, 39.1805, -12.956, 0.63604, 35.5805, -5.356, 0.63604, 39.1805, -5.156, 0.63604, 27.6805, -13.056, 0.63604, 29.1805, -12.956, 0.63604, 35.5805, -13.556, 0.63604, 36.6805, -5.356, 0.63604, 39.1805, -23.856, 0.63604, 34.7805, -22.456, 0.63604, 34.7805, -22.456, 0.63604, 30.0805, -23.856, 0.63604, 30.0805, -18.956, 0.63604, 31.1805, -18.956, 0.63604, 33.6805, -16.456, 0.63604, 33.6805, -16.456, 0.63604, 31.1805, -22.456, 0.63604, 35.5805, -22.456, 0.63604, 34.7805, -23.856, 0.63604, 34.7805, -20.356, 0.63604, 39.0805, -20.256, 0.63604, 37.1805, -20.856, 0.63604, 37.1805, -21.956, 0.63604, 36.5805, -22.456, 0.63604, 35.5805, -23.856, 0.63604, 34.7805, -20.356, 0.63604, 39.0805, -20.856, 0.63604, 37.1805, -21.956, 0.63604, 36.5805, -23.856, 0.63604, 39.0805, -20.356, 0.63604, 39.0805, -21.956, 0.63604, 36.5805, -23.856, 0.63604, 34.7805, -20.356, 0.63604, 39.0805, -15.056, 0.63604, 39.0805, -15.156, 0.63604, 37.1805, -20.256, 0.63604, 37.1805, -15.556, 4.63604, 42.4805, -24.956, 8.03604, 42.4805, -24.956, 8.03604, 47.1805, -15.456, 4.53604, 47.1805, -15.456, 4.53604, 47.1805, -5.956, 1.03604, 47.1805, -6.056, 1.03604, 42.4805, -15.556, 4.63604, 42.4805, -23.856, 0.63604, 42.5805, -23.856, 0.63604, 47.1805, -17.656, 0.63604, 47.1805, -17.656, 0.63604, 42.5805)
@@ -46,9 +46,8 @@ cell_height = 0.1
 agent_height = 4.0
 agent_radius = 1.7
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_npdkl"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p330l"]
 friction = 0.0
-absorbent = true
 
 [sub_resource type="FogMaterial" id="FogMaterial_oswsl"]
 density = 1.6
@@ -65,9 +64,19 @@ edge_fade = 5.768
 [sub_resource type="GDScript" id="GDScript_g2q0a"]
 script/source = "extends Area3D
 
+var map = {}
+
 func _on_body_entered(body : RigidBody3D):
-	#chek if its player
-	body.global_position = Vector3(body.global_position.x, 15.0, body.global_position.z)
+	if !map.has(body.name) :
+		map[body.name] = 1
+		
+	if map[body.name] < 3 :
+		body.global_position = Vector3(body.global_position.x, 15.0, body.global_position.z)
+		map[body.name]+=1
+		
+	elif map[body.name] == 3 :
+		map[body.name] = 0
+		body.global_position = body.INITIAL_POSITION
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f6hwb"]
@@ -157,53 +166,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
 [node name="Floor" parent="FurnancePlane" instance=ExtResource("1_qn23l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44828, 0, 24.4805)
 
-[node name="Platform" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6351, 7.08174, 19.8469)
-
-[node name="Platform2" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5926, 7.08174, 19.8469)
-
-[node name="Platform3" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4884, 7.08174, 19.8469)
-
 [node name="Furnance" parent="FurnancePlane" instance=ExtResource("3_24p4y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.321, 4.41, 22.551)
-
-[node name="Platform4" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4884, 7.08174, 22.6875)
-
-[node name="Platform5" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4884, 7.08174, 25.4991)
-
-[node name="Platform6" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4884, 7.08174, 38.2293)
-
-[node name="Platform7" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.606, 7.082, 43)
-
-[node name="Platform8" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.606, 1.664, 40.3)
-
-[node name="Platform9" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.606, -4.156, 37.6)
-
-[node name="Platform10" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.606, -11.302, 34.9)
-
-[node name="Platform11" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.606, -18.03, 32.2)
-
-[node name="Platform12" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.606, -25.041, 29.5)
-
-[node name="Platform13" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.606, -33.664, 26.8)
-
-[node name="Platform14" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.606, -33.664, 24.0644)
-
-[node name="Platform15" parent="FurnancePlane" instance=ExtResource("3_3sf5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.606, -33.664, 21.3656)
 
 [node name="Ramp" parent="FurnancePlane" instance=ExtResource("5_82eor")]
 transform = Transform3D(4.52918, 0, 0, 0, 4.52918, 0, 0, 0, 4.52918, -5.854, 3.665, 45.315)
@@ -215,379 +179,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9267, 0.500002, 12.3412)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -35, 0)
 navigation_mesh = SubResource("NavigationMesh_g0i4n")
 
+[node name="Wall5" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.45469, 5.75906, 48.9006)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall5"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall5"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+
+[node name="Wall6" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-0.259808, 1.12928e-08, -0.15, -0.15, -6.55671e-09, 0.259808, 6.50152e-09, 0.3, 1.13247e-08, 28.5453, -6.24094, 24.4006)
+collision_layer = 4
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall6"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall6/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+
 [node name="Floor" parent="Maze" instance=ExtResource("1_qn23l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44828, 0, 24.4805)
-
-[node name="Wall2" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-2.06755e-08, 0, -1, 0, 1, 0, 0.473, 0, -4.37114e-08, -24.4765, 5.83254, -13.1583)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall2"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall2/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-
-[node name="Wall3" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-2.06755e-08, 0, -1, 0, 1, 0, 0.473, 0, -4.37114e-08, -24.4765, 5.83254, 13.1498)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall3"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall3/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall6" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 1, -18.9765, 5.83254, 1.74976)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall6"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall6/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall8" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, -4.47648, 5.83254, 6.24976)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall8"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall8/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall12" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, -4.47648, 5.83254, 14.7498)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall12"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall12/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall14" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, -14.4765, 5.83254, 16.2498)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall14"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall14/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall25" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, -14.4765, 5.83254, 19.8498)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall25"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall25/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall9" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, -4.47648, 5.83254, -3.75024)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall9"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall9/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall17" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, 15.5235, 5.83254, -12.7502)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall17"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall17/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall20" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, 15.5235, 5.83254, -1.75024)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall20"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall20/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall19" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, 5.52352, 5.83254, -12.7502)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall19"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall19/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall21" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, 5.52352, 5.83254, 7.24976)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall21"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall21/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall22" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, 0.523523, 5.83254, 19.2498)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall22"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall22/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall23" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, 11.0235, 5.83254, 11.7498)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall23"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall23/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall24" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, 11.0235, 5.83254, 2.74976)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall24"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall24/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall10" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, -9.97648, 5.83254, -8.25024)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall10"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall10/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall11" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, -8.97648, 5.83254, -18.2502)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall11"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall11/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall15" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, 1.02352, 5.83254, -18.2502)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall15"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall15/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall16" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, 11.0235, 5.83254, -18.2502)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall16"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall16/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall18" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, 20.0235, 5.83254, -7.25024)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall18"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall18/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall13" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, -9.97648, 5.83254, 10.7498)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall13"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall13/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
-
-[node name="Wall4" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-2.06755e-08, 0, -1, 0, 1, 0, 0.473, 0, -4.37114e-08, 24.5235, 5.83254, -13.1583)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall4"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall4/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-
-[node name="Wall5" type="StaticBody3D" parent="Maze/Floor"]
-transform = Transform3D(-2.06755e-08, 0, -1, 0, 1, 0, 0.473, 0, -4.37114e-08, 24.5235, 5.83254, 13.1498)
-collision_layer = 15
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Floor/Wall5"]
-shape = SubResource("BoxShape3D_r5dwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Floor/Wall5/CollisionShape3D"]
-layers = 3
-mesh = SubResource("BoxMesh_0bgr7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
-metadata/_edit_group_ = true
 
 [node name="Wall4" type="StaticBody3D" parent="Maze"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.45469, 5.75906, 0.000599682)
 collision_layer = 15
 collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall4"]
@@ -599,36 +229,394 @@ mesh = SubResource("BoxMesh_0bgr7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
 
-[node name="Wall5" type="StaticBody3D" parent="Maze"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.45469, 5.75906, 48.9006)
+[node name="Wall2" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-2.06755e-08, 0, -1, 0, 1, 0, 0.473, 0, -4.37114e-08, -25.9248, 5.83254, 11.3222)
 collision_layer = 15
 collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall2"]
 shape = SubResource("BoxShape3D_r5dwp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall5/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall2/CollisionShape3D"]
 layers = 3
 mesh = SubResource("BoxMesh_0bgr7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
 
-[node name="Wall6" type="StaticBody3D" parent="Maze"]
-transform = Transform3D(-0.259808, 1.12928e-08, -0.15, -0.15, -6.55671e-09, 0.259808, 6.50152e-09, 0.3, 1.13247e-08, 28.5453, -6.24094, 24.4006)
-collision_layer = 4
-collision_mask = 4
-physics_material_override = SubResource("PhysicsMaterial_npdkl")
+[node name="Wall3" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-2.06755e-08, 0, -1, 0, 1, 0, 0.473, 0, -4.37114e-08, -25.9248, 5.83254, 37.6303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall6"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall3"]
 shape = SubResource("BoxShape3D_r5dwp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall6/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall3/CollisionShape3D"]
 layers = 3
 mesh = SubResource("BoxMesh_0bgr7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall7" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 1, -20.4248, 5.83254, 26.2303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall7"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall7/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../../../Wall7")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall8" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, -5.92476, 5.83254, 30.7303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall8"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall8/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall12" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, -5.92476, 5.83254, 39.2303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall12"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall12/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall14" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, -15.9248, 5.83254, 40.7303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall14"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall14/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall25" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, -15.9248, 5.83254, 44.3303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall25"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall25/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall9" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, -5.92476, 5.83254, 20.7303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall9"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall9/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall17" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, 14.0752, 5.83254, 11.7303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall17"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall17/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall20" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, 14.0752, 5.83254, 22.7303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall20"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall20/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall19" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, 4.07524, 5.83254, 11.7303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall19"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall19/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall21" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-8.74228e-09, 0, -1, 0, 1, 0, 0.2, 0, -4.37114e-08, 4.07524, 5.83254, 31.7303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall21"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall21/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall22" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, -0.924757, 5.83254, 43.7303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall22"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall22/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall23" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, 9.57522, 5.83254, 36.2303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall23"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall23/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall24" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, 9.57522, 5.83254, 27.2303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall24"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall24/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall10" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, -11.4248, 5.83254, 16.2303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall10"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall10/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall11" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, -10.4248, 5.83254, 6.2303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall11"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall11/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall15" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, -0.42476, 5.83254, 6.2303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall15"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall15/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall16" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, 9.57522, 5.83254, 6.2303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall16"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall16/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall18" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, 18.5752, 5.83254, 17.2303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall18"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall18/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall13" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-0.2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-08, 0, -1, -11.4248, 5.83254, 35.2303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall13"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall13/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
+
+[node name="Wall26" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-2.06755e-08, 0, -1, 0, 1, 0, 0.473, 0, -4.37114e-08, 23.0752, 5.83254, 11.3222)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall26"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall26/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../../../Wall7")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+
+[node name="Wall27" type="StaticBody3D" parent="Maze"]
+transform = Transform3D(-2.06755e-08, 0, -1, 0, 1, 0, 0.473, 0, -4.37114e-08, 23.0752, 5.83254, 37.6303)
+collision_layer = 15
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_p330l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Wall27"]
+shape = SubResource("BoxShape3D_r5dwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Wall27/CollisionShape3D"]
+layers = 3
+mesh = SubResource("BoxMesh_0bgr7")
+skeleton = NodePath("../../../Wall7")
+surface_material_override/0 = SubResource("StandardMaterial3D_wo23x")
+metadata/_edit_group_ = true
 
 [node name="FogVolume" type="FogVolume" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 112.018, 31.5217)
@@ -659,5 +647,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2, -33.2, 24.5)
 
 [node name="EnemyBody" parent="." instance=ExtResource("11_4gi8k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -31.7, 31)
+
+[node name="EnemyBody2" parent="." instance=ExtResource("11_4gi8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 6.8, 35.4)
+
+[node name="Moving_ball2" parent="." instance=ExtResource("4_ayfrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.1, 35)
+
+[node name="Zap" parent="Moving_ball2" instance=ExtResource("9_4xot8")]
 
 [connection signal="body_entered" from="DeathArea" to="DeathArea" method="_on_body_entered"]

@@ -1,11 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://kty2tew4afmr"]
+[gd_scene load_steps=17 format=3]
 
-[ext_resource type="Script" path="res://scripts/props/moving_zap.gd" id="1_ymryp"]
-[ext_resource type="Texture2D" uid="uid://0iinr32w51au" path="res://imports/Particles/Sprite-0001.png" id="2_v0pey"]
+[ext_resource type="Script" path="res://scripts/elements/moving_zap.gd" id="1_ymryp"]
+[ext_resource type="Texture2D" uid="uid://cgde3snwgjh4t" path="res://imports/Particles/Sprite-0001.png" id="2_v0pey"]
 [ext_resource type="Material" uid="uid://qf0e57umi4ga" path="res://materials/eletricity/aasdas.tres" id="3_1h5m7"]
 [ext_resource type="Shader" path="res://materials/eletricity/eletricity.gdshader" id="4_emmwn"]
 [ext_resource type="Shader" path="res://materials/eletricity/balblal.gdshader" id="5_8tf82"]
-[ext_resource type="Script" path="res://scripts/props/LightHit.gd" id="5_g18xq"]
+[ext_resource type="Script" path="res://scripts/elements/LightHit.gd" id="5_g18xq"]
 [ext_resource type="Shader" path="res://materials/eletricity/beam.gdshader" id="6_4jr6b"]
 [ext_resource type="Material" uid="uid://cgryq8t0j868p" path="res://materials/eletricity/123213.tres" id="8_jmsrh"]
 
