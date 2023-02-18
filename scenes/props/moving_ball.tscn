@@ -24,6 +24,7 @@ roughness = 0.0
 
 [node name="Moving_ball" type="Node3D"]
 script = ExtResource("1_ibsj7")
+metadata/_edit_group_ = true
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Fuel", "Moveable"]]
 collision_layer = 9

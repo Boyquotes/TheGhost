@@ -5,7 +5,7 @@ extends RigidBody3D
 @onready var raycast : RayCast3D = $RayCast3D
 @onready var sm : Node3D = $EnemySM
 
-var speed = 3.5
+var speed = 4.5
 
 var randf_seed = randf_range(0.8,1.2)
 var has_target = false

@@ -16,6 +16,6 @@ func _physics_process(delta):
 				start=false
 			return
 	if light_energy > 0:
-			light_energy = lerpf(light_energy, 0.1, delta * 6.0)
+			light_energy = lerpf(light_energy, 0.5, delta * 6.0)
 	if light_energy <= 0:
 			play_blink = false

@@ -11,7 +11,9 @@ func _physics_process(_delta):
 size = Vector3(2.7, 1.6, 2.7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0g0p"]
-albedo_color = Color(0.286275, 0.309804, 0.286275, 1)
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.192157, 0.192157, 0.192157, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c8lwc"]
 size = Vector3(2.7, 1.6, 2.7)

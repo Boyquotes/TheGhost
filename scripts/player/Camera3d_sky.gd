@@ -28,7 +28,6 @@ func _ready():
 	next_dir_light_int = dir_light.light_energy
 	await get_tree().create_timer(1).timeout
 	cycle()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _process(delta):
 	var delta_color = environment.background_color
@@ -43,18 +42,18 @@ func _process(delta):
 func cycle():
 	next_light = 1.0
 	next_color = STATES.midnight
-	next_dir_light_int = 0.01
-	await get_tree().create_timer(12*3).timeout
-	next_color = STATES.morning
-	next_light = 1.3
-	next_dir_light_int = 0.2
-	environment.volumetric_fog_density = env.volumetric_fog_density + 0.01
-	await get_tree().create_timer(5*3).timeout
-	next_color = STATES.midday
-	next_light = 1.7
-	environment.volumetric_fog_density = env.volumetric_fog_density - 0.01
-	await get_tree().create_timer(5*3).timeout
-	next_color = STATES.afternoon
-	next_light = 1.0
-	await get_tree().create_timer(2*3).timeout
-	cycle()
+	next_dir_light_int = 0.000
+	#await get_tree().create_timer(12*3).timeout
+	#next_color = STATES.morning
+	#next_light = 1.3
+	#next_dir_light_int = 0.2
+	#environment.volumetric_fog_density = env.volumetric_fog_density + 0.01
+	#await get_tree().create_timer(5*3).timeout
+	#next_color = STATES.midday
+	#next_light = 1.7
+	#environment.volumetric_fog_density = env.volumetric_fog_density - 0.01
+	#await get_tree().create_timer(5*3).timeout
+	#next_color = STATES.afternoon
+	#next_light = 1.0
+	#await get_tree().create_timer(2*3).timeout
+	#cycle()

@@ -17,6 +17,8 @@ radius = 6.0
 
 [node name="Lava" type="Node3D"]
 script = ExtResource("1_yqm4s")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Light" type="OmniLight3D" parent="."]
 light_color = Color(1, 0.458824, 0.262745, 1)
