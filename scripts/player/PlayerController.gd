@@ -69,8 +69,6 @@ func _input(event):
 		push()
 	if event.is_action_pressed("jump") && !sm.is_hit && sm.state in [1,2,7] && !jumping:
 		jump()
-	if event.is_action_pressed("talk") && on_floor:
-		ik()
 
 
 func _handle_move_rotation(delta):
@@ -119,6 +117,7 @@ func push():
 		sm.is_pushing = true
 		await get_tree().create_timer(0.30).timeout
 		objsToPush[0].apply_central_impulse(direction* 170000)
+		
 func jump():
 	jumping = true
 	sm.jump()

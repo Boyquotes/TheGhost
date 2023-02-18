@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3]
+[gd_scene load_steps=17 format=3 uid="uid://edmghfs6bhiq"]
 
 [ext_resource type="Script" path="res://scripts/elements/moving_zap.gd" id="1_ymryp"]
 [ext_resource type="Texture2D" uid="uid://cgde3snwgjh4t" path="res://imports/Particles/Sprite-0001.png" id="2_v0pey"]
@@ -61,7 +61,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 grow_amount = 2.898
 
-[node name="Zap" type="Node3D"]
+[node name="Fuel" type="Node3D"]
 script = ExtResource("1_ymryp")
 
 [node name="FluidSparkles" type="GPUParticles3D" parent="."]

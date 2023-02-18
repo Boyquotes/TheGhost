@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3]
+[gd_scene load_steps=29 format=3 uid="uid://nwfp3m8cudyt"]
 
 [ext_resource type="Material" uid="uid://cv1elwyxjdi1f" path="res://materials/new_standard_material_3d.tres" id="1_fsp24"]
 [ext_resource type="Script" path="res://scripts/npcs/furnance/Furnance.gd" id="2_1ppdy"]
@@ -156,7 +156,6 @@ script = ExtResource("2_1ppdy")
 
 [node name="Lava" type="CSGBox3D" parent="."]
 transform = Transform3D(5.346, 0, 0, 0, 2.511, 0, 0, 0, 5.39378, 0, -3.30541, 0)
-visible = false
 cast_shadow = 0
 material = SubResource("ShaderMaterial_jfj8v")
 
