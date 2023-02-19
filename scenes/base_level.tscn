@@ -649,7 +649,7 @@ size = Vector3(200, 60, 200)
 material = SubResource("FogMaterial_2sf1i")
 
 [node name="Player" parent="." instance=ExtResource("3_5fsbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9148, -31.937, 21.2293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08522, 2.663, 12.2293)
 
 [node name="DeathArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -75.7632, 0)
