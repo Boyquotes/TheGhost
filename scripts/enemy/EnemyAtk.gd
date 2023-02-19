@@ -1,15 +1,12 @@
 extends Area3D
 
 @onready var sm : StateMachine = get_parent().get_parent().get_node("EnemySM")
-@onready var controller : RigidBody3D = get_parent().get_parent()
 
 var on_cd = false:
 	set(value):
 		on_cd = value
 		if value == true :
-			controller.speed = sm.speed/3.0 
 			await get_tree().create_timer(0.9).timeout
-			controller.speed= sm.speed
 			on_cd = false
 			
 

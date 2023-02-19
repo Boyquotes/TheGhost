@@ -10,7 +10,6 @@ const STATES = {
 signal entered_state (state : String, startSec : float)
 
 @onready var animator : AnimationPlayer = $AnimationPlayer
-@onready var label : Label3D = $Label3D
 
 @export var stun_time = 0.5
 @export var stun_force = 50.0
@@ -36,7 +35,7 @@ var stunned = false :
 
 
 func _ready():
-	speed = parent.speed
+	speed = parent.SPEED
 	add_states(STATES)
 	call_deferred("set_state", STATES.idle)
 
@@ -65,7 +64,6 @@ func _update_state(_delta):
 
 func _enter_state(new_state, _old_state):
 	var state_name = STATES.find_key(new_state)
-	label.override(state_name)
 	if animator.has_animation(state_name):
 		if new_state == STATES.chasing:
 			animator.speed_scale = parent.randf_seed
@@ -80,4 +78,6 @@ func _enter_state(new_state, _old_state):
 			var le_size_sqrd = light_to_enemy_vector.length_squared()
 			parent.move(stun_time/2, stun_force * light_to_enemy_vector/le_size_sqrd)
 		STATES.attack:
-			parent.speed = speed/3.0
+			parent.SPEED = speed/3.0
+		STATES.chasing:
+			parent.SPEED = speed

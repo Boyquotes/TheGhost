@@ -26,11 +26,12 @@ var health = 10 :
 var mx = 1.0
 var mz = 0.0
 
+var can_push = false
+
 @onready var sm = $SM
 @onready var mesh_decoy = $MeshDecoy
 @onready var mesh_decoy_location = $"MeshDecoy/Armature/Skeleton3D/Physical Bone Root/BodyLocation"
-@onready var mesh = $Mesh
-@onready var pushArea : Area3D = $Mesh/Push
+@onready var pushArea : Area3D = $MeshDecoy/Push
 @onready var ui : Label = $VBoxContainer/Label
 @onready var player_text : Label3D = $MeshDecoy/Label3D
 @onready var floor_detector : Area3D = $FloorDetector
@@ -76,7 +77,6 @@ func _handle_move_rotation(delta):
 		return
 	if !sm.is_hit :
 		mesh_decoy.rotation.y = lerp_angle(mesh_decoy.rotation.y, atan2(-motion.x, -motion.z), delta * ROTATION_SPEED)
-	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-motion.x, -motion.z), delta * ROTATION_SPEED)
 
 func _on_camera_node_cam_rotation(rot):
 	mx = sin(rot)
@@ -113,7 +113,6 @@ func push():
 	if objsToPush[0] is RigidBody3D:
 		var direction = (objsToPush[0].global_position - global_position).normalized()
 		mesh_decoy.rotation.y = atan2(-direction.x, -direction.z)
-		mesh.rotation.y = atan2(-direction.x, -direction.z)
 		sm.is_pushing = true
 		await get_tree().create_timer(0.30).timeout
 		objsToPush[0].apply_central_impulse(direction* 170000)
@@ -125,7 +124,6 @@ func jump():
 	if is_move_input():
 		direction.x = Input.get_action_strength("move_down") * mx - Input.get_action_strength("move_up") * mx - Input.get_action_strength("move_left") * mz + Input.get_action_strength("move_right") * mz 
 		direction.z = Input.get_action_strength("move_down") * mz - Input.get_action_strength("move_up") * mz + Input.get_action_strength("move_left") * mx - + Input.get_action_strength("move_right") * mx
-		mesh.rotation.y = atan2(-direction.x, -direction.z)
 		mesh_decoy.rotation.y = atan2(-direction.x, -direction.z)
 	await get_tree().create_timer(0.33).timeout
 	if on_floor:

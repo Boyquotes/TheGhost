@@ -1,6 +1,5 @@
 extends Node3D
 @onready var animator : AnimationPlayer = get_node("AnimationPlayer")
-@onready var animator2 = $AnimationPlayer2
 @onready var controller : RigidBody3D = get_parent()
 @onready var light : OmniLight3D = get_tree().get_first_node_in_group("PlayerLight")
 @onready var label : Label3D = get_node("Label3D")
@@ -9,20 +8,16 @@ extends Node3D
 var is_walking = false
 var is_jumping = false
 
-func _ready():
-	animator2.play("Spawn")
-
 var is_hit = false :
 	set(value):
 		if value == true:
 			is_hit = true
 			skeleton.physical_bones_start_simulation()
-			animator2.play("Despawn")
 			await get_tree().create_timer(2).timeout
 			skeleton.physical_bones_stop_simulation()
 			light.blink()
 			rotation.y = atan2(-controller.motion.x, -controller.motion.z)
-			animator2.play("Spawn")
+			controller.ik()
 			is_hit = false
 		else:
 			is_hit = false

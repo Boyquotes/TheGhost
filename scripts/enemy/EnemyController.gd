@@ -4,13 +4,17 @@ extends RigidBody3D
 @onready var mesh : Node3D = $Mesh
 @onready var raycast : RayCast3D = $RayCast3D
 @onready var sm : Node3D = $EnemySM
+@onready var label : Label3D = $Label3D
 
-var speed = 4.5
+var SPEED =  2.5
+
+var speed = SPEED
 
 var randf_seed = randf_range(0.8,1.2)
 var has_target = false
 var stun_velocity = null
 var on_floor = false
+var dash_on_cd = false
 
 @export var health : int = 10 : 
 	set(value):
@@ -25,7 +29,13 @@ var chasing = false :
 			await get_tree().create_timer(0.5).timeout
 			chasing = false
 
+func _ready():
+	chance_to_dash()
+
 func _physics_process(delta):
+	
+	label.override(str(speed))
+	
 	if stun_velocity:
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(linear_velocity.x, linear_velocity.z), delta * 100.0)
 		apply_central_impulse(Vector3(stun_velocity.x, stun_velocity.y, stun_velocity.z)* 1000.0)
@@ -73,9 +83,17 @@ func move(move_duration, direction):
 	await get_tree().create_timer(move_duration).timeout
 	stun_velocity = null
 
-func _on_enemy_floor_detector_enemy_on_floor(boolean):
-	on_floor = boolean
+func chance_to_dash():
+	if randi_range(0,2) > 1 and not sm.attacking:
+		speed = SPEED * 1.7
+	else:
+		speed = SPEED
+	await get_tree().create_timer(1).timeout
+	chance_to_dash()
 
 
 func _on_enemy_navigation_agent_3d_velocity_computed(safe_velocity):
 	linear_velocity = safe_velocity
+
+func _on_enemy_floor_detector_enemy_on_floor(boolean):
+	on_floor = boolean

@@ -44,7 +44,7 @@ func rotate_camera(dir):
 	if !locked :
 		rot+=int(dir / TAU * 8) / 8.0 * TAU
 
-func _on_mesh_player_real_pos(pos, delta):
+func _on_player_pos(pos, delta):
 	targetPosition = pos + OFFSET
 	camera.global_position = lerp(
 		camera.global_position, 
