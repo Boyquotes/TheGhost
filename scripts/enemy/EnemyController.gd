@@ -49,7 +49,7 @@ func _physics_process(delta):
 		rotate_towards_motion(delta)
 
 func rotate_towards_motion(delta):
-	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 5.0 * randf_seed * randf_seed)
+	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 3.0 * randf_seed * randf_seed)
 
 func _on_enemy_fov_player(player_location):
 	if player_location == null:

@@ -52,7 +52,7 @@ backface_collision = true
 
 [sub_resource type="FogMaterial" id="FogMaterial_jpfqo"]
 density = 2.0
-emission = Color(0.329412, 0.329412, 0.329412, 1)
+emission = Color(0.443137, 0.286275, 0.211765, 1)
 height_falloff = 20.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ki458"]

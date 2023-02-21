@@ -8,6 +8,7 @@ size = Vector3(50, 1, 50)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj8cy"]
 albedo_color = Color(0.286275, 0.309804, 0.286275, 1)
+emission = Color(1, 0, 0, 1)
 
 [node name="platform" type="StaticBody3D"]
 collision_layer = 15
