@@ -620,7 +620,7 @@ size = Vector3(200, 60, 200)
 material = SubResource("FogMaterial_2sf1i")
 
 [node name="Player" parent="." instance=ExtResource("3_5fsbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0852, 33.763, 22.9293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.9148, 8.763, 44.9293)
 
 [node name="DeathArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -75.7632, 0)
@@ -654,16 +654,17 @@ collision_mask = 4
 size = Vector3(1, 0.01, 1)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30.2, 13.1, 45.8)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.2, 13.2, 48.8)
+visible = false
 material_override = SubResource("StandardMaterial3D_wo23x")
 use_collision = true
 collision_layer = 4
 collision_mask = 4
-size = Vector3(1, 0.01, 1)
+size = Vector3(1, 0.529, 1)
 
 [node name="Elevator" parent="." instance=ExtResource("10_cgyns")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30.2, 7.8, 45.8)
-current_dir = "down"
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30.2, 5.4, 45.8)
+current_dir = "up"
 
 [node name="StaticBody3D" parent="." instance=ExtResource("11_0ek0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.1, -35, 45)

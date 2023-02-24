@@ -26,7 +26,7 @@ var health = 10 :
 var mx = 1.0
 var mz = 0.0
 
-var can_push = false
+var can_push = true
 
 @onready var sm = $SM
 @onready var mesh_decoy = $MeshDecoy
@@ -51,18 +51,7 @@ func _handle_move_input():
 		return
 	motion.x = Input.get_action_strength("move_down") * mx - Input.get_action_strength("move_up") * mx - Input.get_action_strength("move_left") * mz + Input.get_action_strength("move_right") * mz 
 	motion.z = Input.get_action_strength("move_down") * mz - Input.get_action_strength("move_up") * mz + Input.get_action_strength("move_left") * mx - + Input.get_action_strength("move_right") * mx
-	if linear_velocity.length() < 1:
-		speed = motion.normalized().length() * SPEED * 15
-	if linear_velocity.length() < 2:
-		speed = motion.normalized().length() * SPEED * 0.1
-	if linear_velocity.length() < 3:
-		speed = motion.normalized().length() * SPEED * 0.2
-	if linear_velocity.length() < 4:
-		speed = motion.normalized().length() * SPEED * 0.5
-	if linear_velocity.length() < 4.5:
-		speed = motion.normalized().length() * SPEED * 0.7
-	else:
-		speed = motion.normalized().length() * SPEED
+	speed = motion.normalized().length() * SPEED
 	motion = motion.normalized() * speed
 
 func _input(event):
@@ -104,20 +93,26 @@ func get_location():
 		return null
 
 func push():
-	if sm.is_hit || sm.is_pushing :
+	print(can_push)
+	if can_push:
+		if sm.is_hit || sm.is_pushing :
 			return
-	var objsToPush = pushArea.get_overlapping_bodies().filter(func(obj): return obj.is_in_group("Moveable"))
-	if objsToPush.is_empty():
-		return
-	objsToPush.sort_custom(func(a, b): return global_position - a.global_position < global_position - b.global_position)
-	var direction = (objsToPush[0].global_position - global_position).normalized()
-	mesh_decoy.rotation.y = atan2(-direction.x, -direction.z)
-	sm.is_pushing = true
-	await get_tree().create_timer(0.30).timeout
-	if objsToPush[0] is RigidBody3D:
-		objsToPush[0].apply_central_impulse(direction* 170000)
-	else:
-		objsToPush[0].push()
+		var objsToPush = pushArea.get_overlapping_bodies().filter(func(obj): return obj.is_in_group("Moveable"))
+		if objsToPush.is_empty():
+			return
+		objsToPush.sort_custom(func(a, b): return global_position - a.global_position < global_position - b.global_position)
+		var direction = (objsToPush[0].global_position - global_position).normalized()
+		mesh_decoy.rotation.y = atan2(-direction.x, -direction.z)
+		can_push = false
+		sm.is_pushing = true
+		await get_tree().create_timer(0.30).timeout
+		if objsToPush[0] is RigidBody3D:
+			objsToPush[0].apply_central_impulse(direction* 170000)
+		else:
+			objsToPush[0].push()
+		await get_tree().create_timer(1).timeout
+		can_push = true
+	
 func jump():
 	jumping = true
 	sm.jump()
