@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://bqo3tjtuvfrpx"]
+[gd_scene load_steps=37 format=3 uid="uid://bqo3tjtuvfrpx"]
 
 [ext_resource type="Texture2D" uid="uid://qn0s856manvu" path="res://imports/Particles/smoke_07.png" id="1_id6bn"]
 [ext_resource type="Script" path="res://scripts/props/elevator/SmokeEffects.gd" id="1_lmo4r"]
+[ext_resource type="Script" path="res://scripts/props/elevator/Lever.gd" id="3_l55mf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kj6tb"]
 rough = true
@@ -15,6 +16,7 @@ script/source = "extends RigidBody3D
 		if value != \"none\":
 			freeze=false
 			close_animation=true
+			last_dir = value
 		else:
 			open_animation=true
 			freeze=true
@@ -23,10 +25,10 @@ script/source = "extends RigidBody3D
 var door_mesh_list = []
 var door_colision_list = []
 
+var last_dir
+
 var open_animation= false
 var close_animation= false
-
-var saieduhasi:MeshInstance3D
 
 func _ready():
 	door_mesh_list.append($Doors/DoorBody/Door)
@@ -40,7 +42,6 @@ func _ready():
 		freeze = false
 
 func _physics_process(delta):
-	print(freeze)
 	match current_dir:
 		\"none\":
 			pass
@@ -78,6 +79,16 @@ func close_door_animation(door_mesh, delta):
 
 
 func _on_smoke_effects_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	current_dir=\"none\"
+
+func move():
+	if last_dir == \"up\":
+		current_dir = \"down\"
+	elif last_dir == \"down\":
+		current_dir = \"up\"
+
+
+func _on_upper_detection_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	current_dir=\"none\"
 "
 
@@ -185,7 +196,7 @@ points = PackedVector3Array(-0.14, -2, -5.04318, -0.14, 2, -5.04318, 0.14, -2, -
 size = Vector3(0.301453, 3.70236, 2.70204)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k4ekb"]
-size = Vector3(1, 0.5, 1)
+size = Vector3(7.40825, 0.5, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0jfn"]
 transparency = 1
@@ -197,6 +208,7 @@ emission_operator = 1
 ao_light_affect = 1.0
 subsurf_scatter_strength = 1.0
 billboard_mode = 3
+billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
@@ -226,8 +238,44 @@ color = Color(0.694118, 0.694118, 0.694118, 1)
 color_ramp = SubResource("GradientTexture1D_arcce")
 attractor_interaction_enabled = false
 collision_mode = 2
+collision_use_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_wwn6r"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kvn5d"]
+height = 1.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_xmfao"]
+size = Vector3(0.2, 1.5, 0.2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yafxv"]
+data = PackedVector3Array(-0.1, 0.75, 0.1, 0.1, 0.75, 0.1, -0.1, -0.75, 0.1, 0.1, 0.75, 0.1, 0.1, -0.75, 0.1, -0.1, -0.75, 0.1, 0.1, 0.75, -0.1, -0.1, 0.75, -0.1, 0.1, -0.75, -0.1, -0.1, 0.75, -0.1, -0.1, -0.75, -0.1, 0.1, -0.75, -0.1, 0.1, 0.75, 0.1, 0.1, 0.75, -0.1, 0.1, -0.75, 0.1, 0.1, 0.75, -0.1, 0.1, -0.75, -0.1, 0.1, -0.75, 0.1, -0.1, 0.75, -0.1, -0.1, 0.75, 0.1, -0.1, -0.75, -0.1, -0.1, 0.75, 0.1, -0.1, -0.75, 0.1, -0.1, -0.75, -0.1, 0.1, 0.75, 0.1, -0.1, 0.75, 0.1, 0.1, 0.75, -0.1, -0.1, 0.75, 0.1, -0.1, 0.75, -0.1, 0.1, 0.75, -0.1, -0.1, -0.75, 0.1, 0.1, -0.75, 0.1, -0.1, -0.75, -0.1, 0.1, -0.75, 0.1, 0.1, -0.75, -0.1, -0.1, -0.75, -0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ctxs2"]
+size = Vector3(0.2, 0.213, 1)
+
+[sub_resource type="GDScript" id="GDScript_lyn1i"]
+script/source = "extends StaticBody3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func push():
+	get_parent().get_parent().get_parent().push()
+"
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_y1xo0"]
+data = PackedVector3Array(-0.1, 0.1065, 0.5, 0.1, 0.1065, 0.5, -0.1, -0.1065, 0.5, 0.1, 0.1065, 0.5, 0.1, -0.1065, 0.5, -0.1, -0.1065, 0.5, 0.1, 0.1065, -0.5, -0.1, 0.1065, -0.5, 0.1, -0.1065, -0.5, -0.1, 0.1065, -0.5, -0.1, -0.1065, -0.5, 0.1, -0.1065, -0.5, 0.1, 0.1065, 0.5, 0.1, 0.1065, -0.5, 0.1, -0.1065, 0.5, 0.1, 0.1065, -0.5, 0.1, -0.1065, -0.5, 0.1, -0.1065, 0.5, -0.1, 0.1065, -0.5, -0.1, 0.1065, 0.5, -0.1, -0.1065, -0.5, -0.1, 0.1065, 0.5, -0.1, -0.1065, 0.5, -0.1, -0.1065, -0.5, 0.1, 0.1065, 0.5, -0.1, 0.1065, 0.5, 0.1, 0.1065, -0.5, -0.1, 0.1065, 0.5, -0.1, 0.1065, -0.5, 0.1, 0.1065, -0.5, -0.1, -0.1065, 0.5, 0.1, -0.1065, 0.5, -0.1, -0.1065, -0.5, 0.1, -0.1065, 0.5, 0.1, -0.1065, -0.5, -0.1, -0.1065, -0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aw3q7"]
+size = Vector3(7.40825, 0.5, 1)
 
 [node name="Platform" type="RigidBody3D"]
 collision_layer = 8388617
@@ -377,10 +425,12 @@ shape = SubResource("BoxShape3D_3tihd")
 
 [node name="SmokeEffects" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.549484, 0)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_lmo4r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SmokeEffects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0327009, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207975, 0.0327009, 0)
 shape = SubResource("BoxShape3D_k4ekb")
 
 [node name="Smoke" type="GPUParticles3D" parent="SmokeEffects"]
@@ -388,12 +438,12 @@ transform = Transform3D(0.997606, 0, 0, 0, 0.997606, 0, 0, 0, 0.999998, 0.819225
 layers = 8
 material_override = SubResource("StandardMaterial3D_q0jfn")
 emitting = false
-amount = 1000
+amount = 500
 lifetime = 2.3
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
-visibility_aabb = AABB(-5.62106, -6.46284, -3.50235, 11.2421, 12.9257, 7.0047)
+visibility_aabb = AABB(-7.58005, -9.73092, -12.115, 15.1601, 19.4619, 24.2301)
 process_material = SubResource("ParticleProcessMaterial_deqfd")
 draw_pass_1 = SubResource("QuadMesh_wwn6r")
 
@@ -401,5 +451,47 @@ draw_pass_1 = SubResource("QuadMesh_wwn6r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.616049, 3.76715, -0.16811)
 size = Vector3(8.6, 4.91, 8.6)
 
+[node name="Lever" type="Node3D" parent="."]
+transform = Transform3D(-1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0, 0, 1, -1.85842, 2.05942, 0)
+script = ExtResource("3_l55mf")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Lever"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_kvn5d")
+surface_material_override/0 = SubResource("StandardMaterial3D_g0fqt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lever/MeshInstance3D3"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, -0.64465, 7.10543e-15, 0)
+mesh = SubResource("BoxMesh_xmfao")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_g0fqt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Lever/MeshInstance3D3/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lever/MeshInstance3D3/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_yafxv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Lever/MeshInstance3D3"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, -1.49381, 7.10543e-15, 0)
+mesh = SubResource("BoxMesh_ctxs2")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_g0fqt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Lever/MeshInstance3D3/MeshInstance3D2" groups=["Moveable"]]
+script = SubResource("GDScript_lyn1i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lever/MeshInstance3D3/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_y1xo0")
+
+[node name="UpperDetection" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8466, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpperDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207975, 0.0327009, 0)
+shape = SubResource("BoxShape3D_aw3q7")
+
 [connection signal="body_shape_entered" from="SmokeEffects" to="." method="_on_smoke_effects_body_shape_entered"]
 [connection signal="body_shape_entered" from="SmokeEffects" to="SmokeEffects" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="UpperDetection" to="." method="_on_upper_detection_body_shape_entered"]

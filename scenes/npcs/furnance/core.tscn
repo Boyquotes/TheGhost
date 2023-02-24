@@ -68,6 +68,7 @@ albedo_texture = ExtResource("5_b2ix4")
 refraction_scale = 1.0
 refraction_texture = SubResource("CompressedTexture2D_ki458")
 billboard_mode = 3
+billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false

@@ -110,13 +110,14 @@ func push():
 	if objsToPush.is_empty():
 		return
 	objsToPush.sort_custom(func(a, b): return global_position - a.global_position < global_position - b.global_position)
+	var direction = (objsToPush[0].global_position - global_position).normalized()
+	mesh_decoy.rotation.y = atan2(-direction.x, -direction.z)
+	sm.is_pushing = true
+	await get_tree().create_timer(0.30).timeout
 	if objsToPush[0] is RigidBody3D:
-		var direction = (objsToPush[0].global_position - global_position).normalized()
-		mesh_decoy.rotation.y = atan2(-direction.x, -direction.z)
-		sm.is_pushing = true
-		await get_tree().create_timer(0.30).timeout
 		objsToPush[0].apply_central_impulse(direction* 170000)
-		
+	else:
+		objsToPush[0].push()
 func jump():
 	jumping = true
 	sm.jump()

@@ -6,7 +6,7 @@ extends RigidBody3D
 @onready var sm : Node3D = $EnemySM
 @onready var label : Label3D = $Label3D
 
-var SPEED =  2.5
+const SPEED = 3.5
 
 var speed = SPEED
 
@@ -29,12 +29,7 @@ var chasing = false :
 			await get_tree().create_timer(0.5).timeout
 			chasing = false
 
-func _ready():
-	chance_to_dash()
-
 func _physics_process(delta):
-	
-	label.override(str(speed))
 	
 	if stun_velocity:
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(linear_velocity.x, linear_velocity.z), delta * 100.0)
@@ -82,15 +77,6 @@ func move(move_duration, direction):
 	stun_velocity = direction
 	await get_tree().create_timer(move_duration).timeout
 	stun_velocity = null
-
-func chance_to_dash():
-	if randi_range(0,2) > 1 and not sm.attacking:
-		speed = SPEED * 1.7
-	else:
-		speed = SPEED
-	await get_tree().create_timer(1).timeout
-	chance_to_dash()
-
 
 func _on_enemy_navigation_agent_3d_velocity_computed(safe_velocity):
 	linear_velocity = safe_velocity

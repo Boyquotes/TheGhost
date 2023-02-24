@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://b01nkjct22a5n"]
 
-[ext_resource type="Texture2D" uid="uid://dvwtcanvyv8rw" path="res://imports/Particles/light.png" id="1_nm8so"]
+[ext_resource type="Texture2D" uid="uid://chkp378804wb2" path="res://imports/Particles/light.png" id="1_nm8so"]
 
 [sub_resource type="GDScript" id="GDScript_85e3p"]
 script/source = "extends Node3D
@@ -229,6 +229,7 @@ emission_enabled = true
 emission = Color(1, 0.352941, 0.219608, 1)
 emission_energy_multiplier = 128.0
 billboard_mode = 3
+billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
@@ -301,15 +302,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.164, 0.863023)
 visible = false
 strength = 10.0
 directionality = 1.0
-extents = Vector3(2, 5, 2)
+size = Vector3(4, 10, 4)
 
 [node name="GPUParticlesAttractorBox3D2" type="GPUParticlesAttractorBox3D" parent="GPUParticlesAttractorBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.69688)
 strength = 25.0
-extents = Vector3(2, 5, 3)
+size = Vector3(4, 10, 6)
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="GPUParticlesAttractorBox3D/GPUParticlesAttractorBox3D2"]
-extents = Vector3(1, 1, 0.377571)
+size = Vector3(2, 2, 0.755142)
 
 [connection signal="body_entered" from="DoorDetector" to="." method="rigidBodyOnDoor"]
 [connection signal="body_exited" from="DoorDetector" to="." method="rigidBodyOutDoor"]
