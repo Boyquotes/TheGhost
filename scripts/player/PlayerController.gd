@@ -93,7 +93,6 @@ func get_location():
 		return null
 
 func push():
-	print(can_push)
 	if can_push:
 		if sm.is_hit || sm.is_pushing :
 			return

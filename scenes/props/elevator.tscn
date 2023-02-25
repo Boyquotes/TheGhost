@@ -1,12 +1,10 @@
-[gd_scene load_steps=38 format=3 uid="uid://bqo3tjtuvfrpx"]
+[gd_scene load_steps=40 format=3 uid="uid://bqo3tjtuvfrpx"]
 
 [ext_resource type="Texture2D" uid="uid://qn0s856manvu" path="res://imports/Particles/smoke_07.png" id="1_id6bn"]
 [ext_resource type="Script" path="res://scripts/props/elevator/SmokeEffects.gd" id="1_lmo4r"]
 [ext_resource type="Script" path="res://scripts/props/elevator/Lever.gd" id="3_l55mf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kj6tb"]
-rough = true
-absorbent = true
 
 [sub_resource type="GDScript" id="GDScript_kk1tv"]
 script/source = "extends RigidBody3D
@@ -49,12 +47,10 @@ func _physics_process(delta):
 		\"none\":
 			pass
 		\"up\":
-			current_force = lerpf(current_force, 15, delta * 2)
+			current_force = lerpf(current_force, 25, delta * 5)
 			apply_central_force(Vector3.UP * current_force * mass)
 		\"down\":
-			current_force = lerpf(current_force, 12, delta * 2)
-			apply_central_force(Vector3.DOWN * current_force * mass)
-			
+			pass
 	if close_animation:
 		for door_mesh in door_mesh_list:
 			close_door_animation(door_mesh, delta)
@@ -91,6 +87,7 @@ func move():
 		current_dir = \"down\"
 	elif last_dir == \"down\":
 		current_dir = \"up\"
+
 
 
 func _on_upper_detection_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
@@ -154,10 +151,21 @@ transparency = 1
 albedo_color = Color(1, 1, 1, 0.117647)
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 2000.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_tpqk0"]
 material = SubResource("StandardMaterial3D_wun21")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q266o"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.117647)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_x5dh2"]
+material = SubResource("StandardMaterial3D_q266o")
+radius = 0.375
+height = 0.75
 
 [sub_resource type="BoxMesh" id="BoxMesh_qssgo"]
 size = Vector3(7, 4.413, 0.461)
@@ -201,7 +209,7 @@ points = PackedVector3Array(-0.14, -2, -5.04318, -0.14, 2, -5.04318, 0.14, -2, -
 size = Vector3(0.301453, 3.99787, 2.70204)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k4ekb"]
-size = Vector3(7.40825, 0.5, 1)
+size = Vector3(7.40825, 0.5, 7.01179)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0jfn"]
 transparency = 1
@@ -233,8 +241,9 @@ emission_ring_radius = 4.2
 emission_ring_inner_radius = 6.0
 direction = Vector3(0, 1, 0)
 spread = 15.0
-initial_velocity_min = 10.0
-initial_velocity_max = 14.0
+gravity = Vector3(0, -19.6, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 20.0
 angle_min = -360.0
 angle_max = 360.0
 scale_min = 4.0
@@ -295,7 +304,6 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 10000.0
 physics_material_override = SubResource("PhysicsMaterial_kj6tb")
-gravity_scale = 0.0
 continuous_cd = true
 max_contacts_reported = 10
 contact_monitor = true
@@ -344,16 +352,21 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2rav7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall/Lamp"]
-transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.0183114, 1.82261, -7.51124)
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 1.841, -7.52)
 mesh = SubResource("SphereMesh_tpqk0")
 skeleton = NodePath("")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Wall/Lamp/MeshInstance3D"]
-light_energy = 4.0
-light_volumetric_fog_energy = 0.05
-light_specular = 2.0
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wall/Lamp"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 1.841, -7.52)
+mesh = SubResource("SphereMesh_x5dh2")
+skeleton = NodePath("")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Wall/Lamp/MeshInstance3D2"]
+light_energy = 3.0
+light_volumetric_fog_energy = 0.1
+light_specular = 3.0
 shadow_enabled = true
-omni_range = 8.55
+omni_range = 12.0
 
 [node name="Wall2" type="RigidBody3D" parent="."]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 3.64209, 2.19892, -3.0037)
@@ -433,7 +446,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.21517)
 shape = SubResource("BoxShape3D_3tihd")
 
 [node name="SmokeEffects" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.549484, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.149484, 0)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_lmo4r")
@@ -448,11 +461,11 @@ layers = 8
 material_override = SubResource("StandardMaterial3D_q0jfn")
 emitting = false
 amount = 500
-lifetime = 2.3
+lifetime = 1.2
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
-visibility_aabb = AABB(-7.58005, -9.73092, -12.115, 15.1601, 19.4619, 24.2301)
+visibility_aabb = AABB(-7.58005, -9.73092, -7.99995, 15.1601, 19.4619, 16)
 process_material = SubResource("ParticleProcessMaterial_deqfd")
 draw_pass_1 = SubResource("QuadMesh_wwn6r")
 
@@ -495,7 +508,7 @@ script = SubResource("GDScript_lyn1i")
 shape = SubResource("ConcavePolygonShape3D_y1xo0")
 
 [node name="UpperDetection" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8466, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.34005, 0)
 collision_layer = 4
 collision_mask = 4
 

@@ -4,10 +4,11 @@ extends RigidBody3D
 @onready var mesh : Node3D = $Mesh
 @onready var raycast : RayCast3D = $RayCast3D
 @onready var sm : Node3D = $EnemySM
-@onready var label : Label3D = $Label3D
+@onready var timer : Timer =  $ReturnTimer
 
 const SPEED = 3.5
 
+var INITIAL_POSITION = Vector3()
 var speed = SPEED
 
 var randf_seed = randf_range(0.8,1.2)
@@ -15,6 +16,11 @@ var has_target = false
 var stun_velocity = null
 var on_floor = false
 var dash_on_cd = false
+var needs_return = false
+
+func _ready():
+	INITIAL_POSITION = global_position
+	timer.stop()
 
 @export var health : int = 10 : 
 	set(value):
@@ -30,19 +36,22 @@ var chasing = false :
 			chasing = false
 
 func _physics_process(delta):
-	
 	if stun_velocity:
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(linear_velocity.x, linear_velocity.z), delta * 100.0)
 		apply_central_impulse(Vector3(stun_velocity.x, stun_velocity.y, stun_velocity.z)* 1000.0)
 		return
-
 	if has_target && on_floor:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_path_position()
-		#nav_agent.set_velocity((target - origin).normalized() * speed * randf_seed)
 		linear_velocity = (target - origin).normalized() * speed * randf_seed
 		rotate_towards_motion(delta)
-
+		timer.start(0)
+	if needs_return && on_floor:
+		var origin = global_transform.origin
+		var target = nav_agent.get_next_path_position()
+		linear_velocity = (target - origin).normalized() * speed * randf_seed
+		rotate_towards_motion(delta)
+		
 func rotate_towards_motion(delta):
 	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 3.0 * randf_seed * randf_seed)
 
@@ -68,6 +77,7 @@ func _on_enemy_fov_player(player_location):
 
 func _on_enemy_navigation_agent_3d_navigation_finished():
 	has_target = false
+	needs_return = false
 
 func stun(stun_source_pos):
 	sm.stun_source_pos = stun_source_pos
@@ -78,8 +88,9 @@ func move(move_duration, direction):
 	await get_tree().create_timer(move_duration).timeout
 	stun_velocity = null
 
-func _on_enemy_navigation_agent_3d_velocity_computed(safe_velocity):
-	linear_velocity = safe_velocity
-
 func _on_enemy_floor_detector_enemy_on_floor(boolean):
 	on_floor = boolean
+
+func _on_return_timer_timeout():
+	nav_agent.target_position = INITIAL_POSITION
+	needs_return = true
