@@ -38,7 +38,8 @@ func _process(delta):
 	environment.background_energy_multiplier = lerpf(
 		environment.background_energy_multiplier, next_light, 0.15 * delta)
 	dir_light.light_energy = lerpf(dir_light.light_energy, next_dir_light_int, 0.75 * delta)
-
+	environment.sky_rotation.y = lerp_angle(environment.sky_rotation.y, deg_to_rad(360), delta * 0.1)
+	
 func cycle():
 	next_light = 1.0
 	next_color = STATES.midnight

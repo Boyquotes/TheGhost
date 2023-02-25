@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj5emim63vjrn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_niihx"]
+friction = 0.1
+
+[sub_resource type="GDScript" id="GDScript_5a1ni"]
+script/source = "extends RigidBody3D
+
+
+var INITIAL_POSITION = Vector3()
+
+func _ready():
+	INITIAL_POSITION = get_parent().global_position
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rt0kc"]
+depth_draw_mode = 1
+albedo_color = Color(0.839216, 1, 1, 0.698039)
+metallic = 0.14
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color(0.839216, 1, 1, 1)
+distance_fade_max_distance = 20.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_gmfgc"]
+material = SubResource("StandardMaterial3D_rt0kc")
+size = Vector3(2, 1.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k24h5"]
+size = Vector3(2, 1.5, 2)
+
+[node name="Box" type="RigidBody3D" groups=["Moveable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mass = 15000.0
+physics_material_override = SubResource("PhysicsMaterial_niihx")
+gravity_scale = 3.0
+script = SubResource("GDScript_5a1ni")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_gmfgc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_k24h5")

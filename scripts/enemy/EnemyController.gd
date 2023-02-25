@@ -6,7 +6,7 @@ extends RigidBody3D
 @onready var sm : Node3D = $EnemySM
 @onready var timer : Timer =  $ReturnTimer
 
-const SPEED = 3.5
+const SPEED = 4.5
 
 var INITIAL_POSITION = Vector3()
 var speed = SPEED
