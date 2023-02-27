@@ -94,25 +94,25 @@ func _on_upper_detection_body_shape_entered(body_rid, body, body_shape_index, lo
 	current_dir=\"none\"
 "
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_j1bdf"]
+size = Vector3(8, 0.5, 8)
+
 [sub_resource type="BoxMesh" id="BoxMesh_scec4"]
-size = Vector3(7.4, 0.5, 7)
+size = Vector3(8, 0.5, 8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rav7"]
 diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(0.192157, 0.192157, 0.192157, 1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h56ln"]
-points = PackedVector3Array(-3.7, -0.25, -3.5, -3.7, 0.25, -3.5, 3.7, -0.25, -3.5, -3.7, -0.25, 3.5, -3.7, 0.25, 3.5, 3.7, 0.25, -3.5, 3.7, -0.25, 3.5, 3.7, 0.25, 3.5)
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_83xmy"]
 absorbent = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_o56no"]
-size = Vector3(7, 4.413, 1.74)
+size = Vector3(8, 4.413, 1.74)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3ttpc"]
-points = PackedVector3Array(3.5, 2.2065, 0.87, 3.5, 2.2065, -0.87, -3.5, 2.2065, 0.87, 3.5, -2.2065, 0.87, 3.5, -2.2065, -0.87, -3.5, 2.2065, -0.87, -3.5, -2.2065, 0.87, -3.5, -2.2065, -0.87)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_05a0c"]
+points = PackedVector3Array(4, 2.2065, 0.87, 4, 2.2065, -0.87, -4, 2.2065, 0.87, 4, -2.2065, 0.87, 4, -2.2065, -0.87, -4, 2.2065, -0.87, -4, -2.2065, 0.87, -4, -2.2065, -0.87)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xad6p"]
 
@@ -168,10 +168,10 @@ radius = 0.375
 height = 0.75
 
 [sub_resource type="BoxMesh" id="BoxMesh_qssgo"]
-size = Vector3(7, 4.413, 0.461)
+size = Vector3(8, 4.413, 0.625)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ahc78"]
-points = PackedVector3Array(3.5, 2.2065, 0.2305, 3.5, 2.2065, -0.2305, -3.5, 2.2065, 0.2305, 3.5, -2.2065, 0.2305, 3.5, -2.2065, -0.2305, -3.5, 2.2065, -0.2305, -3.5, -2.2065, 0.2305, -3.5, -2.2065, -0.2305)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_otwto"]
+points = PackedVector3Array(4, 2.2065, 0.3125, 4, 2.2065, -0.3125, -4, 2.2065, 0.3125, 4, -2.2065, 0.3125, 4, -2.2065, -0.3125, -4, 2.2065, -0.3125, -4, -2.2065, 0.3125, -4, -2.2065, -0.3125)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0wc5"]
 resource_name = "Material.001"
@@ -312,15 +312,13 @@ lock_rotation = true
 linear_damp = 3.0
 script = SubResource("GDScript_kk1tv")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_j1bdf")
+
 [node name="FloorMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.211033, 0, 0)
 layers = 3
 mesh = SubResource("BoxMesh_scec4")
 surface_material_override/0 = SubResource("StandardMaterial3D_2rav7")
-
-[node name="FloorColision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.211033, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_h56ln")
 
 [node name="Wall" type="RigidBody3D" parent="."]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.6, 2.19892, -2.95939)
@@ -336,14 +334,14 @@ lock_rotation = true
 freeze_mode = 1
 
 [node name="Wall" type="MeshInstance3D" parent="Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.963, 0.2, 1.019)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.963, 0.2, 1.519)
 mesh = SubResource("BoxMesh_o56no")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2rav7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.963, 0.2, 1.019)
-shape = SubResource("ConvexPolygonShape3D_3ttpc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.963, 0.2, 1.519)
+shape = SubResource("ConvexPolygonShape3D_05a0c")
 
 [node name="Lamp" type="MeshInstance3D" parent="Wall"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.20115, 5.33096, 1.30093)
@@ -369,7 +367,7 @@ shadow_enabled = true
 omni_range = 16.0
 
 [node name="Wall2" type="RigidBody3D" parent="."]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 3.64209, 2.19892, -3.0037)
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 3.7, 2.4, 0)
 axis_lock_linear_x = true
 axis_lock_linear_z = true
 axis_lock_angular_x = true
@@ -382,19 +380,17 @@ lock_rotation = true
 freeze_mode = 1
 
 [node name="Wall" type="MeshInstance3D" parent="Wall2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.004, 0.2, -0.043)
 mesh = SubResource("BoxMesh_qssgo")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2rav7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.004, 0.2, -0.043)
-shape = SubResource("ConvexPolygonShape3D_ahc78")
+shape = SubResource("ConvexPolygonShape3D_otwto")
 
 [node name="Doors" type="Node3D" parent="."]
 
 [node name="DoorBody" type="RigidBody3D" parent="Doors"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.6, 2.19892, -2.95939)
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.6, 2.19892, -3.85939)
 axis_lock_linear_x = true
 axis_lock_linear_z = true
 axis_lock_angular_x = true
@@ -420,7 +416,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.21517)
 shape = SubResource("BoxShape3D_3tihd")
 
 [node name="DoorBody2" type="RigidBody3D" parent="Doors"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.6, 2.19892, 3.03709)
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.6, 2.19892, 3.83709)
 axis_lock_linear_x = true
 axis_lock_linear_z = true
 axis_lock_angular_x = true
@@ -446,7 +442,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.21517)
 shape = SubResource("BoxShape3D_3tihd")
 
 [node name="SmokeEffects" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.149484, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.549484, 0)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_lmo4r")
@@ -474,7 +470,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.616049, 3.76715, -0.16811)
 size = Vector3(8.6, 4.91, 8.6)
 
 [node name="Lever" type="Node3D" parent="."]
-transform = Transform3D(-1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0, 0, 1, -1.85842, 2.05942, 0)
+transform = Transform3D(-1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0, 0, 1, -2.25842, 2.05942, 0)
 script = ExtResource("3_l55mf")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Lever"]

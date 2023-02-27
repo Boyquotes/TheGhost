@@ -30,7 +30,6 @@ size = Vector3(2, 1.5, 2)
 size = Vector3(2, 1.5, 2)
 
 [node name="Box" type="RigidBody3D" groups=["Moveable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mass = 15000.0
 physics_material_override = SubResource("PhysicsMaterial_niihx")
 gravity_scale = 3.0

@@ -21,3 +21,7 @@ func push():
 	else:
 		current_switch = "off"
 
+
+func player_death():
+	current_switch = "off"
+	

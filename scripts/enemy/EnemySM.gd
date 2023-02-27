@@ -88,8 +88,8 @@ func _enter_state(new_state, _old_state):
 			var le_size_sqrd = light_to_enemy_vector.length_squared()
 			parent.move(stun_time/2, stun_force * light_to_enemy_vector/le_size_sqrd)
 		STATES.attack:
-			parent.speed = speed/3.0
+			parent.speed = speed/6.0
 		STATES.chasing:
 			parent.speed = speed
 		STATES.returning:
-			parent.speed = speed/1.5
+			parent.speed = speed

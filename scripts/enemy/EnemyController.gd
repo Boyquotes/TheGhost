@@ -6,12 +6,12 @@ extends RigidBody3D
 @onready var sm : Node3D = $EnemySM
 @onready var timer : Timer =  $ReturnTimer
 
-const SPEED = 4.5
+const SPEED = 4.2
 
 var INITIAL_POSITION = Vector3()
 var speed = SPEED
 
-var randf_seed = randf_range(0.8,1.2)
+var randf_seed = randf_range(1.0,1.0)
 var has_target = false
 var stun_velocity = null
 var on_floor = false

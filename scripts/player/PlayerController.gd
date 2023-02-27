@@ -36,10 +36,13 @@ var can_push = true
 @onready var player_text : Label3D = $MeshDecoy/Label3D
 @onready var floor_detector : Area3D = $FloorDetector
 
+var inform_death = []
+
 signal player_spawn (pos : Vector3)
 
 func _ready():
 	INITIAL_POSITION = get_parent().global_position
+	inform_death = get_tree().get_root().get_tree().get_nodes_in_group("NeedsToReset")
 
 func _apply_movement():
 	if on_floor && linear_velocity.length() < MAX_SPEED && is_move_input():
@@ -85,6 +88,8 @@ func reset():
 	sm.set_state(5)
 	emit_signal("player_spawn", INITIAL_POSITION)
 	global_position = INITIAL_POSITION
+	for element in inform_death:
+		element.player_death()
 
 func get_location():
 	if sm.is_block == false:
