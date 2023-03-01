@@ -9,6 +9,8 @@ var INITIAL_POSITION = Vector3()
 
 var jumping = false
 
+var dashing = false
+
 var on_floor = true :
 	set(value):
 		on_floor = value
@@ -47,6 +49,9 @@ func _ready():
 func _apply_movement():
 	if on_floor && linear_velocity.length() < MAX_SPEED && is_move_input():
 		apply_central_impulse(Vector3(motion.x, 333.3, motion.z))
+
+func _apply_dash():
+	apply_central_impulse(Vector3(motion.x, 333.3, motion.z))
 	
 func _handle_move_input():
 	speed = 0
@@ -62,10 +67,12 @@ func _input(event):
 		push()
 	if event.is_action_pressed("jump") && !sm.is_hit && sm.state in [1,2,7] && !jumping:
 		jump()
+	if event.is_action_pressed("talk") && !sm.is_hit && sm.state in [1,2,7] && !jumping:
+		dash()
 
 
 func _handle_move_rotation(delta):
-	if motion.length() < 10 || jumping || !is_move_input():
+	if motion.length() < 10 || jumping || dashing || !is_move_input():
 		return
 	if !sm.is_hit :
 		mesh_decoy.rotation.y = lerp_angle(mesh_decoy.rotation.y, atan2(-motion.x, -motion.z), delta * ROTATION_SPEED)
@@ -131,6 +138,25 @@ func jump():
 		for obj in floor_detector.get_overlapping_bodies().filter(func(obj): return obj.is_in_group("IsPushedDown")):
 			obj.apply_central_impulse(Vector3(direction.x*6000.0, -10000.0, direction.z*6000.0))
 	jumping = false
+
+func dash():
+	if dashing:
+		return
+	dashing = true
+	var direction = Vector3.ZERO
+	sm.dash()
+	if is_move_input():
+		direction.x = Input.get_action_strength("move_down") * mx - Input.get_action_strength("move_up") * mx - Input.get_action_strength("move_left") * mz + Input.get_action_strength("move_right") * mz 
+		direction.z = Input.get_action_strength("move_down") * mz - Input.get_action_strength("move_up") * mz + Input.get_action_strength("move_left") * mx - + Input.get_action_strength("move_right") * mx
+		mesh_decoy.rotation.y = atan2(-direction.x, -direction.z)
+	SPEED = 0
+	await get_tree().create_timer(0.1726).timeout
+	if on_floor:
+		apply_central_impulse(Vector3(direction.x*23000.0, 200.0, direction.z*23000.0))
+	await get_tree().create_timer(0.7083-0.1342).timeout
+	freeze = true
+	freeze = false
+	dashing = false
 	
 func _on_floor_detector(boolean):
 	on_floor = boolean
