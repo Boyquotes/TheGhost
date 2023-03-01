@@ -8,7 +8,8 @@ const STATES = {
 	'falling' = 5,
 	'jumping' = 6,
 	'landing' = 7,
-	'dashing' = 8
+	'dashing' = 8,
+	'dashingLanding' = 9
 }
 
 @export var hit_time = 2.0
@@ -97,8 +98,12 @@ func _update_state(delta):
 			parent._apply_movement()
 		STATES.dashing:
 			if not parent.dashing:
-				return STATES.landing
+				return STATES.dashingLanding
 			#parent._apply_dash()
+		STATES.dashingLanding:
+			parent._handle_move_rotation(delta*0.1)
+			parent._handle_move_input()
+			parent._apply_movement()
 
 func _enter_state(new_state,_old_state):
 	parent.SPEED = SPEED
@@ -113,6 +118,8 @@ func _enter_state(new_state,_old_state):
 			parent.SPEED = SPEED * 0.1
 		STATES.landing:
 			parent.SPEED = SPEED * 0.5
+		STATES.dashingLanding:
+			parent.SPEED = SPEED * 0.1
 	emit_signal("entered_state", STATES.find_key(new_state), 0.0)
 
 func _on_animation_player_animation_finished(anim_name):
@@ -120,3 +127,9 @@ func _on_animation_player_animation_finished(anim_name):
 		set_state(STATES.idle)
 	if (anim_name == "jumping"):
 		set_state(STATES.falling)
+	if (anim_name == "dashingLanding"):
+		set_state(STATES.idle)
+	if (anim_name == "dashing"):
+		parent.freeze = true
+		parent.freeze = false
+		parent.dashing = false

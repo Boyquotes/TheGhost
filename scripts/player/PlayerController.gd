@@ -9,10 +9,20 @@ var INITIAL_POSITION = Vector3()
 
 var jumping = false
 
-var dashing = false
+var dashing = false :
+	set(value):
+		if value:
+			dashing_effects.emitting = true
+		else:
+			dashing_effects.emitting = false
+		if dashing && !value:
+			dashing_stop.emitting = true
+		dashing = value
 
 var on_floor = true :
 	set(value):
+		if !on_floor and value:
+			landing_effects.emitting = true
 		on_floor = value
 		sm.on_floor = value
 
@@ -30,6 +40,10 @@ var mz = 0.0
 
 var can_push = true
 
+@onready var walking_effects = get_tree().get_first_node_in_group("WalkEffects")
+@onready var dashing_stop = get_tree().get_first_node_in_group("DashEffectsStop")
+@onready var dashing_effects = get_tree().get_first_node_in_group("DashEffects")
+@onready var landing_effects = get_tree().get_first_node_in_group("LandEffects")
 @onready var sm = $SM
 @onready var mesh_decoy = $MeshDecoy
 @onready var mesh_decoy_location = $"MeshDecoy/Armature/Skeleton3D/Physical Bone Root/BodyLocation"
@@ -48,10 +62,10 @@ func _ready():
 
 func _apply_movement():
 	if on_floor && linear_velocity.length() < MAX_SPEED && is_move_input():
+		walking_effects.emitting = true
 		apply_central_impulse(Vector3(motion.x, 333.3, motion.z))
-
-func _apply_dash():
-	apply_central_impulse(Vector3(motion.x, 333.3, motion.z))
+	else:
+		walking_effects.emitting = false
 	
 func _handle_move_input():
 	speed = 0
@@ -92,6 +106,7 @@ func ik():
 	reset()
 
 func reset():
+	dashing = false
 	sm.set_state(5)
 	emit_signal("player_spawn", INITIAL_POSITION)
 	global_position = INITIAL_POSITION
@@ -152,11 +167,7 @@ func dash():
 	SPEED = 0
 	await get_tree().create_timer(0.1726).timeout
 	if on_floor:
-		apply_central_impulse(Vector3(direction.x*23000.0, 200.0, direction.z*23000.0))
-	await get_tree().create_timer(0.7083-0.1342).timeout
-	freeze = true
-	freeze = false
-	dashing = false
+		apply_central_impulse(Vector3(direction.x*20000.0, 800.0, direction.z*20000.0))
 	
 func _on_floor_detector(boolean):
 	on_floor = boolean
