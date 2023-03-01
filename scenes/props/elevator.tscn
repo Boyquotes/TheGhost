@@ -104,11 +104,15 @@ size = Vector3(8, 0.5, 8)
 diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(0.192157, 0.192157, 0.192157, 1)
+proximity_fade_distance = 0.5
+distance_fade_min_distance = 3.0
+distance_fade_max_distance = 20.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_83xmy"]
 absorbent = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_o56no"]
+lightmap_size_hint = Vector2i(52, 90)
 size = Vector3(8, 4.413, 1.74)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_05a0c"]

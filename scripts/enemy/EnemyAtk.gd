@@ -6,7 +6,7 @@ var on_cd = false:
 	set(value):
 		on_cd = value
 		if value == true :
-			await get_tree().create_timer(0.9).timeout
+			await get_tree().create_timer(1.5).timeout
 			on_cd = false
 			
 
