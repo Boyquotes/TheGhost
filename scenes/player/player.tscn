@@ -2875,6 +2875,7 @@ draw_pass_1 = SubResource("QuadMesh_843vt")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Root/BodyLocation"]
 transform = Transform3D(-1, -4.68095e-06, 1.50996e-07, -4.68095e-06, 1, 7.06814e-10, -1.50996e-07, 7.06108e-10, -1, 0.000390242, 0.11824, -0.890761)
+light_energy = 1.5
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_negative = true
