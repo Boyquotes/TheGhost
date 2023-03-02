@@ -2886,10 +2886,10 @@ shadow_normal_bias = 0.0
 shadow_transmittance_bias = -16.0
 shadow_opacity = 0.0
 shadow_blur = 0.0
-spot_range = 6.0
+spot_range = 8.0
 spot_attenuation = 0.31864
 spot_angle = 20.0
-spot_angle_attenuation = 0.222453
+spot_angle_attenuation = 0.157298
 
 [node name="OmniLight3D" type="OmniLight3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Root/BodyLocation/SpotLight3D"]
 transform = Transform3D(1, 0, -6.3573e-08, 0, 1, -3.2685e-13, 6.3573e-08, 3.2685e-13, 1, 0, 0, 0.055)
