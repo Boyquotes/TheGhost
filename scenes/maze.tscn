@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bq8q4xxajkmv0"]
+[gd_scene load_steps=21 format=3 uid="uid://bq8q4xxajkmv0"]
 
 [ext_resource type="PackedScene" uid="uid://3ignq14tuxw5" path="res://scenes/props/basic_block.tscn" id="2_1l8y7"]
 [ext_resource type="Material" uid="uid://3yvjcws6fo6v" path="res://materials/basic_block.tres" id="3_rq3t6"]
@@ -41,6 +41,23 @@ size = Vector3(56, 1, 28)
 albedo_color = Color(0.286275, 0.309804, 0.286275, 1)
 emission = Color(1, 0, 0, 1)
 distance_fade_max_distance = 30.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mef70"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5ojpt"]
+size = Vector3(12.5, 1, 5.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vpoo"]
+transparency = 1
+albedo_color = Color(0.0705882, 0.8, 0.317647, 0.0352941)
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.0705882, 0.8, 0.317647, 1)
+refraction_scale = -1.0
+proximity_fade_enabled = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cpxed"]
+points = PackedVector3Array(-6.5, -0.5, -3, -6.5, 0.5, -3, 6.5, -0.5, -3, -6.5, -0.5, 3, -6.5, 0.5, 3, 6.5, 0.5, -3, 6.5, -0.5, 3, 6.5, 0.5, 3)
 
 [node name="Maze" type="Node3D"]
 
@@ -555,7 +572,7 @@ collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_qniv7")
 
 [node name="Node3D36" parent="Maze/Floor" instance=ExtResource("2_1l8y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -9.68575e-08, 28)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -9.68575e-08, 28)
 collision_layer = 15
 collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_qniv7")
@@ -769,6 +786,17 @@ metadata/_edit_lock_ = true
 
 [node name="LeverBlue" parent="Contraps" instance=ExtResource("4_361pw")]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 13.4, 1, -7)
+
+[node name="Platform" type="StaticBody3D" parent="Contraps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 28)
+physics_material_override = SubResource("PhysicsMaterial_mef70")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Contraps/Platform"]
+mesh = SubResource("BoxMesh_5ojpt")
+surface_material_override/0 = SubResource("StandardMaterial3D_5vpoo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Contraps/Platform"]
+shape = SubResource("ConvexPolygonShape3D_cpxed")
 
 [node name="StaticBody3D" parent="." instance=ExtResource("6_01y5d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -8.4)
