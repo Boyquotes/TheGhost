@@ -15,6 +15,10 @@ signal current_stamina (value : int)
 
 var stamina = MAX_STAMINA:
 	set(value):
+		if value == 0:
+			player_light.light_energy = 0.0
+		else: 
+			player_light.light_energy = 2
 		if value < MAX_STAMINA:
 			stamina_timer.start(0)
 		stamina = value
@@ -65,6 +69,8 @@ var can_push = true
 @onready var floor_detector : Area3D = $FloorDetector
 @onready var hitSound : AudioStreamPlayer3D = get_tree().get_first_node_in_group("HitSound")
 @onready var stamina_timer : Timer = $StaminaTimer
+@onready var player_light : OmniLight3D = get_tree().get_first_node_in_group("PlayerLight")
+
 
 var inform_death = []
 
@@ -80,6 +86,8 @@ func dec_stamina():
 
 func _apply_movement():
 	if on_floor && linear_velocity.length() < MAX_SPEED && is_move_input():
+		if stamina == 0:
+			motion /= 2
 		walking_effects.emitting = true
 		apply_central_impulse(Vector3(motion.x, 333.3, motion.z))
 	else:
