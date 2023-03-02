@@ -127,6 +127,8 @@ func _enter_state(new_state,_old_state):
 			parent.SPEED = SPEED * 0.5
 		STATES.dashingLanding:
 			parent.SPEED = SPEED * 0.1
+		STATES.tired:
+			parent.player_light.light_energy = 0.0
 	emit_signal("entered_state", STATES.find_key(new_state), 0.0)
 
 func _on_animation_player_animation_finished(anim_name):

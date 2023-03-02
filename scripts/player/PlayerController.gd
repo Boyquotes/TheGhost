@@ -3,8 +3,6 @@ extends RigidBody3D
 @export var SPEED : float = 1000.0
 @export var ROTATION_SPEED : int = 8
 
-var C_MAX_SPEED = MAX_SPEED
-
 var INITIAL_MASS = mass
 
 const MAX_STAMINA = 3
@@ -17,11 +15,7 @@ signal current_stamina (value : int)
 
 var stamina = MAX_STAMINA:
 	set(value):
-		if value == 0:
-			player_light.light_energy = 0.0
-			C_MAX_SPEED = MAX_SPEED/2
-		else:
-			C_MAX_SPEED = MAX_SPEED
+		if value > 0:
 			player_light.light_energy = 2
 		if value < MAX_STAMINA:
 			stamina_timer.start(0)
@@ -89,7 +83,7 @@ func dec_stamina():
 	stamina -= 1
 
 func _apply_movement():
-	if on_floor && linear_velocity.length() < C_MAX_SPEED && is_move_input():
+	if on_floor && linear_velocity.length() < MAX_SPEED && is_move_input():
 		if stamina == 0:
 			motion = motion * 0.3
 		walking_effects.emitting = true
