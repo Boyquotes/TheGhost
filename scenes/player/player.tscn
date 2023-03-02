@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://c5v2jrbwtfkpk"]
+[gd_scene load_steps=83 format=3 uid="uid://c5v2jrbwtfkpk"]
 
 [ext_resource type="Script" path="res://scripts/player/PlayerCamera.gd" id="1_61f35"]
 [ext_resource type="Environment" uid="uid://dr4atdwky80l5" path="res://materials/player/env.tres" id="2_o4n0i"]
@@ -7,8 +7,10 @@
 [ext_resource type="Script" path="res://scripts/player/PlayerSM.gd" id="4_1eweg"]
 [ext_resource type="FontFile" uid="uid://7npjsho23vg3" path="res://imports/Fonts/IBM3161.ttf" id="5_7p3ut"]
 [ext_resource type="Script" path="res://scripts/player/PlayerAnimate.gd" id="6_0sc0s"]
+[ext_resource type="Script" path="res://scripts/player/PlayerBodyLocation.gd" id="7_e8jw0"]
 [ext_resource type="Texture2D" uid="uid://qn0s856manvu" path="res://imports/Particles/smoke_07.png" id="7_nk22a"]
 [ext_resource type="AudioStream" uid="uid://bbgp6qfhheqli" path="res://imports/Audio/steps.ogg" id="10_hoiq2"]
+[ext_resource type="AudioStream" uid="uid://bn77h5xgvkql3" path="res://imports/Audio/flesh_hit.ogg" id="10_kg1o3"]
 [ext_resource type="Script" path="res://scripts/player/PlayerLabel3D.gd" id="10_nsojn"]
 [ext_resource type="AudioStream" uid="uid://buiisf48jiema" path="res://imports/Audio/jumping.ogg" id="11_s37o6"]
 [ext_resource type="AudioStream" uid="uid://d16veixbykcax" path="res://imports/Audio/player_grunt.ogg" id="12_3mp7l"]
@@ -261,59 +263,98 @@ refraction_scale = 1.0
 texture_filter = 0
 texture_repeat = false
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p2idj"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sblqy"]
 radius = 0.0177033
 height = 0.177033
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5ba3j"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m7yxf"]
+radius = 0.59
+height = 3.198
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ur4ql"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("7_nk22a")
+emission_enabled = true
+emission_energy_multiplier = 0.0
+emission_operator = 1
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_1pavc"]
+offsets = PackedFloat32Array(0, 0.0818182, 0.463768, 1)
+colors = PackedColorArray(0.203922, 0.203922, 0.203922, 0, 1, 1, 1, 1, 1, 1, 1, 0.698039, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_31en8"]
+gradient = SubResource("Gradient_1pavc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wmufx"]
+direction = Vector3(0, 0.1, 1.573)
+spread = 25.0
+gravity = Vector3(0, -4.9, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+scale_min = 3.0
+scale_max = 5.0
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_31en8")
+attractor_interaction_enabled = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_843vt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eyjlu"]
 radius = 0.044285
 height = 0.44285
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a06sy"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kq4h5"]
 radius = 0.0327022
 height = 0.327022
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_611uy"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ri7tl"]
 radius = 0.00632854
 height = 0.0632854
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iidaw"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mctbp"]
 radius = 0.0421498
 height = 0.421498
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pjj4s"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fwdr6"]
 radius = 0.0289942
 height = 0.289942
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fr7qk"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ea8ih"]
 radius = 0.0241961
 height = 0.241961
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bdf6l"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bys31"]
 radius = 0.0421498
 height = 0.421498
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tv84s"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b2ums"]
 radius = 0.0289942
 height = 0.289942
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c401a"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tw0po"]
 radius = 0.0241961
 height = 0.241961
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ohiu0"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cl5s5"]
 radius = 0.0609752
 height = 0.609752
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j6iww"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rugnq"]
 radius = 0.060769
 height = 0.60769
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2k4o"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bch75"]
 radius = 0.0609752
 height = 0.609752
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3bcuu"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecfvg"]
 radius = 0.060769
 height = 0.60769
 
@@ -2307,13 +2348,6 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id="Gradient_1pavc"]
-offsets = PackedFloat32Array(0, 0.0818182, 0.463768, 1)
-colors = PackedColorArray(0.203922, 0.203922, 0.203922, 0, 1, 1, 1, 1, 1, 1, 1, 0.698039, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_31en8"]
-gradient = SubResource("Gradient_1pavc")
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fa70e"]
 direction = Vector3(0, 0.1, -1)
 spread = 25.0
@@ -2741,52 +2775,291 @@ skin = SubResource("Skin_wxxgr")
 surface_material_override/0 = SubResource("StandardMaterial3D_ylaa1")
 
 [node name="Physical Bone Root" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(-1, -1.50996e-07, 6.60023e-15, 0, -4.37114e-08, -1, 1.50995e-07, -0.999999, 4.37113e-08, -8.34871e-15, 0.0867341, 0.0408676)
+transform = Transform3D(-1, -1.50996e-07, -1.63889e-14, 1.00341e-14, 4.20859e-08, -1, 1.50996e-07, -0.999999, -4.20858e-08, -8.34871e-15, 0.0867341, 0.0408676)
 collision_layer = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77635e-15, -6.31861e-08, 0.0885165)
-body_offset = Transform3D(1, -5.68434e-14, 2.5411e-21, 0, -4.37114e-08, -1, 5.11591e-13, 0.999999, -4.37113e-08, -1.77636e-15, 0.0885165, 6.70552e-08)
+joint_type = 5
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88173e-16, -7.07806e-08, 0.0885165)
+body_offset = Transform3D(1, -5.68434e-14, 1.00341e-14, 1.00341e-14, 4.20859e-08, -1, 1.56319e-13, 0.999999, 4.20858e-08, -1.77636e-15, 0.0885165, 6.70552e-08)
 bone_name = "Root"
+joint_constraints/x/linear_limit_enabled = true
+joint_constraints/x/linear_limit_upper = 0.0
+joint_constraints/x/linear_limit_lower = 0.0
+joint_constraints/x/linear_limit_softness = 0.7
+joint_constraints/x/linear_spring_enabled = false
+joint_constraints/x/linear_spring_stiffness = 0.0
+joint_constraints/x/linear_spring_damping = 0.0
+joint_constraints/x/linear_equilibrium_point = 0.0
+joint_constraints/x/linear_restitution = 0.5
+joint_constraints/x/linear_damping = 1.0
+joint_constraints/x/angular_limit_enabled = true
+joint_constraints/x/angular_limit_upper = 0.0
+joint_constraints/x/angular_limit_lower = 0.0
+joint_constraints/x/angular_limit_softness = 0.5
+joint_constraints/x/angular_restitution = 0.0
+joint_constraints/x/angular_damping = 1.0
+joint_constraints/x/erp = 0.5
+joint_constraints/x/angular_spring_enabled = false
+joint_constraints/x/angular_spring_stiffness = 0.0
+joint_constraints/x/angular_spring_damping = 0.0
+joint_constraints/x/angular_equilibrium_point = 0.0
+joint_constraints/y/linear_limit_enabled = true
+joint_constraints/y/linear_limit_upper = 0.0
+joint_constraints/y/linear_limit_lower = 0.0
+joint_constraints/y/linear_limit_softness = 0.7
+joint_constraints/y/linear_spring_enabled = false
+joint_constraints/y/linear_spring_stiffness = 0.0
+joint_constraints/y/linear_spring_damping = 0.0
+joint_constraints/y/linear_equilibrium_point = 0.0
+joint_constraints/y/linear_restitution = 0.5
+joint_constraints/y/linear_damping = 1.0
+joint_constraints/y/angular_limit_enabled = true
+joint_constraints/y/angular_limit_upper = 0.0
+joint_constraints/y/angular_limit_lower = 0.0
+joint_constraints/y/angular_limit_softness = 0.5
+joint_constraints/y/angular_restitution = 0.0
+joint_constraints/y/angular_damping = 1.0
+joint_constraints/y/erp = 0.5
+joint_constraints/y/angular_spring_enabled = false
+joint_constraints/y/angular_spring_stiffness = 0.0
+joint_constraints/y/angular_spring_damping = 0.0
+joint_constraints/y/angular_equilibrium_point = 0.0
+joint_constraints/z/linear_limit_enabled = true
+joint_constraints/z/linear_limit_upper = 0.0
+joint_constraints/z/linear_limit_lower = 0.0
+joint_constraints/z/linear_limit_softness = 0.7
+joint_constraints/z/linear_spring_enabled = false
+joint_constraints/z/linear_spring_stiffness = 0.0
+joint_constraints/z/linear_spring_damping = 0.0
+joint_constraints/z/linear_equilibrium_point = 0.0
+joint_constraints/z/linear_restitution = 0.5
+joint_constraints/z/linear_damping = 1.0
+joint_constraints/z/angular_limit_enabled = true
+joint_constraints/z/angular_limit_upper = 0.0
+joint_constraints/z/angular_limit_lower = 0.0
+joint_constraints/z/angular_limit_softness = 0.5
+joint_constraints/z/angular_restitution = 0.0
+joint_constraints/z/angular_damping = 1.0
+joint_constraints/z/erp = 0.5
+joint_constraints/z/angular_spring_enabled = false
+joint_constraints/z/angular_spring_stiffness = 0.0
+joint_constraints/z/angular_spring_damping = 0.0
+joint_constraints/z/angular_equilibrium_point = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Root"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_p2idj")
+shape = SubResource("CapsuleShape3D_sblqy")
+
+[node name="BodyLocation" type="Area3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Root" groups=["Player"]]
+collision_layer = 9
+collision_mask = 9
+linear_damp = 100.0
+angular_damp = 100.0
+script = ExtResource("7_e8jw0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Root/BodyLocation" groups=["Player"]]
+transform = Transform3D(0.999999, 1.08023e-19, 2.30216e-12, 1.36424e-12, -4.37114e-08, -1, -1.07573e-19, 1, -4.37114e-08, 8.19564e-08, -0.0175492, -0.0530951)
+shape = SubResource("CapsuleShape3D_m7yxf")
+
+[node name="Smoke" type="GPUParticles3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Root/BodyLocation" groups=["HitEffects"]]
+transform = Transform3D(-0.997606, 1.93552e-11, 1.50635e-07, -1.84741e-13, 0.997606, 8.57722e-08, -1.50673e-07, 8.55916e-08, -0.999998, 0, 0, 0)
+layers = 8
+material_override = SubResource("StandardMaterial3D_ur4ql")
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+visibility_aabb = AABB(-4, -2.32484, -1.96093, 8, 4.64968, 3.92187)
+process_material = SubResource("ParticleProcessMaterial_wmufx")
+draw_pass_1 = SubResource("QuadMesh_843vt")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Root/BodyLocation"]
+transform = Transform3D(-1, -4.68095e-06, 1.50996e-07, -4.68095e-06, 1, 7.06814e-10, -1.50996e-07, 7.06108e-10, -1, 0.000390242, 0.11824, -0.890761)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_negative = true
+light_specular = 0.0
+light_cull_mask = 4294967294
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 0.0
+shadow_transmittance_bias = -16.0
+shadow_opacity = 0.0
+shadow_blur = 0.0
+spot_range = 6.0
+spot_attenuation = 0.31864
+spot_angle = 20.0
+spot_angle_attenuation = 0.222453
+
+[node name="OmniLight3D" type="OmniLight3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Root/BodyLocation/SpotLight3D"]
+transform = Transform3D(1, 0, -6.3573e-08, 0, 1, -3.2685e-13, 6.3573e-08, 3.2685e-13, 1, 0, 0, 0.055)
+light_energy = 1.2
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+omni_range = 8.0
+omni_attenuation = 1e-05
+
+[node name="HitSound" type="AudioStreamPlayer3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Root/BodyLocation" groups=["HitSound"]]
+stream = ExtResource("10_kg1o3")
+volume_db = -10.0
+unit_size = 5.0
 
 [node name="Physical Bone Torso" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(-1, 3.01824e-07, 6.60073e-09, 6.59677e-09, 0.0437146, -0.999058, -3.01824e-07, -0.999044, -0.0437145, 1.93956e-14, 0.396466, 0.0505472)
+transform = Transform3D(-1, 1.50995e-07, -4.71012e-14, 6.60071e-09, 0.0437146, -0.999058, -1.50843e-07, -0.999044, -0.0437145, 1.93956e-14, 0.396466, 0.0505472)
 collision_layer = 0
-joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46158e-09, 6.48964e-09, 0.221424)
-body_offset = Transform3D(1, -1.50829e-07, -6.60085e-09, -6.60367e-09, 7.45058e-09, -1.00001, 1.50828e-07, 1, -6.85453e-07, 9.76996e-15, 0.221427, 1.45286e-07)
+joint_type = 5
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04482e-15, 6.48964e-09, 0.221424)
+body_offset = Transform3D(1, 9.9476e-14, -7.59393e-14, 3.40172e-13, 7.45058e-09, -1.00001, -8.04334e-12, 1, -6.85453e-07, 9.76996e-15, 0.221427, 1.45286e-07)
 bone_name = "Torso"
-joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/x/linear_limit_enabled = true
+joint_constraints/x/linear_limit_upper = 0.0
+joint_constraints/x/linear_limit_lower = 0.0
+joint_constraints/x/linear_limit_softness = 0.7
+joint_constraints/x/linear_spring_enabled = false
+joint_constraints/x/linear_spring_stiffness = 0.0
+joint_constraints/x/linear_spring_damping = 0.0
+joint_constraints/x/linear_equilibrium_point = 0.0
+joint_constraints/x/linear_restitution = 0.5
+joint_constraints/x/linear_damping = 1.0
+joint_constraints/x/angular_limit_enabled = true
+joint_constraints/x/angular_limit_upper = 0.0
+joint_constraints/x/angular_limit_lower = 0.0
+joint_constraints/x/angular_limit_softness = 0.5
+joint_constraints/x/angular_restitution = 0.0
+joint_constraints/x/angular_damping = 1.0
+joint_constraints/x/erp = 0.5
+joint_constraints/x/angular_spring_enabled = false
+joint_constraints/x/angular_spring_stiffness = 0.0
+joint_constraints/x/angular_spring_damping = 0.0
+joint_constraints/x/angular_equilibrium_point = 0.0
+joint_constraints/y/linear_limit_enabled = true
+joint_constraints/y/linear_limit_upper = 0.0
+joint_constraints/y/linear_limit_lower = 0.0
+joint_constraints/y/linear_limit_softness = 0.7
+joint_constraints/y/linear_spring_enabled = false
+joint_constraints/y/linear_spring_stiffness = 0.0
+joint_constraints/y/linear_spring_damping = 0.0
+joint_constraints/y/linear_equilibrium_point = 0.0
+joint_constraints/y/linear_restitution = 0.5
+joint_constraints/y/linear_damping = 1.0
+joint_constraints/y/angular_limit_enabled = true
+joint_constraints/y/angular_limit_upper = 0.0
+joint_constraints/y/angular_limit_lower = 0.0
+joint_constraints/y/angular_limit_softness = 0.5
+joint_constraints/y/angular_restitution = 0.0
+joint_constraints/y/angular_damping = 1.0
+joint_constraints/y/erp = 0.5
+joint_constraints/y/angular_spring_enabled = false
+joint_constraints/y/angular_spring_stiffness = 0.0
+joint_constraints/y/angular_spring_damping = 0.0
+joint_constraints/y/angular_equilibrium_point = 0.0
+joint_constraints/z/linear_limit_enabled = true
+joint_constraints/z/linear_limit_upper = 0.0
+joint_constraints/z/linear_limit_lower = 0.0
+joint_constraints/z/linear_limit_softness = 0.7
+joint_constraints/z/linear_spring_enabled = false
+joint_constraints/z/linear_spring_stiffness = 0.0
+joint_constraints/z/linear_spring_damping = 0.0
+joint_constraints/z/linear_equilibrium_point = 0.0
+joint_constraints/z/linear_restitution = 0.5
+joint_constraints/z/linear_damping = 1.0
+joint_constraints/z/angular_limit_enabled = true
+joint_constraints/z/angular_limit_upper = 0.0
+joint_constraints/z/angular_limit_lower = 0.0
+joint_constraints/z/angular_limit_softness = 0.5
+joint_constraints/z/angular_restitution = 0.0
+joint_constraints/z/angular_damping = 1.0
+joint_constraints/z/erp = 0.5
+joint_constraints/z/angular_spring_enabled = false
+joint_constraints/z/angular_spring_stiffness = 0.0
+joint_constraints/z/angular_spring_damping = 0.0
+joint_constraints/z/angular_equilibrium_point = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Torso"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_5ba3j")
+shape = SubResource("CapsuleShape3D_eyjlu")
 
 [node name="Physical Bone Chest" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(-1, 3.89415e-07, -1.70218e-14, 3.81087e-20, -4.37392e-08, -1.00053, -3.89414e-07, -1, 4.37114e-08, 3.39192e-11, 0.781188, 0.0602267)
+transform = Transform3D(-1, 3.89415e-07, -1.70218e-14, 3.81087e-20, -4.37392e-08, -1.00052, -3.89414e-07, -1, 4.37114e-08, 3.06365e-11, 0.781188, 0.0602267)
 collision_layer = 0
-joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.39142e-11, 2.20447e-08, 0.163425)
-body_offset = Transform3D(1, -1.42109e-12, 2.17718e-14, 2.13163e-14, -4.37392e-08, -1.00053, 3.97904e-13, 1, -4.37114e-08, -3.39178e-11, 0.163511, -1.49012e-08)
+joint_type = 5
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.06315e-11, 2.20447e-08, 0.163426)
+body_offset = Transform3D(1, -1.42109e-12, 2.17718e-14, 2.13163e-14, -4.37392e-08, -1.00052, 3.97904e-13, 1, -4.37114e-08, -3.06351e-11, 0.163511, -1.49012e-08)
 bone_name = "Chest"
-joint_constraints/bias = 0.3
-joint_constraints/damping = 1.0
-joint_constraints/impulse_clamp = 0.0
+joint_constraints/x/linear_limit_enabled = true
+joint_constraints/x/linear_limit_upper = 0.0
+joint_constraints/x/linear_limit_lower = 0.0
+joint_constraints/x/linear_limit_softness = 0.7
+joint_constraints/x/linear_spring_enabled = false
+joint_constraints/x/linear_spring_stiffness = 0.0
+joint_constraints/x/linear_spring_damping = 0.0
+joint_constraints/x/linear_equilibrium_point = 0.0
+joint_constraints/x/linear_restitution = 0.5
+joint_constraints/x/linear_damping = 1.0
+joint_constraints/x/angular_limit_enabled = true
+joint_constraints/x/angular_limit_upper = 0.0
+joint_constraints/x/angular_limit_lower = 0.0
+joint_constraints/x/angular_limit_softness = 0.5
+joint_constraints/x/angular_restitution = 0.0
+joint_constraints/x/angular_damping = 1.0
+joint_constraints/x/erp = 0.5
+joint_constraints/x/angular_spring_enabled = false
+joint_constraints/x/angular_spring_stiffness = 0.0
+joint_constraints/x/angular_spring_damping = 0.0
+joint_constraints/x/angular_equilibrium_point = 0.0
+joint_constraints/y/linear_limit_enabled = true
+joint_constraints/y/linear_limit_upper = 0.0
+joint_constraints/y/linear_limit_lower = 0.0
+joint_constraints/y/linear_limit_softness = 0.7
+joint_constraints/y/linear_spring_enabled = false
+joint_constraints/y/linear_spring_stiffness = 0.0
+joint_constraints/y/linear_spring_damping = 0.0
+joint_constraints/y/linear_equilibrium_point = 0.0
+joint_constraints/y/linear_restitution = 0.5
+joint_constraints/y/linear_damping = 1.0
+joint_constraints/y/angular_limit_enabled = true
+joint_constraints/y/angular_limit_upper = 0.0
+joint_constraints/y/angular_limit_lower = 0.0
+joint_constraints/y/angular_limit_softness = 0.5
+joint_constraints/y/angular_restitution = 0.0
+joint_constraints/y/angular_damping = 1.0
+joint_constraints/y/erp = 0.5
+joint_constraints/y/angular_spring_enabled = false
+joint_constraints/y/angular_spring_stiffness = 0.0
+joint_constraints/y/angular_spring_damping = 0.0
+joint_constraints/y/angular_equilibrium_point = 0.0
+joint_constraints/z/linear_limit_enabled = true
+joint_constraints/z/linear_limit_upper = 0.0
+joint_constraints/z/linear_limit_lower = 0.0
+joint_constraints/z/linear_limit_softness = 0.7
+joint_constraints/z/linear_spring_enabled = false
+joint_constraints/z/linear_spring_stiffness = 0.0
+joint_constraints/z/linear_spring_damping = 0.0
+joint_constraints/z/linear_equilibrium_point = 0.0
+joint_constraints/z/linear_restitution = 0.5
+joint_constraints/z/linear_damping = 1.0
+joint_constraints/z/angular_limit_enabled = true
+joint_constraints/z/angular_limit_upper = 0.0
+joint_constraints/z/angular_limit_lower = 0.0
+joint_constraints/z/angular_limit_softness = 0.5
+joint_constraints/z/angular_restitution = 0.0
+joint_constraints/z/angular_damping = 1.0
+joint_constraints/z/erp = 0.5
+joint_constraints/z/angular_spring_enabled = false
+joint_constraints/z/angular_spring_stiffness = 0.0
+joint_constraints/z/angular_spring_damping = 0.0
+joint_constraints/z/angular_equilibrium_point = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Chest"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_a06sy")
+shape = SubResource("CapsuleShape3D_kq4h5")
 
 [node name="Physical Bone Neck" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(-1, 3.89033e-07, 1.23421e-10, -1.11568e-07, -0.286359, -0.958264, -3.72694e-07, -0.958165, 0.286351, -4.00749e-14, 0.975017, 0.0511677)
+transform = Transform3D(-1, 3.89201e-07, 6.78781e-11, -1.1163e-07, -0.286315, -0.958264, -3.72888e-07, -0.958138, 0.286351, -4.00749e-14, 0.975017, 0.0511677)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.14412e-12, 7.2506e-07, 0.0316385)
-body_offset = Transform3D(1, 3.96625e-10, -1.31891e-10, -1.98476e-10, -5.92768e-05, -1.00013, -3.78435e-10, 1.00004, -2.2918e-05, 2.84217e-14, 0.0316427, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38695e-12, 7.25088e-07, 0.0316385)
+body_offset = Transform3D(1, 2.1376e-10, -7.63478e-11, -2.02824e-10, -2.42293e-05, -1.00013, -1.75362e-10, 1, -2.2918e-05, 2.84217e-14, 0.0316427, 0)
 bone_name = "Neck"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -2854,14 +3127,14 @@ joint_constraints/z/angular_equilibrium_point = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Neck"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_611uy")
+shape = SubResource("CapsuleShape3D_ri7tl")
 
 [node name="Physical Bone ShoulderL" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(0.221732, -0.0824518, 0.971617, -0.974038, 0.0279488, 0.224657, -0.0456788, -0.996203, -0.0741138, -0.204767, 0.897353, 0.075846)
+transform = Transform3D(0.221732, -0.0824518, 0.971617, -0.974038, 0.0279488, 0.224659, -0.0456788, -0.996203, -0.0741103, -0.204767, 0.897353, 0.075846)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81073e-08, -1.20717e-07, 0.210749)
-body_offset = Transform3D(1, -7.45058e-09, -3.23169e-07, -4.37722e-08, 1.49012e-08, -1, -4.84288e-08, 1, -2.75671e-07, 0, 0.210749, 1.78814e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.12571e-07, 5.87443e-07, 0.210749)
+body_offset = Transform3D(1, -7.45058e-09, -2.43215e-06, -2.8871e-08, 4.47035e-08, -1, -4.47035e-08, 1, -3.63588e-06, 0, 0.210749, 1.78814e-07)
 bone_name = "Shoulder.L"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -2929,14 +3202,14 @@ joint_constraints/z/angular_equilibrium_point = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone ShoulderL"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_iidaw")
+shape = SubResource("CapsuleShape3D_mctbp")
 
 [node name="Physical Bone Arm1L" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(0.00220013, 0.0766551, 0.997055, -0.999588, 0.0286795, 6.76301e-07, -0.0285966, -0.996638, 0.0766867, -0.554078, 0.850007, 0.0803485)
+transform = Transform3D(0.00220012, 0.0766539, 0.997053, -0.999586, 0.0286784, 4.06984e-07, -0.0285972, -0.996638, 0.0766846, -0.554078, 0.850007, 0.0803485)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.53376e-08, 1.75421e-07, 0.144971)
-body_offset = Transform3D(1, 2.49594e-06, -5.19678e-07, -3.00119e-07, -2.07871e-06, -1, -1.12876e-06, 0.999994, -1.41561e-06, 0, 0.144971, 2.98023e-08)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82523e-08, -1.04331e-07, 0.144971)
+body_offset = Transform3D(0.999998, 3.59677e-06, -1.94879e-07, -2.41445e-07, -9.08971e-07, -0.999998, -4.39584e-07, 0.999993, 5.1409e-07, 0, 0.144971, 2.98023e-08)
 bone_name = "Arm1.L"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -3004,14 +3277,14 @@ joint_constraints/z/angular_equilibrium_point = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Arm1L"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_pjj4s")
+shape = SubResource("CapsuleShape3D_fwdr6")
 
 [node name="Physical Bone Arm2L" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(0.00106966, 0.0372002, 0.999307, -0.999588, 0.0286817, 2.27211e-06, -0.0286617, -0.998896, 0.0372151, -0.819519, 0.850014, 0.0647291)
+transform = Transform3D(0.00106966, 0.0371992, 0.999307, -0.999587, 0.0286822, 2.00555e-06, -0.0286622, -0.998895, 0.0372147, -0.819519, 0.850014, 0.0647291)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.40326e-06, -1.19952e-07, 0.120981)
-body_offset = Transform3D(1, 4.67524e-07, -2.07231e-06, -1.85287e-06, -9.12696e-07, -1, -5.01052e-07, 1, -3.01749e-07, -7.15256e-06, 0.120981, 1.56462e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.36979e-06, -1.62321e-07, 0.120981)
+body_offset = Transform3D(1, -2.04891e-08, -1.79559e-06, -1.83005e-06, 0, -1, 1.86265e-09, 0.999999, 4.84288e-08, -7.15256e-06, 0.120981, 1.56462e-07)
 bone_name = "Arm2.L"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -3079,14 +3352,14 @@ joint_constraints/z/angular_equilibrium_point = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Arm2L"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_fr7qk")
+shape = SubResource("CapsuleShape3D_ea8ih")
 
 [node name="Physical Bone ShoulderR" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(0.221862, 0.0824556, -0.971607, 0.974126, 0.027935, 0.224719, 0.0456711, -0.996204, -0.0741165, 0.204767, 0.897353, 0.0758461)
+transform = Transform3D(0.221862, 0.0824546, -0.971602, 0.974126, 0.0279351, 0.224717, 0.0456711, -0.996204, -0.074116, 0.204767, 0.897353, 0.0758461)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29353e-05, -1.10351e-06, 0.210748)
-body_offset = Transform3D(1.00012, -1.26399e-05, 6.25164e-05, 0.000105422, 6.73532e-06, -1.00001, 2.08728e-05, 1, 4.95464e-06, -2.38419e-07, 0.210749, 5.96046e-08)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28363e-05, -1.07526e-06, 0.210749)
+body_offset = Transform3D(1.00012, -1.27368e-05, 6.20463e-05, 0.000105422, 5.70714e-06, -1, 2.08728e-05, 1, 4.82053e-06, -2.38419e-07, 0.210749, 5.96046e-08)
 bone_name = "Shoulder.R"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -3154,14 +3427,14 @@ joint_constraints/z/angular_equilibrium_point = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone ShoulderR"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_bdf6l")
+shape = SubResource("CapsuleShape3D_bys31")
 
 [node name="Physical Bone Arm1R" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(0.00219932, -0.0766536, -0.997055, 0.999588, 0.0286821, -3.08278e-07, 0.0285976, -0.996645, 0.0766852, 0.554077, 0.849969, 0.0803483)
+transform = Transform3D(0.00219933, -0.0766535, -0.997053, 0.999587, 0.0286821, -6.38334e-07, 0.0285977, -0.996644, 0.076685, 0.554077, 0.849969, 0.0803483)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.79935e-05, 8.48279e-07, 0.14497)
-body_offset = Transform3D(1, -1.15484e-07, -5.86268e-07, -6.45639e-07, -2.23517e-08, -1, 1.71363e-07, 1, 7.45058e-09, -3.79086e-05, 0.14497, -8.49366e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.80415e-05, 8.46126e-07, 0.144971)
+body_offset = Transform3D(1, -7.45058e-09, -9.16887e-07, -6.46338e-07, 2.98023e-08, -0.999998, 5.58794e-09, 1, 2.23517e-08, -3.79086e-05, 0.14497, -8.49366e-07)
 bone_name = "Arm1.R"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -3229,14 +3502,14 @@ joint_constraints/z/angular_equilibrium_point = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Arm1R"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_tv84s")
+shape = SubResource("CapsuleShape3D_b2ums")
 
 [node name="Physical Bone Arm2R" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(0.00106871, -0.0372174, -0.99939, 0.999606, 0.0286963, 1.03747e-06, 0.028661, -0.998896, 0.0372267, 0.81952, 0.850007, 0.0647291)
+transform = Transform3D(0.0010687, -0.0372067, -0.999308, 0.999606, 0.0286863, 1.23957e-06, 0.0286613, -0.998896, 0.0372173, 0.81952, 0.850007, 0.0647291)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14146e-07, 1.13009e-06, 0.120972)
-body_offset = Transform3D(1.00002, 1.41524e-05, 1.02713e-06, 8.81264e-07, -1.82725e-05, -1.00008, 1.75834e-06, 1, -9.03383e-06, -2.38419e-07, 0.120982, -3.72529e-08)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11672e-07, 3.64004e-07, 0.120982)
+body_offset = Transform3D(1.00002, 4.09409e-06, 1.04762e-06, 8.645e-07, -7.48783e-06, -1, 1.4957e-06, 1, -2.70084e-06, -2.38419e-07, 0.120982, -3.72529e-08)
 bone_name = "Arm2.R"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -3304,14 +3577,14 @@ joint_constraints/z/angular_equilibrium_point = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Arm2R"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_c401a")
+shape = SubResource("CapsuleShape3D_tw0po")
 
 [node name="Physical Bone Leg1L" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(0.999629, -0.00259694, 0.0271747, -0.0271613, 0.00503754, 0.999618, -0.00273277, -0.999984, 0.004963, -0.211605, -0.215252, 0.0518674)
+transform = Transform3D(0.999627, -0.00259686, 0.0271735, -0.0271594, 0.00503752, 0.999618, -0.00273271, -0.999984, 0.00496069, -0.211605, -0.215252, 0.0518674)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00356e-06, -6.61793e-07, 0.304879)
-body_offset = Transform3D(1, -1.16415e-07, 1.97201e-06, 1.85069e-06, 1.90921e-08, -1, 3.9814e-08, 1, 2.14623e-06, 4.02331e-07, 0.304879, 7.45058e-09)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4317e-07, -1.3654e-06, 0.304879)
+body_offset = Transform3D(1, -4.09782e-08, 7.89948e-07, -2.91129e-09, 3.72529e-08, -1, 0, 1, 4.45405e-06, 4.02331e-07, 0.304879, 7.45058e-09)
 bone_name = "Leg1.L"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -3379,14 +3652,14 @@ joint_constraints/z/angular_equilibrium_point = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Leg1L"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_ohiu0")
+shape = SubResource("CapsuleShape3D_cl5s5")
 
 [node name="Physical Bone Leg2L" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(0.999047, -0.000802161, 0.0436328, -0.0436276, -0.0422806, 0.998154, 0.00104413, -0.999105, -0.0422753, -0.233147, -0.823669, 0.0631988)
+transform = Transform3D(0.999048, -0.00080216, 0.0436376, -0.0436284, -0.0422819, 0.998294, 0.00104416, -0.999105, -0.0422782, -0.233147, -0.823669, 0.0631988)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70545e-05, -1.59639e-05, 0.304221)
-body_offset = Transform3D(1, -1.98721e-07, 2.37604e-06, 2.40321e-06, -5.66244e-07, -1, 2.14903e-07, 1, -7.18981e-07, 1.63317e-05, 0.304221, 1.61827e-05)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66569e-05, -1.50427e-05, 0.304178)
+body_offset = Transform3D(1, -1.4226e-07, 1.06917e-06, 3.13099e-06, 7.0408e-07, -1.00014, 2.1467e-07, 1, -3.74764e-06, 1.63317e-05, 0.304221, 1.61827e-05)
 bone_name = "Leg2.L"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -3454,14 +3727,14 @@ joint_constraints/z/angular_equilibrium_point = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Leg2L"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_j6iww")
+shape = SubResource("CapsuleShape3D_rugnq")
 
 [node name="Physical Bone Leg1R" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(1.00019, 0.00259953, -0.0271736, 0.0271741, 0.00504362, 0.999618, 0.00273456, -1.00067, 0.00496709, 0.211605, -0.215252, 0.0518674)
+transform = Transform3D(1.00039, 0.00259695, -0.0271744, 0.0271796, 0.00503868, 0.999618, 0.00273611, -0.999984, 0.00496623, 0.211605, -0.215252, 0.0518674)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.24156e-07, 6.44297e-07, 0.304879)
-body_offset = Transform3D(1.00056, 9.95817e-07, -9.10291e-07, 5.58121e-07, -2.58489e-06, -1, -3.05707e-07, 1.00069, -1.94367e-06, -4.47035e-07, 0.304879, -5.21541e-08)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48869e-07, 3.83088e-07, 0.304879)
+body_offset = Transform3D(1.00076, 1.53203e-07, -1.64839e-06, 5.96983e-07, -1.12364e-06, -1, -1.30525e-06, 1, -1.08546e-06, -4.47035e-07, 0.304879, -5.21541e-08)
 bone_name = "Leg1.R"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -3529,14 +3802,14 @@ joint_constraints/z/angular_equilibrium_point = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Leg1R"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_g2k4o")
+shape = SubResource("CapsuleShape3D_bch75")
 
 [node name="Physical Bone Leg2R" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(0.999047, 0.000802074, -0.0436291, 0.0436247, -0.0422801, 0.998152, -0.00104409, -0.999104, -0.0422746, 0.233168, -0.823294, 0.063199)
+transform = Transform3D(0.999048, 0.000801991, -0.0436304, 0.0436252, -0.0422812, 0.998154, -0.00104423, -0.999104, -0.0422757, 0.233168, -0.823294, 0.063199)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14177e-05, 2.86202e-07, 0.303848)
-body_offset = Transform3D(0.999999, 1.34576e-07, 1.14356e-06, 4.07177e-07, -1.08406e-06, -0.999999, -1.22003e-07, 0.999999, -1.28523e-06, 2.10702e-05, 0.303848, 1.04308e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10638e-05, -3.07334e-08, 0.303847)
+body_offset = Transform3D(1, 1.04774e-09, -2.12567e-08, -1.97142e-08, 7.45058e-08, -1, -5.82077e-10, 0.999999, -2.42144e-07, 2.10702e-05, 0.303848, 1.04308e-07)
 bone_name = "Leg2.R"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -3604,7 +3877,7 @@ joint_constraints/z/angular_equilibrium_point = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Leg2R"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_3bcuu")
+shape = SubResource("CapsuleShape3D_ecfvg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerController/MeshDecoy" groups=["PlayerDecoyAnimator"]]
 playback_process_mode = 0
@@ -3753,5 +4026,6 @@ horizontal_alignment = 2
 [connection signal="daytime" from="CameraNode/SubViewportContainer/SubViewport/Camera3d" to="PlayerController" method="_on_daytime_changed"]
 [connection signal="player_spawn" from="PlayerController" to="CameraNode" method="_on_player_controller_player_spawn"]
 [connection signal="entered_state" from="PlayerController/SM" to="PlayerController/MeshDecoy" method="_on_sm_entered_state"]
+[connection signal="player_body_pos" from="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Root/BodyLocation" to="CameraNode" method="_on_player_pos"]
 [connection signal="animation_finished" from="PlayerController/MeshDecoy/AnimationPlayer" to="PlayerController/SM" method="_on_animation_player_animation_finished"]
 [connection signal="on_floor" from="PlayerController/FloorDetector" to="PlayerController" method="_on_floor_detector"]
