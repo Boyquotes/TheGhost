@@ -97,6 +97,7 @@ script = SubResource("GDScript_p4t3m")
 
 [node name="Door" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.112677)
+layers = 3
 mesh = SubResource("ArrayMesh_xl035")
 skeleton = NodePath("")
 blend_shapes/Door = 0.0

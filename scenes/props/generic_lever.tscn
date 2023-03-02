@@ -44,11 +44,13 @@ script = ExtResource("1_32jfl")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+layers = 3
 mesh = SubResource("CylinderMesh_h3ywt")
 surface_material_override/0 = ExtResource("2_qkrm1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D3"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, -0.64465, 7.10543e-15, 0)
+layers = 3
 mesh = SubResource("BoxMesh_nm8wc")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("2_qkrm1")
@@ -61,6 +63,7 @@ shape = SubResource("ConcavePolygonShape3D_4tu6v")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D3"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, -1.49381, 7.10543e-15, 0)
+layers = 3
 mesh = SubResource("BoxMesh_16byo")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("2_qkrm1")

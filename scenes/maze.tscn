@@ -136,6 +136,7 @@ physics_material_override = SubResource("PhysicsMaterial_mbhyo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/OuterWalls/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 3.5, 0)
+layers = 3
 mesh = SubResource("BoxMesh_iqygh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/OuterWalls/StaticBody3D"]
@@ -148,6 +149,7 @@ physics_material_override = SubResource("PhysicsMaterial_mbhyo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/OuterWalls/StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 3.5, 0)
+layers = 3
 mesh = SubResource("BoxMesh_iqygh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/OuterWalls/StaticBody3D2"]
