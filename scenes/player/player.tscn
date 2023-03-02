@@ -2459,16 +2459,10 @@ shadow_color = Color(0, 0, 0, 0.65098)
 [sub_resource type="GDScript" id="GDScript_stdkd"]
 script/source = "extends Label
 
+@onready var controller = get_tree().get_first_node_in_group(\"Controller\")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	#text = str(Engine.get_frames_per_second())
-	pass
+func _on_player_controller_current_stamina(value):
+	text = str(value)
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_jbyu4"]
@@ -2565,6 +2559,11 @@ can_sleep = false
 lock_rotation = true
 linear_damp = 0.5
 script = ExtResource("3_scj0i")
+
+[node name="StaminaTimer" type="Timer" parent="PlayerController"]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
 
 [node name="PlayerBody" type="CollisionShape3D" parent="PlayerController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49, 0.109552)
@@ -3990,7 +3989,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("12_s4ujt")
 
-[node name="Label2" type="Label" parent="PlayerController/VBoxContainer" groups=["FPSCounter"]]
+[node name="Stamina" type="Label" parent="PlayerController/VBoxContainer" groups=["FPSCounter"]]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_hcywk")
 horizontal_alignment = 2
@@ -4026,7 +4025,9 @@ horizontal_alignment = 2
 
 [connection signal="cam_rotation" from="CameraNode" to="PlayerController" method="_on_camera_node_cam_rotation"]
 [connection signal="daytime" from="CameraNode/SubViewportContainer/SubViewport/Camera3d" to="PlayerController" method="_on_daytime_changed"]
+[connection signal="current_stamina" from="PlayerController" to="PlayerController/VBoxContainer/Stamina" method="_on_player_controller_current_stamina"]
 [connection signal="player_spawn" from="PlayerController" to="CameraNode" method="_on_player_controller_player_spawn"]
+[connection signal="timeout" from="PlayerController/StaminaTimer" to="PlayerController" method="_on_stamina_timer_timeout"]
 [connection signal="entered_state" from="PlayerController/SM" to="PlayerController/MeshDecoy" method="_on_sm_entered_state"]
 [connection signal="player_body_pos" from="PlayerController/MeshDecoy/Armature/Skeleton3D/Physical Bone Root/BodyLocation" to="CameraNode" method="_on_player_pos"]
 [connection signal="animation_finished" from="PlayerController/MeshDecoy/AnimationPlayer" to="PlayerController/SM" method="_on_animation_player_animation_finished"]

@@ -5,9 +5,20 @@ extends RigidBody3D
 
 var INITIAL_MASS = mass
 
+const MAX_STAMINA = 3
+
 var INITIAL_POSITION = Vector3()
 
 var jumping = false
+
+signal current_stamina (value : int)
+
+var stamina = MAX_STAMINA:
+	set(value):
+		if value < MAX_STAMINA:
+			stamina_timer.start(0)
+		stamina = value
+		emit_signal("current_stamina", stamina)
 
 var dashing = false :
 	set(value):
@@ -53,6 +64,7 @@ var can_push = true
 @onready var player_text : Label3D = $MeshDecoy/Label3D
 @onready var floor_detector : Area3D = $FloorDetector
 @onready var hitSound : AudioStreamPlayer3D = get_tree().get_first_node_in_group("HitSound")
+@onready var stamina_timer : Timer = $StaminaTimer
 
 var inform_death = []
 
@@ -61,6 +73,10 @@ signal player_spawn (pos : Vector3)
 func _ready():
 	INITIAL_POSITION = get_parent().global_position
 	inform_death = get_tree().get_root().get_tree().get_nodes_in_group("NeedsToReset")
+	stamina = MAX_STAMINA
+
+func dec_stamina():
+	stamina -= 1
 
 func _apply_movement():
 	if on_floor && linear_velocity.length() < MAX_SPEED && is_move_input():
@@ -126,6 +142,8 @@ func get_location():
 		return null
 
 func push():
+	if stamina <= 0:
+		return
 	if can_push:
 		if sm.is_hit || sm.is_pushing :
 			return
@@ -142,10 +160,13 @@ func push():
 			objsToPush[0].apply_central_impulse(direction* 170000)
 		else:
 			objsToPush[0].push()
+		dec_stamina()
 		await get_tree().create_timer(1).timeout
 		can_push = true
 	
 func jump():
+	if stamina <= 0:
+		return
 	jumping = true
 	sm.jump()
 	var direction = Vector3.ZERO
@@ -156,12 +177,15 @@ func jump():
 	await get_tree().create_timer(0.33).timeout
 	if on_floor:
 		direction = direction.normalized()
+		dec_stamina()
 		apply_central_impulse(Vector3(direction.x*6500.0, 15000.0, direction.z*6500.0))
 		for obj in floor_detector.get_overlapping_bodies().filter(func(obj): return obj.is_in_group("IsPushedDown")):
 			obj.apply_central_impulse(Vector3(direction.x*6000.0, -10000.0, direction.z*6000.0))
 	jumping = false
 
 func dash():
+	if stamina <= 0:
+		return
 	if dashing:
 		return
 	dashing = true
@@ -175,6 +199,7 @@ func dash():
 	await get_tree().create_timer(0.1726).timeout
 	if on_floor:
 		direction = direction.normalized()
+		dec_stamina()
 		apply_central_impulse(Vector3(direction.x*20000.0, 800.0, direction.z*20000.0))
 	
 func _on_floor_detector(boolean):
@@ -190,3 +215,7 @@ func is_move_input():
 		return true
 	else:
 		return false
+
+
+func _on_stamina_timer_timeout():
+	stamina += 1
