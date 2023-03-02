@@ -8,7 +8,7 @@ func _physics_process(_delta):
 "
 
 [sub_resource type="BoxMesh" id="BoxMesh_pim7x"]
-size = Vector3(2.7, 1.6, 2.7)
+size = Vector3(3, 1.5, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0g0p"]
 diffuse_mode = 3
@@ -16,7 +16,7 @@ specular_mode = 1
 albedo_color = Color(0.192157, 0.192157, 0.192157, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c8lwc"]
-size = Vector3(2.7, 1.6, 2.7)
+size = Vector3(3, 1.5, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cgou5"]
 size = Vector3(1, 0.609499, 1)
