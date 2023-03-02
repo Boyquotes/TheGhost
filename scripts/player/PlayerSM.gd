@@ -114,7 +114,7 @@ func _enter_state(new_state,_old_state):
 		STATES.push:
 			parent.SPEED = 0
 		STATES.jumping:
-			parent.SPEED = SPEED * 0.1
+			parent.SPEED = SPEED * 0.05
 		STATES.landing:
 			parent.SPEED = SPEED * 0.5
 		STATES.dashingLanding:

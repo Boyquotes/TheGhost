@@ -44,6 +44,7 @@ var can_push = true
 @onready var dashing_stop = get_tree().get_first_node_in_group("DashEffectsStop")
 @onready var dashing_effects = get_tree().get_first_node_in_group("DashEffects")
 @onready var landing_effects = get_tree().get_first_node_in_group("LandEffects")
+@onready var hit_effects = get_tree().get_first_node_in_group("HitEffects")
 @onready var sm = $SM
 @onready var mesh_decoy = $MeshDecoy
 @onready var mesh_decoy_location = $"MeshDecoy/Armature/Skeleton3D/Physical Bone Root/BodyLocation"
@@ -51,7 +52,6 @@ var can_push = true
 @onready var ui : Label = $VBoxContainer/Label
 @onready var player_text : Label3D = $MeshDecoy/Label3D
 @onready var floor_detector : Area3D = $FloorDetector
-@onready var hit_effects = get_tree().get_first_node_in_group("HitEffects")
 @onready var hitSound : AudioStreamPlayer3D = get_tree().get_first_node_in_group("HitSound")
 
 var inform_death = []
@@ -155,7 +155,8 @@ func jump():
 		mesh_decoy.rotation.y = atan2(-direction.x, -direction.z)
 	await get_tree().create_timer(0.33).timeout
 	if on_floor:
-		apply_central_impulse(Vector3(direction.x*6000.0, 13000.0, direction.z*6000.0))
+		direction = direction.normalized()
+		apply_central_impulse(Vector3(direction.x*6500.0, 15000.0, direction.z*6500.0))
 		for obj in floor_detector.get_overlapping_bodies().filter(func(obj): return obj.is_in_group("IsPushedDown")):
 			obj.apply_central_impulse(Vector3(direction.x*6000.0, -10000.0, direction.z*6000.0))
 	jumping = false
@@ -173,6 +174,7 @@ func dash():
 	SPEED = 0
 	await get_tree().create_timer(0.1726).timeout
 	if on_floor:
+		direction = direction.normalized()
 		apply_central_impulse(Vector3(direction.x*20000.0, 800.0, direction.z*20000.0))
 	
 func _on_floor_detector(boolean):
