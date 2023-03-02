@@ -3958,6 +3958,7 @@ material_override = SubResource("StandardMaterial3D_xnjcl")
 emitting = false
 amount = 120
 one_shot = true
+speed_scale = 1.5
 explosiveness = 1.0
 fixed_fps = 60
 visibility_aabb = AABB(-4, -2.32484, -1.96093, 8, 4.64968, 3.92187)
