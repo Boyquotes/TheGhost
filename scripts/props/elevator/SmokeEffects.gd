@@ -4,12 +4,12 @@ extends Area3D
 
 var queue_emission = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if queue_emission and not smoke.emitting:
 		smoke.emitting = true
 		queue_emission = false
 
 
-func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	smoke.emitting = true # Replace with function body.
+func _on_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
+	smoke.emitting = true
 	

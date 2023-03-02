@@ -87,7 +87,7 @@ func dec_stamina():
 func _apply_movement():
 	if on_floor && linear_velocity.length() < MAX_SPEED && is_move_input():
 		if stamina == 0:
-			motion /= 2
+			motion = motion * 0.3
 		walking_effects.emitting = true
 		apply_central_impulse(Vector3(motion.x, 333.3, motion.z))
 	else:

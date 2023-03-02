@@ -5,14 +5,14 @@ extends RigidBody3D
 @onready var raycast : RayCast3D = $RayCast3D
 @onready var sm : Node3D = $EnemySM
 @onready var timer : Timer =  $ReturnTimer
+@onready var stuck_timer : Timer = $StuckTimer
 @onready var fov : Area3D = $Mesh/EnemyFOV
 
-const SPEED = 4.1
+const SPEED = 4.2
 
 var INITIAL_POSITION = Vector3()
 var speed = SPEED
 
-var randf_seed = randf_range(1.0,1.0)
 var has_target = false
 var stun_velocity = null
 var on_floor = false
@@ -36,7 +36,7 @@ var stop_fov = false:
 		stop_fov = value
 		if value:
 			fov.monitoring = false
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(3.5).timeout
 			fov.monitoring = true
 			stop_fov = false
 			
@@ -52,18 +52,18 @@ func _physics_process(delta):
 	if has_target && on_floor:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_path_position()
-		linear_velocity = (target - origin).normalized() * speed * randf_seed
+		linear_velocity = (target - origin).normalized() * speed
 		rotate_towards_motion(delta)
-		if not is_stuck():
+		if !is_stuck():
 			timer.start(0)
 	if needs_return && on_floor:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_path_position()
-		linear_velocity = (target - origin).normalized() * speed * randf_seed
+		linear_velocity = (target - origin).normalized() * speed
 		rotate_towards_motion(delta)
 		
 func rotate_towards_motion(delta):
-	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 3.0 * randf_seed * randf_seed)
+	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 3.0)
 
 func _on_enemy_fov_player(player_location):
 	if player_location == null:
@@ -106,12 +106,26 @@ func _on_enemy_floor_detector_enemy_on_floor(boolean):
 func _on_return_timer_timeout():
 	nav_agent.target_position = INITIAL_POSITION
 	needs_return = true
-
+	
+func _on_stuck_timer_timeout():
+	var is_collidng_with_obstacles = get_colliding_bodies().any(func(obj): return obj.is_in_group("CanBlock"))
+	if is_collidng_with_obstacles and sm.state == 1:
+		freeze = true
+		global_position = INITIAL_POSITION
+		freeze = false
+	
 func is_stuck():
-	if linear_velocity.length() < 0.1 and sm.state == 1:
+	var is_collidng_with_obstacles = get_colliding_bodies().any(func(obj): return obj.is_in_group("CanBlock"))
+	if is_collidng_with_obstacles and sm.state == 1:
 		needs_return = true
+		chasing = false
 		nav_agent.target_position = INITIAL_POSITION
 		stop_fov = true
+		if stuck_timer.is_stopped():
+			stuck_timer.start(0)
 		return true
 	else:
 		return false
+
+
+# Replace with function body.

@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://1cinutwv1t3l"]
+[gd_scene load_steps=5 format=3 uid="uid://1cinutwv1t3l"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_obeiq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wxlvy"]
 size = Vector3(64, 1, 64)
@@ -14,6 +16,7 @@ distance_fade_max_distance = 30.0
 [node name="platform" type="StaticBody3D"]
 collision_layer = 15
 collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_obeiq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_wxlvy")

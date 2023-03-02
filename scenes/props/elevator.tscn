@@ -79,7 +79,7 @@ func close_door_animation(door_mesh, delta):
 		close_animation = false
 
 
-func _on_smoke_effects_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+func _on_smoke_effects_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
 	current_dir=\"none\"
 
 func move():
@@ -90,7 +90,7 @@ func move():
 
 
 
-func _on_upper_detection_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+func _on_upper_detection_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
 	current_dir=\"none\"
 "
 
@@ -277,16 +277,6 @@ size = Vector3(0.2, 0.213, 1)
 
 [sub_resource type="GDScript" id="GDScript_lyn1i"]
 script/source = "extends StaticBody3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func push():
 	get_parent().get_parent().get_parent().push()
