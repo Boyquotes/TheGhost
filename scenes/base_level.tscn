@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfan743wneoqh"]
+[gd_scene load_steps=12 format=3 uid="uid://bfan743wneoqh"]
 
 [ext_resource type="PackedScene" uid="uid://1cinutwv1t3l" path="res://scenes/props/floor.tscn" id="1_qn23l"]
 [ext_resource type="PackedScene" uid="uid://c5v2jrbwtfkpk" path="res://scenes/player/player.tscn" id="3_5fsbt"]
 [ext_resource type="PackedScene" uid="uid://nwfp3m8cudyt" path="res://scenes/npcs/furnance/core.tscn" id="3_24p4y"]
 [ext_resource type="PackedScene" uid="uid://bq8q4xxajkmv0" path="res://scenes/maze.tscn" id="6_k2kex"]
+[ext_resource type="PackedScene" uid="uid://d28lp74syx3hn" path="res://scenes/props/stop.tscn" id="6_wrrcm"]
 [ext_resource type="PackedScene" uid="uid://bqo3tjtuvfrpx" path="res://scenes/props/elevator.tscn" id="10_cgyns"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cqbhm"]
@@ -56,6 +57,9 @@ size = Vector3(1000, 2, 1000)
 
 [node name="Base Level" type="Node3D"]
 
+[node name="platform" parent="." instance=ExtResource("1_qn23l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
+
 [node name="FurnancePlane" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_cqbhm")
 
@@ -86,10 +90,17 @@ script = SubResource("GDScript_g2q0a")
 shape = SubResource("BoxShape3D_f6hwb")
 
 [node name="Elevator" parent="." instance=ExtResource("10_cgyns")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, -0.3, 36)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, -45.3, 36)
+current_dir = "down"
+
+[node name="Elevator2" parent="." instance=ExtResource("10_cgyns")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, -45.3, -36)
 current_dir = "down"
 
 [node name="Maze" parent="." instance=ExtResource("6_k2kex")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -48, 0)
+
+[node name="Stop" parent="." instance=ExtResource("6_wrrcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8, 0.4, 31.7)
 
 [connection signal="body_entered" from="DeathArea" to="DeathArea" method="_on_body_entered"]

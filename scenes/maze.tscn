@@ -555,7 +555,7 @@ collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_qniv7")
 
 [node name="Node3D36" parent="Maze/Floor" instance=ExtResource("2_1l8y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -9.68575e-08, 28)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -9.68575e-08, 28)
 collision_layer = 15
 collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_qniv7")
