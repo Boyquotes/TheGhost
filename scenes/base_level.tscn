@@ -32,6 +32,9 @@ script/source = "extends Area3D
 var map = {}
 
 func _on_body_entered(body : RigidBody3D):
+	if body.is_in_group(\"PlayerBody\"):
+		body.ik()
+		return
 	if !map.has(body.name) :
 		map[body.name] = 1
 		
@@ -41,9 +44,6 @@ func _on_body_entered(body : RigidBody3D):
 		
 	elif map[body.name] == 2 :
 		map[body.name] = 0
-		if body.is_in_group(\"PlayerBody\"):
-			body.ik()
-			return
 		body.freeze = true
 		body.sleeping = true
 		body.global_position = body.INITIAL_POSITION

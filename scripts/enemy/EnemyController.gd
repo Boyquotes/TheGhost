@@ -5,6 +5,7 @@ extends RigidBody3D
 @onready var raycast : RayCast3D = $RayCast3D
 @onready var sm : Node3D = $EnemySM
 @onready var timer : Timer =  $ReturnTimer
+@onready var fov : Area3D = $Mesh/EnemyFOV
 
 const SPEED = 4.1
 
@@ -16,10 +17,6 @@ var has_target = false
 var stun_velocity = null
 var on_floor = false
 var needs_return = false
-
-func _ready():
-	INITIAL_POSITION = global_position
-	timer.stop()
 
 @export var health : int = 10 : 
 	set(value):
@@ -34,6 +31,17 @@ var chasing = false :
 			await get_tree().create_timer(0.5).timeout
 			chasing = false
 
+var stop_fov = false:
+	set(value):
+		if value:
+			stop_fov = value
+			fov.monitoring = false
+			await get_tree().create_timer(1.5).timeout
+			
+func _ready():
+	INITIAL_POSITION = global_position
+	timer.stop()
+
 func _physics_process(delta):
 	if stun_velocity:
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(linear_velocity.x, linear_velocity.z), delta * 100.0)
@@ -44,7 +52,8 @@ func _physics_process(delta):
 		var target = nav_agent.get_next_path_position()
 		linear_velocity = (target - origin).normalized() * speed * randf_seed
 		rotate_towards_motion(delta)
-		timer.start(0)
+		if not is_stuck():
+			timer.start(0)
 	if needs_return && on_floor:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_path_position()
@@ -69,6 +78,8 @@ func _on_enemy_fov_player(player_location):
 		raycast.target_position = 3000000 * target/ray_size_sqrd
 		if raycast.is_colliding() && raycast.get_collider().is_in_group("Player"):
 			raycast.debug_shape_custom_color = Color(0,0,1,1)
+			var random_reaction_time = randf_range(1.0, 2.0)
+			await get_tree().create_timer(random_reaction_time).timeout
 			chasing = true
 			return
 		if raycast.is_colliding():
@@ -93,3 +104,12 @@ func _on_enemy_floor_detector_enemy_on_floor(boolean):
 func _on_return_timer_timeout():
 	nav_agent.target_position = INITIAL_POSITION
 	needs_return = true
+
+func is_stuck():
+	if linear_velocity.length() < 0.1 and sm.state == 1:
+		needs_return = true
+		nav_agent.target_position = INITIAL_POSITION
+		stop_fov = true
+		return true
+	else:
+		return false

@@ -13,9 +13,11 @@ var is_hit = false :
 	set(value):
 		if value == true:
 			is_hit = true
+			controller.freeze = true
 			skeleton.physical_bones_start_simulation()
 			await get_tree().create_timer(2).timeout
 			skeleton.physical_bones_stop_simulation()
+			controller.freeze = false
 			rotation.y = atan2(-controller.motion.x, -controller.motion.z)
 			controller.ik()
 			is_hit = false

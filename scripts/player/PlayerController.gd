@@ -51,6 +51,8 @@ var can_push = true
 @onready var ui : Label = $VBoxContainer/Label
 @onready var player_text : Label3D = $MeshDecoy/Label3D
 @onready var floor_detector : Area3D = $FloorDetector
+@onready var hit_effects = get_tree().get_first_node_in_group("HitEffects")
+@onready var hitSound : AudioStreamPlayer3D = get_tree().get_first_node_in_group("HitSound")
 
 var inform_death = []
 
@@ -96,6 +98,10 @@ func _on_camera_node_cam_rotation(rot):
 	mz = cos(rot)
 
 func hit():
+	if dashing:
+		return
+	hitSound.play(0.0)
+	hit_effects.emitting = true
 	sm.is_hit = true
 	mesh_decoy.hit()
 	Engine.time_scale = 0.3

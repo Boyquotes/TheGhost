@@ -99,7 +99,6 @@ func _update_state(delta):
 		STATES.dashing:
 			if not parent.dashing:
 				return STATES.dashingLanding
-			#parent._apply_dash()
 		STATES.dashingLanding:
 			parent._handle_move_rotation(delta*0.1)
 			parent._handle_move_input()
