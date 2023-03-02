@@ -33,10 +33,12 @@ var chasing = false :
 
 var stop_fov = false:
 	set(value):
+		stop_fov = value
 		if value:
-			stop_fov = value
 			fov.monitoring = false
 			await get_tree().create_timer(1.5).timeout
+			fov.monitoring = true
+			stop_fov = false
 			
 func _ready():
 	INITIAL_POSITION = global_position

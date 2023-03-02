@@ -92,4 +92,5 @@ func _enter_state(new_state, _old_state):
 		STATES.chasing:
 			parent.speed = speed
 		STATES.returning:
+			parent.stop_fov = true
 			parent.speed = speed

@@ -1452,7 +1452,6 @@ libraries = {
 
 [node name="Label3D" type="Label3D" parent="EnemySM"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 5.43991, 0)
-visible = false
 ignore_occlusion_culling = true
 billboard = 1
 alpha_cut = 1
