@@ -1,4 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbrdb37i16jho"]
+[gd_scene load_steps=7 format=3 uid="uid://cbrdb37i16jho"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r42b1"]
+rough = true
+absorbent = true
 
 [sub_resource type="GDScript" id="GDScript_tn282"]
 script/source = "extends RigidBody3D
@@ -34,7 +38,7 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 1000.0
-can_sleep = false
+physics_material_override = SubResource("PhysicsMaterial_r42b1")
 linear_damp = 1.0
 script = SubResource("GDScript_tn282")
 
