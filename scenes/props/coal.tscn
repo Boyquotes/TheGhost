@@ -1,4 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkonm2i4ak6l3"]
+[gd_scene load_steps=8 format=3 uid="uid://dkonm2i4ak6l3"]
+
+[ext_resource type="Script" path="res://scripts/props/Coal.gd" id="1_dmtc0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_38r4m"]
 absorbent = true
@@ -46,12 +48,14 @@ metallic_specular = 1.0
 rim = 0.0
 rim_tint = 0.0
 
-[node name="RigidBody3D" type="RigidBody3D" groups=["Coal"]]
+[node name="RigidBody3D" type="RigidBody3D" groups=["Coal", "Fuel"]]
 collision_layer = 9
 collision_mask = 15
 mass = 300.0
 physics_material_override = SubResource("PhysicsMaterial_38r4m")
 sleeping = true
+freeze_mode = 1
+script = ExtResource("1_dmtc0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.2, 0.3, 0.1)

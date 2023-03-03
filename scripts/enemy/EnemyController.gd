@@ -89,7 +89,7 @@ func _on_enemy_fov_player(player_location):
 
 func _on_enemy_navigation_agent_3d_navigation_finished():
 	has_target = false
-	needs_return = false
+	needs_return = true
 
 func stun(stun_source_pos):
 	sm.stun_source_pos = stun_source_pos
@@ -126,6 +126,3 @@ func is_stuck():
 		return true
 	else:
 		return false
-
-
-# Replace with function body.

@@ -117,18 +117,12 @@ size = Vector3(0.1, 0.1, 10.1)
 script/source = "extends Area3D
 
 var is_open = false
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	if is_open:
-		var objsToPush = get_overlapping_bodies().filter(func(obj): return obj.is_in_group(\"Moveable\"))
+		var objsToPush = get_overlapping_bodies().filter(func(obj): return obj.is_in_group(\"Fuel\"))
 		for obj in objsToPush:
 			obj.apply_central_impulse((global_position - obj.global_position) * 500)
-
 
 func _on_door_is_open(isOpen):
 	is_open = isOpen # Replace with function body.
