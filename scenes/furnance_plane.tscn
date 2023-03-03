@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cy3ljmlv06ufy"]
+[gd_scene load_steps=7 format=3 uid="uid://bqkphpl7f0ip4"]
 
 [ext_resource type="PackedScene" uid="uid://1cinutwv1t3l" path="res://scenes/props/floor.tscn" id="1_4w62i"]
 [ext_resource type="PackedScene" uid="uid://nwfp3m8cudyt" path="res://scenes/npcs/furnance/core.tscn" id="2_cvquq"]
 [ext_resource type="PackedScene" uid="uid://d28lp74syx3hn" path="res://scenes/props/stop.tscn" id="3_ob2e2"]
+[ext_resource type="PackedScene" uid="uid://dkonm2i4ak6l3" path="res://scenes/props/coal.tscn" id="4_jbc3s"]
+[ext_resource type="PackedScene" uid="uid://be7wes2642p0d" path="res://scenes/npcs/coal_miner/coal_miner.tscn" id="5_4qgsy"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cqbhm"]
 vertices = PackedVector3Array(-23.4, 0.63909, -30.3, -30.3, 0.63909, -30.3, -30.3, 0.63909, -23.4, -23.4, 0.63909, -30.3, -30.3, 0.63909, -23.4, -30.3, 0.63909, -16.5, -16.4, 0.63909, -30.3, -23.4, 0.63909, -30.3, -30.3, 0.63909, -16.5, -30.3, 0.63909, -9.6, -4.2, 0.63909, -4.2, -3.2, 0.63909, -4.7, -2.4, 0.63909, -30.3, -9.4, 0.63909, -30.3, -30.3, 0.63909, -2.6, -4.8, 0.63909, -2.5, -4.8, 0.63909, -3.1, -3.2, 0.63909, -4.7, -2.4, 0.63909, -4.7, -2.4, 0.63909, -30.3, -30.3, 0.63909, -2.6, -4.8, 0.63909, -3.1, -4.2, 0.63909, -4.2, -9.4, 0.63909, -30.3, -16.4, 0.63909, -30.3, -30.3, 0.63909, -9.6, -2.4, 0.63909, -4.7, 2.3, 0.63909, -4.7, 2.3, 0.63909, -30.3, -2.4, 0.63909, -30.3, 30.3, 0.63909, -23.3, 30.3, 0.63909, -30.3, 23.3, 0.63909, -30.3, 30.3, 0.63909, -16.3, 30.3, 0.63909, -23.3, 23.3, 0.63909, -30.3, 30.3, 0.63909, -16.3, 23.3, 0.63909, -30.3, 16.3, 0.63909, -30.3, 30.3, 0.63909, -9.3, 4.1, 0.63909, -4.2, 4.7, 0.63909, -3.1, 30.3, 0.63909, -2.3, 30.3, 0.63909, -9.3, 16.3, 0.63909, -30.3, 9.3, 0.63909, -30.3, 4.7, 0.63909, -3.1, 4.7, 0.63909, -2.3, 30.3, 0.63909, -2.3, 2.3, 0.63909, -30.3, 2.3, 0.63909, -4.7, 3.1, 0.63909, -4.7, 2.3, 0.63909, -30.3, 3.1, 0.63909, -4.7, 4.1, 0.63909, -4.2, 9.3, 0.63909, -30.3, -30.3, 0.63909, 2.7, -4.8, 0.63909, 2.6, -4.8, 0.63909, -2.5, -30.3, 0.63909, -2.6, 4.7, 0.63909, 2.4, 30.3, 0.63909, 2.4, 30.3, 0.63909, -2.3, 4.7, 0.63909, -2.3, 3.1, 0.63909, 4.8, 1.9, 0.63909, 4.8, 1.4, 0.63909, 5.7, 4.1, 0.63909, 4.3, 3.1, 0.63909, 4.8, 1.4, 0.63909, 5.7, 0, 0.63909, 30.3, 7.5, 0.63909, 30.3, 22.7, 0.63909, 30.3, 30.3, 0.63909, 30.3, 30.3, 0.63909, 23.3, 22.7, 0.63909, 30.3, 30.3, 0.63909, 23.3, 30.3, 0.63909, 16.3, 15.1, 0.63909, 30.3, 22.7, 0.63909, 30.3, 30.3, 0.63909, 16.3, 30.3, 0.63909, 9.3, 1.4, 0.63909, 5.7, 0, 0.63909, 6.3, 0, 0.63909, 30.3, 30.3, 0.63909, 2.4, 4.7, 0.63909, 3.2, 4.1, 0.63909, 4.3, 7.5, 0.63909, 30.3, 15.1, 0.63909, 30.3, 30.3, 0.63909, 9.3, 30.3, 0.63909, 2.4, 4.7, 0.63909, 2.4, 4.7, 0.63909, 3.2, -1.5, 0.63909, 5.7, -1.9, 0.63909, 4.8, -3.2, 0.63909, 4.8, -1.5, 0.63909, 5.7, -3.2, 0.63909, 4.8, -4.2, 0.63909, 4.3, -30.3, 0.63909, 23.4, -30.3, 0.63909, 30.3, -22.8, 0.63909, 30.3, -30.3, 0.63909, 16.5, -30.3, 0.63909, 23.4, -22.8, 0.63909, 30.3, -30.3, 0.63909, 16.5, -22.8, 0.63909, 30.3, -15.2, 0.63909, 30.3, -30.3, 0.63909, 9.6, 0, 0.63909, 30.3, 0, 0.63909, 6.3, -1.5, 0.63909, 5.7, -7.6, 0.63909, 30.3, -7.6, 0.63909, 30.3, -1.5, 0.63909, 5.7, -4.2, 0.63909, 4.3, -30.3, 0.63909, 2.7, -30.3, 0.63909, 9.6, -15.2, 0.63909, 30.3, -4.8, 0.63909, 3.2, -4.8, 0.63909, 2.6, -30.3, 0.63909, 2.7, -4.2, 0.63909, 4.3, -4.8, 0.63909, 3.2, -30.3, 0.63909, 2.7)
@@ -33,6 +35,277 @@ transform = Transform3D(-4.35868e-16, -1, 1.74846e-07, 0.2, 1.91069e-15, 4.37114
 
 [node name="Stop" parent="." instance=ExtResource("3_ob2e2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7, -0.2, 31.6)
+text = "WOODENS"
 
 [node name="Stop2" parent="." instance=ExtResource("3_ob2e2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.7, -0.2, 24)
+text = "WILD"
+
+[node name="Coals" type="Node3D" parent="."]
+
+[node name="Coal" parent="Coals" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
+
+[node name="Coal2" parent="Coals" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
+
+[node name="Coal3" parent="Coals" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
+
+[node name="Coal4" parent="Coals" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
+
+[node name="Coal5" parent="Coals" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
+
+[node name="Coal6" parent="Coals" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
+
+[node name="Coal7" parent="Coals" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
+
+[node name="Coal8" parent="Coals" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
+
+[node name="Coal9" parent="Coals" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
+
+[node name="Coal10" parent="Coals" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
+
+[node name="Coals2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
+
+[node name="Coal" parent="Coals2" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
+
+[node name="Coal2" parent="Coals2" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
+
+[node name="Coal3" parent="Coals2" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
+
+[node name="Coal4" parent="Coals2" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
+
+[node name="Coal5" parent="Coals2" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
+
+[node name="Coal6" parent="Coals2" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
+
+[node name="Coal7" parent="Coals2" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
+
+[node name="Coal8" parent="Coals2" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
+
+[node name="Coal9" parent="Coals2" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
+
+[node name="Coal10" parent="Coals2" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
+
+[node name="Coals3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, 0)
+
+[node name="Coal" parent="Coals3" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
+
+[node name="Coal2" parent="Coals3" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
+
+[node name="Coal3" parent="Coals3" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
+
+[node name="Coal4" parent="Coals3" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
+
+[node name="Coal5" parent="Coals3" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
+
+[node name="Coal6" parent="Coals3" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
+
+[node name="Coal7" parent="Coals3" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
+
+[node name="Coal8" parent="Coals3" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
+
+[node name="Coal9" parent="Coals3" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
+
+[node name="Coal10" parent="Coals3" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
+
+[node name="Coals4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, 9)
+
+[node name="Coal" parent="Coals4" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
+
+[node name="Coal2" parent="Coals4" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
+
+[node name="Coal3" parent="Coals4" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
+
+[node name="Coal4" parent="Coals4" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
+
+[node name="Coal5" parent="Coals4" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
+
+[node name="Coal6" parent="Coals4" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
+
+[node name="Coal7" parent="Coals4" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
+
+[node name="Coal8" parent="Coals4" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
+
+[node name="Coal9" parent="Coals4" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
+
+[node name="Coal10" parent="Coals4" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
+
+[node name="Coals5" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, 9)
+
+[node name="Coal" parent="Coals5" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
+
+[node name="Coal2" parent="Coals5" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
+
+[node name="Coal3" parent="Coals5" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
+
+[node name="Coal4" parent="Coals5" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
+
+[node name="Coal5" parent="Coals5" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
+
+[node name="Coal6" parent="Coals5" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
+
+[node name="Coal7" parent="Coals5" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
+
+[node name="Coal8" parent="Coals5" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
+
+[node name="Coal9" parent="Coals5" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
+
+[node name="Coal10" parent="Coals5" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
+
+[node name="Coals6" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 9)
+
+[node name="Coal" parent="Coals6" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
+
+[node name="Coal2" parent="Coals6" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
+
+[node name="Coal3" parent="Coals6" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
+
+[node name="Coal4" parent="Coals6" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
+
+[node name="Coal5" parent="Coals6" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
+
+[node name="Coal6" parent="Coals6" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
+
+[node name="Coal7" parent="Coals6" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
+
+[node name="Coal8" parent="Coals6" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
+
+[node name="Coal9" parent="Coals6" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
+
+[node name="Coal10" parent="Coals6" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
+
+[node name="Coals7" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 9)
+
+[node name="Coal" parent="Coals7" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
+
+[node name="Coal2" parent="Coals7" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
+
+[node name="Coal3" parent="Coals7" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
+
+[node name="Coal4" parent="Coals7" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
+
+[node name="Coal5" parent="Coals7" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
+
+[node name="Coal6" parent="Coals7" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
+
+[node name="Coal7" parent="Coals7" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
+
+[node name="Coal8" parent="Coals7" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
+
+[node name="Coal9" parent="Coals7" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
+
+[node name="Coal10" parent="Coals7" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
+
+[node name="Coals8" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
+
+[node name="Coal" parent="Coals8" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
+
+[node name="Coal2" parent="Coals8" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
+
+[node name="Coal3" parent="Coals8" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
+
+[node name="Coal4" parent="Coals8" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
+
+[node name="Coal5" parent="Coals8" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
+
+[node name="Coal6" parent="Coals8" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
+
+[node name="Coal7" parent="Coals8" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
+
+[node name="Coal8" parent="Coals8" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
+
+[node name="Coal9" parent="Coals8" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
+
+[node name="Coal10" parent="Coals8" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
+
+[node name="CoalMiner" parent="." instance=ExtResource("5_4qgsy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, 30)
+
+[node name="CoalMiner2" parent="." instance=ExtResource("5_4qgsy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, 5)

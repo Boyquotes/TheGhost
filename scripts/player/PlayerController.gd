@@ -17,8 +17,10 @@ var stamina = MAX_STAMINA:
 	set(value):
 		if value > 0:
 			player_light.light_energy = 2
-		if value < MAX_STAMINA:
-			stamina_timer.start(0)
+		if stamina == 0:
+			stamina_timer.start(2)
+		elif value < MAX_STAMINA:
+			stamina_timer.start(3)
 		stamina = value
 		emit_signal("current_stamina", stamina)
 
