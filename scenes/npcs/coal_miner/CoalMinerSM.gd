@@ -12,15 +12,12 @@ signal entered_state (state : String, startSec : float)
 @onready var animator : AnimationPlayer = $AnimationPlayer
 @onready var label : Label3D = $Label3D
 
-var speed : float
-
 func _ready():
-	speed = parent.SPEED
 	add_states(STATES)
 	call_deferred("set_state", STATES.walking)
 
 func _update_state(_delta):
-	label.override(str(parent.needs_to_move, " ", STATES.find_key(state)))
+	#label.override(str(parent.needs_to_move, " ", STATES.find_key(state)))
 	match state:
 		STATES.walking:
 			if parent.grabbed:

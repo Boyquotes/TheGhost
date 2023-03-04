@@ -36,84 +36,6 @@ transform = Transform3D(-4.35868e-16, -1, 1.74846e-07, 0.2, 1.91069e-15, 4.37114
 
 [node name="Furnance" parent="FurnanceMesh" instance=ExtResource("2_cvquq")]
 
-[node name="Coal" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3, -1, -1.5)
-
-[node name="Coal2" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3, -1, -1.5)
-
-[node name="Coal3" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3, -1, -15.5)
-
-[node name="Coal4" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3, -1, -15.5)
-
-[node name="Coal5" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7, -1, -15.5)
-
-[node name="Coal6" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7, -1, 8.5)
-
-[node name="Coal7" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3, -1, 8.5)
-
-[node name="Coal8" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3, -1, 18.5)
-
-[node name="Coal9" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7, -1, 18.5)
-
-[node name="Coal10" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7, -1, -0.5)
-
-[node name="Coal11" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7, -1, -10.5)
-
-[node name="Coal12" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7, -1, -19.5)
-
-[node name="Coal13" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, -1, -19.5)
-
-[node name="Coal14" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, -1, -15.5)
-
-[node name="Coal15" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3, -1, -15.5)
-
-[node name="Coal16" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3, -1, -23.5)
-
-[node name="Coal17" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, -1, -23.5)
-
-[node name="Coal18" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7, -1, -23.5)
-
-[node name="Coal19" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7, -1, -23.5)
-
-[node name="Coal20" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7, -1, -8.5)
-
-[node name="Coal21" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7, -1, 16.5)
-
-[node name="Coal22" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, -1, 16.5)
-
-[node name="Coal23" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, -1, 16.5)
-
-[node name="Coal24" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3, -1, 16.5)
-
-[node name="Coal25" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7, -1, 23.5)
-
-[node name="Coal26" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3, -1, 23.5)
-
 [node name="Coal27" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7, -1, 23.5)
 
@@ -128,6 +50,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7, -1, 11.5)
 
 [node name="Coal31" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7, -1, 2.5)
+
+[node name="Coal32" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, -1, 23.5)
+
+[node name="Coal33" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3, -1, 23.5)
+
+[node name="Coal34" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3, -1, 11.5)
+
+[node name="Coal35" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3, -1, 11.5)
+
+[node name="Coal36" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3, -1, 2.5)
 
 [node name="Stop" parent="FurnanceMesh" instance=ExtResource("3_ob2e2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7, -0.2, 31.6)
