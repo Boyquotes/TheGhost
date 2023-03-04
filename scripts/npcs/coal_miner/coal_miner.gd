@@ -71,6 +71,7 @@ func _on_target_reached():
 		grabbed = false
 		stop_grabbing = true
 		
+		#maybe the coal was not consumed, reset it to be pickable again
 		await get_tree().create_timer(2).timeout
 		if old_coal != null:
 			old_coal.is_target = false
