@@ -122,7 +122,7 @@ func _physics_process(_delta):
 	if is_open:
 		var objsToPush = get_overlapping_bodies().filter(func(obj): return obj.is_in_group(\"Fuel\"))
 		for obj in objsToPush:
-			obj.apply_central_impulse((global_position - obj.global_position) * 500)
+			obj.apply_central_impulse((global_position - obj.global_position) * obj.mass * 0.2)
 
 func _on_door_is_open(isOpen):
 	is_open = isOpen # Replace with function body.
@@ -141,9 +141,10 @@ func _on_door_4_is_open(isOpen):
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ouvuf"]
-size = Vector3(12, 1, 12)
+size = Vector3(12, 3.007, 12)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mqnjb"]
+size = Vector3(2, 4, 2)
 
 [node name="Furnance" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
@@ -288,6 +289,7 @@ transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -2.467, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConsumerDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37114e-08, -0.5, 0)
 shape = SubResource("BoxShape3D_mqnjb")
 
 [connection signal="is_open" from="Doors/Door" to="Gravity" method="_on_door_is_open"]

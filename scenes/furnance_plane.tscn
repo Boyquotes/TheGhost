@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqkphpl7f0ip4"]
+[gd_scene load_steps=8 format=3 uid="uid://bqkphpl7f0ip4"]
 
 [ext_resource type="PackedScene" uid="uid://1cinutwv1t3l" path="res://scenes/props/floor.tscn" id="1_4w62i"]
 [ext_resource type="PackedScene" uid="uid://nwfp3m8cudyt" path="res://scenes/npcs/furnance/core.tscn" id="2_cvquq"]
@@ -6,303 +6,160 @@
 [ext_resource type="PackedScene" uid="uid://dkonm2i4ak6l3" path="res://scenes/props/coal.tscn" id="4_jbc3s"]
 [ext_resource type="PackedScene" uid="uid://be7wes2642p0d" path="res://scenes/npcs/coal_miner/CoalMinerController.tscn" id="5_4qgsy"]
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_cqbhm"]
-vertices = PackedVector3Array(-23.4, 0.63909, -30.3, -30.3, 0.63909, -30.3, -30.3, 0.63909, -23.4, -23.4, 0.63909, -30.3, -30.3, 0.63909, -23.4, -30.3, 0.63909, -16.5, -16.4, 0.63909, -30.3, -23.4, 0.63909, -30.3, -30.3, 0.63909, -16.5, -30.3, 0.63909, -9.6, -4.2, 0.63909, -4.2, -3.2, 0.63909, -4.7, -2.4, 0.63909, -30.3, -9.4, 0.63909, -30.3, -30.3, 0.63909, -2.6, -4.8, 0.63909, -2.5, -4.8, 0.63909, -3.1, -3.2, 0.63909, -4.7, -2.4, 0.63909, -4.7, -2.4, 0.63909, -30.3, -30.3, 0.63909, -2.6, -4.8, 0.63909, -3.1, -4.2, 0.63909, -4.2, -9.4, 0.63909, -30.3, -16.4, 0.63909, -30.3, -30.3, 0.63909, -9.6, -2.4, 0.63909, -4.7, 2.3, 0.63909, -4.7, 2.3, 0.63909, -30.3, -2.4, 0.63909, -30.3, 30.3, 0.63909, -23.3, 30.3, 0.63909, -30.3, 23.3, 0.63909, -30.3, 30.3, 0.63909, -16.3, 30.3, 0.63909, -23.3, 23.3, 0.63909, -30.3, 30.3, 0.63909, -16.3, 23.3, 0.63909, -30.3, 16.3, 0.63909, -30.3, 30.3, 0.63909, -9.3, 4.1, 0.63909, -4.2, 4.7, 0.63909, -3.1, 30.3, 0.63909, -2.3, 30.3, 0.63909, -9.3, 16.3, 0.63909, -30.3, 9.3, 0.63909, -30.3, 4.7, 0.63909, -3.1, 4.7, 0.63909, -2.3, 30.3, 0.63909, -2.3, 2.3, 0.63909, -30.3, 2.3, 0.63909, -4.7, 3.1, 0.63909, -4.7, 2.3, 0.63909, -30.3, 3.1, 0.63909, -4.7, 4.1, 0.63909, -4.2, 9.3, 0.63909, -30.3, -30.3, 0.63909, 2.7, -4.8, 0.63909, 2.6, -4.8, 0.63909, -2.5, -30.3, 0.63909, -2.6, 4.7, 0.63909, 2.4, 30.3, 0.63909, 2.4, 30.3, 0.63909, -2.3, 4.7, 0.63909, -2.3, 3.1, 0.63909, 4.8, 1.9, 0.63909, 4.8, 1.4, 0.63909, 5.7, 4.1, 0.63909, 4.3, 3.1, 0.63909, 4.8, 1.4, 0.63909, 5.7, 0, 0.63909, 30.3, 7.5, 0.63909, 30.3, 22.7, 0.63909, 30.3, 30.3, 0.63909, 30.3, 30.3, 0.63909, 23.3, 22.7, 0.63909, 30.3, 30.3, 0.63909, 23.3, 30.3, 0.63909, 16.3, 15.1, 0.63909, 30.3, 22.7, 0.63909, 30.3, 30.3, 0.63909, 16.3, 30.3, 0.63909, 9.3, 1.4, 0.63909, 5.7, 0, 0.63909, 6.3, 0, 0.63909, 30.3, 30.3, 0.63909, 2.4, 4.7, 0.63909, 3.2, 4.1, 0.63909, 4.3, 7.5, 0.63909, 30.3, 15.1, 0.63909, 30.3, 30.3, 0.63909, 9.3, 30.3, 0.63909, 2.4, 4.7, 0.63909, 2.4, 4.7, 0.63909, 3.2, -1.5, 0.63909, 5.7, -1.9, 0.63909, 4.8, -3.2, 0.63909, 4.8, -1.5, 0.63909, 5.7, -3.2, 0.63909, 4.8, -4.2, 0.63909, 4.3, -30.3, 0.63909, 23.4, -30.3, 0.63909, 30.3, -22.8, 0.63909, 30.3, -30.3, 0.63909, 16.5, -30.3, 0.63909, 23.4, -22.8, 0.63909, 30.3, -30.3, 0.63909, 16.5, -22.8, 0.63909, 30.3, -15.2, 0.63909, 30.3, -30.3, 0.63909, 9.6, 0, 0.63909, 30.3, 0, 0.63909, 6.3, -1.5, 0.63909, 5.7, -7.6, 0.63909, 30.3, -7.6, 0.63909, 30.3, -1.5, 0.63909, 5.7, -4.2, 0.63909, 4.3, -30.3, 0.63909, 2.7, -30.3, 0.63909, 9.6, -15.2, 0.63909, 30.3, -4.8, 0.63909, 3.2, -4.8, 0.63909, 2.6, -30.3, 0.63909, 2.7, -4.2, 0.63909, 4.3, -4.8, 0.63909, 3.2, -30.3, 0.63909, 2.7)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(14, 16, 15), PackedInt32Array(19, 18, 17), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 25), PackedInt32Array(22, 25, 24), PackedInt32Array(22, 24, 23), PackedInt32Array(29, 28, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(32, 31, 30), PackedInt32Array(35, 34, 33), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 39), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(43, 40, 44), PackedInt32Array(44, 40, 45), PackedInt32Array(48, 47, 46), PackedInt32Array(51, 50, 49), PackedInt32Array(53, 52, 54), PackedInt32Array(54, 52, 55), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 59), PackedInt32Array(63, 62, 60), PackedInt32Array(60, 62, 61), PackedInt32Array(66, 65, 64), PackedInt32Array(68, 67, 69), PackedInt32Array(69, 67, 70), PackedInt32Array(70, 67, 71), PackedInt32Array(74, 73, 72), PackedInt32Array(77, 76, 75), PackedInt32Array(79, 78, 80), PackedInt32Array(80, 78, 81), PackedInt32Array(84, 83, 82), PackedInt32Array(86, 85, 87), PackedInt32Array(87, 85, 90), PackedInt32Array(87, 90, 89), PackedInt32Array(87, 89, 88), PackedInt32Array(93, 92, 91), PackedInt32Array(96, 95, 94), PackedInt32Array(99, 98, 97), PackedInt32Array(102, 101, 100), PackedInt32Array(105, 104, 103), PackedInt32Array(107, 106, 108), PackedInt32Array(108, 106, 109), PackedInt32Array(111, 110, 112), PackedInt32Array(112, 110, 113), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 119), PackedInt32Array(116, 119, 118), PackedInt32Array(116, 118, 117), PackedInt32Array(122, 121, 120), PackedInt32Array(123, 125, 124)]
+[sub_resource type="NavigationMesh" id="NavigationMesh_lt67s"]
+vertices = PackedVector3Array(-23.1, 0.63909, -29.2, -29.8, 0.63909, -29.2, -29.8, 0.63909, -22.7, -23.1, 0.63909, -29.2, -29.8, 0.63909, -22.7, -29.8, 0.63909, -16.1, -16.3, 0.63909, -29.2, -23.1, 0.63909, -29.2, -29.8, 0.63909, -16.1, -29.8, 0.63909, -9.6, -29.8, 0.63909, -3, -4.8, 0.63909, -3, -4.2, 0.63909, -4.2, -9.5, 0.63909, -29.2, -16.3, 0.63909, -29.2, -29.8, 0.63909, -9.6, -3.2, 0.63909, -4.7, -2.6, 0.63909, -4.7, -2.7, 0.63909, -29.2, -4.2, 0.63909, -4.2, -3.2, 0.63909, -4.7, -2.7, 0.63909, -29.2, -9.5, 0.63909, -29.2, -2.6, 0.63909, -4.7, 2.5, 0.63909, -4.7, 2.6, 0.63909, -29.2, -2.7, 0.63909, -29.2, 29.3, 0.63909, -22.5, 29.3, 0.63909, -29.2, 22.6, 0.63909, -29.2, 29.3, 0.63909, -15.8, 29.3, 0.63909, -22.5, 22.6, 0.63909, -29.2, 29.3, 0.63909, -15.8, 22.6, 0.63909, -29.2, 15.9, 0.63909, -29.2, 29.3, 0.63909, -9.1, 4.2, 0.63909, -4.1, 4.7, 0.63909, -3.1, 29.3, 0.63909, -2.3, 29.3, 0.63909, -9.1, 15.9, 0.63909, -29.2, 9.2, 0.63909, -29.2, 2.6, 0.63909, -29.2, 2.5, 0.63909, -4.7, 3.1, 0.63909, -4.7, 4.7, 0.63909, -3.1, 4.7, 0.63909, -2.3, 29.3, 0.63909, -2.3, 2.6, 0.63909, -29.2, 3.1, 0.63909, -4.7, 4.2, 0.63909, -4.1, 9.2, 0.63909, -29.2, -29.8, 0.63909, 3.1, -4.8, 0.63909, 3.1, -4.8, 0.63909, -3, -29.8, 0.63909, -3, 4.7, 0.63909, 2.4, 29.3, 0.63909, 2.4, 29.3, 0.63909, -2.3, 4.7, 0.63909, -2.3, -0.900003, 2.13909, -0.900003, -0.900003, 2.13909, 0.999996, 0.899998, 2.13909, 0.999996, 0.899998, 2.13909, -0.900003, 29.7, 0.63909, 24.4, 29.8, 0.63909, 23.4, 29.3, 0.63909, 22.6, 22.6, 0.63909, 29.3, 23.4, 0.63909, 29.8, 24.5, 0.63909, 29.6, 25.5, 0.63909, 30.1, 25.6, 0.63909, 30.4, 30.2, 0.63909, 30.4, 25.5, 0.63909, 30.1, 30.2, 0.63909, 30.4, 30.4, 0.63909, 30.2, 24.5, 0.63909, 29.6, 30.4, 0.63909, 30.2, 30.4, 0.63909, 25.5, 29.7, 0.63909, 24.4, 3.1, 0.63909, 4.8, 2.5, 0.63909, 4.8, 2.6, 0.63909, 29.3, 24.5, 0.63909, 29.6, 30.4, 0.63909, 30.2, 29.7, 0.63909, 24.4, 29.3, 0.63909, 22.6, 22.6, 0.63909, 29.3, 29.3, 0.63909, 2.4, 4.7, 0.63909, 2.4, 4.7, 0.63909, 3.2, 4.2, 0.63909, 4.2, 3.1, 0.63909, 4.8, 2.6, 0.63909, 29.3, 12.6, 0.63909, 29.3, 22.6, 0.63909, 29.3, 29.3, 0.63909, 22.6, 29.3, 0.63909, 12.5, 29.3, 0.63909, 2.4, 4.7, 0.63909, 3.2, 4.2, 0.63909, 4.2, 2.6, 0.63909, 29.3, 12.6, 0.63909, 29.3, 29.3, 0.63909, 12.5, -29.8, 0.63909, 22.7, -29.8, 0.63909, 29.3, -23.1, 0.63909, 29.3, -29.8, 0.63909, 16.2, -29.8, 0.63909, 22.7, -23.1, 0.63909, 29.3, -29.8, 0.63909, 16.2, -23.1, 0.63909, 29.3, -16.3, 0.63909, 29.3, -29.8, 0.63909, 9.6, -4.2, 0.63909, 4.3, -4.8, 0.63909, 3.1, -29.8, 0.63909, 3.1, -29.8, 0.63909, 9.6, -16.3, 0.63909, 29.3, -9.5, 0.63909, 29.3, -2.7, 0.63909, 29.3, -2.6, 0.63909, 4.8, -3.2, 0.63909, 4.8, -2.7, 0.63909, 29.3, -3.2, 0.63909, 4.8, -4.2, 0.63909, 4.3, -9.5, 0.63909, 29.3, -2.6, 0.63909, 4.8, -2.7, 0.63909, 29.3, 2.6, 0.63909, 29.3, 2.5, 0.63909, 4.8)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 5, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 15), PackedInt32Array(12, 15, 14), PackedInt32Array(12, 14, 13), PackedInt32Array(18, 17, 16), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(23, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(29, 28, 27), PackedInt32Array(32, 31, 30), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(38, 37, 39), PackedInt32Array(39, 37, 40), PackedInt32Array(40, 37, 41), PackedInt32Array(41, 37, 42), PackedInt32Array(45, 44, 43), PackedInt32Array(48, 47, 46), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 52), PackedInt32Array(56, 55, 53), PackedInt32Array(53, 55, 54), PackedInt32Array(60, 59, 57), PackedInt32Array(57, 59, 58), PackedInt32Array(64, 63, 61), PackedInt32Array(61, 63, 62), PackedInt32Array(67, 66, 65), PackedInt32Array(68, 70, 69), PackedInt32Array(71, 73, 72), PackedInt32Array(75, 74, 76), PackedInt32Array(76, 74, 77), PackedInt32Array(80, 79, 78), PackedInt32Array(83, 82, 81), PackedInt32Array(86, 85, 87), PackedInt32Array(87, 85, 84), PackedInt32Array(87, 84, 88), PackedInt32Array(91, 90, 89), PackedInt32Array(94, 93, 92), PackedInt32Array(96, 95, 97), PackedInt32Array(97, 95, 98), PackedInt32Array(100, 99, 101), PackedInt32Array(101, 99, 104), PackedInt32Array(101, 104, 103), PackedInt32Array(101, 103, 102), PackedInt32Array(107, 106, 105), PackedInt32Array(110, 109, 108), PackedInt32Array(112, 111, 113), PackedInt32Array(113, 111, 114), PackedInt32Array(116, 115, 117), PackedInt32Array(117, 115, 118), PackedInt32Array(118, 115, 119), PackedInt32Array(119, 115, 120), PackedInt32Array(123, 122, 121), PackedInt32Array(125, 124, 126), PackedInt32Array(126, 124, 127), PackedInt32Array(128, 131, 129), PackedInt32Array(129, 131, 130)]
 cell_size = 0.1
 cell_height = 0.1
-agent_height = 4.0
 agent_radius = 1.7
 
-[node name="FurnancePlane" type="NavigationRegion3D"]
-navigation_mesh = SubResource("NavigationMesh_cqbhm")
+[sub_resource type="BoxShape3D" id="BoxShape3D_157fl"]
 
-[node name="Floor" parent="." instance=ExtResource("1_4w62i")]
+[node name="FurnancePlane" type="Node3D"]
 
-[node name="Floor2" parent="." instance=ExtResource("1_4w62i")]
+[node name="FurnanceMesh" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_lt67s")
+
+[node name="Floor" parent="FurnanceMesh" instance=ExtResource("1_4w62i")]
+
+[node name="Floor2" parent="FurnanceMesh" instance=ExtResource("1_4w62i")]
 transform = Transform3D(-8.74228e-09, 4.37114e-08, 0.85, 0.2, -4.37114e-08, 3.71547e-08, 8.74228e-09, 1, -3.71547e-08, -4.8, 5.9, 31.5)
 
-[node name="Floor3" parent="." instance=ExtResource("1_4w62i")]
+[node name="Floor3" parent="FurnanceMesh" instance=ExtResource("1_4w62i")]
 transform = Transform3D(-8.74228e-09, -1, 8.9407e-08, 0.2, -4.37114e-08, 3.71547e-08, -8.74228e-09, 2.98023e-08, 0.85, 31.5, 5.9, -4.8)
 
-[node name="Floor4" parent="." instance=ExtResource("1_4w62i")]
+[node name="Floor4" parent="FurnanceMesh" instance=ExtResource("1_4w62i")]
 transform = Transform3D(8.74228e-09, -1.31134e-07, -1, 0.2, 1.91069e-15, 4.37114e-08, -7.64274e-16, -1, 1.31134e-07, -0.5, 5.9, -31.5)
 
-[node name="Floor5" parent="." instance=ExtResource("1_4w62i")]
+[node name="Floor5" parent="FurnanceMesh" instance=ExtResource("1_4w62i")]
 transform = Transform3D(-4.35868e-16, -1, 1.74846e-07, 0.2, 1.91069e-15, 4.37114e-08, -8.74228e-09, 1.74846e-07, 1, -32, 5.9, 0)
 
-[node name="Furnance" parent="." instance=ExtResource("2_cvquq")]
+[node name="Furnance" parent="FurnanceMesh" instance=ExtResource("2_cvquq")]
 
-[node name="Stop" parent="." instance=ExtResource("3_ob2e2")]
+[node name="Coal" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3, -1, -1.5)
+
+[node name="Coal2" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3, -1, -1.5)
+
+[node name="Coal3" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3, -1, -15.5)
+
+[node name="Coal4" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3, -1, -15.5)
+
+[node name="Coal5" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7, -1, -15.5)
+
+[node name="Coal6" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7, -1, 8.5)
+
+[node name="Coal7" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3, -1, 8.5)
+
+[node name="Coal8" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3, -1, 18.5)
+
+[node name="Coal9" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7, -1, 18.5)
+
+[node name="Coal10" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7, -1, -0.5)
+
+[node name="Coal11" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7, -1, -10.5)
+
+[node name="Coal12" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7, -1, -19.5)
+
+[node name="Coal13" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, -1, -19.5)
+
+[node name="Coal14" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, -1, -15.5)
+
+[node name="Coal15" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3, -1, -15.5)
+
+[node name="Coal16" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3, -1, -23.5)
+
+[node name="Coal17" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, -1, -23.5)
+
+[node name="Coal18" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7, -1, -23.5)
+
+[node name="Coal19" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7, -1, -23.5)
+
+[node name="Coal20" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7, -1, -8.5)
+
+[node name="Coal21" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7, -1, 16.5)
+
+[node name="Coal22" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, -1, 16.5)
+
+[node name="Coal23" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, -1, 16.5)
+
+[node name="Coal24" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3, -1, 16.5)
+
+[node name="Coal25" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7, -1, 23.5)
+
+[node name="Coal26" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3, -1, 23.5)
+
+[node name="Coal27" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7, -1, 23.5)
+
+[node name="Coal28" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, -1, 23.5)
+
+[node name="Coal29" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, -1, 11.5)
+
+[node name="Coal30" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7, -1, 11.5)
+
+[node name="Coal31" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7, -1, 2.5)
+
+[node name="Stop" parent="FurnanceMesh" instance=ExtResource("3_ob2e2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7, -0.2, 31.6)
 text = "WOODENS"
 
-[node name="Stop2" parent="." instance=ExtResource("3_ob2e2")]
+[node name="Stop2" parent="FurnanceMesh" instance=ExtResource("3_ob2e2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.7, -0.2, 24)
 text = "WILD"
 
-[node name="Coals" type="Node3D" parent="."]
-
-[node name="Coal" parent="Coals" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
-
-[node name="Coal2" parent="Coals" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
-
-[node name="Coal3" parent="Coals" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
-
-[node name="Coal4" parent="Coals" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
-
-[node name="Coal5" parent="Coals" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
-
-[node name="Coal6" parent="Coals" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
-
-[node name="Coal7" parent="Coals" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
-
-[node name="Coal8" parent="Coals" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
-
-[node name="Coal9" parent="Coals" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
-
-[node name="Coal10" parent="Coals" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
-
-[node name="Coals2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
-
-[node name="Coal" parent="Coals2" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
-
-[node name="Coal2" parent="Coals2" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
-
-[node name="Coal3" parent="Coals2" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
-
-[node name="Coal4" parent="Coals2" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
-
-[node name="Coal5" parent="Coals2" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
-
-[node name="Coal6" parent="Coals2" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
-
-[node name="Coal7" parent="Coals2" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
-
-[node name="Coal8" parent="Coals2" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
-
-[node name="Coal9" parent="Coals2" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
-
-[node name="Coal10" parent="Coals2" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
-
-[node name="Coals3" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, 0)
-
-[node name="Coal" parent="Coals3" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
-
-[node name="Coal2" parent="Coals3" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
-
-[node name="Coal3" parent="Coals3" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
-
-[node name="Coal4" parent="Coals3" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
-
-[node name="Coal5" parent="Coals3" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
-
-[node name="Coal6" parent="Coals3" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
-
-[node name="Coal7" parent="Coals3" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
-
-[node name="Coal8" parent="Coals3" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
-
-[node name="Coal9" parent="Coals3" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
-
-[node name="Coal10" parent="Coals3" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
-
-[node name="Coals4" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, 9)
-
-[node name="Coal" parent="Coals4" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
-
-[node name="Coal2" parent="Coals4" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
-
-[node name="Coal3" parent="Coals4" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
-
-[node name="Coal4" parent="Coals4" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
-
-[node name="Coal5" parent="Coals4" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
-
-[node name="Coal6" parent="Coals4" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
-
-[node name="Coal7" parent="Coals4" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
-
-[node name="Coal8" parent="Coals4" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
-
-[node name="Coal9" parent="Coals4" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
-
-[node name="Coal10" parent="Coals4" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
-
-[node name="Coals5" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, 9)
-
-[node name="Coal" parent="Coals5" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
-
-[node name="Coal2" parent="Coals5" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
-
-[node name="Coal3" parent="Coals5" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
-
-[node name="Coal4" parent="Coals5" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
-
-[node name="Coal5" parent="Coals5" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
-
-[node name="Coal6" parent="Coals5" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
-
-[node name="Coal7" parent="Coals5" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
-
-[node name="Coal8" parent="Coals5" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
-
-[node name="Coal9" parent="Coals5" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
-
-[node name="Coal10" parent="Coals5" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
-
-[node name="Coals6" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 9)
-
-[node name="Coal" parent="Coals6" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
-
-[node name="Coal2" parent="Coals6" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
-
-[node name="Coal3" parent="Coals6" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
-
-[node name="Coal4" parent="Coals6" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
-
-[node name="Coal5" parent="Coals6" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
-
-[node name="Coal6" parent="Coals6" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
-
-[node name="Coal7" parent="Coals6" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
-
-[node name="Coal8" parent="Coals6" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
-
-[node name="Coal9" parent="Coals6" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
-
-[node name="Coal10" parent="Coals6" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
-
-[node name="Coals7" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 9)
-
-[node name="Coal" parent="Coals7" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
-
-[node name="Coal2" parent="Coals7" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
-
-[node name="Coal3" parent="Coals7" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
-
-[node name="Coal4" parent="Coals7" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
-
-[node name="Coal5" parent="Coals7" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
-
-[node name="Coal6" parent="Coals7" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
-
-[node name="Coal7" parent="Coals7" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
-
-[node name="Coal8" parent="Coals7" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
-
-[node name="Coal9" parent="Coals7" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
-
-[node name="Coal10" parent="Coals7" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
-
-[node name="Coals8" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
-
-[node name="Coal" parent="Coals8" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -30.5)
-
-[node name="Coal2" parent="Coals8" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 1, -28.5)
-
-[node name="Coal3" parent="Coals8" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -30.5)
-
-[node name="Coal4" parent="Coals8" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -29.5)
-
-[node name="Coal5" parent="Coals8" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 1, -28.5)
-
-[node name="Coal6" parent="Coals8" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -28.5)
-
-[node name="Coal7" parent="Coals8" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, -29.5)
-
-[node name="Coal8" parent="Coals8" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -29.5)
-
-[node name="Coal9" parent="Coals8" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 2, -28.5)
-
-[node name="Coal10" parent="Coals8" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7, 2, -28.5)
-
 [node name="CoalMiner" parent="." instance=ExtResource("5_4qgsy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, 30)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, 5)
+
+[node name="Area3D" type="Area3D" parent="." groups=["FurnanceEntrance"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3, 2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_157fl")
+
+[node name="Area3D2" type="Area3D" parent="." groups=["FurnanceEntrance"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 2, 5.4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+shape = SubResource("BoxShape3D_157fl")
+
+[node name="Area3D3" type="Area3D" parent="." groups=["FurnanceEntrance"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, 2, 7.45058e-08)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3"]
+shape = SubResource("BoxShape3D_157fl")
+
+[node name="Area3D4" type="Area3D" parent="." groups=["FurnanceEntrance"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999994, 2, -5.3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D4"]
+shape = SubResource("BoxShape3D_157fl")

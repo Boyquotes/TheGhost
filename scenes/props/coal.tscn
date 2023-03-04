@@ -1,9 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkonm2i4ak6l3"]
+[gd_scene load_steps=10 format=3 uid="uid://dkonm2i4ak6l3"]
 
-[ext_resource type="Script" path="res://scripts/props/Coal.gd" id="1_dmtc0"]
+[ext_resource type="FontFile" uid="uid://7npjsho23vg3" path="res://imports/Fonts/IBM3161.ttf" id="2_loun7"]
+[ext_resource type="Script" path="res://scripts/player/PlayerLabel3D.gd" id="3_q0fb4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_38r4m"]
 absorbent = true
+
+[sub_resource type="GDScript" id="GDScript_g56ow"]
+script/source = "extends RigidBody3D
+
+var is_target = false
+
+var INITIAL_POSITION = Vector3()
+
+@export var health : int = 10 : 
+	set(value):
+		health = value
+		if (health <= 0):
+			queue_free()
+
+func getFuel():
+	var fuel = health
+	health = 0
+	return [fuel,\"zap\"]
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	INITIAL_POSITION = global_position
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	$Label3D.override(str(is_target))
+"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l50bp"]
 radius = 0.4
@@ -49,13 +78,13 @@ rim = 0.0
 rim_tint = 0.0
 
 [node name="RigidBody3D" type="RigidBody3D" groups=["Coal", "Fuel"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.3, 0)
 collision_layer = 9
 collision_mask = 15
 mass = 300.0
 physics_material_override = SubResource("PhysicsMaterial_38r4m")
-sleeping = true
-freeze_mode = 1
-script = ExtResource("1_dmtc0")
+can_sleep = false
+script = SubResource("GDScript_g56ow")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.2, 0.3, 0.1)
@@ -65,3 +94,23 @@ shape = SubResource("CapsuleShape3D_l50bp")
 mesh = SubResource("ArrayMesh_4p2nj")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_m28hb")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.83991, 0)
+ignore_occlusion_culling = true
+billboard = 1
+alpha_cut = 1
+render_priority = 127
+outline_render_priority = 127
+modulate = Color(0.294118, 0, 0.0156863, 1)
+outline_modulate = Color(0.294118, 0, 0.0156863, 1)
+text = "Hey!"
+font = ExtResource("2_loun7")
+font_size = 192
+outline_size = 10
+horizontal_alignment = 0
+vertical_alignment = 2
+line_spacing = -32.0
+autowrap_mode = 3
+width = 1344.0
+script = ExtResource("3_q0fb4")

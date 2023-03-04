@@ -29,14 +29,14 @@ var isOpen = false:
 signal is_open (isOpen : bool)
 
 func rigidBodyOnDoor(body):
-	if body.is_in_group(\"Moveable\") && !isOpen:
+	if body.is_in_group(\"Fuel\") && !isOpen:
 		animator.play(\"open\")
 		isOpen = true
 
 
 func rigidBodyOutDoor(body):
-	if body.is_in_group(\"Moveable\") && isOpen :
-		await get_tree().create_timer(0.5).timeout
+	if body.is_in_group(\"Fuel\") && isOpen :
+		await get_tree().create_timer(0.9).timeout
 		animator.play(\"close\")
 		isOpen=false
 
@@ -185,7 +185,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -196,7 +196,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 3.01, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -207,7 +207,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+"times": PackedFloat32Array(0, 0.5)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s6uyy"]
@@ -218,7 +218,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mqnjb"]
-size = Vector3(5, 1, 3)
+size = Vector3(5, 1, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qbc01"]
 transparency = 1
@@ -284,7 +284,7 @@ libraries = {
 [node name="DoorDetector" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.60178)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.40178)
 shape = SubResource("BoxShape3D_mqnjb")
 
 [node name="Sparks" type="GPUParticles3D" parent="."]
