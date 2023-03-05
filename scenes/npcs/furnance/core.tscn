@@ -202,10 +202,9 @@ material = SubResource("FogMaterial_jpfqo")
 [node name="OmniLight3D" type="OmniLight3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.613868, 0)
 light_color = Color(1, 0.388235, 0.184314, 1)
-light_energy = 20.0
-light_specular = 1.0
+light_energy = 16.0
 shadow_enabled = true
-omni_range = 15.0
+omni_range = 10.0
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0603607, 2.20577, 4.6754)
