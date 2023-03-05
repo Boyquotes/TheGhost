@@ -34,6 +34,8 @@ var stop_grabbing = false:
 
 var should_rest = false:
 	set(value):
+		if value:
+			nav_agent.target_position = INITIAL_POSITION
 		await get_tree().create_timer(1.0).timeout
 		should_rest = value
 
@@ -89,7 +91,6 @@ func _on_target_reached():
 		target_coal = null
 		grabbed = false
 		stop_grabbing = true
-		nav_agent.target_position = INITIAL_POSITION
 		await get_tree().create_timer(2.0).timeout
 		if old_coal != null:
 			old_coal.is_target = false
@@ -104,9 +105,10 @@ func _on_grab_detector_coal_on_range(coal:RigidBody3D):
 		target_coal.angular_velocity = Vector3(0,0,0)
 		target_coal.linear_velocity = Vector3(0,0,0)
 		target_coal.freeze = true
-		target_coal.global_position = grab_position.global_position
 		grabbed = true
-		await get_tree().create_timer(0.625).timeout
+		await get_tree().create_timer(0.35).timeout
+		target_coal.global_position = grab_position.global_position
+		await get_tree().create_timer(0.5).timeout
 		freeze = false
 
 func get_new_coal():
