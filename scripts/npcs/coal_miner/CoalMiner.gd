@@ -96,7 +96,7 @@ func _on_target_reached():
 			old_coal.is_target = false
 
 func _on_grab_detector_coal_on_range(coal:RigidBody3D):
-	if not target_coal or grabbed or stop_grabbing:
+	if target_coal == null or grabbed or stop_grabbing:
 		return
 	if coal.get_instance_id() == target_coal.get_instance_id():
 		freeze = true
