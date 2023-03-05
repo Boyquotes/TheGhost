@@ -15,6 +15,13 @@ var INITIAL_POSITION = Vector3()
 
 var calculated_velocity = Vector3()
 
+var grabbed = false:
+	set(value):
+		if not grabbed and value:
+			nav_agent.target_position = destinations[randi_range(0,3)].global_position
+			needs_to_move = true
+		grabbed = value
+
 var target_coal = null:
 	set(value):
 		needs_to_move=true
@@ -27,17 +34,16 @@ var stop_grabbing = false:
 			await get_tree().create_timer(1).timeout
 			stop_grabbing = false
 
+var should_rest = false:
+	set(value):
+		await get_tree().create_timer(1.0).timeout
+		should_rest = value
+
 var on_floor = false
 var needs_to_move = false
-var should_rest = false
 var rest = true
 
-var grabbed = false:
-	set(value):
-		if not grabbed and value:
-			nav_agent.target_position = destinations[randi_range(0,3)].global_position
-			needs_to_move = true
-		grabbed = value
+
 
 func _ready():
 	INITIAL_POSITION = global_position
@@ -60,6 +66,10 @@ func _physics_process(delta):
 		destinations = fov.get_overlapping_areas().filter(func(obj): return obj.is_in_group("FurnanceEntrance"))
 	if target_coal == null:
 		get_new_coal()
+	else:
+		needs_to_move = true
+		rest = false
+		should_rest = false
 	if needs_to_move:
 		rotate_towards_motion(delta)
 		if grabbed and target_coal:
@@ -86,7 +96,7 @@ func _on_target_reached():
 		grabbed = false
 		stop_grabbing = true
 		nav_agent.target_position = INITIAL_POSITION
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(2.0).timeout
 		if old_coal != null:
 			old_coal.is_target = false
 
@@ -102,7 +112,7 @@ func _on_grab_detector_coal_on_range(coal:RigidBody3D):
 		target_coal.freeze = true
 		target_coal.global_position = grab_position.global_position
 		grabbed = true
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.625).timeout
 		freeze = false
 
 func get_new_coal():
