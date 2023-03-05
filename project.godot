@@ -25,6 +25,7 @@ window/size/viewport_width=426
 window/size/viewport_height=240
 window/size/mode=3
 window/size/resizable=false
+window/dpi/allow_hidpi=false
 window/vsync/vsync_mode=0
 window/stretch/mode="viewport"
 
@@ -131,6 +132,7 @@ idk={
 3d_physics/layer_2="Enemy"
 3d_physics/layer_3="Props"
 3d_physics/layer_4="Player"
+3d_physics/layer_5="Npc"
 
 [physics]
 
@@ -143,10 +145,19 @@ lights_and_shadows/directional_shadow/size=8192
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
 lights_and_shadows/directional_shadow/16_bits=false
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=5
+global_illumination/voxel_gi/quality=1
+environment/ssao/quality=4
+environment/ssao/half_size=false
+environment/ssil/quality=4
+environment/ssil/half_size=false
 anti_aliasing/screen_space_roughness_limiter/enabled=false
+environment/screen_space_reflection/roughness_quality=3
+environment/subsurface_scattering/subsurface_scattering_quality=3
+global_illumination/sdfgi/probe_ray_count=2
+global_illumination/sdfgi/frames_to_update_lights=1
 lights_and_shadows/positional_shadow/atlas_size=8192
 lights_and_shadows/positional_shadow/atlas_16_bits=false
-lights_and_shadows/positional_shadow/atlas_quadrant_0_subdiv=4
-lights_and_shadows/positional_shadow/atlas_quadrant_1_subdiv=4
+lights_and_shadows/positional_shadow/atlas_quadrant_0_subdiv=5
+lights_and_shadows/positional_shadow/atlas_quadrant_1_subdiv=5
 lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv=5
 lights_and_shadows/positional_shadow/atlas_quadrant_3_subdiv=6

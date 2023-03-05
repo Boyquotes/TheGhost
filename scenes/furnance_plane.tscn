@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqkphpl7f0ip4"]
+[gd_scene load_steps=8 format=3 uid="uid://dxxe8ypm62brj"]
 
 [ext_resource type="PackedScene" uid="uid://1cinutwv1t3l" path="res://scenes/props/floor.tscn" id="1_4w62i"]
 [ext_resource type="PackedScene" uid="uid://nwfp3m8cudyt" path="res://scenes/npcs/furnance/core.tscn" id="2_cvquq"]
 [ext_resource type="PackedScene" uid="uid://d28lp74syx3hn" path="res://scenes/props/stop.tscn" id="3_ob2e2"]
 [ext_resource type="PackedScene" uid="uid://dkonm2i4ak6l3" path="res://scenes/props/coal.tscn" id="4_jbc3s"]
-[ext_resource type="PackedScene" uid="uid://be7wes2642p0d" path="res://scenes/npcs/coal_miner/CoalMinerController.tscn" id="5_4qgsy"]
+[ext_resource type="PackedScene" uid="uid://cto1l3a4efs36" path="res://scenes/npcs/coal_miner/CoalMiner.tscn" id="5_4qgsy"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_lt67s"]
 vertices = PackedVector3Array(-23.1, 0.63909, -29.2, -29.8, 0.63909, -29.2, -29.8, 0.63909, -22.7, -23.1, 0.63909, -29.2, -29.8, 0.63909, -22.7, -29.8, 0.63909, -16.1, -16.3, 0.63909, -29.2, -23.1, 0.63909, -29.2, -29.8, 0.63909, -16.1, -29.8, 0.63909, -9.6, -29.8, 0.63909, -3, -4.8, 0.63909, -3, -4.2, 0.63909, -4.2, -9.5, 0.63909, -29.2, -16.3, 0.63909, -29.2, -29.8, 0.63909, -9.6, -3.2, 0.63909, -4.7, -2.6, 0.63909, -4.7, -2.7, 0.63909, -29.2, -4.2, 0.63909, -4.2, -3.2, 0.63909, -4.7, -2.7, 0.63909, -29.2, -9.5, 0.63909, -29.2, -2.6, 0.63909, -4.7, 2.5, 0.63909, -4.7, 2.6, 0.63909, -29.2, -2.7, 0.63909, -29.2, 29.3, 0.63909, -22.5, 29.3, 0.63909, -29.2, 22.6, 0.63909, -29.2, 29.3, 0.63909, -15.8, 29.3, 0.63909, -22.5, 22.6, 0.63909, -29.2, 29.3, 0.63909, -15.8, 22.6, 0.63909, -29.2, 15.9, 0.63909, -29.2, 29.3, 0.63909, -9.1, 4.2, 0.63909, -4.1, 4.7, 0.63909, -3.1, 29.3, 0.63909, -2.3, 29.3, 0.63909, -9.1, 15.9, 0.63909, -29.2, 9.2, 0.63909, -29.2, 2.6, 0.63909, -29.2, 2.5, 0.63909, -4.7, 3.1, 0.63909, -4.7, 4.7, 0.63909, -3.1, 4.7, 0.63909, -2.3, 29.3, 0.63909, -2.3, 2.6, 0.63909, -29.2, 3.1, 0.63909, -4.7, 4.2, 0.63909, -4.1, 9.2, 0.63909, -29.2, -29.8, 0.63909, 3.1, -4.8, 0.63909, 3.1, -4.8, 0.63909, -3, -29.8, 0.63909, -3, 4.7, 0.63909, 2.4, 29.3, 0.63909, 2.4, 29.3, 0.63909, -2.3, 4.7, 0.63909, -2.3, -0.900003, 2.13909, -0.900003, -0.900003, 2.13909, 0.999996, 0.899998, 2.13909, 0.999996, 0.899998, 2.13909, -0.900003, 29.7, 0.63909, 24.4, 29.8, 0.63909, 23.4, 29.3, 0.63909, 22.6, 22.6, 0.63909, 29.3, 23.4, 0.63909, 29.8, 24.5, 0.63909, 29.6, 25.5, 0.63909, 30.1, 25.6, 0.63909, 30.4, 30.2, 0.63909, 30.4, 25.5, 0.63909, 30.1, 30.2, 0.63909, 30.4, 30.4, 0.63909, 30.2, 24.5, 0.63909, 29.6, 30.4, 0.63909, 30.2, 30.4, 0.63909, 25.5, 29.7, 0.63909, 24.4, 3.1, 0.63909, 4.8, 2.5, 0.63909, 4.8, 2.6, 0.63909, 29.3, 24.5, 0.63909, 29.6, 30.4, 0.63909, 30.2, 29.7, 0.63909, 24.4, 29.3, 0.63909, 22.6, 22.6, 0.63909, 29.3, 29.3, 0.63909, 2.4, 4.7, 0.63909, 2.4, 4.7, 0.63909, 3.2, 4.2, 0.63909, 4.2, 3.1, 0.63909, 4.8, 2.6, 0.63909, 29.3, 12.6, 0.63909, 29.3, 22.6, 0.63909, 29.3, 29.3, 0.63909, 22.6, 29.3, 0.63909, 12.5, 29.3, 0.63909, 2.4, 4.7, 0.63909, 3.2, 4.2, 0.63909, 4.2, 2.6, 0.63909, 29.3, 12.6, 0.63909, 29.3, 29.3, 0.63909, 12.5, -29.8, 0.63909, 22.7, -29.8, 0.63909, 29.3, -23.1, 0.63909, 29.3, -29.8, 0.63909, 16.2, -29.8, 0.63909, 22.7, -23.1, 0.63909, 29.3, -29.8, 0.63909, 16.2, -23.1, 0.63909, 29.3, -16.3, 0.63909, 29.3, -29.8, 0.63909, 9.6, -4.2, 0.63909, 4.3, -4.8, 0.63909, 3.1, -29.8, 0.63909, 3.1, -29.8, 0.63909, 9.6, -16.3, 0.63909, 29.3, -9.5, 0.63909, 29.3, -2.7, 0.63909, 29.3, -2.6, 0.63909, 4.8, -3.2, 0.63909, 4.8, -2.7, 0.63909, 29.3, -3.2, 0.63909, 4.8, -4.2, 0.63909, 4.3, -9.5, 0.63909, 29.3, -2.6, 0.63909, 4.8, -2.7, 0.63909, 29.3, 2.6, 0.63909, 29.3, 2.5, 0.63909, 4.8)
@@ -14,6 +14,7 @@ cell_height = 0.1
 agent_radius = 1.7
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_157fl"]
+size = Vector3(2, 1, 2)
 
 [node name="FurnancePlane" type="Node3D"]
 
@@ -40,31 +41,49 @@ transform = Transform3D(-4.35868e-16, -1, 1.74846e-07, 0.2, 1.91069e-15, 4.37114
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7, -1, 23.5)
 
 [node name="Coal28" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, -1, 23.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7, -1, 16.5)
 
 [node name="Coal29" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, -1, 11.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7, -1, 16.5)
 
 [node name="Coal30" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7, -1, 11.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7, -1, 20.5)
 
 [node name="Coal31" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7, -1, 2.5)
-
-[node name="Coal32" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, -1, 23.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7, -1, 24.5)
 
 [node name="Coal33" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3, -1, 23.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7, -1, 24.5)
+
+[node name="Coal32" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7, -1, 20.5)
 
 [node name="Coal34" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3, -1, 11.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, -1, 12.5)
 
 [node name="Coal35" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3, -1, 11.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7, -1, -14.5)
 
 [node name="Coal36" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3, -1, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7, -1, -21.5)
+
+[node name="Coal37" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7, -1, -21.5)
+
+[node name="Coal38" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7, -1, -17.5)
+
+[node name="Coal39" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7, -1, -13.5)
+
+[node name="Coal40" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7, -1, -13.5)
+
+[node name="Coal41" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7, -1, -17.5)
+
+[node name="Coal42" parent="FurnanceMesh/Furnance" instance=ExtResource("4_jbc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, -1, -25.5)
 
 [node name="Stop" parent="FurnanceMesh" instance=ExtResource("3_ob2e2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7, -0.2, 31.6)
@@ -76,6 +95,15 @@ text = "WILD"
 
 [node name="CoalMiner" parent="." instance=ExtResource("5_4qgsy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, 5)
+
+[node name="CoalMiner2" parent="." instance=ExtResource("5_4qgsy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, -11)
+
+[node name="CoalMiner3" parent="." instance=ExtResource("5_4qgsy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, -3)
+
+[node name="CoalMiner4" parent="." instance=ExtResource("5_4qgsy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, 13)
 
 [node name="Area3D" type="Area3D" parent="." groups=["FurnanceEntrance"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3, 2, 0)

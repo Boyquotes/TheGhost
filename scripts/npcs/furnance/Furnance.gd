@@ -23,7 +23,7 @@ func rigidBodyOnConsumer(body : RigidBody3D):
 	if fuel[0] > 0 :
 		chimney.speed_scale = chimney_smoke_speed * 4.0
 		chimneyLight.light_energy= 24.0
-		chimneyLight.light_volumetric_fog_energy = 8
+		chimneyLight.light_volumetric_fog_energy = 2
 		for door in doors.get_children():
 			door.sparks_high()
 	await get_tree().create_timer(2).timeout

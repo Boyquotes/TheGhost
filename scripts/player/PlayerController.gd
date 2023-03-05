@@ -165,7 +165,7 @@ func push():
 		sm.is_pushing = true
 		await get_tree().create_timer(0.30).timeout
 		if objsToPush[0] is RigidBody3D:
-			objsToPush[0].apply_central_impulse(direction* 170000)
+			objsToPush[0].apply_central_impulse(direction* objsToPush[0].mass * 20)
 		else:
 			objsToPush[0].push()
 		dec_stamina()

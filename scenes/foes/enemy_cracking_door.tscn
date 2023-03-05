@@ -13,7 +13,6 @@
 [ext_resource type="Script" path="res://scripts/player/PlayerLabel3D.gd" id="6_cu4we"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nvh4r"]
-friction = 0.51
 absorbent = true
 
 [sub_resource type="Animation" id="Animation_267fg"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bfan743wneoqh"]
 
 [ext_resource type="PackedScene" uid="uid://1cinutwv1t3l" path="res://scenes/props/floor.tscn" id="1_qn23l"]
-[ext_resource type="PackedScene" uid="uid://bqkphpl7f0ip4" path="res://scenes/furnance_plane.tscn" id="2_dqbvf"]
+[ext_resource type="PackedScene" uid="uid://dxxe8ypm62brj" path="res://scenes/furnance_plane.tscn" id="2_dqbvf"]
 [ext_resource type="PackedScene" uid="uid://c5v2jrbwtfkpk" path="res://scenes/player/player.tscn" id="3_5fsbt"]
 [ext_resource type="PackedScene" uid="uid://bq8q4xxajkmv0" path="res://scenes/maze.tscn" id="6_k2kex"]
 [ext_resource type="PackedScene" uid="uid://bqo3tjtuvfrpx" path="res://scenes/props/elevator.tscn" id="10_cgyns"]
@@ -64,7 +64,7 @@ size = Vector3(200, 60, 200)
 material = SubResource("FogMaterial_2sf1i")
 
 [node name="Player" parent="." instance=ExtResource("3_5fsbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 6, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, 8)
 
 [node name="DeathArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -146.763, 0)
