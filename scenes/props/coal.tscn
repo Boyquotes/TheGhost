@@ -79,8 +79,7 @@ rim_tint = 0.0
 
 [node name="RigidBody3D" type="RigidBody3D" groups=["Coal", "Fuel"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.3, 0)
-collision_layer = 9
-collision_mask = 15
+collision_mask = 31
 mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_38r4m")
 can_sleep = false
@@ -97,6 +96,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m28hb")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.83991, 0)
+visible = false
 ignore_occlusion_culling = true
 billboard = 1
 alpha_cut = 1

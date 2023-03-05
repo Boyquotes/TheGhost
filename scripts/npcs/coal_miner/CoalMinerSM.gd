@@ -14,23 +14,23 @@ signal entered_state (state : String, startSec : float)
 
 func _ready():
 	add_states(STATES)
-	call_deferred("set_state", STATES.walking)
+	call_deferred("set_state", STATES.idle)
 
 func _update_state(_delta):
-	#label.override(str(parent.needs_to_move, " ", STATES.find_key(state)))
+	#label.override(str(parent.target_coal))
 	match state:
 		STATES.walking:
-			if parent.should_rest:
+			if parent.rest:
 				return STATES.idle
 			if parent.grabbed:
 				return STATES.grab
 		STATES.walking_grab:
-			if parent.should_rest:
+			if parent.rest:
 				return STATES.idle
 			if not parent.grabbed:
 				return STATES.walking
 		STATES.idle:
-			if not parent.should_rest:
+			if not parent.rest:
 				return STATES.walking
 
 func _enter_state(new_state, _old_state):
