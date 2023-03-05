@@ -1691,11 +1691,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0.130924)
 shape = SubResource("CapsuleShape3D_oru1d")
 
 [node name="EnemyNavigationAgent3D" type="NavigationAgent3D" parent="."]
-target_desired_distance = 2.5
+target_desired_distance = 2.0
 path_max_distance = 100.0
-max_neighbors = 20
-max_speed = 22.0
-ignore_y = false
 
 [node name="RayCast3D" type="RayCast3D" parent="." groups=["RayCast"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1979, 0)

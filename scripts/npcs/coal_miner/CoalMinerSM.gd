@@ -17,7 +17,7 @@ func _ready():
 	call_deferred("set_state", STATES.idle)
 
 func _update_state(_delta):
-	label.override(str(parent.target_coal))
+	label.override(str("should_rest ", parent.should_rest, "|rest ", parent.rest))
 	match state:
 		STATES.walking:
 			if parent.rest:

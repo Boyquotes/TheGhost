@@ -88,8 +88,12 @@ func _on_enemy_fov_player(player_location):
 			raycast.debug_shape_custom_color = Color(0,1,0,1)
 
 func _on_enemy_navigation_agent_3d_navigation_finished():
+	if !needs_return:
+		needs_return = true
+	else:
+		needs_return = false
+		chasing = false
 	has_target = false
-	needs_return = true
 
 func stun(stun_source_pos):
 	sm.stun_source_pos = stun_source_pos

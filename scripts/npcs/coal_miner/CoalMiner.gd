@@ -8,7 +8,7 @@ extends RigidBody3D
 @onready var grab_position : Node3D = $Mesh/GrabPosition
 @onready var destinations : Array
 
-const ACCEL= 2.0
+const ACCEL= 1.0
 const MAX_SPEED = 4.0
 
 var INITIAL_POSITION = Vector3()
@@ -19,12 +19,10 @@ var grabbed = false:
 	set(value):
 		if not grabbed and value:
 			nav_agent.target_position = destinations[randi_range(0,3)].global_position
-			needs_to_move = true
 		grabbed = value
 
 var target_coal = null:
 	set(value):
-		needs_to_move=true
 		target_coal=value
 
 var stop_grabbing = false:
@@ -40,10 +38,8 @@ var should_rest = false:
 		should_rest = value
 
 var on_floor = false
-var needs_to_move = false
+
 var rest = true
-
-
 
 func _ready():
 	INITIAL_POSITION = global_position
@@ -64,21 +60,19 @@ func _physics_process(delta):
 		return
 	if destinations.is_empty():
 		destinations = fov.get_overlapping_areas().filter(func(obj): return obj.is_in_group("FurnanceEntrance"))
+	rotate_towards_motion(delta)
 	if target_coal == null:
 		get_new_coal()
 	else:
-		needs_to_move = true
 		rest = false
 		should_rest = false
-	if needs_to_move:
-		rotate_towards_motion(delta)
 		if grabbed and target_coal:
 			target_coal.global_position = grab_position.global_position
 
 func rotate_towards_motion(delta):
-	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 5.0)
+	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 2.0)
 	if grabbed and target_coal:
-		target_coal.rotation.y = lerp_angle(target_coal.rotation.y, mesh.rotation.y, delta * 15.0)
+		target_coal.rotation.y = lerp_angle(target_coal.rotation.y, mesh.rotation.y, delta * 5.0)
 
 func _on_floor_detector_miner_on_floor(boolean):
 	on_floor = true
@@ -131,7 +125,7 @@ func get_new_coal():
 
 func get_current_coal_position():
 	await get_tree().create_timer(0.5).timeout
-	if target_coal and not grabbed:
+	if target_coal!= null and not grabbed:
 		if not target_coal.is_queued_for_deletion():
 			nav_agent.target_position = target_coal.global_position
 	get_current_coal_position() 
