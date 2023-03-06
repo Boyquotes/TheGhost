@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://nwfp3m8cudyt"]
+[gd_scene load_steps=30 format=3 uid="uid://nwfp3m8cudyt"]
 
 [ext_resource type="Material" uid="uid://cv1elwyxjdi1f" path="res://materials/new_standard_material_3d.tres" id="1_fsp24"]
 [ext_resource type="Script" path="res://scripts/npcs/furnance/Furnance.gd" id="2_1ppdy"]
@@ -47,15 +47,15 @@ data = PackedVector3Array(0.0111532, 3.01525, 1.84404, -0.176078, 3.05162, 3.793
 backface_collision = true
 
 [sub_resource type="FogMaterial" id="FogMaterial_jpfqo"]
-density = 0.2
 emission = Color(0.380392, 0.243137, 0.176471, 1)
+height_falloff = 5.61928
+edge_fade = 0.0499999
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ki458"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2087w"]
 transparency = 1
 cull_mode = 2
-shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 albedo_color = Color(0.376471, 0.376471, 0.376471, 0.635294)
@@ -140,6 +140,9 @@ size = Vector3(12, 3.007, 12)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mqnjb"]
 size = Vector3(2, 4, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k68a3"]
+size = Vector3(2, 1, 2)
 
 [node name="Furnance" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
@@ -284,6 +287,30 @@ transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -2.
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConsumerDetector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37114e-08, -0.5, 0)
 shape = SubResource("BoxShape3D_mqnjb")
+
+[node name="Area3D" type="Area3D" parent="." groups=["FurnanceEntrance"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3, -3.4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_k68a3")
+
+[node name="Area3D2" type="Area3D" parent="." groups=["FurnanceEntrance"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, -3.4, 5.4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+shape = SubResource("BoxShape3D_k68a3")
+
+[node name="Area3D3" type="Area3D" parent="." groups=["FurnanceEntrance"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, -3.4, 7.45058e-08)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3"]
+shape = SubResource("BoxShape3D_k68a3")
+
+[node name="Area3D4" type="Area3D" parent="." groups=["FurnanceEntrance"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999994, -3.4, -5.3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D4"]
+shape = SubResource("BoxShape3D_k68a3")
 
 [connection signal="is_open" from="Doors/Door" to="Gravity" method="_on_door_is_open"]
 [connection signal="is_open" from="Doors/Door2" to="Gravity" method="_on_door_2_is_open"]

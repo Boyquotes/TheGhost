@@ -107,7 +107,8 @@ func _on_grab_detector_coal_on_range(coal:RigidBody3D):
 		target_coal.freeze = true
 		grabbed = true
 		await get_tree().create_timer(0.35).timeout
-		target_coal.global_position = grab_position.global_position
+		if target_coal != null:
+			target_coal.global_position = grab_position.global_position
 		await get_tree().create_timer(0.5).timeout
 		freeze = false
 

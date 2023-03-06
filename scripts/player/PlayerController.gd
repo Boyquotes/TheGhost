@@ -1,5 +1,5 @@
 extends RigidBody3D
-@export var MAX_SPEED : float = 5.0
+@export var MAX_SPEED : float = 4.5
 @export var SPEED : float = 1000.0
 @export var ROTATION_SPEED : int = 8
 
@@ -168,7 +168,6 @@ func push():
 			objsToPush[0].apply_central_impulse(direction* objsToPush[0].mass * 20)
 		else:
 			objsToPush[0].push()
-		dec_stamina()
 		await get_tree().create_timer(1).timeout
 		can_push = true
 	
@@ -185,7 +184,6 @@ func jump():
 	await get_tree().create_timer(0.33).timeout
 	if on_floor:
 		direction = direction.normalized()
-		dec_stamina()
 		apply_central_impulse(Vector3(direction.x*6500.0, 15000.0, direction.z*6500.0))
 		for obj in floor_detector.get_overlapping_bodies().filter(func(obj): return obj.is_in_group("IsPushedDown")):
 			obj.apply_central_impulse(Vector3(direction.x*6000.0, -10000.0, direction.z*6000.0))
