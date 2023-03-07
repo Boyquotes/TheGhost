@@ -26,9 +26,6 @@ var is_pushing = false:
 		is_pushing = value
 		if value:
 			set_state(STATES.push)
-			await get_tree().create_timer(0.67).timeout
-			set_state(STATES.idle)
-			is_pushing=false
 
 var health = 10 :
 	set(value):
@@ -142,3 +139,6 @@ func _on_animation_player_animation_finished(anim_name):
 		parent.freeze = true
 		parent.freeze = false
 		parent.dashing = false
+	if anim_name == "push":
+		set_state(STATES.idle)
+		is_pushing = false

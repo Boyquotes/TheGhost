@@ -26,13 +26,14 @@ var stamina = MAX_STAMINA:
 
 var dashing = false :
 	set(value):
+		var old_dashing = dashing
+		dashing = value
 		if value:
 			dashing_effects.emitting = true
 		else:
 			dashing_effects.emitting = false
-		if dashing && !value:
+		if old_dashing && !value:
 			dashing_stop.emitting = true
-		dashing = value
 
 var on_floor = true :
 	set(value):
@@ -107,7 +108,7 @@ func _input(event):
 		push()
 	if event.is_action_pressed("jump") && !sm.is_hit && sm.state in [1,2,7] && !jumping:
 		jump()
-	if event.is_action_pressed("talk") && !sm.is_hit && sm.state in [1,2,7] && !jumping:
+	if event.is_action_pressed("talk") && !sm.is_hit && sm.state in [2] && !jumping:
 		dash()
 
 
@@ -193,6 +194,8 @@ func dash():
 	if stamina <= 0:
 		return
 	if dashing:
+		return
+	if sm.state != 2:
 		return
 	dashing = true
 	var direction = Vector3.ZERO

@@ -47,19 +47,18 @@ data = PackedVector3Array(0.0111532, 3.01525, 1.84404, -0.176078, 3.05162, 3.793
 backface_collision = true
 
 [sub_resource type="FogMaterial" id="FogMaterial_jpfqo"]
+density = 0.3
 emission = Color(0.380392, 0.243137, 0.176471, 1)
-height_falloff = 5.61928
-edge_fade = 0.0499999
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ki458"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2087w"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xv8ml"]
 transparency = 1
-cull_mode = 2
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-albedo_color = Color(0.376471, 0.376471, 0.376471, 0.635294)
+albedo_color = Color(0.854902, 0.368627, 0, 1)
 albedo_texture = ExtResource("5_b2ix4")
+emission_enabled = true
+emission = Color(0.796078, 0.419608, 0, 1)
+emission_energy_multiplier = 0.05
 refraction_scale = 1.0
 refraction_texture = SubResource("CompressedTexture2D_ki458")
 billboard_mode = 3
@@ -99,7 +98,7 @@ scale_curve = SubResource("CurveTexture_l6mkp")
 color_ramp = SubResource("GradientTexture1D_dmlji")
 turbulence_noise_strength = 2.0
 turbulence_noise_scale = 1.0
-collision_mode = 2
+attractor_interaction_enabled = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_5dxlh"]
 
@@ -196,8 +195,8 @@ script = ExtResource("6_kl01s")
 [node name="Effects" type="Node3D" parent="."]
 
 [node name="FogVolume" type="FogVolume" parent="Effects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.69471, 0)
-size = Vector3(28, 8, 30)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.69471, 0)
+size = Vector3(28, 10, 30)
 shape = 0
 material = SubResource("FogMaterial_jpfqo")
 
@@ -219,7 +218,7 @@ spot_angle = 24.54
 
 [node name="Smoke" type="GPUParticles3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320849, 4.32126, 4.71112)
-material_override = SubResource("StandardMaterial3D_2087w")
+material_override = SubResource("StandardMaterial3D_xv8ml")
 lifetime = 2.0
 speed_scale = 0.2
 randomness = 0.4
