@@ -37,7 +37,7 @@ func _physics_process(delta):
 		pushActionUi.visible = false
 
 func _on_sm_entered_state(state, startSec):
-	label.override(state)
+	#label.override(state)
 	if(animator.has_animation(state)):
 		if state in ["walking"] :
 			animator.playback_default_blend_time = 0.3

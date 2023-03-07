@@ -16,29 +16,41 @@ var checkpoint = null :
 
 var jumping = false
 
+var spam_timer
+
+var spam = false:
+	set(value):
+		spam = value
+		if value:
+			spam_timer = get_tree().create_timer(0.75)
+			await spam_timer.timeout
+			spam = false
+
 signal current_stamina (value : int)
 
 var stamina = MAX_STAMINA:
 	set(value):
+		stamina = value
+		emit_signal("current_stamina", stamina)
 		if value > 0:
 			player_light.light_energy = 2
 		if stamina == 0:
 			stamina_timer.start(2)
+			return
 		elif value < MAX_STAMINA:
 			stamina_timer.start(3)
-		stamina = value
-		emit_signal("current_stamina", stamina)
+
+var stamina_display = stamina
 
 var dashing = false :
 	set(value):
-		var old_dashing = dashing
-		dashing = value
 		if value:
 			dashing_effects.emitting = true
 		else:
 			dashing_effects.emitting = false
-		if old_dashing && !value:
+		if dashing && !value:
 			dashing_stop.emitting = true
+		dashing = value
 
 var on_floor = true :
 	set(value):
@@ -77,7 +89,6 @@ var can_push = true
 @onready var stamina_timer : Timer = $StaminaTimer
 @onready var player_light : OmniLight3D = get_tree().get_first_node_in_group("PlayerLight")
 
-
 var inform_death = []
 
 signal player_spawn (pos : Vector3)
@@ -108,12 +119,21 @@ func _handle_move_input():
 	speed = motion.normalized().length() * SPEED
 	motion = motion.normalized() * speed
 
+func  _physics_process(delta):
+	if stamina < MAX_STAMINA:
+		var cs = (stamina_timer.time_left - stamina_timer.wait_time) / - stamina_timer.wait_time
+		stamina_display = stamina+cs
+		#player_text.override(str("current stamina ", str(stamina+(cs)).pad_decimals(2) ))
+	else:
+		stamina_display = MAX_STAMINA
+
 func _input(event):
-	if event.is_action_pressed("push"):
+	if event.is_action_pressed("push") && sm.state in [1,2,7] && !jumping:
 		push()
 	if event.is_action_pressed("jump") && !sm.is_hit && sm.state in [1,2,7] && !jumping:
 		jump()
-	if event.is_action_pressed("talk") && !sm.is_hit && sm.state in [2] && !jumping:
+	if event.is_action_pressed("dash") && !sm.is_hit && sm.state in [2] && !jumping && not spam:
+		spam = true
 		dash()
 
 
@@ -161,7 +181,7 @@ func push():
 	if stamina <= 0:
 		return
 	if can_push:
-		if sm.is_hit || sm.is_pushing :
+		if sm.is_hit || sm.is_pushing:
 			return
 		var objsToPush = pushArea.get_overlapping_bodies().filter(func(obj): return obj.is_in_group("Moveable"))
 		if objsToPush.is_empty():
