@@ -278,6 +278,8 @@ size = Vector3(0.2, 0.213, 1)
 [sub_resource type="GDScript" id="GDScript_lyn1i"]
 script/source = "extends StaticBody3D
 
+@onready var checkpoint : Node3D = get_tree().get_first_node_in_group(\"SpawnPoint\")
+
 func push():
 	get_parent().get_parent().get_parent().push()
 "
@@ -498,7 +500,7 @@ mesh = SubResource("BoxMesh_ctxs2")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_g0fqt")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Lever/MeshInstance3D3/MeshInstance3D2" groups=["Moveable"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="Lever/MeshInstance3D3/MeshInstance3D2" groups=["Checkpoint", "Moveable"]]
 physics_material_override = SubResource("PhysicsMaterial_wjj83")
 script = SubResource("GDScript_lyn1i")
 
@@ -513,6 +515,9 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UpperDetection"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207975, 0.0327009, 0)
 shape = SubResource("BoxShape3D_aw3q7")
+
+[node name="SpawnPoint" type="Node3D" parent="." groups=["SpawnPoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 4.2, 0)
 
 [connection signal="body_shape_entered" from="SmokeEffects" to="." method="_on_smoke_effects_body_shape_entered"]
 [connection signal="body_shape_entered" from="SmokeEffects" to="SmokeEffects" method="_on_body_shape_entered"]

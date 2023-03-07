@@ -9,6 +9,11 @@ const MAX_STAMINA = 3
 
 var INITIAL_POSITION = Vector3()
 
+var checkpoint = null :
+	set(value):
+		checkpoint = value
+		INITIAL_POSITION = checkpoint.global_position
+
 var jumping = false
 
 signal current_stamina (value : int)
@@ -137,6 +142,8 @@ func ik():
 	reset()
 
 func reset():
+	if checkpoint != null:
+		INITIAL_POSITION = checkpoint.global_position
 	dashing = false
 	sm.set_state(5)
 	emit_signal("player_spawn", INITIAL_POSITION)
@@ -169,6 +176,8 @@ func push():
 			objsToPush[0].apply_central_impulse(direction* objsToPush[0].mass * 20)
 		else:
 			objsToPush[0].push()
+		if objsToPush[0].is_in_group("Checkpoint"):
+			checkpoint = objsToPush[0].checkpoint
 		await get_tree().create_timer(1).timeout
 		can_push = true
 	
