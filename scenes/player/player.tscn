@@ -3144,11 +3144,11 @@ volume_db = -10.0
 unit_size = 5.0
 
 [node name="Physical Bone Torso" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(-1, 1.50996e-07, 2.31185e-09, 6.60085e-09, 0.0437146, -0.999058, -1.50848e-07, -0.999043, -0.0437171, 3.76292e-10, 0.396466, 0.050547)
+transform = Transform3D(-1, 1.50996e-07, 2.31185e-09, 6.60085e-09, 0.0437146, -0.999058, -1.50848e-07, -0.999043, -0.0437171, 5.52623e-10, 0.396466, 0.050547)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88085e-10, -6.96728e-07, 0.221424)
-body_offset = Transform3D(1, -2.13163e-13, -2.31155e-09, 2.79776e-13, 1.2666e-07, -1.00001, -3.55271e-12, 0.999999, 1.95205e-06, -3.76253e-10, 0.221427, 2.64496e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06442e-09, -6.96728e-07, 0.221424)
+body_offset = Transform3D(1, -2.13163e-13, -2.31155e-09, 2.79776e-13, 1.2666e-07, -1.00001, -3.55271e-12, 0.999999, 1.95205e-06, -5.52583e-10, 0.221427, 2.64496e-07)
 bone_name = "Torso"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -3219,11 +3219,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_nf20d")
 
 [node name="Physical Bone Chest" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(-1, 3.89416e-07, 2.69105e-08, -1.86518e-13, -6.10948e-07, -1.00004, -3.89415e-07, -0.999998, -9.10014e-05, -1.13397e-09, 0.781189, 0.0602268)
+transform = Transform3D(-1, 3.89416e-07, 2.73976e-08, -1.86518e-13, -6.10948e-07, -1.00004, -3.89415e-07, -0.999998, -9.10014e-05, -1.8393e-09, 0.781189, 0.0602268)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.26027e-09, -1.48047e-05, 0.163505)
-body_offset = Transform3D(1, -1.81899e-12, -2.68751e-08, -2.06058e-13, -6.10948e-07, -1.00004, -7.67386e-13, 0.999998, 9.10014e-05, 1.13394e-09, 0.163512, -7.45058e-08)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6346e-09, -1.48047e-05, 0.163505)
+body_offset = Transform3D(1, -1.81899e-12, -2.73622e-08, -2.06058e-13, -6.10948e-07, -1.00004, -7.67386e-13, 0.999998, 9.10014e-05, 1.83926e-09, 0.163512, -7.45058e-08)
 bone_name = "Chest"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -3294,11 +3294,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_2xa57")
 
 [node name="Physical Bone Neck" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(-1, 4.33747e-07, 2.80612e-08, -6.80687e-08, -0.174797, -0.984604, -3.83419e-07, -0.984604, 0.174796, 1.84313e-05, 0.975861, 0.0546944)
+transform = Transform3D(-1, 4.48175e-07, 2.80612e-08, -6.80687e-08, -0.174797, -0.984604, -3.83419e-07, -0.984604, 0.174796, 1.84313e-05, 0.975861, 0.0546944)
 collision_layer = 0
 joint_type = 5
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84322e-05, -2.02394e-07, 0.0316489)
-body_offset = Transform3D(1, -4.43317e-08, -2.80611e-08, -6.96332e-13, -2.68221e-07, -0.999999, -1.22213e-12, 1, 7.45058e-07, -1.84313e-05, 0.0316489, 1.78814e-07)
+body_offset = Transform3D(1, -5.87599e-08, -2.80611e-08, -6.96332e-13, -2.68221e-07, -0.999999, -1.22213e-12, 1, 7.45058e-07, -1.84313e-05, 0.0316489, 1.78814e-07)
 bone_name = "Neck"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -3669,11 +3669,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_inxi3")
 
 [node name="Physical Bone Arm1R" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(0.00219895, -0.0766581, -0.997053, 0.999587, 0.0286867, -0.000132182, 0.0285974, -0.996644, 0.0766877, 0.554079, 0.850003, 0.0803508)
+transform = Transform3D(0.00219895, -0.0766581, -0.997053, 0.999587, 0.0286867, -0.000194243, 0.0285974, -0.996644, 0.0766877, 0.554079, 0.850003, 0.0803508)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.29303e-05, 3.56184e-06, 0.144972)
-body_offset = Transform3D(1, 4.52623e-06, -0.000131857, -8.08388e-07, -4.08292e-06, -0.999999, 3.8743e-07, 1, -5.7593e-06, -3.8147e-06, 0.144972, -2.72691e-06)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.19237e-05, 3.81999e-06, 0.144972)
+body_offset = Transform3D(1, 4.52623e-06, -0.000193892, -8.08388e-07, -4.08292e-06, -0.999999, 3.8743e-07, 1, -7.53999e-06, -3.8147e-06, 0.144972, -2.72691e-06)
 bone_name = "Arm1.R"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -3744,11 +3744,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_we4p3")
 
 [node name="Physical Bone Arm2R" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(0.00106483, -0.0372082, -0.999293, 0.999556, 0.0286821, -3.67288e-05, 0.0286099, -0.998893, 0.0372007, 0.819518, 0.850006, 0.0647311)
+transform = Transform3D(0.00106483, -0.0372082, -0.999293, 0.999556, 0.0286821, -3.82364e-05, 0.0286099, -0.998893, 0.0372008, 0.819518, 0.850006, 0.0647311)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17966e-06, 8.01272e-07, 0.120982)
-body_offset = Transform3D(0.999967, -7.45058e-08, -3.69e-05, -8.98144e-07, -8.65012e-06, -0.999987, 5.1599e-05, 0.999997, 1.2897e-05, -7.15256e-07, 0.12098, -2.36183e-06)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36166e-06, 8.17938e-07, 0.120982)
+body_offset = Transform3D(0.999967, -7.45058e-08, -3.84044e-05, -8.98144e-07, -8.65012e-06, -0.999987, 5.1599e-05, 0.999997, 1.27591e-05, -7.15256e-07, 0.12098, -2.36183e-06)
 bone_name = "Arm2.R"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -3894,11 +3894,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_03lym")
 
 [node name="Physical Bone Leg2L" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(0.981369, -0.188015, 0.0390655, -0.0464945, -0.0353169, 0.998262, -0.185956, -0.981498, -0.0432695, -0.234537, -0.82325, 0.0628517)
+transform = Transform3D(0.981369, -0.188015, 0.0390756, -0.0464945, -0.0353169, 0.998262, -0.185956, -0.981498, -0.043188, -0.234537, -0.82325, 0.0628517)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.01201e-06, 3.95259e-05, 0.303856)
-body_offset = Transform3D(0.999913, -4.23193e-06, -8.63615e-06, 2.1291e-05, 1.64658e-06, -0.999963, -0.000350803, 0.999968, -0.000129852, -3.8743e-07, 0.303845, -6.70552e-08)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.58908e-06, 6.43919e-05, 0.303857)
+body_offset = Transform3D(0.999913, -4.23193e-06, -1.38255e-05, 2.1291e-05, 1.64658e-06, -0.999959, -0.000350803, 0.999968, -0.000211682, -3.8743e-07, 0.303845, -6.70552e-08)
 bone_name = "Leg2.L"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -4044,11 +4044,11 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ytgyh")
 
 [node name="Physical Bone Leg2R" type="PhysicalBone3D" parent="PlayerController/MeshDecoy/Armature/Skeleton3D"]
-transform = Transform3D(0.980854, 0.188001, -0.0390648, 0.0463654, -0.0353464, 0.996662, 0.185673, -0.981462, -0.0429349, 0.234537, -0.823249, 0.0628513)
+transform = Transform3D(0.980854, 0.188001, -0.0390648, 0.0463654, -0.0353464, 0.996575, 0.185673, -0.981462, -0.0429091, 0.234537, -0.823249, 0.0628513)
 collision_layer = 0
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95307e-07, 0.000122099, 0.304346)
-body_offset = Transform3D(0.999349, -4.73857e-06, -2.73623e-06, 7.52266e-05, 3.21232e-05, -0.998351, 0.000535771, 0.999931, -0.000401672, 2.38419e-07, 0.303844, 1.56462e-07)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75297e-07, 0.00012886, 0.304373)
+body_offset = Transform3D(0.999349, -4.73857e-06, -2.01352e-06, 7.52266e-05, 3.21232e-05, -0.998263, 0.000535771, 0.999931, -0.000423849, 2.38419e-07, 0.303844, 1.56462e-07)
 bone_name = "Leg2.R"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0

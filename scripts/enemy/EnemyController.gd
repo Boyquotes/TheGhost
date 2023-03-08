@@ -17,6 +17,7 @@ var has_target = false
 var stun_velocity = null
 var on_floor = false
 var needs_return = false
+var velocity = Vector3()
 
 @export var health : int = 10 : 
 	set(value):
@@ -52,15 +53,33 @@ func _physics_process(delta):
 	if has_target && on_floor:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_path_position()
-		linear_velocity = (target - origin).normalized() * speed
+		nav_agent.set_velocity((target - origin).normalized() * speed)
 		rotate_towards_motion(delta)
 		if !is_stuck():
 			timer.start(0)
 	if needs_return && on_floor:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_path_position()
-		linear_velocity = (target - origin).normalized() * speed
+		nav_agent.set_velocity((target - origin).normalized() * speed)
 		rotate_towards_motion(delta)
+
+func _integrate_forces(state):
+	if stun_velocity:
+		return
+	if has_target && on_floor:
+		var origin = global_transform.origin
+		var target = nav_agent.get_next_path_position()
+		nav_agent.set_velocity((target - origin).normalized() * speed)
+		linear_velocity = velocity
+		if !is_stuck():
+			timer.start(0)
+	if needs_return && on_floor:
+		var origin = global_transform.origin
+		var target = nav_agent.get_next_path_position()
+		nav_agent.set_velocity((target - origin).normalized() * speed)
+		linear_velocity = velocity
+
+
 		
 func rotate_towards_motion(delta):
 	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 3.0)
@@ -130,3 +149,7 @@ func is_stuck():
 		return true
 	else:
 		return false
+
+
+func _on_navigation_agent_velocity_computed(safe_velocity):
+	velocity = safe_velocity
