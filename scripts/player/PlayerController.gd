@@ -170,6 +170,7 @@ func reset():
 	if checkpoint != null:
 		INITIAL_POSITION = checkpoint.global_position
 	dashing = false
+	can_push = true
 	sm.set_state(5)
 	emit_signal("player_spawn", INITIAL_POSITION)
 	global_position = INITIAL_POSITION
