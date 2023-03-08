@@ -3,8 +3,6 @@ extends Node3D
 @onready var controller : RigidBody3D = get_parent()
 @onready var label : Label3D = get_node("Label3D")
 @onready var skeleton : Skeleton3D = $Armature/Skeleton3D
-@onready var pushArea : Area3D = $Push
-@onready var pushActionUi : HBoxContainer = get_tree().get_first_node_in_group("PushActionUi")
 
 var is_walking = false
 var is_jumping = false
@@ -23,7 +21,7 @@ var is_hit = false :
 			is_hit = false
 		else:
 			is_hit = false
-			
+
 func _physics_process(delta):
 	if is_walking:
 		animator.speed_scale = lerpf(animator.speed_scale, controller.linear_velocity.length() / controller.MAX_SPEED, delta * 10.0)
@@ -31,13 +29,9 @@ func _physics_process(delta):
 		animator.play("walking_soundless")
 	if is_walking and !is_hit and animator.current_animation == "walking_soundless":
 		animator.play("walking")
-	if !pushArea.get_overlapping_bodies().filter(func(obj): return obj.is_in_group("Moveable")).is_empty():
-		pushActionUi.visible = true
-	else:
-		pushActionUi.visible = false
 
 func _on_sm_entered_state(state, startSec):
-	#label.override(state)
+	label.override(state)
 	if(animator.has_animation(state)):
 		if state in ["walking"] :
 			animator.playback_default_blend_time = 0.3
