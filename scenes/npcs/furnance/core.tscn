@@ -122,7 +122,10 @@ scale_curve = SubResource("CurveTexture_l6mkp")
 color_ramp = SubResource("GradientTexture1D_dmlji")
 turbulence_noise_strength = 2.0
 turbulence_noise_scale = 1.0
-attractor_interaction_enabled = false
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_use_scale = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wf51l"]
 
@@ -238,6 +241,7 @@ spot_angle = 24.54
 [node name="Smoke" type="GPUParticles3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320849, 4.32126, 4.71112)
 material_override = SubResource("StandardMaterial3D_xv8ml")
+amount = 16
 lifetime = 2.0
 speed_scale = 0.2
 randomness = 0.4
@@ -253,9 +257,13 @@ lifetime = 2.0
 preprocess = 5.0
 speed_scale = 0.2
 fixed_fps = 60
-visibility_aabb = AABB(-14, -4, -15, 28, 8, 30)
+visibility_aabb = AABB(-14, -20, -15, 28, 40, 30)
 process_material = SubResource("ParticleProcessMaterial_ehwtv")
 draw_pass_1 = SubResource("QuadMesh_5dxlh")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Effects/Smoke2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, -1.48639e-06)
+size = Vector3(28, 2, 29.6)
 
 [node name="Windows" type="Node3D" parent="."]
 

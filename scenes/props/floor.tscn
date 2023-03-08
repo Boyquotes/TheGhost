@@ -1,29 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://1cinutwv1t3l"]
+[gd_scene load_steps=6 format=3 uid="uid://1cinutwv1t3l"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_obeiq"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wxlvy"]
-size = Vector3(64, 1, 64)
+[sub_resource type="GDScript" id="GDScript_denp3"]
+script/source = "extends StaticBody3D
 
-[sub_resource type="BoxMesh" id="BoxMesh_idk53"]
-size = Vector3(64, 1, 64)
+@export var surface_material : StandardMaterial3D
+@onready var mesh : MeshInstance3D = $MeshInstance3D
+
+func _ready():
+	if surface_material:
+		mesh.set_surface_override_material(0, surface_material)
+"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj8cy"]
 albedo_color = Color(0.286275, 0.309804, 0.286275, 1)
 emission = Color(1, 0, 0, 1)
 distance_fade_max_distance = 30.0
 
+[sub_resource type="BoxMesh" id="BoxMesh_idk53"]
+material = SubResource("StandardMaterial3D_kj8cy")
+size = Vector3(64, 1, 64)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wxlvy"]
+size = Vector3(64, 1, 64)
+
 [node name="platform" type="StaticBody3D"]
 collision_layer = 15
 collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_obeiq")
+script = SubResource("GDScript_denp3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_wxlvy")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
 layers = 3
 mesh = SubResource("BoxMesh_idk53")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_kj8cy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_wxlvy")

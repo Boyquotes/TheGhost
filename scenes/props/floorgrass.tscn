@@ -70,6 +70,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_2h2xt")
 
 [node name="GrassStraw" type="MeshInstance3D" parent="."]
 visible = false
+layers = 3
 mesh = ExtResource("1_ruwlg")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -83,6 +84,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42499, 0)
 shape = SubResource("BoxShape3D_sjdxh")
 
 [node name="Folliage" type="MultiMeshInstance3D" parent="Area3D"]
+layers = 3
 multimesh = SubResource("MultiMesh_uye6c")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Area3D"]
