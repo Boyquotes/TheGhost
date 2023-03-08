@@ -34,11 +34,12 @@ var stamina = MAX_STAMINA:
 		emit_signal("current_stamina", stamina)
 		if value > 0:
 			player_light.light_energy = 2
-		if stamina == 0:
-			stamina_timer.start(2)
+		if stamina <= 1:
+			player_light.light_energy = 0
+			stamina_timer.start(9)
 			return
 		elif value < MAX_STAMINA:
-			stamina_timer.start(3)
+			stamina_timer.start(2)
 
 var stamina_display = stamina
 
@@ -120,12 +121,16 @@ func _handle_move_input():
 	motion = motion.normalized() * speed
 
 func  _physics_process(delta):
+	if dashing or not on_floor:
+		stamina_timer.paused = true
+	else:
+		stamina_timer.paused = false
 	if stamina < MAX_STAMINA:
 		var cs = (stamina_timer.time_left - stamina_timer.wait_time) / - stamina_timer.wait_time
-		stamina_display = stamina+cs
-		#player_text.override(str("current stamina ", str(stamina+(cs)).pad_decimals(2) ))
+		stamina += cs
 	else:
 		stamina_display = MAX_STAMINA
+	#player_text.override(str("current stamina ", str(stamina).pad_decimals(2) ))
 
 func _input(event):
 	if event.is_action_pressed("push") && sm.state in [1,2,7] && !jumping:
@@ -193,6 +198,7 @@ func push():
 		sm.is_pushing = true
 		await get_tree().create_timer(0.30).timeout
 		if objsToPush[0] is RigidBody3D:
+			dec_stamina()
 			objsToPush[0].apply_central_impulse(direction* objsToPush[0].mass * 20)
 		else:
 			objsToPush[0].push()
@@ -214,6 +220,7 @@ func jump():
 	await get_tree().create_timer(0.33).timeout
 	if on_floor:
 		direction = direction.normalized()
+		dec_stamina()
 		apply_central_impulse(Vector3(direction.x*6500.0, 15000.0, direction.z*6500.0))
 		for obj in floor_detector.get_overlapping_bodies().filter(func(obj): return obj.is_in_group("IsPushedDown")):
 			obj.apply_central_impulse(Vector3(direction.x*6000.0, -10000.0, direction.z*6000.0))
@@ -253,7 +260,3 @@ func is_move_input():
 		return true
 	else:
 		return false
-
-
-func _on_stamina_timer_timeout():
-	stamina += 1

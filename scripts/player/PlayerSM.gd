@@ -65,10 +65,10 @@ func _ready():
 func _update_state(delta):
 	match state:
 		STATES.tired:
-			if parent.stamina > 0:
+			if parent.stamina > 1:
 				return STATES.idle
 		STATES.idle:
-			if parent.stamina == 0:
+			if parent.stamina <= 1:
 				return STATES.tired
 			parent._handle_move_input()
 			if !on_floor:
@@ -84,7 +84,7 @@ func _update_state(delta):
 		STATES.walking:
 			if !on_floor:
 				return STATES.falling
-			if parent.stamina == 0:
+			if parent.stamina <= 1:
 				return STATES.tired
 			parent._handle_move_rotation(delta)
 			parent._handle_move_input()
