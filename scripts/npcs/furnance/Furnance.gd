@@ -15,7 +15,9 @@ func _ready():
 	#text.add_to_queue("Hellloooooo!", 10.0)
 	#text.add_to_queue("HEGHEHEHE!", 10.0)
 	
-func rigidBodyOnConsumer(body : RigidBody3D):
+func rigidBodyOnConsumer(body):
+	if not (body is RigidBody3D):
+		return
 	content_on_consumer = true
 	body.freeze = true
 	body.global_position = global_position - Vector3(0,3.0,0)

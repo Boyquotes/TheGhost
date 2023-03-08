@@ -30,8 +30,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	$Label3D.override(str(is_target))
+#func _process(_delta):
+#	$Label3D.override(str(is_target))
 "
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l50bp"]

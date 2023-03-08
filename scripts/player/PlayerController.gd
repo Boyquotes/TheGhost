@@ -120,7 +120,7 @@ func _handle_move_input():
 	speed = motion.normalized().length() * SPEED
 	motion = motion.normalized() * speed
 
-func  _physics_process(delta):
+func  _physics_process(_delta):
 	if dashing or not on_floor:
 		stamina_timer.paused = true
 	else:

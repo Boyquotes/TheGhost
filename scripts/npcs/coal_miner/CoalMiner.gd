@@ -47,7 +47,7 @@ func _ready():
 	INITIAL_POSITION = global_position
 	get_current_coal_position()
 
-func _integrate_forces(state):
+func _integrate_forces(_state):
 	if freeze:
 		angular_velocity = Vector3(0,0,0)
 		linear_velocity = Vector3(0,0,0)
@@ -77,7 +77,7 @@ func rotate_towards_motion(delta):
 		target_coal.rotation.y = lerp_angle(target_coal.rotation.y, mesh.rotation.y, delta * 5.0)
 
 func _on_floor_detector_miner_on_floor(boolean):
-	on_floor = true
+	on_floor = boolean
 
 func _on_target_reached():
 	if should_rest:
