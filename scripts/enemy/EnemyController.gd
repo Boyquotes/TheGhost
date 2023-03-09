@@ -8,7 +8,7 @@ extends RigidBody3D
 @onready var stuck_timer : Timer = $StuckTimer
 @onready var fov : Area3D = $Mesh/EnemyFOV
 
-const SPEED = 4.3
+const SPEED = 2.5
 
 var INITIAL_POSITION = Vector3()
 var speed = SPEED
@@ -91,6 +91,10 @@ func _on_enemy_fov_player(player_location):
 			var random_reaction_time = randf_range(1.0, 2.0)
 			await get_tree().create_timer(random_reaction_time).timeout
 			chasing = true
+			if (global_position - player_location).length() < 8:
+				mesh.visible = true
+			else:
+				mesh.visible = false
 			return
 		if raycast.is_colliding():
 			raycast.debug_shape_custom_color = Color(0,1,0,1)
