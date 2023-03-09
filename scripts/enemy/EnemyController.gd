@@ -17,7 +17,6 @@ var has_target = false
 var stun_velocity = null
 var on_floor = false
 var needs_return = false
-var velocity = Vector3()
 
 @export var health : int = 10 : 
 	set(value):
@@ -51,16 +50,8 @@ func _physics_process(delta):
 		apply_central_impulse(Vector3(stun_velocity.x, stun_velocity.y, stun_velocity.z)* 1000.0)
 		return
 	if has_target && on_floor:
-		var origin = global_transform.origin
-		var target = nav_agent.get_next_path_position()
-		nav_agent.set_velocity((target - origin).normalized() * speed)
 		rotate_towards_motion(delta)
-		if !is_stuck():
-			timer.start(0)
 	if needs_return && on_floor:
-		var origin = global_transform.origin
-		var target = nav_agent.get_next_path_position()
-		nav_agent.set_velocity((target - origin).normalized() * speed)
 		rotate_towards_motion(delta)
 
 func _integrate_forces(state):
@@ -69,15 +60,13 @@ func _integrate_forces(state):
 	if has_target && on_floor:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_path_position()
-		nav_agent.set_velocity((target - origin).normalized() * speed)
-		linear_velocity = velocity
+		linear_velocity = (target - origin).normalized() * speed
 		if !is_stuck():
 			timer.start(0)
 	if needs_return && on_floor:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_path_position()
-		nav_agent.set_velocity((target - origin).normalized() * speed)
-		linear_velocity = velocity
+		linear_velocity = (target - origin).normalized() * speed
 
 
 		
@@ -149,7 +138,3 @@ func is_stuck():
 		return true
 	else:
 		return false
-
-
-func _on_navigation_agent_velocity_computed(safe_velocity):
-	velocity = safe_velocity
