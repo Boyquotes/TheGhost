@@ -3,6 +3,7 @@ extends Node3D
 @onready var controller : RigidBody3D = get_parent()
 @onready var label : Label3D = get_node("Label3D")
 @onready var skeleton : Skeleton3D = $Armature/Skeleton3D
+@onready var body_loc : Area3D = get_tree().get_first_node_in_group("Player")
 
 var is_walking = false
 var is_jumping = false
@@ -12,12 +13,14 @@ var is_hit = false :
 		if value == true:
 			is_hit = true
 			controller.freeze = true
+			body_loc.monitorable = false
 			skeleton.physical_bones_start_simulation()
 			await get_tree().create_timer(2).timeout
 			skeleton.physical_bones_stop_simulation()
 			controller.freeze = false
 			rotation.y = atan2(-controller.motion.x, -controller.motion.z)
 			controller.ik()
+			body_loc.monitorable = true
 			is_hit = false
 		else:
 			is_hit = false

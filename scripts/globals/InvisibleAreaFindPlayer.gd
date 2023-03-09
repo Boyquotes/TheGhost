@@ -9,5 +9,5 @@ func _physics_process(_delta):
 	if monitoring:
 		var player_area = get_overlapping_areas()\
 			.filter(func(obj): return obj.is_in_group("Player"))
-		if(player_area):
+		if(player_area and player_area[0].monitorable):
 			emit_signal("player", player_area[0].location)

@@ -8,7 +8,7 @@ extends RigidBody3D
 @onready var stuck_timer : Timer = $StuckTimer
 @onready var fov : Area3D = $Mesh/EnemyFOV
 
-const SPEED = 4.2
+const SPEED = 4.3
 
 var INITIAL_POSITION = Vector3()
 var speed = SPEED
@@ -71,7 +71,7 @@ func _integrate_forces(state):
 
 		
 func rotate_towards_motion(delta):
-	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 3.0)
+	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 9.0)
 
 func _on_enemy_fov_player(player_location):
 	if player_location == null:

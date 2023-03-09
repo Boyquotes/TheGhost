@@ -12,7 +12,9 @@ var on_cd = false:
 
 func _physics_process(_delta):
 	var area = get_overlapping_areas().filter(remove_not_player)
-	if area == null || area.is_empty():
+	if area.is_empty():
+		return
+	if not area[0].monitorable:
 		return
 	if !sm.attacking && !on_cd:
 		area = area[0]
