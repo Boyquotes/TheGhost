@@ -1425,7 +1425,7 @@ albedo_color = Color(0.286275, 0.309804, 0.286275, 1)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oru1d"]
 height = 5.0
 
-[node name="EnemyBody" type="RigidBody3D" groups=["Enemy"]]
+[node name="EnemyBody" type="RigidBody3D" groups=["Enemy", "NeedsToReset"]]
 collision_layer = 2
 collision_mask = 2
 input_ray_pickable = false
@@ -1692,10 +1692,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wsua7")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Mesh"]
 stream = SubResource("AudioStreamPolyphonic_nyrl5")
 attenuation_model = 2
-volume_db = 50.0
+volume_db = 80.0
 unit_size = 5.0
 max_db = 6.0
-max_distance = 8.0
+max_distance = 10.0
 attenuation_filter_cutoff_hz = 20500.0
 attenuation_filter_db = -80.0
 doppler_tracking = 2
@@ -1707,7 +1707,6 @@ shape = SubResource("CapsuleShape3D_oru1d")
 [node name="EnemyNavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 2.0
 path_max_distance = 300.01
-debug_enabled = true
 
 [node name="RayCast3D" type="RayCast3D" parent="." groups=["RayCast"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1979, 0)

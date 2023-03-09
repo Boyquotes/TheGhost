@@ -8,7 +8,7 @@ extends RigidBody3D
 @onready var stuck_timer : Timer = $StuckTimer
 @onready var fov : Area3D = $Mesh/EnemyFOV
 
-const SPEED = 2.5
+const SPEED = 2.9
 
 var INITIAL_POSITION = Vector3()
 var speed = SPEED
@@ -91,7 +91,7 @@ func _on_enemy_fov_player(player_location):
 			var random_reaction_time = randf_range(1.0, 2.0)
 			await get_tree().create_timer(random_reaction_time).timeout
 			chasing = true
-			if (global_position - player_location).length() < 8:
+			if (global_position - player_location).length() < 12:
 				mesh.visible = true
 			else:
 				mesh.visible = false
@@ -142,3 +142,10 @@ func is_stuck():
 		return true
 	else:
 		return false
+
+func player_death():
+	chasing = false
+	nav_agent.target_position = INITIAL_POSITION
+	global_position = INITIAL_POSITION
+	needs_return = false
+	has_target = false
