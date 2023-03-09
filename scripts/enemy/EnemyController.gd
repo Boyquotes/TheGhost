@@ -91,7 +91,7 @@ func _on_enemy_fov_player(player_location):
 			var random_reaction_time = randf_range(1.0, 2.0)
 			await get_tree().create_timer(random_reaction_time).timeout
 			chasing = true
-			if (global_position - player_location).length() < 12:
+			if (global_position - player_location).length() < 15:
 				mesh.visible = true
 			else:
 				mesh.visible = false
