@@ -27,7 +27,7 @@ var is_hit = false :
 
 func _physics_process(delta):
 	if is_walking:
-		animator.speed_scale = lerpf(animator.speed_scale, controller.linear_velocity.length() / controller.MAX_SPEED, delta * 10.0)
+		animator.speed_scale = lerpf(animator.speed_scale, controller.linear_velocity.length() / controller.MAX_SPEED, delta * 5.0)
 	if is_walking && is_hit:
 		animator.play("walking_soundless")
 	if is_walking and !is_hit and animator.current_animation == "walking_soundless":
@@ -36,7 +36,7 @@ func _physics_process(delta):
 func _on_sm_entered_state(state, startSec):
 	label.override(state)
 	if(animator.has_animation(state)):
-		if state in ["walking"] :
+		if state in ["walking", "sprinting"] :
 			animator.playback_default_blend_time = 0.3
 			is_walking = true
 		elif state in ["landing"]:
