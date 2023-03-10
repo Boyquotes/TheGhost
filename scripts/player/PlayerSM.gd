@@ -10,7 +10,8 @@ const STATES = {
 	'landing' = 7,
 	'dashing' = 8,
 	'dashingLanding' = 9,
-	'tired' = 10
+	'tired' = 10,
+	'sprinting' = 11,
 }
 
 @export var hit_time = 2.0
@@ -55,6 +56,9 @@ func jump():
 
 func dash():
 	set_state(STATES.dashing)
+
+func sprint():
+	set_state(STATES.sprinting)
 
 func _ready():
 	SPEED = parent.SPEED
@@ -108,6 +112,18 @@ func _update_state(delta):
 			parent._handle_move_rotation(delta*0.1)
 			parent._handle_move_input()
 			parent._apply_movement()
+		STATES.sprinting:
+			if !on_floor:
+				return STATES.falling
+			if parent.stamina <= 1:
+				return STATES.tired
+			parent._handle_move_rotation(delta)
+			parent._handle_move_input()
+			parent._apply_movement()
+			if parent.speed == 0 :
+				return STATES.idle
+			if not parent.sprinting:
+				return STATES.walking
 
 func _enter_state(new_state,_old_state):
 	parent.SPEED = SPEED
@@ -122,6 +138,8 @@ func _enter_state(new_state,_old_state):
 			parent.SPEED = SPEED * 0.05
 		STATES.landing:
 			parent.SPEED = SPEED * 0.5
+		STATES.sprinting:
+			parent.SPEED = SPEED * 1.5
 		STATES.dashingLanding:
 			parent.SPEED = SPEED * 0.1
 		STATES.tired:

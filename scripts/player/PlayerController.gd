@@ -35,6 +35,7 @@ var stamina = MAX_STAMINA:
 		if value > 0:
 			player_light.light_energy = 2
 		if stamina <= 1:
+			sprinting = false
 			player_light.light_energy = 0
 			stamina_timer.start(9)
 			return
@@ -52,6 +53,8 @@ var dashing = false :
 		if dashing && !value:
 			dashing_stop.emitting = true
 		dashing = value
+
+var sprinting = false
 
 var on_floor = true :
 	set(value):
@@ -120,8 +123,17 @@ func _handle_move_input():
 	speed = motion.normalized().length() * SPEED
 	motion = motion.normalized() * speed
 
+func _process(delta):
+	if Input.is_action_pressed("sprint") && sm.state in [1,2,7] && !jumping:
+		sprint()
+	if Input.is_action_just_released("sprint"):
+		sprinting = false
+
+
 func  _physics_process(_delta):
-	if dashing or not on_floor:
+	if sprinting:
+		stamina -= 0.005
+	if sprinting or not on_floor:
 		stamina_timer.paused = true
 	else:
 		stamina_timer.paused = false
@@ -133,14 +145,13 @@ func  _physics_process(_delta):
 	#player_text.override(str("current stamina ", str(stamina).pad_decimals(2) ))
 
 func _input(event):
-	if event.is_action_pressed("push") && sm.state in [1,2,7] && !jumping:
+	if event.is_action_pressed("push") && sm.state in [1,2,7,11] && !jumping:
 		push()
-	if event.is_action_pressed("jump") && !sm.is_hit && sm.state in [1,2,7] && !jumping:
+	if event.is_action_pressed("jump") && !sm.is_hit && sm.state in [1,2,7,11] && !jumping:
 		jump()
-	if event.is_action_pressed("dash") && !sm.is_hit && sm.state in [2] && !jumping && not spam:
-		spam = true
-		dash()
-
+	#if event.is_action_pressed("dash") && !sm.is_hit && sm.state in [2] && !jumping && not spam:
+	#	spam = true
+	#	dash()
 
 func _handle_move_rotation(delta):
 	if motion.length() < 10 || jumping || dashing || !is_move_input():
@@ -226,6 +237,12 @@ func jump():
 		for obj in floor_detector.get_overlapping_bodies().filter(func(obj): return obj.is_in_group("IsPushedDown")):
 			obj.apply_central_impulse(Vector3(direction.x*6000.0, -10000.0, direction.z*6000.0))
 	jumping = false
+
+func sprint():
+	if stamina <= 0:
+		return
+	sprinting = true
+	sm.sprint()
 
 func dash():
 	if stamina <= 0:
