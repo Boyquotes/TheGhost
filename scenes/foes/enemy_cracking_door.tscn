@@ -1695,7 +1695,6 @@ attenuation_model = 2
 volume_db = 80.0
 unit_size = 5.0
 max_db = 6.0
-max_distance = 10.0
 attenuation_filter_cutoff_hz = 20500.0
 attenuation_filter_db = -80.0
 doppler_tracking = 2

@@ -8,7 +8,7 @@ extends RigidBody3D
 @onready var stuck_timer : Timer = $StuckTimer
 @onready var fov : Area3D = $Mesh/EnemyFOV
 
-const SPEED = 2.9
+const SPEED = 2.5
 
 var INITIAL_POSITION = Vector3()
 var speed = SPEED

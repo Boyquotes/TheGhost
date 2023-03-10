@@ -918,7 +918,7 @@ collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_qniv7")
 
 [node name="EnemyBody8" parent="." instance=ExtResource("6_6l70d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 1, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7, 1, -6)
 
 [node name="Contraps" type="Node3D" parent="."]
 
