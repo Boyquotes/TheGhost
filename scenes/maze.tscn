@@ -600,6 +600,30 @@ collision_layer = 3
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_rvn71")
 
+[node name="Node3D63" parent="Maze/InnerWalls" groups=["HeadBlock"] instance=ExtResource("2_1l8y7")]
+transform = Transform3D(8.74228e-09, -1, 8.74228e-08, -0.2, -4.37114e-08, 2.99281e-21, 5.37307e-17, -8.74228e-08, -1, -3.5, 6.7, 21)
+collision_layer = 4
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_rvn71")
+
+[node name="Node3D67" parent="Maze/InnerWalls" groups=["HeadBlock"] instance=ExtResource("2_1l8y7")]
+transform = Transform3D(8.74228e-09, -1, 8.74228e-08, -0.2, -4.37114e-08, 2.99281e-21, 5.37307e-17, -8.74228e-08, -1, -10.5, 6.7, 14)
+collision_layer = 4
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_rvn71")
+
+[node name="Node3D68" parent="Maze/InnerWalls" groups=["HeadBlock"] instance=ExtResource("2_1l8y7")]
+transform = Transform3D(8.74228e-09, -1, 8.74228e-08, -0.2, -4.37114e-08, 2.99281e-21, 5.37307e-17, -8.74228e-08, -1, -10.5, 6.7, 0)
+collision_layer = 4
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_rvn71")
+
+[node name="Node3D69" parent="Maze/InnerWalls" groups=["HeadBlock"] instance=ExtResource("2_1l8y7")]
+transform = Transform3D(-4.35868e-16, 1.31134e-07, 1, -0.2, -4.37114e-08, 3.02101e-21, 8.74228e-09, -1, 1.31134e-07, 0, 6.7, -3.5)
+collision_layer = 4
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_rvn71")
+
 [node name="Node3D28" parent="Maze/InnerWalls" instance=ExtResource("2_1l8y7")]
 transform = Transform3D(-4.37114e-08, 1, 1.42109e-14, -1, -4.37114e-08, 0, 3.81165e-21, -1.42109e-14, 1, 3.5, 3.5, 7)
 collision_layer = 3
@@ -918,7 +942,7 @@ collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_qniv7")
 
 [node name="EnemyBody8" parent="." instance=ExtResource("6_6l70d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7, 1, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1, -7)
 
 [node name="Contraps" type="Node3D" parent="."]
 

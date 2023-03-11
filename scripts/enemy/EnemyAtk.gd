@@ -1,7 +1,6 @@
 extends Area3D
 
-@onready var sm : StateMachine = get_parent().get_parent().get_node("EnemySM")
-@onready var real_hit_box : Area3D = $RealHitBox
+@onready var sm : StateMachine = get_parent().get_parent()
 
 var on_cd = false:
 	set(value):
@@ -22,8 +21,8 @@ func _physics_process(_delta):
 		sm.attacking = true
 		await get_tree().create_timer(0.5).timeout #hit frame of animation
 		on_cd = true
-		var hitboxes_hits = real_hit_box.get_overlapping_areas().filter(remove_not_player)
-		if hitboxes_hits:
+		var hitbox_hits = get_overlapping_areas().filter(remove_not_player)
+		if hitbox_hits:
 			area.hit()
 
 func remove_not_player(obj : Node3D):

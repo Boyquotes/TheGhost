@@ -83,8 +83,8 @@ points = PackedVector3Array(-0.14, -2, -5.04318, -0.14, 2, -5.04318, 0.14, -2, -
 size = Vector3(0.301453, 3.99787, 2.70204)
 
 [node name="DoorBody" type="StaticBody3D" groups=["CanBlock"]]
-collision_layer = 6
-collision_mask = 6
+collision_layer = 13
+collision_mask = 13
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true

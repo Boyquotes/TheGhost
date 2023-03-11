@@ -3,14 +3,13 @@ extends "res://scripts/abstract/StateMachine.gd"
 const STATES = {
 	'chasing'= 1,
 	'idle'= 2,
-	'hit' = 3,
-	'attack'= 4,
-	'returning'=5
+	'attack'= 3,
+	'passing'=4
 }
 
 signal entered_state (state : String, startSec : float)
 
-@onready var animator : AnimationPlayer = $AnimationPlayer
+@onready var animator : AnimationPlayer = $Mesh/AnimationPlayer
 @onready var label : Label3D = $Label3D
 
 @export var stun_time = 0.5
@@ -26,16 +25,6 @@ var attacking = false :
 			await get_tree().create_timer(0.875).timeout
 			attacking = false
 
-
-var stunned = false :
-	set(value):
-		stunned = value
-		if value == true:
-			set_state(STATES.hit)
-			await get_tree().create_timer(stun_time).timeout
-			stunned = false
-
-
 func _ready():
 	speed = parent.SPEED
 	add_states(STATES)
@@ -46,8 +35,6 @@ func _update_state(_delta):
 		STATES.idle:
 			if parent.has_target:
 				return STATES.chasing
-			if parent.needs_return:
-				return STATES.returning
 		STATES.chasing:
 			if !parent.has_target:
 				return STATES.idle
@@ -58,18 +45,6 @@ func _update_state(_delta):
 				return STATES.chasing
 			else:
 				return STATES.idle
-		STATES.hit:
-			if stunned == true:
-				return
-			if parent.has_target:
-				return STATES.chasing
-			else:
-				return STATES.idle
-		STATES.returning:
-			if !parent.needs_return:
-				return STATES.idle
-			if parent.has_target:
-				return STATES.chasing
 
 func _enter_state(new_state, _old_state):
 	var state_name = STATES.find_key(new_state)
@@ -77,16 +52,23 @@ func _enter_state(new_state, _old_state):
 	if animator.has_animation(state_name):
 		animator.play(state_name)
 	match new_state:
-		STATES.hit:
-			parent.health -= 5
-			var enemy_location = parent.global_transform.origin
-			var light_to_enemy_vector : Vector3 = enemy_location - stun_source_pos
-			var le_size_sqrd = light_to_enemy_vector.length_squared()
-			parent.move(stun_time/2, stun_force * light_to_enemy_vector/le_size_sqrd)
 		STATES.attack:
 			parent.speed = speed*1.5
 		STATES.chasing:
 			parent.speed = speed
-		STATES.returning:
-			parent.stop_fov = true
-			parent.speed = speed
+		STATES.passing:
+			parent.speed = speed * 0.001
+			await get_tree().create_timer(0.6).timeout
+			parent.needs_to_force_foward = true
+			
+func passing():
+	set_state(STATES.passing)
+
+
+func _on_head_area_body_entered(body):
+	if body.is_in_group("HeadBlock"):
+		set_state(STATES.passing)
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "passing":
+		set_state(STATES.idle)
