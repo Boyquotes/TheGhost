@@ -18,7 +18,7 @@ var needs_to_force_foward = false:
 	set(value):
 		needs_to_force_foward = value
 		if value:
-			await get_tree().create_timer(0.2).timeout
+			await get_tree().create_timer(0.35).timeout
 			needs_to_force_foward = false
 
 var chasing = false :

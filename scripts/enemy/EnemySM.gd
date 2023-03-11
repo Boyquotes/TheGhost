@@ -58,7 +58,7 @@ func _enter_state(new_state, _old_state):
 			parent.speed = speed
 		STATES.passing:
 			parent.speed = speed * 0.001
-			await get_tree().create_timer(0.6).timeout
+			await get_tree().create_timer(0.7).timeout
 			parent.needs_to_force_foward = true
 			
 func passing():
