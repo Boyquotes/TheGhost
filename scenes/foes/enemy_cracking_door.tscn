@@ -1521,7 +1521,6 @@ script = ExtResource("2_ydgsm")
 
 [node name="Label3D" type="Label3D" parent="EnemyBody/EnemySM"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 7.43991, 0)
-visible = false
 ignore_occlusion_culling = true
 billboard = 1
 alpha_cut = 1
@@ -1763,9 +1762,10 @@ libraries = {
 }
 
 [node name="HeadArea" type="Area3D" parent="EnemyBody/EnemySM/Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.3, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.3, -1.1)
 collision_layer = 4
 collision_mask = 4
+priority = 128.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyBody/EnemySM/Mesh/HeadArea"]
 shape = SubResource("BoxShape3D_0spos")

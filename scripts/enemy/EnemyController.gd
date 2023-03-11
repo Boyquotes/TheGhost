@@ -5,7 +5,7 @@ extends RigidBody3D
 @onready var sm : Node3D = $EnemySM
 @onready var fov : Area3D = $EnemySM/Mesh/EnemyFOV
 
-const SPEED = 2.7
+const SPEED = 3.0
 
 var INITIAL_POSITION = Vector3()
 var direction = Vector3.ZERO
@@ -37,11 +37,11 @@ func _physics_process(delta):
 
 func _integrate_forces(state):
 	if needs_to_force_foward:
-		linear_velocity.x = direction.x * 8.2
-		linear_velocity.z = direction.z * 8.2
+		linear_velocity.x = direction.x * 8.9
+		linear_velocity.z = direction.z * 8.9
 		linear_velocity.y = 0
 		return
-	if has_target && on_floor and linear_velocity.length() <= SPEED:
+	if has_target && on_floor and linear_velocity.length() <= SPEED and sm.state !=4:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_path_position()
 		direction = (target - origin).normalized()

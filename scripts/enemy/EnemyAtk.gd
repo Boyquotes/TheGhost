@@ -16,7 +16,7 @@ func _physics_process(_delta):
 		return
 	if not area[0].monitorable:
 		return
-	if !sm.attacking && !on_cd:
+	if !sm.attacking && !on_cd && sm.state != 4:
 		area = area[0]
 		sm.attacking = true
 		await get_tree().create_timer(0.5).timeout #hit frame of animation

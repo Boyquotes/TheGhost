@@ -45,6 +45,9 @@ func _update_state(_delta):
 				return STATES.chasing
 			else:
 				return STATES.idle
+		STATES.passing:
+			if not animator.is_playing():
+				return STATES.idle
 
 func _enter_state(new_state, _old_state):
 	var state_name = STATES.find_key(new_state)
@@ -66,7 +69,7 @@ func passing():
 
 
 func _on_head_area_body_entered(body):
-	if body.is_in_group("HeadBlock"):
+	if body.is_in_group("HeadBlock") and state != STATES.attack:
 		set_state(STATES.passing)
 
 func _on_animation_player_animation_finished(anim_name):
