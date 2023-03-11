@@ -18,7 +18,7 @@ var needs_to_force_foward = false:
 	set(value):
 		needs_to_force_foward = value
 		if value:
-			await get_tree().create_timer(0.3).timeout
+			await get_tree().create_timer(0.2).timeout
 			needs_to_force_foward = false
 
 var chasing = false :
@@ -32,12 +32,13 @@ func _ready():
 	INITIAL_POSITION = global_position
 
 func _physics_process(delta):
-	if needs_to_force_foward:
-		apply_central_force(direction * mass * 55)
 	if has_target && on_floor:
 		rotate_towards_motion(delta)
 
 func _integrate_forces(state):
+	if needs_to_force_foward:
+		linear_velocity = direction * 6.9
+		return
 	if has_target && on_floor and linear_velocity.length() <= SPEED:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_path_position()
