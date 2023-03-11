@@ -37,7 +37,9 @@ func _physics_process(delta):
 
 func _integrate_forces(state):
 	if needs_to_force_foward:
-		linear_velocity = direction * 5.9
+		linear_velocity.x = direction.x * 8.2
+		linear_velocity.z = direction.z * 8.2
+		linear_velocity.y = 0
 		return
 	if has_target && on_floor and linear_velocity.length() <= SPEED:
 		var origin = global_transform.origin
