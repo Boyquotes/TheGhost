@@ -139,7 +139,7 @@ func _enter_state(new_state,_old_state):
 		STATES.landing:
 			parent.SPEED = SPEED * 0.5
 		STATES.sprinting:
-			parent.SPEED = SPEED * 2
+			parent.SPEED = SPEED * 2.5
 		STATES.dashingLanding:
 			parent.SPEED = SPEED * 0.1
 		STATES.tired:

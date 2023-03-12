@@ -14,11 +14,20 @@ var speed = SPEED
 var has_target = false
 var on_floor = false
 
+var passing = false:
+	set(value):
+		passing = value
+		if (value):
+			await get_tree().create_timer(1.875)
+			passing = false
+
 var needs_to_force_foward = false:
 	set(value):
 		needs_to_force_foward = value
 		if value:
+			collision_mask = 3
 			await get_tree().create_timer(0.35).timeout
+			collision_mask = 7
 			needs_to_force_foward = false
 
 var chasing = false :

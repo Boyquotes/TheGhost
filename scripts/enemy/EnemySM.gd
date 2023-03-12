@@ -46,7 +46,7 @@ func _update_state(_delta):
 			else:
 				return STATES.idle
 		STATES.passing:
-			if not animator.is_playing():
+			if not animator.is_playing() or parent.passing != false:
 				return STATES.idle
 
 func _enter_state(new_state, _old_state):
@@ -70,6 +70,7 @@ func passing():
 
 func _on_head_area_body_entered(body):
 	if body.is_in_group("HeadBlock") and state != STATES.attack:
+		parent.passing = true
 		set_state(STATES.passing)
 
 func _on_animation_player_animation_finished(anim_name):
