@@ -4,12 +4,15 @@ extends RigidBody3D
 @onready var mesh : Node3D = $EnemySM/Mesh
 @onready var sm : Node3D = $EnemySM
 @onready var fov : Area3D = $EnemySM/Mesh/EnemyFOV
+@onready var head : Node3D = $EnemySM/Mesh/Head
 
 const SPEED = 3.0
 
 var INITIAL_POSITION = Vector3()
 var direction = Vector3.ZERO
 var speed = SPEED
+
+var calculated_velocity = Vector3.ZERO
 
 var has_target = false
 var on_floor = false
@@ -46,15 +49,16 @@ func _physics_process(delta):
 
 func _integrate_forces(state):
 	if needs_to_force_foward:
-		linear_velocity.x = direction.x * 8.9
-		linear_velocity.z = direction.z * 8.9
-		linear_velocity.y = 0
+		nav_agent.set_velocity(Vector3(direction.x * 8.9, 0, direction.z * 8.9))
+		linear_velocity = calculated_velocity
 		return
 	if has_target && on_floor and linear_velocity.length() <= SPEED and sm.state !=4:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_path_position()
 		direction = (target - origin).normalized()
-		linear_velocity += (target - origin).normalized() * speed
+		var velocity = linear_velocity + (target - origin).normalized() * speed
+		nav_agent.set_velocity(Vector3(velocity.x, 0, velocity.z))
+		linear_velocity = calculated_velocity
 
 func rotate_towards_motion(delta):
 	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 5.0)
@@ -88,3 +92,7 @@ func player_death():
 	nav_agent.target_position = INITIAL_POSITION
 	global_position = INITIAL_POSITION
 	has_target = false
+
+
+func _on_enemy_navigation_agent_3d_velocity_computed(safe_velocity):
+	calculated_velocity = safe_velocity

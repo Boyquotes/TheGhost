@@ -4,7 +4,7 @@
 absorbent = true
 
 [sub_resource type="GDScript" id="GDScript_p4t3m"]
-script/source = "extends StaticBody3D
+script/source = "extends RigidBody3D
 
 @onready var colision_closed = $ColisionClose
 @onready var colision_open = $ColisionOpen
@@ -82,7 +82,7 @@ points = PackedVector3Array(-0.14, -2, -5.04318, -0.14, 2, -5.04318, 0.14, -2, -
 [sub_resource type="BoxShape3D" id="BoxShape3D_24lut"]
 size = Vector3(0.301453, 3.99787, 2.70204)
 
-[node name="DoorBody" type="StaticBody3D" groups=["CanBlock"]]
+[node name="DoorBody" type="RigidBody3D" groups=["CanBlock"]]
 collision_layer = 13
 collision_mask = 13
 axis_lock_linear_x = true
@@ -91,6 +91,7 @@ axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_oybqk")
 script = SubResource("GDScript_p4t3m")
 
@@ -108,3 +109,7 @@ shape = SubResource("ConvexPolygonShape3D_aawxx")
 [node name="ColisionOpen" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.21517)
 shape = SubResource("BoxShape3D_24lut")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="ColisionOpen"]
+estimate_radius = false
+radius = 2.0

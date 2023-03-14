@@ -1,21 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://3ignq14tuxw5"]
+[gd_scene load_steps=5 format=3 uid="uid://3ignq14tuxw5"]
 
 [ext_resource type="Material" uid="uid://3yvjcws6fo6v" path="res://materials/basic_block.tres" id="1_201sl"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3hdbx"]
-size = Vector3(8, 1, 8)
+[sub_resource type="GDScript" id="GDScript_5534o"]
+script/source = "extends StaticBody3D
+
+@export var surface_material : StandardMaterial3D
+@onready var mesh : MeshInstance3D = $MeshInstance3D
+
+func _ready():
+	if surface_material:
+		mesh.set_surface_override_material(0, surface_material)
+"
 
 [sub_resource type="BoxMesh" id="BoxMesh_awutd"]
 size = Vector3(8, 1, 8)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3hdbx"]
+size = Vector3(8, 1, 8)
+
 [node name="Node3D" type="StaticBody3D"]
+script = SubResource("GDScript_5534o")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_3hdbx")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
 layers = 3
 mesh = SubResource("BoxMesh_awutd")
-skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("1_201sl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3hdbx")

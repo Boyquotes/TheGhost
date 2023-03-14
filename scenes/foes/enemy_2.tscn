@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://brb8b4v4eyknh"]
+[gd_scene load_steps=8 format=3 uid="uid://brb8b4v4eyknh"]
+
+[ext_resource type="Script" path="res://scripts/enemy/Enemy2/enemy_2.gd" id="1_8oyhq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66ads"]
 emission_enabled = true
@@ -19,7 +21,13 @@ size = Vector3(0.69, 0.537, 0.747)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yo6he"]
 height = 3.0
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_f6qxd"]
+height = 10.0
+radius = 20.0
+
 [node name="Enemy2" type="RigidBody3D"]
+collision_layer = 0
+script = ExtResource("1_8oyhq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -32,3 +40,10 @@ mesh = SubResource("BoxMesh_8na35")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CapsuleShape3D_yo6he")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="FOV" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FOV"]
+shape = SubResource("CylinderShape3D_f6qxd")

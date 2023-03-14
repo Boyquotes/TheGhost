@@ -23,22 +23,24 @@ var next_light : float = 1.0
 signal daytime (text : String, color : Color)
 
 func _ready():
-	environment = env
-	environment.background_color = STATES.morning
-	next_dir_light_int = dir_light.light_energy
-	await get_tree().create_timer(1).timeout
-	cycle()
+	#environment = env
+	#environment.background_color = STATES.morning
+	#next_dir_light_int = dir_light.light_energy
+	#await get_tree().create_timer(1).timeout
+	#cycle()
+	pass
 
 func _process(delta):
-	var delta_color = environment.background_color
-	environment.background_color = Color(
-		lerpf(delta_color.r, next_color.r, 0.15*3 * delta), 
-		lerpf(delta_color.g, next_color.g, 0.15*3 * delta), 
-		lerpf(delta_color.b, next_color.b, 0.15*3 * delta))
-	environment.background_energy_multiplier = lerpf(
-		environment.background_energy_multiplier, next_light, 0.15 * delta)
-	dir_light.light_energy = lerpf(dir_light.light_energy, next_dir_light_int, 0.75 * delta)
-	environment.sky_rotation.y = lerp_angle(environment.sky_rotation.y, deg_to_rad(360), delta * 0.1)
+	#var delta_color = environment.background_color
+	#environment.background_color = Color(
+	#	lerpf(delta_color.r, next_color.r, 0.15*3 * delta), 
+	#	lerpf(delta_color.g, next_color.g, 0.15*3 * delta), 
+	#	lerpf(delta_color.b, next_color.b, 0.15*3 * delta))
+	#environment.background_energy_multiplier = lerpf(
+	#	environment.background_energy_multiplier, next_light, 0.15 * delta)
+	#dir_light.light_energy = lerpf(dir_light.light_energy, next_dir_light_int, 0.75 * delta)
+	#environment.sky_rotation.y = lerp_angle(environment.sky_rotation.y, deg_to_rad(360), delta * 0.1)
+	pass
 	
 func cycle():
 	next_light = 1.0
