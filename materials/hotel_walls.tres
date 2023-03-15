@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b3vab5g1aluly" path="res://imports/brown-square-pattern-fabric-textured-background.jpg" id="1_dnh1p"]
 
 [resource]
-albedo_color = Color(0.415686, 0.411765, 0.235294, 1)
+albedo_color = Color(0.580392, 0.537255, 0.25098, 1)
 emission = Color(0.392157, 0, 0, 1)
 rim_tint = 0.0
 clearcoat = 0.0

@@ -1,9 +1,7 @@
 extends RigidBody3D
 
-@onready var nav_agent : NavigationAgent3D = $EnemyNavigationAgent3D
-@onready var mesh : Node3D = $EnemySM/Mesh
-@onready var sm : Node3D = $EnemySM
-@onready var fov : Area3D = $EnemySM/Mesh/EnemyFOV
+@onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
+@onready var mesh : Node3D = $MeshInstance3D
 
 const SPEED = 3.0
 
@@ -14,7 +12,7 @@ var speed = SPEED
 var calculated_velocity = Vector3.ZERO
 
 var has_target = false
-var on_floor = false
+var on_floor = true
 
 var passing = false:
 	set(value):
@@ -47,11 +45,7 @@ func _physics_process(delta):
 		rotate_towards_motion(delta)
 
 func _integrate_forces(state):
-	if needs_to_force_foward:
-		nav_agent.set_velocity(Vector3(direction.x * 8.9, 0, direction.z * 8.9))
-		linear_velocity = calculated_velocity
-		return
-	if has_target && on_floor and linear_velocity.length() <= SPEED and sm.state !=4:
+	if has_target && on_floor and linear_velocity.length() <= SPEED:
 		var origin = global_transform.origin
 		var target = nav_agent.get_next_path_position()
 		direction = (target - origin).normalized()
@@ -67,8 +61,6 @@ func _on_enemy_fov_player(player_location):
 		return
 	if chasing == true:
 		nav_agent.target_position = player_location
-		if !nav_agent.is_target_reachable():
-			return
 		has_target = true
 	else :
 		chasing = true
@@ -82,10 +74,6 @@ func _on_enemy_navigation_agent_3d_navigation_finished():
 	chasing = false
 	has_target = false
 
-
-func _on_enemy_floor_detector_enemy_on_floor(boolean):
-	on_floor = boolean
-
 func player_death():
 	chasing = false
 	nav_agent.target_position = INITIAL_POSITION
@@ -93,5 +81,5 @@ func player_death():
 	has_target = false
 
 
-func _on_enemy_navigation_agent_3d_velocity_computed(safe_velocity):
+func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 	calculated_velocity = safe_velocity

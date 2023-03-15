@@ -21,9 +21,11 @@ func _physics_process(_delta):
 		sm.attacking = true
 		await get_tree().create_timer(0.5).timeout #hit frame of animation
 		on_cd = true
-		var hitbox_hits = get_overlapping_areas().filter(remove_not_player)
-		if hitbox_hits:
-			area.hit()
+		if sm.state != 4 :
+			var hitbox_hits = get_overlapping_areas().filter(remove_not_player)
+			if hitbox_hits:
+				area.hit()
+		
 
 func remove_not_player(obj : Node3D):
 	return obj.is_in_group("Player")

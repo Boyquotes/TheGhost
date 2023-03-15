@@ -56,7 +56,7 @@ func _enter_state(new_state, _old_state):
 		animator.play(state_name)
 	match new_state:
 		STATES.attack:
-			parent.speed = speed*1.5
+			parent.speed = speed*0.5
 		STATES.chasing:
 			parent.speed = speed
 		STATES.passing:
@@ -69,7 +69,7 @@ func passing():
 
 
 func _on_head_area_body_entered(body):
-	if body.is_in_group("HeadBlock") and state != STATES.attack:
+	if body.is_in_group("HeadBlock"):
 		parent.passing = true
 		set_state(STATES.passing)
 

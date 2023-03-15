@@ -6,7 +6,7 @@ extends RigidBody3D
 @onready var fov : Area3D = $EnemySM/Mesh/EnemyFOV
 @onready var head : Node3D = $EnemySM/Mesh/Head
 
-const SPEED = 3.0
+const SPEED = 4.0
 
 var INITIAL_POSITION = Vector3()
 var direction = Vector3.ZERO

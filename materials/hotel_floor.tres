@@ -2,4 +2,6 @@
 
 [resource]
 render_priority = 83
-albedo_color = Color(0.380392, 0.184314, 0.168627, 1)
+albedo_color = Color(0.580392, 0.172549, 0.156863, 1)
+rim = 0.47
+rim_tint = 0.52
