@@ -73,7 +73,7 @@ func _on_enemy_fov_player(player_location):
 		has_target = true
 	else :
 		chasing = true
-		if (global_position - player_location).length() < 15:
+		if (global_position - player_location).length() < 20:
 			mesh.visible = true
 		else:
 			mesh.visible = false
