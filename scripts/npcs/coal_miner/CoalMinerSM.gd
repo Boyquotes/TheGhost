@@ -11,6 +11,7 @@ signal entered_state (state : String, startSec : float)
 
 @onready var animator : AnimationPlayer = $AnimationPlayer
 @onready var label : Label3D = $Label3D
+@onready var walking_particles : GPUParticles3D = $WalkingEffect
 
 func _ready():
 	add_states(STATES)
@@ -37,7 +38,11 @@ func _enter_state(new_state, _old_state):
 	var state_name = STATES.find_key(new_state)
 	if animator.has_animation(state_name):
 		animator.play(state_name)
-	#match new_state:
+	match new_state:
+		STATES.walking or STATES.walking_grab:
+			walking_particles.emitting = true
+		STATES.idle:
+			walking_particles.emitting = false
 
 
 func _on_animation_player_animation_finished(anim_name):
