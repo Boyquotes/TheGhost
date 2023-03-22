@@ -54,10 +54,9 @@ load_path = "res://.godot/imported/smoke_04.png-9bb63a1906f266350ae7aeb883d494f2
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ki458"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pcct3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qpe4"]
 render_priority = 127
 transparency = 1
-albedo_color = Color(0.854902, 0.368627, 0, 0.960784)
 albedo_texture = SubResource("CompressedTexture2D_w7pcf")
 emission = Color(0.796078, 0.419608, 0, 1)
 emission_energy_multiplier = 0.05
@@ -233,8 +232,8 @@ script = ExtResource("6_kl01s")
 [node name="Effects" type="Node3D" parent="."]
 
 [node name="FogVolume" type="FogVolume" parent="Effects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.69471, 0)
-size = Vector3(28, 10, 30)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.39471, 0)
+size = Vector3(64, 10, 64)
 shape = 0
 material = SubResource("FogMaterial_jpfqo")
 
@@ -243,7 +242,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.613868, 0)
 light_color = Color(1, 0.388235, 0.184314, 1)
 light_energy = 16.0
 shadow_enabled = true
-omni_range = 10.0
+omni_range = 16.0
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0603607, 2.20577, 4.6754)
@@ -257,7 +256,7 @@ spot_angle = 24.54
 
 [node name="Smoke" type="GPUParticles3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320849, 4.32126, 4.71112)
-material_override = SubResource("StandardMaterial3D_pcct3")
+material_override = SubResource("StandardMaterial3D_3qpe4")
 amount = 16
 lifetime = 2.0
 speed_scale = 0.2

@@ -305,7 +305,7 @@ max_contacts_reported = 10
 contact_monitor = true
 can_sleep = false
 lock_rotation = true
-linear_damp = 3.0
+linear_damp = 5.0
 script = SubResource("GDScript_kk1tv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
