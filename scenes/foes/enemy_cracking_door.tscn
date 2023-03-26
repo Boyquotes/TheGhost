@@ -1755,8 +1755,8 @@ height = 5.2
 [node name="enemy_cracking_door" type="Node3D"]
 
 [node name="EnemyBody" type="RigidBody3D" parent="." groups=["Enemy", "NeedsToReset"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 2
 input_ray_pickable = false
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -2035,6 +2035,7 @@ path_max_distance = 300.01
 avoidance_enabled = true
 max_speed = 8.9
 
+[connection signal="body_shape_entered" from="EnemyBody/EnemySM/Mesh/AtkHitbox" to="EnemyBody/EnemySM/Mesh/AtkHitbox" method="_on_body_shape_entered"]
 [connection signal="player" from="EnemyBody/EnemySM/Mesh/EnemyFOV" to="EnemyBody" method="_on_enemy_fov_player"]
 [connection signal="enemy_on_floor" from="EnemyBody/EnemySM/Mesh/EnemyFloorDetector" to="EnemyBody" method="_on_enemy_floor_detector_enemy_on_floor"]
 [connection signal="body_entered" from="EnemyBody/EnemySM/Mesh/HeadArea" to="EnemyBody/EnemySM" method="_on_head_area_body_entered"]

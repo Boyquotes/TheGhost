@@ -17,15 +17,38 @@ func _physics_process(_delta):
 	if not area[0].monitorable:
 		return
 	if !sm.attacking && !on_cd && sm.state != 4:
-		area = area[0]
-		sm.attacking = true
-		await get_tree().create_timer(0.5).timeout #hit frame of animation
-		on_cd = true
-		if sm.state != 4 :
-			var hitbox_hits = get_overlapping_areas().filter(remove_not_player)
-			if hitbox_hits:
-				area.hit()
-		
+		attack()
+
+func attack():
+	var area = get_overlapping_areas().filter(remove_not_player)
+	if area.is_empty():
+		return
+	area = area[0]
+	sm.attacking = true
+	await get_tree().create_timer(0.5).timeout #hit frame of animation
+	on_cd = true
+	if sm.state != 4 :
+		var hitbox_hits = get_overlapping_areas().filter(remove_not_player)
+		var doors = get_overlapping_bodies().filter(remove_not_door)
+		if doors:
+			for body in doors:
+				body.apply_central_impulse((body.global_position - get_parent().global_position).normalized() * 10.0 * body.mass)
+		if hitbox_hits:
+			area.hit()
 
 func remove_not_player(obj : Node3D):
 	return obj.is_in_group("Player")
+
+func remove_not_door(obj : Node3D):
+	return obj.is_in_group("Player")
+
+
+func _on_body_shape_entered(body_rid, body : RigidBody3D, body_shape_index, local_shape_index):
+	if !sm.attacking && !on_cd && sm.state != 4:
+		attack()
+	
+	if body.is_in_group("Door"):
+		body.apply_central_impulse((body.global_position - get_parent().global_position).normalized() * 10.0 * body.mass)
+		sm.attacking = true
+		await get_tree().create_timer(0.5).timeout #hit frame of animation
+		on_cd = true
