@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfan743wneoqh"]
+[gd_scene load_steps=11 format=3 uid="uid://bfan743wneoqh"]
 
 [ext_resource type="PackedScene" uid="uid://1cinutwv1t3l" path="res://scenes/props/floor.tscn" id="1_qn23l"]
 [ext_resource type="PackedScene" uid="uid://dxxe8ypm62brj" path="res://scenes/furnance_plane.tscn" id="2_dqbvf"]
 [ext_resource type="PackedScene" uid="uid://c5v2jrbwtfkpk" path="res://scenes/player/player.tscn" id="3_5fsbt"]
 [ext_resource type="PackedScene" uid="uid://bq8q4xxajkmv0" path="res://scenes/maze.tscn" id="6_k2kex"]
+[ext_resource type="PackedScene" uid="uid://brb8b4v4eyknh" path="res://scenes/foes/enemy_2.tscn" id="6_x7kme"]
 [ext_resource type="PackedScene" uid="uid://bqo3tjtuvfrpx" path="res://scenes/props/elevator.tscn" id="10_cgyns"]
 
 [sub_resource type="FogMaterial" id="FogMaterial_oswsl"]
@@ -85,5 +86,8 @@ current_dir = "down"
 
 [node name="Maze" parent="." instance=ExtResource("6_k2kex")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -48, 0)
+
+[node name="Enemy2" parent="." instance=ExtResource("6_x7kme")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -40, 24.4)
 
 [connection signal="body_entered" from="DeathArea" to="DeathArea" method="_on_body_entered"]

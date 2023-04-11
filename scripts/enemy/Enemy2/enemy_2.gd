@@ -51,10 +51,10 @@ func _integrate_forces(state):
 		direction = (target - origin).normalized()
 		var velocity = linear_velocity + (target - origin).normalized() * speed
 		nav_agent.set_velocity(Vector3(velocity.x, 0, velocity.z))
-		linear_velocity = calculated_velocity
+		apply_central_impulse(calculated_velocity * 1000.0)
 
 func rotate_towards_motion(delta):
-	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 5.0)
+	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-linear_velocity.x, -linear_velocity.z), delta * 25.0)
 
 func _on_enemy_fov_player(player_location):
 	if player_location == null:

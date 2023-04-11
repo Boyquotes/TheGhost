@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://brb8b4v4eyknh"]
+[gd_scene load_steps=10 format=3 uid="uid://brb8b4v4eyknh"]
 
 [ext_resource type="Script" path="res://scripts/enemy/Enemy2/enemy_2.gd" id="1_8oyhq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hf3ef"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66ads"]
 emission_enabled = true
@@ -18,8 +20,9 @@ emission = Color(1, 1, 1, 1)
 material = SubResource("StandardMaterial3D_n84ya")
 size = Vector3(0.69, 0.537, 0.747)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yo6he"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8xl36"]
 height = 3.0
+radius = 0.45
 
 [sub_resource type="GDScript" id="GDScript_5ndnr"]
 script/source = "extends Area3D
@@ -42,10 +45,17 @@ height = 20.0
 radius = 30.0
 
 [node name="Enemy2" type="RigidBody3D"]
+collision_layer = 66
+collision_mask = 66
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 5000.0
+physics_material_override = SubResource("PhysicsMaterial_hf3ef")
+gravity_scale = 5.0
+continuous_cd = true
+max_contacts_reported = 10
+can_sleep = false
 script = ExtResource("1_8oyhq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -53,15 +63,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 mesh = SubResource("CapsuleMesh_tdp5n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.584107, 0.25819)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.584107, -0.14181)
 mesh = SubResource("BoxMesh_8na35")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-shape = SubResource("CapsuleShape3D_yo6he")
+shape = SubResource("CylinderShape3D_8xl36")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_max_distance = 200.01
+path_desired_distance = 0.75
+agent_height_offset = 0.1
+path_max_distance = 500.01
+avoidance_enabled = true
+radius = 0.2
+debug_enabled = true
 
 [node name="FOV" type="Area3D" parent="."]
 script = SubResource("GDScript_5ndnr")
